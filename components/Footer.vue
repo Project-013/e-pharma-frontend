@@ -1,135 +1,170 @@
 <template>
-  <!-- Footer -->
-  <footer class="text-center text-lg-start bg-dark text-muted">
-    <!-- Section: Social media -->
-    <section
-      class="d-flex justify-content-center "
-    >
-      <!-- Left -->
-      <!-- <div class="me-5 d-none d-lg-block">
-        <span>Get connected with us on social networks:</span>
-      </div> -->
-      <!-- Left -->
+  <footer class="pt-5 pb-2">
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-3 col-md-6">
+          <img src="../static/img/logo.png" alt="me" width="70" class="pb-3" />
 
-      <!-- Right -->
-      <div>
-        <a href="" class="me-4 link-grayish">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="" class="me-4 link-grayish">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="" class="me-4 link-grayish">
-          <i class="fab fa-google"></i>
-        </a>
-        <a href="" class="me-4 link-grayish">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="" class="me-4 link-grayish">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        <a href="" class="me-4 link-grayish">
-          <i class="fab fa-github"></i>
-        </a>
-      </div>
-      <!-- Right -->
-    </section>
-    <!-- Section: Social media -->
-
-    <!-- Section: Links  -->
-    <section class="">
-      <div class="container text-center text-md-start mt-5">
-        <!-- Grid row -->
-        <div class="row mt-3">
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-            <!-- Content -->
-            <h6 class="text-uppercase fw-bold mb-4">
-              <i class="fas fa-gem me-3 text-grayish"></i>E-Pharma
-            </h6>
+          <div class="text-white">
             <p>
-              Here you can use rows and columns to organize your footer content.
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Sheikhghat-Kazirbazar Road, Sylhet<br />
+              Bangladesh
             </p>
+            <div class="my-2">
+              <a href="#" class="text-white">
+                <fa :icon="['fab', 'facebook-square']" class="fa-2x" />
+              </a>
+              <a href="#" class="text-white mx-1">
+                <fa :icon="['fab', 'twitter-square']" class="fa-2x" />
+              </a>
+              <a href="#" class="text-white">
+                <fa :icon="['fab', 'youtube']" class="fa-2x" />
+              </a>
+            </div>
+            <a
+              class="d-block text-decoration-none text-white"
+              href="tel:+8801771147384"
+              >+8801771147384</a
+            >
+            <a
+              class="d-block text-decoration-none text-white"
+              href="mailto:info@sasthosebok.com"
+            >
+              info@sasthosebok.com
+            </a>
           </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">Products</h6>
-            <p>
-              <a href="#!" class="text-reset">Angular</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">React</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Vue</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Laravel</a>
-            </p>
-          </div>
-          <!-- Grid column -->
-
-          <!-- Grid column -->
-          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-            <!-- Links -->
-            <h6 class="text-uppercase fw-bold mb-4">Useful links</h6>
-            <p>
-              <a href="#!" class="text-reset">Pricing</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Settings</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Orders</a>
-            </p>
-            <p>
-              <a href="#!" class="text-reset">Help</a>
-            </p>
-          </div>
-          <!-- Grid column -->
-
-          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-            <p>
-              <i class="fas fa-home me-3 text-grayish"></i> New York, NY 10012,
-              US
-            </p>
-            <p>
-              <i class="fas fa-envelope me-3 text-grayish"></i>
-              info@example.com
-            </p>
-            <p>
-              <i class="fas fa-phone me-3 text-grayish"></i> + 01 234 567 88
-            </p>
-            <p>
-              <i class="fas fa-print me-3 text-grayish"></i> + 01 234 567 89
-            </p>
-          </div>
-          <!-- Grid column -->
         </div>
-        <!-- Grid row -->
+        <div class="col-lg-3 col-md-6">
+          <h5 class="text-white mb-4">Important Links</h5>
+          <ul class="link_group">
+            <li>
+              <NuxtLink to="/faq" class="text-light footer_link">
+                FAQs
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/about-us" class="text-light footer_link"
+                >About us</NuxtLink
+              >
+            </li>
+            <li>
+              <NuxtLink to="/contact-us" class="text-light footer_link">
+                Contact us
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/privacy-policy" class="text-light footer_link">
+                Privacy Policy
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/privacy-policy" class="text-light footer_link">
+                Terms & Conditions
+              </NuxtLink>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="text-white mb-4">Important Links</h5>
+          <ul class="link_group">
+            <li>
+              <NuxtLink to="/faq" class="text-light footer_link">
+                FAQs
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/about-us" class="text-light footer_link"
+                >About us</NuxtLink
+              >
+            </li>
+            <li>
+              <NuxtLink to="/contact-us" class="text-light footer_link">
+                Contact us
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/privacy-policy" class="text-light footer_link">
+                Privacy Policy
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/privacy-policy" class="text-light footer_link">
+                Terms & Conditions
+              </NuxtLink>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h5 class="text-white mb-4">Important Links</h5>
+          <ul class="link_group">
+            <li>
+              <NuxtLink to="/faq" class="text-light footer_link">
+                FAQs
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/about-us" class="text-light footer_link"
+                >About us</NuxtLink
+              >
+            </li>
+            <li>
+              <NuxtLink to="/contact-us" class="text-light footer_link">
+                Contact us
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/privacy-policy" class="text-light footer_link">
+                Privacy Policy
+              </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/privacy-policy" class="text-light footer_link">
+                Terms & Conditions
+              </NuxtLink>
+            </li>
+          </ul>
+        </div>
       </div>
-    </section>
-    <!-- Section: Links  -->
-
-    <!-- Copyright -->
-    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025)">
-      © 2021 Copyright:
-      <a class="text-reset fw-bold" href="https://mdbootstrap.com/"
-        >MDBootstrap.com</a
-      >
+      <div class="text-center text-light small pt-4">
+        <small class="py-1">
+          <span class="fw-bold">sasthosebok.com</span>
+          . All Rights Reserved - Developed by
+          <a href="#" class="text-white"> Sajib Sutradhar</a>
+        </small>
+      </div>
     </div>
-    <!-- Copyright -->
+    <div class="messenger">
+      <NuxtLink to="/">
+        <img src="../static/img/msg.png" class="" width="70px" />
+      </NuxtLink>
+    </div>
   </footer>
-  <!-- Footer -->
 </template>
+<style scoped>
+footer {
+  background: #2b325c;
+  position: relative;
+  margin-top: 200px !important;
+}
 
-<script>
-export default {};
-</script>
+.footer_link {
+  line-height: 30px !important;
+  color: white !important;
+  opacity: 1;
+  text-decoration: none;
+}
+.footer_link:hover {
+  color: #ff0065 !important;
+}
+.link_group {
+  margin: 0;
+  list-style: none;
+  padding-left: 0;
+}
 
-<style></style>
+.messenger {
+  position: absolute !important;
+  right: 15px;
+  top: -90px;
+}
+</style>

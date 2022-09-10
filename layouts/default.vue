@@ -10,14 +10,4 @@
 export default {};
 </script>
 
-<style scoped>
-.root {
-  position: relative;
-  min-height: 100vh;
-}
-Footer {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-}
-</style>
+<style scoped></style>

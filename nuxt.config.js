@@ -1,9 +1,9 @@
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-  ssr: false,
+  // ssr: false,
 
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  // target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -18,17 +18,23 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel:'stylesheet', href:'/css/bootstrap.min.css'
+      },
+    ],
+    script: [
+      { src: '/js/bootstrap.bundle.min.js', type: 'text/javascript' }
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    "@/static/css/style.css"
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    "~/plugins/bootstrap",
     "~/plugins/vee-validate",
     { src: "~/plugins/highcharts.js", mode: 'client' },
   ],
@@ -41,12 +47,16 @@ export default {
     '@nuxtjs/fontawesome',
     '@nuxtjs/composition-api/module'
   ],
+  
   fontawesome: {
-    component: 'fa',
+    component: 'Fa',
+    suffix: false,
     icons: {
-      solid:true,
-    }
-  },
+      solid: true,
+      brands: true,
+    },
+},
+
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -57,11 +67,14 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: process.env.API_BASE_URL+'/api/'
+
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: ["vee-validate/dist/rules"],
-  }
+  },
+  loading: '~/components/LoadingBar.vue',
+
 }

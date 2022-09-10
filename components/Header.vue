@@ -1,54 +1,47 @@
 <template>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg  fixed-top background ">
-    <!-- bg-info navbar-info -->
-    <div class="container">
-      <a href="#" class="navbar-brand">E-Pharma</a>
+  <header class="sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+      <div class="container">
+        <NLink class="navbar-brand text-success" to="/">
+          <img src="../static/img/logo.png" alt="me" width="50" />
+        </NLink>
 
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navmenu"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navmenu">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a href="#home" class="nav-link">Home</a>
-          </li>
-          <li class="nav-item">
-            <a href="#shop" class="nav-link">Shop</a>
-          </li>
-          <li class="nav-item">
-            <a href="#services" class="nav-link">Services</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#pages"
-              role="button"
-              data-bs-toggle="dropdown"
-              >Pages</a
-            >
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Page-1</a></li>
-              <li><a class="dropdown-item" href="#">Page-2</a></li>
-              <li><a class="dropdown-item" href="#">Page-3</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#blog" class="nav-link">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a href="#contact" class="nav-link">Contact</a>
-          </li>
-        </ul>
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <fa :icon="['fa', 'bars']" class="border-0" />
+        </button>
+        <div
+          class="collapse navbar-collapse mx-auto"
+          id="navbarSupportedContent"
+        >
+          <ul class="navbar-nav mx-auto align-items-center">
+            <li class="nav-item">
+              <NLink class="nav-link" aria-current="page" to="/"> Home </NLink>
+            </li>
+            <li class="nav-item">
+              <NLink class="nav-link" to="/doctors">Find Doctorts </NLink>
+            </li>
+            <li class="nav-item">
+              <NLink class="nav-link" to="/doctor-call">Doctor Call </NLink>
+            </li>
+            <li class="nav-item">
+              <NLink class="nav-link" to="/about"> Who we are? </NLink>
+            </li>
+            <li class="nav-item">
+              <NLink class="nav-link" to="/contact-us"> Contact us</NLink>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </header>
 </template>
 
 <script>
@@ -56,16 +49,10 @@ export default {};
 </script>
 
 <style>
-.background{
-  background-color:#C1D5A4
-
+.navbar-nav li a:hover {
+  color: #ff0065;
 }
-.navbar-nav li a{
-  color:#002B5B;
-  font-weight:600;
-}
-.navbar-nav li a:hover{
-  background-color:#3FA796;
-  border-radius:5px;
+.nuxt-link-exact-active {
+  color: #ff0065 !important;
 }
 </style>
