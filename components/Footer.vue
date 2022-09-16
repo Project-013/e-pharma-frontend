@@ -144,7 +144,7 @@
 footer {
   background: #2b325c;
   position: relative;
-  margin-top: 200px !important;
+  margin-top: 100px !important;
 }
 
 .footer_link {

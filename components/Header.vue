@@ -29,7 +29,7 @@
               <NLink class="nav-link" to="/doctors">Find Doctorts </NLink>
             </li>
             <li class="nav-item">
-              <NLink class="nav-link" to="/doctor-call">Doctor Call </NLink>
+              <NLink class="nav-link" to="/call-doctors">Call Doctor </NLink>
             </li>
             <li class="nav-item">
               <NLink class="nav-link" to="/about"> Who we are? </NLink>

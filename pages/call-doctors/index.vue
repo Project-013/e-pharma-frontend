@@ -3,7 +3,7 @@
     <div class="row my-4">
       <div class="col-md-6 d-flex justify-content-center align-items-center">
         <div class="">
-          <h1 class="display-5 text-success">বিশেষজ্ঞদের প্রাইভেট চেম্বার</h1>
+          <h1 class="display-5 text-success">বিশেষজ্ঞদের সাথে কথা বলুন</h1>
           <p class="small">
             দক্ষ চিকিৎসক ও রোগীর দূরত্ব কমিয়ে উন্নত স্বাস্থ্যপরামর্শ উন্মুক্ত
             করার লক্ষ্যে
@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="doctors my-5">
-      <Doctors :doctors="doctors" />
+      <CallDoctors :doctors="doctors" />
     </div>
   </section>
 </template>
@@ -49,7 +49,7 @@ export default {
   methods: {
     async getDoctors() {
       await this.$axios
-        .get(`doctors`)
+        .get(`call-doctors`)
         .then((res) => {
           if (res.status === 200) {
             console.log(res.data);

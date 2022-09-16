@@ -146,7 +146,7 @@ export default {
   methods: {
     async getDoctors() {
       await this.$axios
-        .get(`doctors/${this.$route.params.id}`)
+        .get(`call-doctors/${this.$route.params.id}`)
         .then((res) => {
           if (res.status === 200) {
             console.log(res.data);
@@ -162,7 +162,7 @@ export default {
       this.$nextTick(() => {
         this.$nuxt.$loading.start();
         this.$axios
-          .post(`appointments/`, this.form_data, {
+          .post(`call-appointments/`, this.form_data, {
             headers: {
               "Content-Type": "application/json",
             },

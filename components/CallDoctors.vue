@@ -3,7 +3,7 @@
     <template v-for="(doctor, index) in doctors">
       <div class="col-lg-3 col-md-4 col-11" :key="index">
         <div class="card h-100 shadow">
-          <NuxtLink :to="'/doctors/' + doctor.id">
+          <NuxtLink :to="'/call-doctors/' + doctor.id">
             <img :src="doctor.image_url" :alt="doctor.name" class="w-100" />
           </NuxtLink>
           <div class="card-body pb-0">
@@ -22,7 +22,7 @@
               <span class="">{{ doctor.number }}</span>
             </h6>
             <NuxtLink
-              :to="'/doctors/' + doctor.id"
+              :to="'/call-doctors/' + doctor.id"
               class="btn btn-sm btn-dark w-100"
             >
               Make Appointment
