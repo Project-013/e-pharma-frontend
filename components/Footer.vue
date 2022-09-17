@@ -12,13 +12,13 @@
             </p>
             <div class="my-2">
               <a href="#" class="text-white">
-                <fa :icon="['fab', 'facebook-square']" class="fa-2x" />
+                <fa :icon="['fab', 'facebook-square']" class="fa_icon" />
               </a>
               <a href="#" class="text-white mx-1">
-                <fa :icon="['fab', 'twitter-square']" class="fa-2x" />
+                <fa :icon="['fab', 'twitter-square']" class="fa_icon" />
               </a>
               <a href="#" class="text-white">
-                <fa :icon="['fab', 'youtube']" class="fa-2x" />
+                <fa :icon="['fab', 'youtube']" class="fa_icon" />
               </a>
             </div>
             <a
