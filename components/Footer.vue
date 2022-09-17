@@ -10,15 +10,15 @@
               Sheikhghat-Kazirbazar Road, Sylhet<br />
               Bangladesh
             </p>
-            <div class="my-2">
-              <a href="#" class="text-white">
-                <fa :icon="['fab', 'facebook-square']" class="fa_icon" />
+            <div class="my-2 d-none">
+              <a href="#" class="text-white fa_icon">
+                <!-- <fa :icon="['fab', 'facebook-square']" class="fa_icon" /> -->
               </a>
               <a href="#" class="text-white mx-1">
-                <fa :icon="['fab', 'twitter-square']" class="fa_icon" />
+                <!-- <fa :icon="['fab', 'twitter-square']" class="fa_icon" /> -->
               </a>
               <a href="#" class="text-white">
-                <fa :icon="['fab', 'youtube']" class="fa_icon" />
+                <!-- <fa :icon="['fab', 'youtube']" class="fa_icon" /> -->
               </a>
             </div>
             <a

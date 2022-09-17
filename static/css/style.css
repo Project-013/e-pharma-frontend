@@ -18,9 +18,11 @@ pre {
 }
 
 .fa_icon {
-  font-size: 35px !important;
+  font-size: 135px;
+  max-width: 35px !important;
 }
 
 .fa_icon1 {
   font-size: 15px !important;
+  max-width: 30px !important;
 }

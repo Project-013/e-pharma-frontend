@@ -10,7 +10,10 @@
           </p>
           <div class="search_box mb-4">
             <div class="d-flex align-items-center px-2 rounded">
-              <fa :icon="['fas', 'search']" class="text-muted ms-1 fa_icon1" />
+              <fa
+                :icon="['fas', 'search']"
+                class="text-muted ms-1 fa_icon1 d-none"
+              />
               <input
                 type="search"
                 class="form-control border-0"
