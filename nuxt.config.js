@@ -1,24 +1,24 @@
 export default {
   // Disable server-side rendering
-  // ssr: false,
+  ssr: false,
 
   // Target: https://go.nuxtjs.dev/config-target
-  // target: 'static',
+  target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'e-pharma-frontend',
+    title: 'sasthosebok.com || স্বাস্থ্যসেবক',
     htmlAttrs: {
       lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: '*sasthosebok.com* is a complete online service oriented organization. Install sasthosebok.com app to solve any medical problem no matter where you are in the country and get service. See less' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/img/logo.png' },
       {
         rel:'stylesheet', href:'/css/bootstrap.min.css'
       },

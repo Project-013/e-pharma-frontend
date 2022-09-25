@@ -10,9 +10,11 @@
           </p>
           <div class="search_box mb-4">
             <div class="d-flex align-items-center px-2 rounded">
-              <fa
-                :icon="['fas', 'search']"
-                class="text-muted ms-1 d-none fa_icon1"
+              <img
+                src="/img/icons/search.svg"
+                style="width: 18px"
+                alt=""
+                class="me-2"
               />
               <input
                 type="search"

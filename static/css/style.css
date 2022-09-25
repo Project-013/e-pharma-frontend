@@ -1,6 +1,9 @@
 body {
   background-color: #d8e2ef;
+  padding: 0 !important;
+  margin: 0 !important;
 }
+
 pre {
   font-weight: 600;
   white-space: pre-wrap;

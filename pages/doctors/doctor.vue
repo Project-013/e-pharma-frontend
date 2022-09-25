@@ -5,14 +5,13 @@
         <div class="card m-0">
           <img :src="doctor.image_url" :alt="doctor.name" class="w-100" />
           <div class="card-body">
-            <h6 class="text-success small">{{ doctor.category }}</h6>
+            <h6 class="text-success small">{{ doctor.speciality }}</h6>
             <h5 class="card-title" style="color: #2b325c">
               {{ doctor.name }}
             </h5>
             <p class="qualifications">{{ doctor.qualifications }}</p>
             <pre class="small">{{ doctor.expericence }}</pre>
             <div class="d-flex">
-              <fa :icon="['fa', 'clock']" class="mt-3" />
               <pre
                 class="p-2 mb-3"
               ><span class="text-muted">{{ doctor.time }}</span></pre>
@@ -139,14 +138,14 @@ export default {
         patient_age: "",
         patient_phone: "",
         details: "",
-        doctor_id: this.$route.params.id ? this.$route.params.id : "",
+        doctor_id: this.$route.query.id ? this.$route.query.id : "",
       },
     };
   },
   methods: {
     async getDoctors() {
       await this.$axios
-        .get(`doctors/${this.$route.params.id}`)
+        .get(`doctors/${this.$route.query.id}`)
         .then((res) => {
           if (res.status === 200) {
             console.log(res.data);
@@ -154,6 +153,7 @@ export default {
           }
         })
         .catch((error) => {
+          this.$router.push("/doctors");
           console.log(error.response.data.message || error.message);
           // context.commit('error', error)
         });
@@ -170,7 +170,6 @@ export default {
           .then((res) => {
             if (res.status === 201) {
               console.log(res);
-              this.$router.push("/");
             }
             this.$nuxt.$loading.finish();
           })

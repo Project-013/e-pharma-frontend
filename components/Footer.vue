@@ -10,15 +10,15 @@
               Sheikhghat-Kazirbazar Road, Sylhet<br />
               Bangladesh
             </p>
-            <div class="my-2 d-none">
-              <a href="#" class="text-white fa_icon">
-                <!-- <fa :icon="['fab', 'facebook-square']" class="fa_icon" /> -->
+            <div class="my-2">
+              <a href="#" class="text-white">
+                <img src="/img/icons/fb.svg" style="width: 30px" alt="" />
               </a>
               <a href="#" class="text-white mx-1">
-                <!-- <fa :icon="['fab', 'twitter-square']" class="fa_icon" /> -->
+                <img src="/img/icons/twitter.svg" style="width: 30px" alt="" />
               </a>
               <a href="#" class="text-white">
-                <!-- <fa :icon="['fab', 'youtube']" class="fa_icon" /> -->
+                <img src="/img/icons/youtube.svg" style="width: 30px" alt="" />
               </a>
             </div>
             <a
@@ -65,21 +65,21 @@
           </ul>
         </div>
         <div class="col-lg-3 col-md-6">
-          <h5 class="text-white mb-4">Important Links</h5>
+          <h5 class="text-white mb-4">For Patients</h5>
           <ul class="link_group">
             <li>
               <NuxtLink to="/faq" class="text-light footer_link">
-                FAQs
+                Find Doctors
               </NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/about-us" class="text-light footer_link"
-                >About us</NuxtLink
-              >
+              <NuxtLink to="/about-us" class="text-light footer_link">
+                Find Ambulances
+              </NuxtLink>
             </li>
             <li>
               <NuxtLink to="/contact-us" class="text-light footer_link">
-                Contact us
+                Call Doctors
               </NuxtLink>
             </li>
             <li>
@@ -95,16 +95,16 @@
           </ul>
         </div>
         <div class="col-lg-3 col-md-6">
-          <h5 class="text-white mb-4">Important Links</h5>
+          <h5 class="text-white mb-4">For Doctors/Organisations</h5>
           <ul class="link_group">
             <li>
               <NuxtLink to="/faq" class="text-light footer_link">
-                FAQs
+                Login as Doctor
               </NuxtLink>
             </li>
             <li>
               <NuxtLink to="/about-us" class="text-light footer_link"
-                >About us</NuxtLink
+                >Work with us</NuxtLink
               >
             </li>
             <li>

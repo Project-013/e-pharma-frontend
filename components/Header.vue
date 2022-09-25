@@ -15,7 +15,7 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <fa :icon="['fa', 'bars']" class="border-0" />
+          <span class="navbar-toggler-icon"></span>
         </button>
         <div
           class="collapse navbar-collapse mx-auto"
