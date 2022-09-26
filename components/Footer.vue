@@ -1,7 +1,7 @@
 <template>
   <footer class="pt-5 pb-2">
     <div class="container">
-      <div class="row g-5">
+      <div class="row g-0 g-sm-5">
         <div class="col-lg-3 col-md-6">
           <img src="../static/img/logo.png" alt="me" width="70" class="pb-3" />
 
@@ -21,11 +21,11 @@
                 <img src="/img/icons/youtube.svg" style="width: 30px" alt="" />
               </a>
             </div>
-            <a
+            <!-- <a
               class="d-block text-decoration-none text-white"
               href="tel:+8801771147384"
               >+8801771147384</a
-            >
+            > -->
             <a
               class="d-block text-decoration-none text-white"
               href="mailto:info@sasthosebok.com"
@@ -129,7 +129,13 @@
         <small class="py-1">
           <span class="fw-bold">sasthosebok.com</span>
           . All Rights Reserved - Developed by
-          <a href="#" class="text-white"> Sajib Sutradhar</a>
+          <a
+            href="https://www.linkedin.com/in/sajibsd013/"
+            target="_blank"
+            class="text-white"
+          >
+            Sajib Sutradhar</a
+          >
         </small>
       </div>
     </div>

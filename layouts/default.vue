@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="root">
     <Header />
     <Nuxt />
     <Footer />
@@ -10,4 +10,8 @@
 export default {};
 </script>
 
-<style scoped></style>
+<style scoped>
+.root {
+  /* margin: 110000 !important; */
+}
+</style>
