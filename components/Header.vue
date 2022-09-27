@@ -2,8 +2,15 @@
   <header class="sticky-top">
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
       <div class="container">
-        <NLink class="navbar-brand text-success" to="/">
+        <NLink
+          class="navbar-brand text-success d-flex align-items-center"
+          to="/"
+        >
           <img src="../static/img/logo.png" alt="me" width="50" />
+          <!-- <p class="small ms-2" style="font-size: 15px">
+            জরুরী মুহুর্তে, <br />
+            জীবনের প্রয়োজনে
+          </p> -->
         </NLink>
 
         <button

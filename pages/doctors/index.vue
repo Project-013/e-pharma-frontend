@@ -54,12 +54,15 @@ export default {
   methods: {
     async getDoctors() {
       await this.$axios
-        .get(`doctors`)
+        .get(`specialist-doctors`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + this.$config.apiToken,
+          },
+        })
         .then((res) => {
           if (res.status === 200) {
-            console.log(res.data);
             this.doctors = res.data;
-            console.log(this.doctors);
           }
         })
         .catch((error) => {

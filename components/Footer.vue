@@ -1,9 +1,16 @@
 <template>
   <footer class="pt-5 pb-2">
     <div class="container">
-      <div class="row g-0 g-sm-5">
+      <div class="row gy-5 g-sm-5">
         <div class="col-lg-3 col-md-6">
-          <img src="../static/img/logo.png" alt="me" width="70" class="pb-3" />
+          <div class="d-flex align-items-center mb-2">
+            <img
+              src="../static/img/logo.png"
+              alt="me"
+              width="70"
+              class="pb-3"
+            />
+          </div>
 
           <div class="text-white">
             <p>

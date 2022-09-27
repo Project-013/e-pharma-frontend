@@ -3,7 +3,11 @@
     <div class="row justify-content-center my-3">
       <div class="col-md-6 shadow bg-white col-lg-4 p-0">
         <div class="card m-0">
-          <img :src="doctor.image_url" :alt="doctor.name" class="w-100" />
+          <img
+            :src="$config.apibaseURL + doctor.image_url"
+            :alt="doctor.name"
+            class="w-100"
+          />
           <div class="card-body">
             <h6 class="text-success small">{{ doctor.speciality }}</h6>
             <h5 class="card-title" style="color: #2b325c">
@@ -22,7 +26,7 @@
               <span class="text-danger">{{ doctor.fee }} TAKA</span>
             </h6>
             <h6 class="text-muted text-center small">
-              <span class="">{{ doctor.number }}</span>
+              <span class="">{{ doctor.mobile }}</span>
             </h6>
             <p class="small">
               <em> Final appointment time is confirmed after payment. </em>
@@ -145,11 +149,14 @@ export default {
   methods: {
     async getDoctors() {
       await this.$axios
-        .get(`doctors/${this.$route.query.id}`)
+        .get(`specialist-doctors/${this.$route.query.id}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + this.$config.apiToken,
+          },
+        })
         .then((res) => {
           if (res.status === 200) {
-            console.log(res.data);
-            this.doctor = res.data;
           }
         })
         .catch((error) => {
@@ -162,14 +169,14 @@ export default {
       this.$nextTick(() => {
         this.$nuxt.$loading.start();
         this.$axios
-          .post(`appointments/`, this.form_data, {
+          .post(`specialist-doctors/appointment`, this.form_data, {
             headers: {
               "Content-Type": "application/json",
+              Authorization: "Bearer " + this.$config.apiToken,
             },
           })
           .then((res) => {
             if (res.status === 201) {
-              console.log(res);
             }
             this.$nuxt.$loading.finish();
           })

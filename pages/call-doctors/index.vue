@@ -39,7 +39,7 @@
       </div>
     </div>
     <div class="doctors my-5">
-      <CallDoctors :doctors="doctors" />
+      <VideoCallDoctors :doctors="doctors" />
     </div>
   </section>
 </template>
@@ -54,12 +54,15 @@ export default {
   methods: {
     async getDoctors() {
       await this.$axios
-        .get(`call-doctors`)
+        .get(`videocall-doctors`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + this.$config.apiToken,
+          },
+        })
         .then((res) => {
           if (res.status === 200) {
-            console.log(res.data);
             this.doctors = res.data;
-            console.log(this.doctors);
           }
         })
         .catch((error) => {
@@ -70,8 +73,6 @@ export default {
   },
   mounted() {
     this.getDoctors();
-
-    console.log(this.$route);
   },
 };
 </script>

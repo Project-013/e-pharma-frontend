@@ -4,7 +4,11 @@
       <div class="col-lg-3 col-md-4 col-11" :key="index">
         <div class="card h-100 shadow">
           <NuxtLink :to="'/doctors/doctor/?id=' + doctor.id">
-            <img :src="doctor.image_url" :alt="doctor.name" class="w-100" />
+            <img
+              :src="$config.apibaseURL + doctor.image_url"
+              :alt="doctor.name"
+              class="w-100"
+            />
           </NuxtLink>
           <div class="card-body pb-0">
             <h6 class="text-success small">{{ doctor.speciality }}</h6>
@@ -19,7 +23,7 @@
               <span class="text-danger">{{ doctor.fee }} TAKA</span>
             </h6>
             <h6 class="text-muted text-center small">
-              <span class="">{{ doctor.number }}</span>
+              <span class="">{{ doctor.mobile }}</span>
             </h6>
             <NuxtLink
               :to="'/doctors/doctor/?id=' + doctor.id"
