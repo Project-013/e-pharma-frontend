@@ -62,7 +62,21 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/toast'
   ],
+  
+  toast: {
+    position: 'top-center',
+    register: [ 
+      {
+        name: 'my-error',
+        message: 'Oops...Something went wrong',
+        options: {
+          type: 'error'
+        }
+      }
+    ]
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
@@ -71,6 +85,8 @@ export default {
     // baseURL: 'https://api.sasthosebok.com/'
 
   },
+
+  
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

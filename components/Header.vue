@@ -2,10 +2,7 @@
   <header class="sticky-top">
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
       <div class="container">
-        <NLink
-          class="navbar-brand text-success d-flex align-items-center"
-          to="/"
-        >
+        <NLink class="navbar-brand d-none text-success d-lg-block" to="/">
           <img src="../static/img/logo.png" alt="me" width="50" />
           <!-- <p class="small ms-2" style="font-size: 15px">
             জরুরী মুহুর্তে, <br />
@@ -46,6 +43,10 @@
             </li>
           </ul>
         </div>
+        <div class="text-center">
+          <NuxtLink class="btn btn-outline-dark" to="/signin">signin</NuxtLink>
+          <NuxtLink class="btn btn-outline-dark" to="/signup">signup</NuxtLink>
+        </div>
       </div>
     </nav>
   </header>
@@ -57,9 +58,9 @@ export default {};
 
 <style>
 .navbar-nav li a:hover {
-  color: #ff0065;
+  /* color: #11040a; */
 }
 .nuxt-link-exact-active {
-  color: #ff0065 !important;
+  /* color: #11040a !important; */
 }
 </style>
