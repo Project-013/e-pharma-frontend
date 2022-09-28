@@ -62,7 +62,47 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/toast',
+    '@nuxtjs/auth-next'
   ],
+  
+  
+
+  toast: {
+    position: 'top-center',
+    duration: 2500,
+    action : [
+      {
+        text : 'close',
+        onClick : (e, toastObject) => {
+          toastObject.goAway(0);
+        }
+      }],
+    register: [ // Register custom toasts
+      {
+        name: 'my-error',
+        message: 'Oops...Something went wrong',
+        options: {
+          type: 'error'
+        }
+      }
+    ]
+  },
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/auth/login', method: 'post', propertyName:'token' },
+          logout: { url: '/auth/logout', method: 'post' },
+          user: { url: '/auth/user', method: 'get' , propertyName:'user'}
+          // user: false
+        },
+        tokenType : "bearer",
+
+      }
+    }
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
@@ -71,6 +111,8 @@ export default {
     // baseURL: 'https://api.sasthosebok.com/'
 
   },
+
+  
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {

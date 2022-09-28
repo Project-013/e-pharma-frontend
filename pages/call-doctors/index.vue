@@ -57,7 +57,6 @@ export default {
         .get(`videocall-doctors`, {
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + this.$config.apiToken,
           },
         })
         .then((res) => {

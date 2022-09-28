@@ -2,10 +2,7 @@
   <header class="sticky-top">
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
       <div class="container">
-        <NLink
-          class="navbar-brand text-success d-flex align-items-center"
-          to="/"
-        >
+        <NLink class="navbar-brand d-none text-success d-lg-block" to="/">
           <img src="../static/img/logo.png" alt="me" width="50" />
           <!-- <p class="small ms-2" style="font-size: 15px">
             জরুরী মুহুর্তে, <br />
@@ -46,6 +43,60 @@
             </li>
           </ul>
         </div>
+        <div class="ms-auto">
+          <template v-if="$auth.loggedIn">
+            <span class="dropdown text-light">
+              <a
+                class="dropdown-toggle text-dark"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="../static/img/icons/user_icon.svg"
+                  alt="user icon"
+                  width="40"
+                />
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-end mt-3 text-small"
+                aria-labelledby=""
+              >
+                <li>
+                  <span class="dropdown-item small">
+                    {{ $auth.user.email }}
+                  </span>
+                </li>
+                <div class="dropdown-divider"></div>
+
+                <li>
+                  <NuxtLink to="/profile" class="dropdown-item">
+                    Profile
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="profile/setting" class="dropdown-item">
+                    Settings
+                  </NuxtLink>
+                </li>
+                <div class="dropdown-divider"></div>
+                <li>
+                  <a class="dropdown-item pointer" @click="$auth.logout()">
+                    Logout</a
+                  >
+                </li>
+              </ul>
+            </span>
+          </template>
+          <template v-else>
+            <NuxtLink class="" to="/auth/login">
+              <small class="btn btn-outline-dark btn-sm px-4">Login</small>
+            </NuxtLink>
+            <NuxtLink class="" to="/auth/register">
+              <small class="btn btn-outline-dark btn-sm px-4">Register</small>
+            </NuxtLink>
+          </template>
+        </div>
       </div>
     </nav>
   </header>
@@ -57,9 +108,9 @@ export default {};
 
 <style>
 .navbar-nav li a:hover {
-  color: #ff0065;
+  color: red;
 }
 .nuxt-link-exact-active {
-  color: #ff0065 !important;
+  color: red !important;
 }
 </style>

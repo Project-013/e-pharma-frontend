@@ -35,92 +35,94 @@
         </div>
       </div>
       <div class="col-md-6 shadow bg-white">
-        <div class="row">
-          <ValidationObserver
-            class="col-md-6 col-11 mx-auto"
-            v-slot="{ handleSubmit }"
-          >
-            <form
-              class="form mt-5 text-muted"
-              @submit.prevent="handleSubmit(submitForm)"
+        <template v-if="$auth.loggedIn">
+          <div class="row">
+            <ValidationObserver
+              class="col-md-6 col-11 mx-auto"
+              v-slot="{ handleSubmit }"
             >
-              <h6>Make an Appointment</h6>
+              <form
+                class="form mt-5 text-muted"
+                @submit.prevent="handleSubmit(submitForm)"
+              >
+                <h6>Make an Appointment</h6>
 
-              <ValidationProvider
-                class="form-floating my-3 d-block"
-                rules="required"
-                v-slot="{ errors }"
-              >
-                <input
-                  v-model="form_data.patient_name"
-                  id="patient_name"
-                  class="is-invalid form-control"
-                  placeholder=" "
-                />
-                <label for="patient_name">Patient name</label>
-                <div class="invalid-feedback">
-                  {{ errors[0] }}
-                </div>
-              </ValidationProvider>
-              <ValidationProvider
-                class="form-floating my-3 d-block"
-                rules="required"
-                v-slot="{ errors }"
-              >
-                <input
-                  v-model="form_data.patient_age"
-                  id="patient_age"
-                  class="is-invalid form-control"
-                  placeholder=" "
-                />
-                <label for="patient_age">Age</label>
-                <div class="invalid-feedback">
-                  {{ errors[0] }}
-                </div>
-              </ValidationProvider>
-              <ValidationProvider
-                class="form-floating my-3 d-block"
-                rules="required"
-                v-slot="{ errors }"
-              >
-                <input
-                  v-model="form_data.patient_phone"
-                  id="patient_phone"
-                  class="is-invalid form-control"
-                  placeholder=" "
-                />
-                <label for="patient_name">Phone</label>
-                <div class="invalid-feedback">
-                  {{ errors[0] }}
-                </div>
-              </ValidationProvider>
-              <ValidationProvider
-                class="form-group my-3 d-block"
-                rules="required"
-                v-slot="{ errors }"
-              >
-                <textarea
-                  v-model="form_data.details"
-                  id="details"
-                  class="is-invalid form-control"
-                  placeholder="সংক্ষেপে সমস্যা: যেমন মাথাব্যাথা "
-                  rows="4"
-                ></textarea>
-                <div class="invalid-feedback">
-                  {{ errors[0] }}
-                </div>
+                <ValidationProvider
+                  class="form-floating my-3 d-block"
+                  rules="required"
+                  v-slot="{ errors }"
+                >
+                  <input
+                    v-model="form_data.patient_name"
+                    id="patient_name"
+                    class="is-invalid form-control"
+                    placeholder=" "
+                  />
+                  <label for="patient_name">Patient name</label>
+                  <div class="invalid-feedback">
+                    {{ errors[0] }}
+                  </div>
+                </ValidationProvider>
+                <ValidationProvider
+                  class="form-floating my-3 d-block"
+                  rules="required"
+                  v-slot="{ errors }"
+                >
+                  <input
+                    v-model="form_data.patient_age"
+                    id="patient_age"
+                    class="is-invalid form-control"
+                    placeholder=" "
+                  />
+                  <label for="patient_age">Age</label>
+                  <div class="invalid-feedback">
+                    {{ errors[0] }}
+                  </div>
+                </ValidationProvider>
+                <ValidationProvider
+                  class="form-floating my-3 d-block"
+                  rules="required"
+                  v-slot="{ errors }"
+                >
+                  <input
+                    v-model="form_data.patient_phone"
+                    id="patient_phone"
+                    class="is-invalid form-control"
+                    placeholder=" "
+                  />
+                  <label for="patient_name">Phone</label>
+                  <div class="invalid-feedback">
+                    {{ errors[0] }}
+                  </div>
+                </ValidationProvider>
+                <ValidationProvider
+                  class="form-group my-3 d-block"
+                  rules="required"
+                  v-slot="{ errors }"
+                >
+                  <textarea
+                    v-model="form_data.details"
+                    id="details"
+                    class="is-invalid form-control"
+                    placeholder="সংক্ষেপে সমস্যা: যেমন মাথাব্যাথা "
+                    rows="4"
+                  ></textarea>
+                  <div class="invalid-feedback">
+                    {{ errors[0] }}
+                  </div>
 
-                <h6 class="mark p-2 my-3">
-                  Consultation Fee -
-                  <span class="text-danger">{{ doctor.fee }} TAKA</span>
-                </h6>
-                <button class="btn btn-secondary btn-sm w-100">
-                  Make payment & Confirm
-                </button>
-              </ValidationProvider>
-            </form>
-          </ValidationObserver>
-        </div>
+                  <h6 class="mark p-2 my-3">
+                    Consultation Fee -
+                    <span class="text-danger">{{ doctor.fee }} TAKA</span>
+                  </h6>
+                  <button class="btn btn-secondary btn-sm w-100">
+                    Make payment & Confirm
+                  </button>
+                </ValidationProvider>
+              </form>
+            </ValidationObserver>
+          </div>
+        </template>
       </div>
     </div>
   </section>
@@ -156,8 +158,9 @@ export default {
           },
         })
         .then((res) => {
+          console.log(res);
           if (res.status === 200) {
-            this.doctor = res.data;
+            // this.doctor = res.data;'/
           }
         })
         .catch((error) => {
@@ -166,31 +169,6 @@ export default {
           console.log(error.response.data.message || error.message);
           // context.commit('error', error)
         });
-    },
-    async submitForm() {
-      this.$nextTick(() => {
-        this.$nuxt.$loading.start();
-        this.$axios
-          .post(`/videocall-doctors/appointment`, this.form_data, {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + this.$config.apiToken,
-            },
-          })
-          .then((res) => {
-            if (res.status === 201) {
-              console.log(res);
-            }
-            this.$nuxt.$loading.finish();
-          })
-          .catch((error) => {
-            this.$nuxt.$loading.finish();
-
-            console.log(error.message || error.response.data.message);
-          });
-      });
-
-      return;
     },
   },
   mounted() {

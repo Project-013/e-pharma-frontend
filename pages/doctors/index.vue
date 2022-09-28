@@ -57,7 +57,6 @@ export default {
         .get(`specialist-doctors`, {
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + this.$config.apiToken,
           },
         })
         .then((res) => {
