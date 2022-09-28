@@ -63,9 +63,9 @@
                 aria-labelledby=""
               >
                 <li>
-                  <span class="dropdown-item small">
+                  <h6 class="dropdown-item small" style="font-weight: 500">
                     {{ $auth.user.email }}
-                  </span>
+                  </h6>
                 </li>
                 <div class="dropdown-divider"></div>
 
@@ -81,9 +81,13 @@
                 </li>
                 <div class="dropdown-divider"></div>
                 <li>
-                  <a class="dropdown-item pointer" @click="$auth.logout()">
-                    Logout</a
+                  <a
+                    style="cursor: pointer"
+                    class="dropdown-item pointer"
+                    @click="$auth.logout()"
                   >
+                    Logout
+                  </a>
                 </li>
               </ul>
             </span>

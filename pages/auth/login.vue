@@ -3,7 +3,7 @@
     <div class="col-lg-4 col-md-6 col-12 mx-auto py-5">
       <div class="sign-form bg-white mb-5">
         <div class="sign-info">
-          <h4 class="mb-4" style="color: #084298">Welcome Back!</h4>
+          <h4 class="mb-5" style="color: #084298">Welcome Back!</h4>
         </div>
         <ValidationObserver v-slot="{ handleSubmit }">
           <form class="form" @submit.prevent="handleSubmit(submitForm)">
@@ -73,8 +73,8 @@ export default {
   data() {
     return {
       form_data: {
-        email: "sajibsd013@gmail.com",
-        password: "sajibsd013@gmail.com",
+        email: "",
+        password: "",
       },
     };
   },

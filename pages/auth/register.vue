@@ -3,7 +3,7 @@
     <div class="col-lg-4 col-md-6 col-12 mx-auto py-5">
       <div class="sign-form bg-white">
         <div class="sign-info">
-          <h4 class="mb-4" style="color: #084298">
+          <h4 class="mb-5" style="color: #084298">
             Register now to explore more!
           </h4>
         </div>
@@ -13,6 +13,19 @@
               <ValidationProvider rules="required|email" v-slot="{ errors }">
                 <input v-model="form_data.email" class="is-invalid" required />
                 <label>E-mail</label>
+                <div class="invalid-feedback">
+                  {{ errors[0] }}
+                </div>
+              </ValidationProvider>
+            </div>
+            <div class="input-field">
+              <ValidationProvider rules="required" v-slot="{ errors }">
+                <input
+                  v-model="form_data.date_of_birth"
+                  class="is-invalid"
+                  type="date"
+                />
+                <label>Date of birth</label>
                 <div class="invalid-feedback">
                   {{ errors[0] }}
                 </div>
@@ -43,7 +56,7 @@
               >
                 <input
                   type="password"
-                  v-model="form_data.re_password"
+                  v-model="form_data.password2"
                   class="is-invalid"
                   required
                 />
@@ -104,9 +117,10 @@ export default {
   data() {
     return {
       form_data: {
-        email: "",
-        password: "",
-        re_password: "",
+        email: "sajibsd013@gmail.com",
+        password: "sajibsd013@gmail.com",
+        password2: "sajibsd013@gmail.com",
+        date_of_birth: "",
         terms: false,
       },
       custom_error: {
@@ -117,7 +131,28 @@ export default {
   },
 
   methods: {
-    async submitForm() {},
+    async submitForm() {
+      try {
+        const response = await this.$axios.post(
+          "auth/register",
+          this.form_data
+        );
+        if (response.status === 201) {
+          this.$toast.error("Sucessful! You can login now...");
+          this.$router.push("/auth/login");
+        }
+
+        console.log(response);
+      } catch (e) {
+        const errors = e.response.data;
+        console.log();
+        for (const error in errors) {
+          if (error == "email") {
+            this.$toast.error("User already exists");
+          }
+        }
+      }
+    },
   },
   beforeCreate() {
     if (this.$auth.$state.loggedIn) {
