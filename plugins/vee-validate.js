@@ -1,5 +1,5 @@
 import { extend } from "vee-validate";
-import { alpha, confirmed, email, length, min, numeric, required } from "vee-validate/dist/rules";
+import { alpha, confirmed, email, length, min, numeric, required,max } from "vee-validate/dist/rules";
 
 extend("required", {
   ...required,
@@ -34,6 +34,11 @@ extend("length", {
 
 extend("min", {
   ...min,
+  message: "The field must be at least {length} characters"
+});
+
+extend("max", {
+  ...max,
   message: "The field must be at least {length} characters"
 });
 

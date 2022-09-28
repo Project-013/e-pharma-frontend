@@ -4,66 +4,27 @@
     class="carousel slide"
     data-bs-ride="carousel"
   >
-    <div class="carousel-inner p-5">
+    <div class="carousel-inner">
       <div class="carousel-item active">
-        <div class="row">
-          <div
-            class="col-md-6 d-flex align-items-center justify-content-center"
-          >
-            <div class="">
-              <h1 class="display-4 text-success">Download</h1>
-              <h1>Our Android & ISO APP</h1>
-              <p>Get the best online doctor from home</p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <img
-              src="../static/img/slider/s1.png"
-              class="d-block w-100"
-              alt="..."
-            />
-          </div>
-        </div>
+        <img
+          src="https://source.unsplash.com/1800x700?healthcare"
+          class="d-block w-100"
+          alt="..."
+        />
       </div>
       <div class="carousel-item">
-        <div class="row">
-          <div
-            class="col-md-6 d-flex align-items-center justify-content-center"
-          >
-            <div class="">
-              <h1 class="display-4 text-success">Download</h1>
-              <h1>Our Android & ISO APP</h1>
-              <p>Get the best online doctor from home</p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <img
-              src="../static/img/slider/s1.png"
-              class="d-block w-100"
-              alt="..."
-            />
-          </div>
-        </div>
+        <img
+          src="https://source.unsplash.com/1800x700?pharmacy"
+          class="d-block w-100"
+          alt="..."
+        />
       </div>
       <div class="carousel-item">
-        <div class="row">
-          <div
-            class="col-md-6 d-flex align-items-center justify-content-center"
-          >
-            <div class="">
-              <h1 class="display-4 text-success">Download</h1>
-              <h1>Our Android & ISO APP</h1>
-              <p>Get the best online doctor from home</p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <img
-              src="../static/img/slider/s1.png"
-              class="d-block w-100"
-              alt="..."
-            />
-          </div>
-        </div>
+        <img
+          src="https://source.unsplash.com/1800x700?doctors-and-nurses"
+          class="d-block w-100"
+          alt="..."
+        />
       </div>
     </div>
     <button

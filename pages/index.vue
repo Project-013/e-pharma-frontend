@@ -1,7 +1,7 @@
 <template>
-  <section class="container">
+  <section class="">
+    <Carousel />
     <Working />
-    <!-- <Carousel /> -->
   </section>
 </template>
 

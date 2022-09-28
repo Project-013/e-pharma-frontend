@@ -1,47 +1,37 @@
 <template>
   <section class="">
-    <div class="col-lg-4 col-md-6 col-12 mx-auto py-5">
-      <div class="sign-form bg-white mb-5">
+    <div class="col-lg-4 col-md-6 col-11 mx-auto py-5">
+      <div class="p-4 rounded shadow bg-white mb-5">
         <div class="sign-info">
           <h4 class="mb-5" style="color: #084298">Welcome Back!</h4>
         </div>
         <ValidationObserver v-slot="{ handleSubmit }">
           <form class="form" @submit.prevent="handleSubmit(submitForm)">
-            <div class="input-field">
-              <ValidationProvider rules="required|email" v-slot="{ errors }">
-                <input v-model="form_data.email" class="is-invalid" required />
-                <label>E-mail</label>
-                <div class="invalid-feedback">
-                  {{ errors[0] }}
-                </div>
-              </ValidationProvider>
-            </div>
-            <div class="input-field">
-              <ValidationProvider rules="required|min:8" v-slot="{ errors }">
+            <div class="input-field pb-3">
+              <div class="input-group flex-nowrap">
+                <span class="input-group-text bg-white px-2" id="addon-wrapping"
+                  >+880</span
+                >
                 <input
-                  type="password"
-                  v-model="form_data.password"
-                  class="is-invalid"
+                  type="number"
                   required
+                  class="form-control py-3 is-invalid"
+                  placeholder="01XXXXXXXXX"
+                  aria-label="phone"
+                  aria-describedby="addon-wrapping"
+                  v-model="form_data.phone"
                 />
-                <label>Password</label>
-                <div class="invalid-feedback">
-                  {{ errors[0] }}
-                </div>
-              </ValidationProvider>
-            </div>
-            <div class="d-flex align-items-center justify-content-between">
-              <!-- <span class="d-flex align-items-center">
-                <input type="checkbox" v-model="form_data.checkbox" />
-                <p class="mt-2 ms-2 small">Keep me signed in</p>
-              </span> -->
-              <a href="#" class="text-pimary text-decoration-none small pb-1"
-                >Forgot your password?</a
-              >
+              </div>
             </div>
 
             <div class="d-grid gap-2">
-              <button class="btn btn-dark" type="submit">Sign In</button>
+              <button
+                class="btn btn-dark"
+                :disabled="form_data.phone.length != 11"
+                type="submit"
+              >
+                Login
+              </button>
             </div>
           </form>
         </ValidationObserver>
@@ -73,8 +63,7 @@ export default {
   data() {
     return {
       form_data: {
-        email: "",
-        password: "",
+        phone: "",
       },
     };
   },
@@ -82,8 +71,8 @@ export default {
   methods: {
     async submitForm() {
       const data = {
-        email: this.form_data.email.toLowerCase(),
-        password: this.form_data.password,
+        phone: this.form_data.phone,
+        // password: this.form_data.password,
       };
       // console.log(data);
       try {
@@ -91,10 +80,12 @@ export default {
         if (response.status === 200) {
           this.$toast.success("Successfully authenticated");
         }
-        // this.$auth.$storage.setUniversal('email', response.data.email)
-        // await this.$auth.setUserToken(response.data.access_token, response.data.refresh_token)
       } catch (e) {
-        this.$toast.error(e.response.data.msg);
+        if (e.response.data.msg) {
+          this.$toast.error(e.response.data.msg);
+        } else {
+          this.$toast.error("Error!  Try again");
+        }
       }
 
       return;
