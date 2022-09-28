@@ -117,9 +117,9 @@ export default {
   data() {
     return {
       form_data: {
-        email: "sajibsd013@gmail.com",
-        password: "sajibsd013@gmail.com",
-        password2: "sajibsd013@gmail.com",
+        email: "",
+        password: "",
+        password2: "",
         date_of_birth: "",
         terms: false,
       },
@@ -132,17 +132,18 @@ export default {
 
   methods: {
     async submitForm() {
+      const data = {
+        email: this.form_data.email.toLowerCase(),
+        password: this.form_data.password,
+        password2: this.form_data.password2,
+        date_of_birth: this.form_data,
+      };
       try {
-        const response = await this.$axios.post(
-          "auth/register",
-          this.form_data
-        );
+        const response = await this.$axios.post("auth/register", data);
         if (response.status === 201) {
           this.$toast.error("Sucessful! You can login now...");
           this.$router.push("/auth/login");
         }
-
-        console.log(response);
       } catch (e) {
         const errors = e.response.data;
         console.log();

@@ -31,11 +31,21 @@
             <p class="small">
               <em> Final appointment time is confirmed after payment. </em>
             </p>
+            <template v-if="$auth.loggedIn === false">
+              <h6 class="text-center my-3 lead">
+                Please
+                <NuxtLink to="/auth/login" class="text-decoration-none"
+                  >Login</NuxtLink
+                >
+
+                to get appointment
+              </h6>
+            </template>
           </div>
         </div>
       </div>
-      <div class="col-md-6 shadow bg-white">
-        <template v-if="$auth.loggedIn">
+      <template v-if="$auth.loggedIn">
+        <div class="col-md-6 shadow bg-white">
           <div class="row">
             <ValidationObserver
               class="col-md-6 col-11 mx-auto"
@@ -122,8 +132,8 @@
               </form>
             </ValidationObserver>
           </div>
-        </template>
-      </div>
+        </div>
+      </template>
     </div>
   </section>
 </template>
@@ -160,7 +170,7 @@ export default {
         .then((res) => {
           console.log(res);
           if (res.status === 200) {
-            // this.doctor = res.data;'/
+            this.doctor = res.data;
           }
         })
         .catch((error) => {

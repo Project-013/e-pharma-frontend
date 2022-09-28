@@ -18,7 +18,7 @@
               />
               <input
                 type="search"
-                class="form-control border-0"
+                class="form-control border-0 my-0"
                 placeholder="Search doctor "
               />
             </div>

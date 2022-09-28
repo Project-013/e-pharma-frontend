@@ -82,7 +82,7 @@ export default {
   methods: {
     async submitForm() {
       const data = {
-        email: this.form_data.email,
+        email: this.form_data.email.toLowerCase(),
         password: this.form_data.password,
       };
       // console.log(data);
