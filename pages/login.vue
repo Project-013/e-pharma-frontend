@@ -9,14 +9,29 @@
           <form class="form" @submit.prevent="handleSubmit(submitForm)">
             <div class="input-field pb-3">
               <div class="input-group flex-nowrap">
-                <span class="input-group-text bg-white px-2" id="addon-wrapping"
-                  >+880</span
+                <span
+                  class="input-group-text bg-white p-0"
+                  style="width: 85px"
+                  id="addon-wrapping"
                 >
+                  <select
+                    class="form-select form-select-sm border-0"
+                    style="font-weight: 500"
+                    aria-label=".form-select-sm example"
+                    v-model="form_data.country_code"
+                  >
+                    <template v-for="(c, index) in CountryCode">
+                      <option :value="c.dial_code" :key="index">
+                        {{ c.dial_code }}
+                      </option>
+                    </template>
+                  </select>
+                </span>
                 <input
                   type="number"
                   required
-                  class="form-control py-3 is-invalid"
-                  placeholder="01XXXXXXXXX"
+                  class="form-control py-3"
+                  placeholder="1XXXXXXXXX"
                   aria-label="phone"
                   aria-describedby="addon-wrapping"
                   v-model="form_data.phone"
@@ -27,7 +42,7 @@
             <div class="d-grid gap-2">
               <button
                 class="btn btn-dark"
-                :disabled="form_data.phone.length != 11"
+                :disabled="form_data.phone.length != 10"
                 type="submit"
               >
                 Login
@@ -36,9 +51,7 @@
           </form>
         </ValidationObserver>
         <div class="register-footer text-center pt-3">
-          <NuxtLink
-            to="/auth/register"
-            class="text-decoration-none small text-dark"
+          <NuxtLink to="/register" class="text-decoration-none small text-dark"
             >You don't have account?
             <span class="text-primary text-decoration-underline">
               Sign Up
@@ -55,6 +68,7 @@ import { ValidationObserver, ValidationProvider } from "vee-validate";
 
 export default {
   name: "SignIn",
+
   components: {
     ValidationObserver,
     ValidationProvider,
@@ -63,33 +77,41 @@ export default {
   data() {
     return {
       form_data: {
+        country_code: "+880",
         phone: "",
       },
+      country_code: [],
     };
+  },
+  computed: {
+    CountryCode() {
+      return this.$store.getters["CountryCode"];
+    },
   },
 
   methods: {
     async submitForm() {
       const data = {
-        phone: this.form_data.phone,
-        // password: this.form_data.password,
+        phone: this.form_data.country_code + this.form_data.phone,
       };
-      // console.log(data);
       try {
         const response = await this.$auth.loginWith("local", { data: data });
         if (response.status === 200) {
           this.$toast.success("Successfully authenticated");
+        } else {
+          this.$toast.error("Login failed! Try again");
         }
       } catch (e) {
-        if (e.response.data.msg) {
-          this.$toast.error(e.response.data.msg);
-        } else {
-          this.$toast.error("Error!  Try again");
-        }
+        this.$toast.error("Login failed! Try again");
       }
 
       return;
     },
+  },
+  mounted() {
+    this.CountryCode = this.CountryCode.length
+      ? this.CountryCode
+      : this.$store.dispatch("getCountryCodes");
   },
   beforeCreate() {
     if (this.$auth.$state.loggedIn) {

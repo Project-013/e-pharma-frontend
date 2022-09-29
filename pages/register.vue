@@ -12,13 +12,15 @@
             <div class="input-field pb-3">
               <div class="input-group flex-nowrap">
                 <span
-                  class="input-group-text bg-white px-2"
+                  class="input-group-text bg-white text-center"
+                  style="width: 85px"
                   id="addon-wrapping"
                 >
                   <img
                     src="@/static/img/icons/user_icon.svg"
                     alt="user icon"
                     width="37"
+                    class="d-block mx-auto"
                   />
                 </span>
                 <input
@@ -26,7 +28,6 @@
                   required
                   class="form-control py-3 is-invalid"
                   placeholder="Enter your name"
-                  aria-label="phone"
                   aria-describedby="addon-wrapping"
                   v-model="form_data.full_name"
                 />
@@ -34,14 +35,29 @@
             </div>
             <div class="input-field pb-3">
               <div class="input-group flex-nowrap">
-                <span class="input-group-text bg-white px-2" id="addon-wrapping"
-                  >+880</span
+                <span
+                  class="input-group-text bg-white p-0"
+                  style="width: 85px"
+                  id="addon-wrapping"
                 >
+                  <select
+                    class="form-select form-select-sm border-0 p-3"
+                    style="font-weight: 500"
+                    aria-label=".form-select-sm example"
+                    v-model="form_data.country_code"
+                  >
+                    <template v-for="(c, index) in CountryCode">
+                      <option :value="c.dial_code" :key="index">
+                        {{ c.dial_code }}
+                      </option>
+                    </template>
+                  </select>
+                </span>
                 <input
                   type="number"
                   required
-                  class="form-control py-3 is-invalid"
-                  placeholder="01XXXXXXXXX"
+                  class="form-control py-3"
+                  placeholder="1XXXXXXXXX"
                   aria-label="phone"
                   aria-describedby="addon-wrapping"
                   v-model="form_data.phone"
@@ -64,7 +80,7 @@
             <div class="d-grid gap-2">
               <button
                 class="btn btn-dark"
-                :disabled="!form_data.terms || form_data.phone.length != 11"
+                :disabled="!form_data.terms || form_data.phone.length != 10"
                 type="submit"
               >
                 Sign up
@@ -74,9 +90,7 @@
         </ValidationObserver>
 
         <div class="register-footer text-center pt-3">
-          <NuxtLink
-            to="/auth/login"
-            class="small text-decoration-none text-dark"
+          <NuxtLink to="/login" class="small text-decoration-none text-dark"
             >Already have an account?
             <span class="text-primary text-decoration-underline">
               Sign In
@@ -102,47 +116,53 @@ export default {
       form_data: {
         phone: "",
         full_name: "",
+        country_code: "+880",
         terms: false,
       },
     };
   },
+  computed: {
+    CountryCode() {
+      return this.$store.getters["CountryCode"];
+    },
+  },
 
   methods: {
     async submitForm() {
+      const data = {
+        phone: this.form_data.country_code + this.form_data.phone,
+        full_name: this.form_data.full_name,
+      };
       try {
-        const response = await this.$axios.post(
-          "auth/register",
-          this.form_data
-        );
+        const response = await this.$axios.post("auth/register", data);
         if (response.status === 201) {
           try {
             const response = await this.$auth.loginWith("local", {
-              data: this.form_data,
+              data: data,
             });
             if (response.status === 200) {
               this.$toast.success("Successfully authenticated");
             }
-          } catch (e) {
-            if (e.response.data.msg) {
-              this.$toast.error(e.response.data.msg);
-            } else {
-              this.$toast.error("Error!  Try again");
-            }
-          }
-          // this.$toast.success("Sucessful! You can login now...");
-          // this.$router.push("/auth/login");
+          } catch (e) {}
         } else {
           this.$toast.error("Error Found! Try again...");
         }
       } catch (e) {
-        const errors = e.response.data;
-        if (errors.phone[0]) {
-          this.$toast.error("User already exists");
+        if (e.response && e.response.data) {
+          const errors = e.response.data;
+          if (errors.phone && errors.phone[0]) {
+            this.$toast.error("User already exists");
+          }
         } else {
-          this.$toast.error("Error Found! Try again...");
+          this.$toast.error("Registation failed! Try again...");
         }
       }
     },
+  },
+  mounted() {
+    this.CountryCode = this.CountryCode.length
+      ? this.CountryCode
+      : this.$store.dispatch("getCountryCodes");
   },
   beforeCreate() {
     if (this.$auth.$state.loggedIn) {

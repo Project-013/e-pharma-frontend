@@ -1,7 +1,7 @@
 <template>
   <header class="sticky-top">
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-      <div class="container">
+      <div class="container-fluid">
         <NLink class="navbar-brand d-none text-success d-lg-block" to="/">
           <img src="../static/img/logo.png" alt="sasthosebok.com" width="50" />
           <!-- <p class="small ms-2" style="font-size: 15px">
@@ -96,10 +96,10 @@
             </span>
           </template>
           <template v-else>
-            <NuxtLink class="" to="/auth/login">
+            <NuxtLink class="" to="/login">
               <small class="btn btn-secondary btn-sm px-4">Login </small>
             </NuxtLink>
-            <NuxtLink class="" to="/auth/register">
+            <NuxtLink class="" to="/register">
               <small class="btn btn-secondary btn-sm px-3">Register</small>
             </NuxtLink>
           </template>

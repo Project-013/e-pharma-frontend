@@ -37,6 +37,8 @@ export default {
   plugins: [
     "~/plugins/vee-validate",
     { src: "~/plugins/highcharts.js", mode: 'client' },
+    { src: '~/plugins/vuex-persist.js', mode: 'client' },
+
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -107,8 +109,8 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: 'http://localhost:8000/'
-    // baseURL: 'https://api.sasthosebok.com/'
+    // baseURL: 'http://localhost:8000/'
+    baseURL: 'https://api.sasthosebok.com/'
 
   },
 
@@ -121,8 +123,8 @@ export default {
   loading: '~/components/LoadingBar.vue',
 
   publicRuntimeConfig: {
-    apibaseURL: 'http://localhost:8000',
-    // apibaseURL: 'https://api.sasthosebok.com/,
+    // apibaseURL: 'http://localhost:8000',
+    apibaseURL: 'https://api.sasthosebok.com/',
     apiToken: "y6&kvg54iu%!tg!aoas9d+$titza-d9w6%*6%f@4v1w5x=l(+9",
   },
 
