@@ -6,7 +6,7 @@
           <h4 class="mb-5" style="color: #084298">Welcome Back!</h4>
         </div>
         <ValidationObserver v-slot="{ handleSubmit }">
-          <form class="form" @submit.prevent="handleSubmit(sendOTP)">
+          <form class="form" @submit.prevent="handleSubmit(submitForm)">
             <div class="input-field pb-3">
               <div class="input-group flex-nowrap">
                 <span
@@ -20,16 +20,11 @@
                     aria-label=".form-select-sm example"
                     v-model="form_data.country_code"
                   >
-                    <!-- <template v-for="(c, index) in CountryCode">
+                    <template v-for="(c, index) in CountryCode">
                       <option :value="c.dial_code" :key="index">
                         {{ c.dial_code }}
                       </option>
-                    </template> -->
-                    <option value="+880">+880</option>
-
-                    <!-- <template v-if="CountryCode.length == 0">
-                      <option value="+880">+880</option>
-                    </template> -->
+                    </template>
                   </select>
                 </span>
                 <input
@@ -50,43 +45,7 @@
                 :disabled="form_data.phone.length != 10"
                 type="submit"
               >
-                {{ form_data.otp_status ? "Resend OTP" : "Login" }}
-              </button>
-            </div>
-          </form>
-        </ValidationObserver>
-        <ValidationObserver
-          v-slot="{ handleSubmit }"
-          v-if="form_data.otp_status"
-        >
-          <form class="form my-4" @submit.prevent="handleSubmit(submitOTP)">
-            <div class="input-field pb-3">
-              <div class="input-group flex-nowrap">
-                <span
-                  class="input-group-text bg-white text-center"
-                  style="width: 85px"
-                  id="addon-wrapping"
-                >
-                  OPT
-                </span>
-                <input
-                  type="text"
-                  required
-                  class="form-control py-3 is-invalid"
-                  placeholder="Enter OTP"
-                  aria-describedby="addon-wrapping"
-                  v-model="form_data.otp"
-                />
-              </div>
-            </div>
-
-            <div class="d-grid gap-2">
-              <button
-                class="btn btn-dark btn-sm"
-                :disabled="!form_data.otp || form_data.otp.length != 4"
-                type="submit"
-              >
-                Submit OTP
+                Login
               </button>
             </div>
           </form>
@@ -120,9 +79,6 @@ export default {
       form_data: {
         country_code: "+880",
         phone: "",
-        type: "login",
-        otp: "",
-        otp_status: false,
       },
       country_code: [],
     };
@@ -131,43 +87,17 @@ export default {
     CountryCode() {
       return this.$store.getters["CountryCode"];
     },
-    loginForm() {
-      return this.$store.getters["auth/loginForm"];
-    },
   },
 
   methods: {
-    async sendOTP() {
+    async submitForm() {
       const data = {
         phone: this.form_data.country_code + this.form_data.phone,
-        type: this.form_data.type,
-      };
-
-      this.$store.commit("auth/setLoginForm", { ...this.form_data });
-
-      try {
-        const response = await this.$axios.post("send-otp/", data);
-        if (response.status === 201) {
-          this.form_data.otp_status = true;
-          this.$store.commit("auth/setLoginForm", { ...this.form_data });
-
-          this.$toast.info("Please enter OTP... ");
-        }
-      } catch (e) {
-        this.$toast.error("Error Found! Try again...");
-      }
-    },
-    async submitOTP() {
-      const data = {
-        phone: this.form_data.country_code + this.form_data.phone,
-        otp: this.form_data.otp,
       };
       try {
         const response = await this.$auth.loginWith("local", { data: data });
         if (response.status === 200) {
           this.$toast.success("Successfully authenticated");
-          this.$store.commit("auth/setLoginForm", null);
-          this.$store.commit("auth/setRegiForm", null);
         } else {
           this.$toast.error("Login failed! Try again");
         }
@@ -179,12 +109,9 @@ export default {
     },
   },
   mounted() {
-    // this.CountryCode = this.CountryCode.length
-    //   ? this.CountryCode
-    //   : this.$store.dispatch("getCountryCodes");
-
-    const v_form_data = this.loginForm;
-    v_form_data ? (this.form_data = { ...v_form_data }) : console.log("Null");
+    this.CountryCode = this.CountryCode.length
+      ? this.CountryCode
+      : this.$store.dispatch("getCountryCodes");
   },
   beforeCreate() {
     if (this.$auth.$state.loggedIn) {

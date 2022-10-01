@@ -8,7 +8,7 @@
           </h4>
         </div>
         <ValidationObserver v-slot="{ handleSubmit }">
-          <form class="form" @submit.prevent="handleSubmit(submitForm)">
+          <form class="form" @submit.prevent="handleSubmit(sendOTP)">
             <div class="input-field pb-3">
               <div class="input-group flex-nowrap">
                 <span
@@ -46,13 +46,18 @@
                     aria-label=".form-select-sm example"
                     v-model="form_data.country_code"
                   >
-                    <template v-for="(c, index) in CountryCode">
+                    <!-- <template v-for="(c, index) in CountryCode">
                       <option :value="c.dial_code" :key="index">
                         {{ c.dial_code }}
                       </option>
                     </template>
+                    <template v-if="CountryCode.length">
+                      <option value="+880">+880</option>
+                    </template> -->
+                    <option value="+880">+880</option>
                   </select>
                 </span>
+
                 <input
                   type="number"
                   required
@@ -64,26 +69,75 @@
                 />
               </div>
             </div>
+            <div>
+              <div
+                class="d-flex align-items-center"
+                v-if="!form_data.otp_status"
+              >
+                <input
+                  type="checkbox"
+                  id="checkbox"
+                  v-model="form_data.terms"
+                />
+                <p for="checkbox" class="mt-3 ms-2 small">
+                  Accept the
+                  <a href="#" class="text-primary text-decoration-none"
+                    >Terms</a
+                  >
+                  and
+                  <a href="#" class="text-primary text-decoration-none"
+                    >Privacy Policy</a
+                  >
+                </p>
+              </div>
 
-            <div class="d-flex align-items-center">
-              <input type="checkbox" id="checkbox" v-model="form_data.terms" />
-              <p for="checkbox" class="mt-3 ms-2 small">
-                Accept the
-                <a href="#" class="text-primary text-decoration-none">Terms</a>
-                and
-                <a href="#" class="text-primary text-decoration-none"
-                  >Privacy Policy</a
+              <div class="d-grid gap-2">
+                <button
+                  class="btn btn-dark btn-sm"
+                  :disabled="!form_data.terms || form_data.phone.length != 10"
+                  type="submit"
                 >
-              </p>
+                  {{ form_data.otp_status ? "Resend OTP" : "Sign up" }}
+                </button>
+              </div>
+            </div>
+          </form>
+        </ValidationObserver>
+        <ValidationObserver
+          v-slot="{ handleSubmit }"
+          v-if="form_data.otp_status"
+        >
+          <form class="form my-4" @submit.prevent="handleSubmit(submitOTP)">
+            <template v-if="timer">
+              {{ timer }}
+            </template>
+            <div class="input-field pb-3">
+              <div class="input-group flex-nowrap">
+                <span
+                  class="input-group-text bg-white text-center"
+                  style="width: 85px"
+                  id="addon-wrapping"
+                >
+                  OPT
+                </span>
+                <input
+                  type="text"
+                  required
+                  class="form-control py-3 is-invalid"
+                  placeholder="Enter OTP"
+                  aria-describedby="addon-wrapping"
+                  v-model="form_data.otp"
+                />
+              </div>
             </div>
 
             <div class="d-grid gap-2">
               <button
-                class="btn btn-dark"
-                :disabled="!form_data.terms || form_data.phone.length != 10"
+                class="btn btn-dark btn-sm"
+                :disabled="!form_data.otp || form_data.otp.length != 4"
                 type="submit"
               >
-                Sign up
+                Submit OTP
               </button>
             </div>
           </form>
@@ -118,30 +172,74 @@ export default {
         full_name: "",
         country_code: "+880",
         terms: false,
+        type: "register",
+        otp: "",
+        otp_status: false,
       },
+      timer: 0,
     };
   },
   computed: {
     CountryCode() {
       return this.$store.getters["CountryCode"];
     },
+    regiForm() {
+      return this.$store.getters["auth/RegiForm"];
+    },
   },
 
   methods: {
-    async submitForm() {
+    startTimer() {
+      for (let index = 0; index < 60; index++) {
+        setTimeout(() => {
+          this.timer--;
+          console.log(this.timer);
+          console.log("called");
+        }, 10000);
+      }
+    },
+    async sendOTP() {
+      const data = {
+        phone: this.form_data.country_code + this.form_data.phone,
+        type: this.form_data.type,
+      };
+
+      this.$store.commit("auth/setRegiForm", { ...this.form_data });
+
+      try {
+        const response = await this.$axios.post("send-otp/", data);
+        if (response.status === 201) {
+          this.form_data.otp_status = true;
+          this.$store.commit("auth/setRegiForm", { ...this.form_data });
+
+          this.$toast.info("Please enter OTP... ");
+          this.timer = 60;
+          this.startTimer();
+        }
+      } catch (e) {
+        this.$toast.error("Error Found! Try again...");
+      }
+    },
+
+    async submitOTP() {
       const data = {
         phone: this.form_data.country_code + this.form_data.phone,
         full_name: this.form_data.full_name,
+        otp: this.form_data.otp,
       };
+
       try {
         const response = await this.$axios.post("auth/register", data);
+        console.log(response);
         if (response.status === 201) {
           try {
             const response = await this.$auth.loginWith("local", {
               data: data,
             });
             if (response.status === 200) {
-              this.$toast.success("Successfully authenticated");
+              this.$toast.success("Successfully created");
+              this.$store.commit("auth/setLoginForm", null);
+              this.$store.commit("auth/setRegiForm", null);
             }
           } catch (e) {}
         } else {
@@ -160,9 +258,12 @@ export default {
     },
   },
   mounted() {
-    this.CountryCode = this.CountryCode.length
-      ? this.CountryCode
-      : this.$store.dispatch("getCountryCodes");
+    // this.CountryCode = this.CountryCode.length
+    //   ? this.CountryCode
+    //   : this.$store.dispatch("getCountryCodes");
+
+    const v_form_data = this.regiForm;
+    v_form_data ? (this.form_data = { ...v_form_data }) : console.log("Null");
   },
   beforeCreate() {
     if (this.$auth.$state.loggedIn) {
