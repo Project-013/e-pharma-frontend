@@ -37,7 +37,7 @@ export default {
   plugins: [
     "~/plugins/vee-validate",
     { src: "~/plugins/highcharts.js", mode: 'client' },
-    { src: '~/plugins/vuex-persist.js', mode: 'client' },
+    // { src: '~/plugins/vuex-persist.js', mode: 'client' },
 
   ],
 
@@ -90,6 +90,50 @@ export default {
       }
     ]
   },
+  // auth: {
+  //   strategies: {
+  //     local: {
+  //       scheme: 'refresh',
+  //       localStorage: {
+  //         prefix: 'auth.'
+  //       },
+  //       token: {
+  //         prefix: 'access.',
+  //         property: 'access',
+  //         maxAge: 86400,
+  //         type: 'Bearer'
+  //       },
+  //       refreshToken: {
+  //         prefix: 'refresh.',
+  //         property: 'refresh',
+  //         data: 'refresh',
+  //         maxAge: 60 * 60 * 24 * 15
+  //       },
+  //       user: {
+  //         property: 'user',
+  //         autoFetch: true
+  //       },
+  //       // endpoints: {
+  //       //   login: { url: '/token/', method: 'post'},
+  //       //   refresh: { url: '/token/refresh/', method: 'post' },
+  //       //   user: { url: '/user', method: 'get' },
+  //       //   // logout: { url: '/logout', method: 'post'}
+  //       //   logout: false
+  //       // },
+
+  //       endpoints: {
+  //         login: { url: '/auth/login/', method: 'post'},
+  //         refresh: { url: '/auth/token-refresh/', method: 'post' },
+  //         user: { url: '/auth/user/', method: 'get' },
+  //         logout: { url: '/auth/logout', method: 'post' },
+
+  //       },
+  //       tokenType : "bearer",
+
+
+  //     }
+  //   }
+  // },
 
   auth: {
     strategies: {
@@ -120,11 +164,11 @@ export default {
   build: {
     transpile: ["vee-validate/dist/rules"],
   },
-  loading: '~/components/LoadingBar.vue',
+  // loading: '~/components/LoadingBar.vue',
 
   publicRuntimeConfig: {
-    // apibaseURL: 'http://localhost:8000',
-    apibaseURL: 'https://api.sasthosebok.com/',
+    apibaseURL: 'http://localhost:8000',
+    // apibaseURL: 'https://api.sasthosebok.com/',
     apiToken: "y6&kvg54iu%!tg!aoas9d+$titza-d9w6%*6%f@4v1w5x=l(+9",
   },
 

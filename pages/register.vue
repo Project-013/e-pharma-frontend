@@ -78,6 +78,7 @@
                   type="checkbox"
                   id="checkbox"
                   v-model="form_data.terms"
+                  required
                 />
                 <p for="checkbox" class="mt-3 ms-2 small">
                   Accept the
@@ -93,11 +94,24 @@
 
               <div class="d-grid gap-2">
                 <button
-                  class="btn btn-dark btn-sm"
-                  :disabled="!form_data.terms || form_data.phone.length != 10"
+                  class="btn btn-primary btn-sm"
+                  :disabled="
+                    form_data.phone.length != 10 ||
+                    form_data.count_down > 0 ||
+                    disable_btn
+                  "
                   type="submit"
                 >
-                  {{ form_data.otp_status ? "Resend OTP" : "Sign up" }}
+                  <template v-if="form_data.count_down > 0">
+                    Send again {{ form_data.count_down }} seconds later
+                  </template>
+                  <template v-else>
+                    {{
+                      form_data.otp_status
+                        ? "Resend Verification Code "
+                        : "Send Verification Code"
+                    }}
+                  </template>
                 </button>
               </div>
             </div>
@@ -108,9 +122,6 @@
           v-if="form_data.otp_status"
         >
           <form class="form my-4" @submit.prevent="handleSubmit(submitOTP)">
-            <template v-if="timer">
-              {{ timer }}
-            </template>
             <div class="input-field pb-3">
               <div class="input-group flex-nowrap">
                 <span
@@ -124,7 +135,7 @@
                   type="text"
                   required
                   class="form-control py-3 is-invalid"
-                  placeholder="Enter OTP"
+                  placeholder="Enter Verification Code"
                   aria-describedby="addon-wrapping"
                   v-model="form_data.otp"
                 />
@@ -133,11 +144,13 @@
 
             <div class="d-grid gap-2">
               <button
-                class="btn btn-dark btn-sm"
-                :disabled="!form_data.otp || form_data.otp.length != 4"
+                class="btn btn-primary btn-sm"
+                :disabled="
+                  !form_data.otp || form_data.otp.length != 4 || disable_btn2
+                "
                 type="submit"
               >
-                Submit OTP
+                Submit Verification Code
               </button>
             </div>
           </form>
@@ -175,8 +188,10 @@ export default {
         type: "register",
         otp: "",
         otp_status: false,
+        count_down: 0,
       },
-      timer: 0,
+      disable_btn: false,
+      disable_btn2: false,
     };
   },
   computed: {
@@ -184,44 +199,48 @@ export default {
       return this.$store.getters["CountryCode"];
     },
     regiForm() {
-      return this.$store.getters["auth/RegiForm"];
+      return this.$store.getters[" auth_state/RegiForm"];
     },
   },
 
   methods: {
-    startTimer() {
-      for (let index = 0; index < 60; index++) {
+    countDownTimer() {
+      if (this.form_data.count_down > 0) {
         setTimeout(() => {
-          this.timer--;
-          console.log(this.timer);
-          console.log("called");
-        }, 10000);
+          this.form_data.count_down -= 1;
+          // this.$store.commit(" auth_state/setRegiForm", { ...this.form_data });
+          this.countDownTimer();
+        }, 1000);
       }
     },
     async sendOTP() {
+      this.disable_btn = true;
       const data = {
         phone: this.form_data.country_code + this.form_data.phone,
         type: this.form_data.type,
       };
 
-      this.$store.commit("auth/setRegiForm", { ...this.form_data });
+      this.$store.commit(" auth_state/setRegiForm", { ...this.form_data });
 
       try {
         const response = await this.$axios.post("send-otp/", data);
         if (response.status === 201) {
           this.form_data.otp_status = true;
-          this.$store.commit("auth/setRegiForm", { ...this.form_data });
+          this.form_data.count_down = 180;
+          this.countDownTimer();
+          this.$store.commit(" auth_state/setRegiForm", { ...this.form_data });
 
           this.$toast.info("Please enter OTP... ");
-          this.timer = 60;
-          this.startTimer();
         }
       } catch (e) {
         this.$toast.error("Error Found! Try again...");
       }
+      this.disable_btn = false;
     },
 
     async submitOTP() {
+      this.disable_btn2 = true;
+
       const data = {
         phone: this.form_data.country_code + this.form_data.phone,
         full_name: this.form_data.full_name,
@@ -238,8 +257,8 @@ export default {
             });
             if (response.status === 200) {
               this.$toast.success("Successfully created");
-              this.$store.commit("auth/setLoginForm", null);
-              this.$store.commit("auth/setRegiForm", null);
+              this.$store.commit(" auth_state/setLoginForm", null);
+              this.$store.commit(" auth_state/setRegiForm", null);
             }
           } catch (e) {}
         } else {
@@ -255,6 +274,7 @@ export default {
           this.$toast.error("Registation failed! Try again...");
         }
       }
+      this.disable_btn2 = false;
     },
   },
   mounted() {
@@ -263,7 +283,8 @@ export default {
     //   : this.$store.dispatch("getCountryCodes");
 
     const v_form_data = this.regiForm;
-    v_form_data ? (this.form_data = { ...v_form_data }) : console.log("Null");
+    v_form_data ? (this.form_data = { ...v_form_data }) : "";
+    this.form_data.count_down > 0 ? this.countDownTimer() : "";
   },
   beforeCreate() {
     if (this.$auth.$state.loggedIn) {
