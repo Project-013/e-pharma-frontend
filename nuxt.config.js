@@ -24,13 +24,27 @@ export default {
       },
     ],
     script: [
-      { src: '/js/bootstrap.bundle.min.js', type: 'text/javascript' }
+      { src: '/js/bootstrap.bundle.min.js', type: 'text/javascript' },
+
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    "@/static/css/style.css"
+    "@/static/css/style.css",
+    "@/static/assets/css/bootstrap.min.css",
+    // "@/static/assets/css/owl.carousel.css",
+    // "@/static/assets/css/owl.theme.default.min.css",
+    // "@/static/assets/css/meanmenu.css",
+    "@/static/assets/css/icofont.min.css",
+    // "@/static/assets/css/slick.min.css",
+    // "@/static/assets/css/slick-theme.min.css",
+    // "@/static/assets/css/magnific-popup.min.css",
+    // "@/static/assets/css/animate.min.css",
+    // "@/static/assets/css/odometer.min.css",
+    "@/static/assets/css/style.css",
+    "@/static/assets/css/responsive.css",
+    // "@/static/assets/css/theme-dark.css",
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -153,7 +167,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: 'http://localhost:8000/'
+    baseURL: 'http://localhost:8000/',
     // baseURL: 'https://api.sasthosebok.com/'
 
   },
@@ -164,11 +178,11 @@ export default {
   build: {
     transpile: ["vee-validate/dist/rules"],
   },
-  // loading: '~/components/LoadingBar.vue',
+  loading: '~/components/LoadingBar.vue',
 
   publicRuntimeConfig: {
-    apibaseURL: 'http://localhost:8000',
-    // apibaseURL: 'https://api.sasthosebok.com/',
+    // apibaseURL: 'http://localhost:8000',
+    apibaseURL: 'https://api.sasthosebok.com/',
     apiToken: "y6&kvg54iu%!tg!aoas9d+$titza-d9w6%*6%f@4v1w5x=l(+9",
   },
 

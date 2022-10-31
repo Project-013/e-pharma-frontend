@@ -1,6 +1,8 @@
 <template>
   <div class="root">
     <Header />
+    <Navbar />
+
     <Nuxt />
     <Footer />
   </div>

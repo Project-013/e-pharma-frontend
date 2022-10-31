@@ -22,7 +22,7 @@
             </div>
 
             <h6 class="mark p-2">
-              Consultation Fee -
+              Consultation Fee :
               <span class="text-danger">{{ doctor.fee }} TAKA</span>
             </h6>
             <h6 class="text-muted text-center small">

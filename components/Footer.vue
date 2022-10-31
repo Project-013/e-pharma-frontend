@@ -1,183 +1,173 @@
 <template>
-  <footer class="pt-5 pb-2">
-    <div class="container">
-      <div class="row gy-5 g-sm-5">
-        <div class="col-lg-3 col-md-6">
-          <div class="d-flex align-items-center mb-2">
-            <img
-              src="../static/img/logo.png"
-              alt="me"
-              width="70"
-              class="pb-3"
-            />
-          </div>
-
-          <div class="text-white">
-            <p>
-              Sheikhghat-Kazirbazar Road, Sylhet<br />
-              Bangladesh
-            </p>
-            <div class="my-2">
-              <a href="#" class="text-white">
-                <img src="/img/icons/fb.svg" style="width: 30px" alt="" />
-              </a>
-              <a href="#" class="text-white mx-1">
-                <img src="/img/icons/twitter.svg" style="width: 30px" alt="" />
-              </a>
-              <a href="#" class="text-white">
-                <img src="/img/icons/youtube.svg" style="width: 30px" alt="" />
-              </a>
+  <footer class="pb-70 mt-5">
+    <div class="newsletter-area">
+      <div class="container">
+        <div class="row newsletter-wrap align-items-center">
+          <div class="col-lg-7">
+            <div class="newsletter-item">
+              <h3>Join Our Newsletter</h3>
+              <p>Subscribe for quick update</p>
             </div>
-            <!-- <a
-              class="d-block text-decoration-none text-white"
-              href="tel:+8801771147384"
-              >+8801771147384</a
-            > -->
-            <a
-              class="d-block text-decoration-none text-white"
-              href="mailto:info@sasthosebok.com"
-            >
-              info@sasthosebok.com
-            </a>
+          </div>
+          <div class="col-lg-5">
+            <div class="newsletter-item">
+              <div class="newsletter-form">
+                <form class="newsletter-form" data-toggle="validator">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Enter Your Email"
+                    name="EMAIL"
+                    required
+                    autocomplete="off"
+                  />
+                  <button class="btn newsletter-btn" type="submit">
+                    Subscribe
+                  </button>
+                  <div id="validator-newsletter" class="form-result"></div>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="text-white mb-4">Important Links</h5>
-          <ul class="link_group">
-            <li>
-              <NuxtLink to="/faq" class="text-light footer_link">
-                FAQs
-              </NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/about-us" class="text-light footer_link"
-                >About us</NuxtLink
-              >
-            </li>
-            <li>
-              <NuxtLink to="/contact-us" class="text-light footer_link">
-                Contact us
-              </NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/privacy-policy" class="text-light footer_link">
-                Privacy Policy
-              </NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/privacy-policy" class="text-light footer_link">
-                Terms & Conditions
-              </NuxtLink>
-            </li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="text-white mb-4">For Patients</h5>
-          <ul class="link_group">
-            <li>
-              <NuxtLink to="/faq" class="text-light footer_link">
-                Find Doctors
-              </NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/about-us" class="text-light footer_link">
-                Find Ambulances
-              </NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/contact-us" class="text-light footer_link">
-                Call Doctors
-              </NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/privacy-policy" class="text-light footer_link">
-                Privacy Policy
-              </NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/privacy-policy" class="text-light footer_link">
-                Terms & Conditions
-              </NuxtLink>
-            </li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6">
-          <h5 class="text-white mb-4">For Doctors/Organisations</h5>
-          <ul class="link_group">
-            <li>
-              <NuxtLink to="/faq" class="text-light footer_link">
-                Login as Doctor
-              </NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/about-us" class="text-light footer_link"
-                >Work with us</NuxtLink
-              >
-            </li>
-            <li>
-              <NuxtLink to="/contact-us" class="text-light footer_link">
-                Contact us
-              </NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/privacy-policy" class="text-light footer_link">
-                Privacy Policy
-              </NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/privacy-policy" class="text-light footer_link">
-                Terms & Conditions
-              </NuxtLink>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="text-center text-light small pt-4">
-        <small class="py-1">
-          <span class="fw-bold">sasthosebok.com</span>
-          . All Rights Reserved - Developed by
-          <a
-            href="https://www.linkedin.com/in/sajibsd013/"
-            target="_blank"
-            class="text-white"
-          >
-            Sajib Sutradhar</a
-          >
-        </small>
       </div>
     </div>
-    <div class="messenger">
-      <NuxtLink to="/">
-        <img src="../static/img/msg.png" class="" width="70px" />
-      </NuxtLink>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-lg-4">
+          <div class="footer-item">
+            <div class="footer-contact">
+              <h3>Contact Us</h3>
+              <ul>
+                <li class="">
+                  <i class="icofont-ui-message"></i>
+                  <a href="mailto:info@sasthosebok.com">
+                    <i class="icofont-ui-message"></i>
+                    <span class="__cf_email__">info@sasthosebok.com</span>
+                  </a>
+                </li>
+                <li>
+                  <i class="icofont-stock-mobile"></i>
+                  <a href="tel:+8801771147384"> Call : +8801771147384 </a>
+                  <a href="tel:+8801771147384"> Call : +8801771147384 </a>
+                </li>
+                <li>
+                  <i class="icofont-location-pin"></i>
+                  #533, Kakoli Shoping Center(4th Floor),Zindabazar, Sylhet-3100
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-2">
+          <div class="footer-item">
+            <div class="footer-quick">
+              <h3>Quick Links</h3>
+              <ul>
+                <li>
+                  <NuxtLink to="about">About us</NuxtLink>
+                </li>
+                <li>
+                  <a href="#">Blog</a>
+                </li>
+
+                <li>
+                  <NuxtLink to="/faq">FAQ</NuxtLink>
+                </li>
+                <li>
+                  <a href="#">Contact us</a>
+                </li>
+                <li>
+                  <NuxtLink to="/privacy-policy" class="text-light">
+                    Privacy Policy
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/privacy-policy" class="text-light">
+                    Terms & Conditions
+                  </NuxtLink>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="footer-item">
+            <div class="footer-quick">
+              <h3>Work With Us</h3>
+
+              <ul class="link_group">
+                <li>
+                  <NuxtLink to="/partners/doctor" class="text-light">
+                    Register as Doctor
+                  </NuxtLink>
+                </li>
+
+                <li>
+                  <NuxtLink to="/partners/nurse" class="text-light">
+                    Register as Nurse/Midwife
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/partners/caregiver" class="text-light">
+                    Register as Caregiver
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/partners/physiotherapist" class="text-light">
+                    Register as Physiotherapist
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/partners/dmf-doctor" class="text-light">
+                    Register as DMF/CP
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/partners/pharmacy" class="text-light">
+                    Register as Pharmacy
+                  </NuxtLink>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+          <div class="footer-item">
+            <div class="footer-quick">
+              <h3>Our Services</h3>
+              <ul class="link_group">
+                <li>
+                  <NuxtLink to="/doctors" class="text-light">
+                    Find Doctors
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/" class="text-light">
+                    Find Ambulances
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/" class="text-light">
+                    Find Oxysen Cylinder
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/call-doctors" class="text-light">
+                    Call Doctors
+                  </NuxtLink>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </footer>
 </template>
 <style scoped>
 footer {
-  background: #2b325c;
-  position: relative;
-  margin-top: 100px !important;
-}
-
-.footer_link {
-  line-height: 30px !important;
-  color: white !important;
-  opacity: 1;
-  text-decoration: none;
-}
-.footer_link:hover {
-  color: #ff0065 !important;
-}
-.link_group {
-  margin: 0;
-  list-style: none;
-  padding-left: 0;
-}
-
-.messenger {
-  position: absolute !important;
-  right: 15px;
-  top: -90px;
+  margin-top: 150px !important;
 }
 </style>

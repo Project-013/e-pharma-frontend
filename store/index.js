@@ -9,7 +9,7 @@ export const state = () => ({
   };
   
   export const mutations = {
-    setCountryCode(state, country_code) {
+    setCountryCodes(state, country_code) {
       state.country_code = country_code
     }
   };

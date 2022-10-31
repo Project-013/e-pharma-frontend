@@ -28,24 +28,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.loading-page {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  text-align: center;
-  background-color: lightgrey;
-}
-.spinner_box {
-  /* background-color: rgb(128, 128, 128, 1) !important; */
-  margin-top: 10rem;
-  /* height: 200px; */
-  /* box-shadow: 0px 3px 10px rgba(54, 124, 193, 0.3); */
-  /* border-radius: 8px; */
-}
-.msg {
-  /* color: rgb(15, 3, 15); */
-}
-</style>
+<style scoped></style>

@@ -26,7 +26,7 @@
                 <input
                   type="text"
                   required
-                  class="form-control py-3 is-invalid"
+                  class="form-control py-3"
                   placeholder="Enter your name"
                   aria-describedby="addon-wrapping"
                   v-model="form_data.full_name"
@@ -62,6 +62,11 @@
                   type="number"
                   required
                   class="form-control py-3"
+                  :class="
+                    form_data.phone.length != 10
+                      ? ` `
+                      : `border-success bg-success bg-opacity-25`
+                  "
                   placeholder="1XXXXXXXXX"
                   aria-label="phone"
                   aria-describedby="addon-wrapping"
@@ -132,9 +137,9 @@
                   OPT
                 </span>
                 <input
-                  type="text"
+                  type="number"
                   required
-                  class="form-control py-3 is-invalid"
+                  class="form-control py-3"
                   placeholder="Enter Verification Code"
                   aria-describedby="addon-wrapping"
                   v-model="form_data.otp"
@@ -199,7 +204,7 @@ export default {
       return this.$store.getters["CountryCode"];
     },
     regiForm() {
-      return this.$store.getters[" auth_state/RegiForm"];
+      return this.$store.getters["auth_state/RegiForm"];
     },
   },
 
@@ -220,7 +225,7 @@ export default {
         type: this.form_data.type,
       };
 
-      this.$store.commit(" auth_state/setRegiForm", { ...this.form_data });
+      this.$store.commit("auth_state/setRegiForm", { ...this.form_data });
 
       try {
         const response = await this.$axios.post("send-otp/", data);
@@ -228,11 +233,13 @@ export default {
           this.form_data.otp_status = true;
           this.form_data.count_down = 180;
           this.countDownTimer();
-          this.$store.commit(" auth_state/setRegiForm", { ...this.form_data });
+          this.$store.commit("auth_state/setRegiForm", { ...this.form_data });
 
           this.$toast.info("Please enter OTP... ");
         }
       } catch (e) {
+        console.log(e.response);
+
         this.$toast.error("Error Found! Try again...");
       }
       this.disable_btn = false;
@@ -257,8 +264,8 @@ export default {
             });
             if (response.status === 200) {
               this.$toast.success("Successfully created");
-              this.$store.commit(" auth_state/setLoginForm", null);
-              this.$store.commit(" auth_state/setRegiForm", null);
+              this.$store.commit("auth_state/setLoginForm", null);
+              this.$store.commit("auth_state/setRegiForm", null);
             }
           } catch (e) {}
         } else {

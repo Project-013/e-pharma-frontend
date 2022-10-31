@@ -17,7 +17,6 @@ export const state = () => ({
       state.login_form = login_form
     },
     setRegiForm(state, regi_form) {
-      console.log("regi_form",regi_form);
       state.regi_form = regi_form
     }
   };

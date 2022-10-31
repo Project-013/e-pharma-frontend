@@ -19,3 +19,7 @@ pre {
   border-color: #ced4da !important;
   box-shadow: 0 0 0 0.25rem hwb(0deg 100% 0% / 25%) !important;
 }
+.form-control:focus {
+  /* border-color: #ced4da !important; */
+  box-shadow: 0 0 0 0.25rem hwb(0deg 100% 0% / 25%) !important;
+}
