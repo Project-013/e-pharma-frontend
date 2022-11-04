@@ -17,12 +17,34 @@
               required
             />
           </div>
+          <div class="col-12">
+            <label for=" " class="form-label">Gender</label>
+            <div class="d-flex flex-wrap">
+              <template v-for="g in gender_list">
+                <div class="me-3 mb-0" :key="g">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    :value="g"
+                    :id="g"
+                    v-model="form_data.gender"
+                    checked
+                    required
+                  />
+
+                  <label class="form-check-label" :for="g">
+                    {{ g }}
+                  </label>
+                </div>
+              </template>
+            </div>
+          </div>
 
           <div class="col-12">
             <label for=" " class="form-label">Degree</label>
 
             <div class="d-flex flex-wrap">
-              <div class="me-3 mb-3">
+              <div class="me-3 mb-0">
                 <input
                   class="form-check-input text-dark"
                   type="checkbox"
@@ -34,7 +56,7 @@
                 <label class="form-check-label" for="MBBS"> MBBS </label>
               </div>
               <template v-for="e in doctor_education_program">
-                <div class="me-3 mb-3" :key="e">
+                <div class="me-3 mb-0" :key="e">
                   <input
                     class="form-check-input"
                     type="checkbox"
@@ -68,7 +90,7 @@
               required
             >
               <option value="" disabled selected>select one</option>
-              <template v-for="(spesialist, index) in spesialist_list">
+              <template v-for="(spesialist, index) in getSpesialistList">
                 <option :value="spesialist" :key="index">
                   {{ spesialist }}
                 </option>
@@ -112,7 +134,7 @@
 
             <div class="d-flex flex-wrap">
               <template v-for="day in working_day_list">
-                <div class="mb-3 me-3" :key="day">
+                <div class="mb-0 me-3" :key="day">
                   <input
                     class="form-check-input"
                     type="checkbox"
@@ -122,7 +144,7 @@
                     :disabled="
                       working_days.includes(`Everyday`) && day != `Everyday`
                     "
-                    required
+                    :required="working_days.length ? false : true"
                   />
                   <label class="form-check-label" :for="day">
                     {{ day }}
@@ -136,7 +158,7 @@
 
             <div class="d-flex flex-wrap">
               <template v-for="time in working_time_list">
-                <div class="mb-3 me-3" :key="time">
+                <div class="mb-0 me-3" :key="time">
                   <input
                     class="form-check-input"
                     type="checkbox"
@@ -146,7 +168,7 @@
                     :disabled="
                       working_times.includes(`All Day`) && time != `All Day`
                     "
-                    required
+                    :required="working_times.length ? false : true"
                   />
                   <label class="form-check-label" :for="time">
                     {{ time }}
@@ -158,32 +180,22 @@
 
           <div class="col-12">
             <label for=" " class="form-label">Type of Service</label>
-
             <div class="d-flex flex-wrap">
-              <div class="mb-3 me-3">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="Home Call"
-                  id="HomeCall"
-                  v-model="type"
-                />
-                <label class="form-check-label" for="HomeCall">
-                  Home Call
-                </label>
-              </div>
-              <div class="mb-3 me-3">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  value="Video Call"
-                  id="VideoCall"
-                  v-model="type"
-                />
-                <label class="form-check-label" for="VideoCall">
-                  Video Call
-                </label>
-              </div>
+              <template v-for="t in s_type_list">
+                <div class="me-3 mb-0" :key="t">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    :value="t"
+                    :id="t"
+                    v-model="type"
+                    :required="type.length ? false : true"
+                  />
+                  <label class="form-check-label" :for="t">
+                    {{ t }}
+                  </label>
+                </div>
+              </template>
             </div>
           </div>
           <template v-if="type.includes(`Home Call`)">
@@ -251,6 +263,56 @@
                 aria-label="phone"
                 aria-describedby="addon-wrapping"
                 v-model="phone"
+              />
+            </div>
+          </div>
+          <div class="col-12">
+            <label for=" " class="form-label">Payment Method</label>
+            <div class="d-flex flex-wrap">
+              <template v-for="p in payment_sys_list">
+                <div class="me-3 mb-0" :key="p">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    :value="p"
+                    :id="p"
+                    v-model="form_data.payment_method"
+                    required
+                  />
+
+                  <label class="form-check-label" :for="p">
+                    {{ p }}
+                  </label>
+                </div>
+              </template>
+            </div>
+          </div>
+          <div class="col-12">
+            <label for=" " class="form-label">Payment Number</label>
+
+            <div class="input-group flex-nowrap">
+              <span
+                class="input-group-text bg-light p-0"
+                style="width: 85px"
+                id="addon-wrapping"
+              >
+                <select
+                  class="form-select form-select-sm border-0 p-3"
+                  style="font-weight: 500"
+                  aria-label=".form-select-sm example"
+                >
+                  <option value="+880">+880</option>
+                </select>
+              </span>
+
+              <input
+                type="number"
+                required
+                class="form-control form-control-sm py-3"
+                placeholder="1XXXXXXXXX"
+                aria-label="phone"
+                aria-describedby="addon-wrapping"
+                v-model="p_number"
               />
             </div>
           </div>
@@ -334,6 +396,7 @@ export default {
   data() {
     return {
       phone: "",
+      p_number: "",
       previewImage: null,
       form_data: {
         mobile: "+880",
@@ -351,6 +414,9 @@ export default {
         country_code: "+880",
         nid: "N/A",
         institution_or_chamber_address: "",
+        gender: "male",
+        payment_method: "Bkash",
+        payment_number: "",
       },
       image_url: "",
       disable_btn: false,
@@ -365,9 +431,16 @@ export default {
       working_time_list: this.$store.getters["info/working_time_list"],
       doctor_education_program:
         this.$store.getters["info/doctor_education_program"],
+      s_type_list: ["Doctor Appointment", "Home Call", "Video Call"],
+      gender_list: ["male", "female", "others"],
+      payment_sys_list: ["Bkash", "Nogod", "Rocket", "Upay"],
     };
   },
   computed: {
+    getSpesialistList() {
+      const address = this.$store.getters["info/spesialist_list"];
+      return address;
+    },
     getAddress() {
       const address = this.$store.getters["info/address"];
       return address;
@@ -379,9 +452,6 @@ export default {
       for (const i in address) {
         city.push(i);
       }
-      city.push("Dhaka");
-      city.push("Khulna");
-
       return city;
     },
     getWord() {
@@ -410,6 +480,7 @@ export default {
         this.qualicifacions.push(this.others_q);
       }
       this.form_data.mobile = "+880" + this.phone;
+      this.form_data.payment_number = "+880" + this.p_number;
       this.form_data.working_area = this.working_area.toString();
       this.form_data.working_days = this.working_days.toString();
       this.form_data.working_times = this.working_times.toString();
@@ -457,6 +528,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch("info/getAddress");
+    this.$store.dispatch("info/getSpesialistList");
   },
 };
 </script>

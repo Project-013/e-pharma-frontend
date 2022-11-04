@@ -21,10 +21,9 @@ export const state = () => ({
       doctor_education_program: ["FCPS", "MD", "MS", "D-Card", "VVD" ,"Others"],
       dmf_doctor_education_program: ["DMF" ,"Others"],
       spesialist: [
-        "Endocrinologist",
+        "Endocrinologist/Diabetologist",
         "Neurologist",
         "Rheumatologist",
-        "Allergist",
         "Psychiatrist",
         "Nephrologist",
         "Pulmonologist",
@@ -38,7 +37,7 @@ export const state = () => ({
         "Radiologist",
         "Gastroenterologist",
         "Cardiologist",
-        "Orthopedist",
+        "Orthopedics",
         "Paleontologist",
         "Dentist",
         "chiropractor",
@@ -47,7 +46,8 @@ export const state = () => ({
         "Pediatrician",
         "Podiatrist"
     ],
-    address:[]
+    address:[],
+    spesialist_list:[]
 
   });
   
@@ -73,14 +73,20 @@ export const state = () => ({
     spesialist(state) {
       return state.spesialist
     },
-    address(state) {
-      return state.address
+    spesialist_list(state) {
+      return state.spesialist_list
+    },
+    spesialist_list(state) {
+      return state.spesialist_list
     },
   };
 
   export const mutations = {
     setAddress(state, address) {
       state.address = address
+    },
+    setSpesialistList(state, spesialist_list) {
+      state.spesialist_list = spesialist_list
     }
   };
 
@@ -100,6 +106,32 @@ export const state = () => ({
           .then((res) => {
             if (res.status === 200) {
                 commit('setAddress', res.data)
+                
+            }
+          })
+          .catch((error) => {
+            console.log(error)
+            // console.log(error.response.data.message || error.message);
+            // context.commit('error', error)
+          });
+      },
+  
+    async getSpesialistList({commit}) {
+      console.log("Calling....");
+        await this.$axios
+          .get(
+            `https://sajibsd013.github.io/data/data.json`,
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          )
+          .then((res) => {
+            console.log(res);
+
+            if (res.status === 200) {
+                commit('setSpesialistList', res.data.Spesialist)
                 
             }
           })

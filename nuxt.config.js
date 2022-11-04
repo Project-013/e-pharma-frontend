@@ -19,9 +19,9 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/img/logo.png' },
-      {
-        rel:'stylesheet', href:'/css/bootstrap.min.css'
-      },
+      // {
+      //   rel:'stylesheet', href:'/css/bootstrap.min.css'
+      // },
     ],
     script: [
       { src: '/js/bootstrap.bundle.min.js', type: 'text/javascript' },

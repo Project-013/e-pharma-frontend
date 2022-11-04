@@ -49,8 +49,8 @@
                 </li>
                 <li>
                   <i class="icofont-stock-mobile"></i>
-                  <a href="tel:+8801771147384"> Call : +8801771147384 </a>
-                  <a href="tel:+8801771147384"> Call : +8801771147384 </a>
+                  <a href="tel:+8801959970663"> Call : +8801959970663 </a>
+                  <a href="tel:+8801959970664"> Call : +8801959970664 </a>
                 </li>
                 <li>
                   <i class="icofont-location-pin"></i>
