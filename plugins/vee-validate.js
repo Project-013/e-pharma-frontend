@@ -29,7 +29,7 @@ extend("confirmed", {
 
 extend("length", {
   ...length,
-  message: "This field must have 2 options"
+  message: "This field must have {length} digit"
 });
 
 extend("min", {

@@ -1,6 +1,6 @@
 {
-  "Sylhet city": {
-    "Word 1": [
+  "Sylhet": {
+    "Ward 1": [
       "Amborkhana",
       "Dargah Mahalla",
       "Darshan Deury",
@@ -11,7 +11,7 @@
       "Purba Subidbaza",
       "Rajargali"
     ],
-    "Word 2": [
+    "Ward 2": [
       "Dariapara",
       "Jallar Par",
       "Kethripara",
@@ -20,7 +20,7 @@
       "Mirza Jangal",
       "Zindabazar"
     ],
-    "Word 3": [
+    "Ward 3": [
       "Kajal Shah",
       "Keyapara",
       "Munshipara",
@@ -28,14 +28,14 @@
       "M.A.G Osmani Medical",
       "Police Line"
     ],
-    "Word 4": [
+    "Ward 4": [
       "Ambarkhana",
       "Dattapara",
       "Housing Estate",
       "Lichu Bagan",
       "Mazumdari"
     ],
-    "Word 5": [
+    "Ward 5": [
       " Borobazar",
       "Electric Suppl",
       "Goypara (Chachnipara)",
@@ -44,8 +44,8 @@
       "Hazaribag",
       "T.B colony"
     ],
-    "Word 6": ["Badam Bagicha", "Choukidighi", "Eliaskandi", "Syedmogni"],
-    "Word 7": [
+    "Ward 6": ["Badam Bagicha", "Choukidighi", "Eliaskandi", "Syedmogni"],
+    "Ward 7": [
       "Jalalabad",
       "West Pir Moholla",
       "Soyef Khan Road",
@@ -58,7 +58,7 @@
       "Mitali",
       "Londoni Road"
     ],
-    "Word 8": [
+    "Ward 8": [
       "Brahman Shashan",
       "Hauldar Para",
       "Kucharpara",
@@ -67,7 +67,7 @@
       "Panitala",
       "Pathantula"
     ],
-    "Word 9": [
+    "Ward 9": [
       "Akhalia",
       "Baghbari",
       "Dhanuhata",
@@ -77,7 +77,7 @@
       "Pathantula",
       "Sagardigir Par"
     ],
-    "Word 10": [
+    "Ward 10": [
       " Shamimabad",
       "Kanishail",
       "Kalapara",
@@ -86,7 +86,7 @@
       "Nabab Road",
       "Wapda"
     ],
-    "Word 11": [
+    "Ward 11": [
       "Rohon Das Ratul",
       "Bhatalia",
       "Bil Par",
@@ -97,14 +97,14 @@
       "Noapara",
       "Rekabi Baza"
     ],
-    "Word 12": [
+    "Ward 12": [
       " Bhangatikar",
       "Itakhola",
       "Kuarpar",
       "Saudagartala",
       "Sheikhghat"
     ],
-    "Word 13": [
+    "Ward 13": [
       "taltola south",
       "Itakhola",
       "Saudagartala",
@@ -112,14 +112,14 @@
       "masudhighir par",
       "mirja jungle"
     ],
-    "Word 14": [
+    "Ward 14": [
       "Bandar Bazar",
       "Brahmandi Bazar",
       " Jallar Par",
       "Jamtala",
       "Kastagarh"
     ],
-    "Word 15": [
+    "Ward 15": [
       "Jail Road",
       "Joynagar",
       "Jatarpur",
@@ -128,10 +128,10 @@
       "Suphani Ghat",
       "Dhopa Dighirpa"
     ],
-    "Word 16": ["Hauapara", " Kahan Daura", "Kumarpara"],
-    "Word 17": ["Kazitula ", "Mirboxtula", "Chowhatta", "Shahi Eidgah"],
-    "Word 18": ["Mira Bazar", "Mousumi", "Sabuj Bagh"],
-    "Word 19": [
+    "Ward 16": ["Hauapara", " Kahan Daura", "Kumarpara"],
+    "Ward 17": ["Kazitula ", "Mirboxtula", "Chowhatta", "Shahi Eidgah"],
+    "Ward 18": ["Mira Bazar", "Mousumi", "Sabuj Bagh"],
+    "Ward 19": [
       "Daptari Para",
       "Darjee Band",
       "Darjee Para",
@@ -140,19 +140,27 @@
       "Raynagar",
       "Sonapara"
     ],
-    "Word 20": ["Senpara", "Sonarpara", "Shibganj", "Shadipur", "Tilaghor"],
-    "Word 21": [
+    "Ward 20": ["Senpara", "Sonarpara", "Shibganj", "Shadipur", "Tilaghor"],
+    "Ward 21": [
       "Bhatatikr",
       "Brahman Para",
       "Gopal Tila",
       "Hatimbagh",
       "Lakri Para"
     ],
-    "Word 22": ["Uposhohor Block A-J"],
-    "Word 23": [" Machimpur", " Mehendibagh "],
-    "Word 24": ["Kushighat", "Tultikar"],
-    "Word 25": ["Barokhola", "Godrail", "Khojarkhola", "Musargoan", "Lawai"],
-    "Word 26": ["Bharthokhola", "Chandnighat", "Jalopara", "Kadamtali"],
-    "Word 27": ["Alampur", "Mejortila"]
-  }
+    "Ward 22": ["Uposhohor Block A-J"],
+    "Ward 23": [" Machimpur", " Mehendibagh "],
+    "Ward 24": ["Kushighat", "Tultikar"],
+    "Ward 25": ["Barokhola", "Godrail", "Khojarkhola", "Musargoan", "Lawai"],
+    "Ward 26": ["Bharthokhola", "Chandnighat", "Jalopara", "Kadamtali"],
+    "Ward 27": ["Alampur", "Mejortila"]
+  },
+  "Dhaka": {},
+  "Chattogram": {},
+  "Khulna": {},
+  "Rajshahi": {},
+  "Barishal": {},
+  "Rangpur": {},
+  "Mymensingh": {},
+  "Cumilla": {}
 }
