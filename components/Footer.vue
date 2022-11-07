@@ -1,6 +1,6 @@
 <template>
   <footer class="pb-70 mt-5">
-    <div class="newsletter-area">
+    <div class="newsletter-area d-none">
       <div class="container">
         <div class="row newsletter-wrap align-items-center">
           <div class="col-lg-7">

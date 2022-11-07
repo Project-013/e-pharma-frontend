@@ -1,51 +1,27 @@
+import nuxtConfig from "~/nuxt.config";
+const HostURL = nuxtConfig.publicRuntimeConfig.HostURL
 export const state = () => ({
-    working_day_list: [
-        "Everyday",
-        "Saturday",
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-      ],
-      working_time_list: [
-        "All Day",
-        "6am - 12pm",
-        "12pm - 6pm",
-        "6pm - 12am",
-        "12am - 6am",
-      ],
-      nursing_education_program: ["Diploma in Nursing","Diploma in MidWife", "B.Sc in Nursing"],
-      pt_education_program: ["Diploma in PT", "B.Sc in PT"],
-      doctor_education_program: ["FCPS", "MD", "MS", "D-Card", "VVD" ,"Others"],
-      dmf_doctor_education_program: ["DMF" ,"Others"],
-      spesialist: [
-        "Endocrinologist/Diabetologist",
-        "Neurologist",
-        "Rheumatologist",
-        "Psychiatrist",
-        "Nephrologist",
-        "Pulmonologist",
-        "Surgeon",
-        "Ophthalmologist",
-        "Oncologist",
-        "Urologist",
-        "Otolaryngologist",
-        "Anesthesiologist",
-        "Dermatologist",
-        "Radiologist",
-        "Gastroenterologist",
-        "Cardiologist",
-        "Orthopedics",
-        "Paleontologist",
-        "Dentist",
-        "chiropractor",
-        "Massage therapist",
-        "Obstetrician",
-        "Pediatrician",
-        "Podiatrist"
+  working_day_list: [
+      "Everyday",
+      "Saturday",
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
     ],
+    working_time_list: [
+      "All Day",
+      "6am - 12pm",
+      "12pm - 6pm",
+      "6pm - 12am",
+      "12am - 6am",
+    ],
+    nursing_education_program: ["Diploma in Nursing","Diploma in MidWife", "B.Sc in Nursing"],
+    pt_education_program: ["Diploma in PT", "B.Sc in PT"],
+    doctor_education_program: ["FCPS", "MD", "MS", "D-Card", "VVD" ,"Others"],
+    dmf_doctor_education_program: ["DMF" ,"Others"],
     address:[],
     spesialist_list:[]
 
@@ -93,9 +69,8 @@ export const state = () => ({
 
   export const actions = {
     async getAddress({commit}) {
-      console.log("Calling....");
-      const API_URL = 'https://sasthosebok.com/data/city.json';
-      // const API_URL = 'http://localhost:3000/data/city.json';
+      const API_URL = HostURL+'/data/city.json';
+
     
         await this.$axios
           .get(
@@ -121,8 +96,9 @@ export const state = () => ({
   
     async getSpesialistList({commit}) {
       console.log("Calling....");
-      const API_URL = 'https://sasthosebok.com/data/data.json';
-      // const API_URL = 'http://localhost:3000/data/data.json';
+      const API_URL = HostURL+'/data/data.json';
+      console.log(API_URL);
+
 
         await this.$axios
           .get(

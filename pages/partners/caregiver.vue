@@ -1,196 +1,270 @@
 <template>
   <section class="main-body">
     <div class="col-lg-8 col-md-10 col-11 mx-auto py-5">
-      <div class="p-4 rounded shadow bg-white mb-5">
+      <div class="p-4 rounded shadow border bg-light mb-5">
         <h4 class="mb-5">
           Register as <span style="color: #084298">সেবক Caregiver!</span>
         </h4>
         <ValidationObserver v-slot="{ handleSubmit }">
-          <form class="form" @submit.prevent="handleSubmit(submitForm)">
-            <ValidationProvider
-              class="form-floating my-3 d-block"
-              rules="required"
-              v-slot="{ errors }"
-            >
+          <form
+            class="form row g-3 small"
+            @submit.prevent="handleSubmit(submitForm)"
+          >
+            <div class="col-12">
+              <label for="" class="form-label">Name of Caregiver </label>
+
               <input
                 v-model="form_data.name"
                 id=" name"
-                class="is-invalid form-control"
+                class="form-control form-control-sm"
+                required
               />
-              <label for="patient_name">আপনার নাম</label>
-              <div class="invalid-feedback">
-                {{ errors[0] }}
+            </div>
+            <div class="col-md-4">
+              <label for=" " class="form-label">Gender</label>
+              <div class="d-flex flex-wrap">
+                <template v-for="g in gender_list">
+                  <div class="me-3 mb-0" :key="g">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      :value="g"
+                      :id="g"
+                      v-model="form_data.gender"
+                      checked
+                      required
+                    />
+
+                    <label class="form-check-label" :for="g">
+                      {{ g }}
+                    </label>
+                  </div>
+                </template>
               </div>
-            </ValidationProvider>
-            <ValidationProvider
-              class="form-floating my-3 d-block"
-              rules="required"
-              v-slot="{ errors }"
-            >
+            </div>
+
+            <div class="col-md-8">
+              <label for="institution" class="form-label"
+                >Current Insititute</label
+              >
               <input
                 v-model="form_data.institution"
                 id=" name"
-                class="is-invalid form-control"
+                class="form-control form-control-sm"
+                required
               />
-              <label for="institution">বর্তমান প্রতিষ্ঠানের নাম</label>
-              <div class="invalid-feedback">
-                {{ errors[0] }}
-              </div>
-            </ValidationProvider>
-
-            <h6 class="small text-muted d-none">শিক্ষাগত যোগ্যতা</h6>
-            <div class="d-flex flex-wrap mb-4 d-none">
-              <template v-for="e in nursing_education_program">
-                <div class="mb-3 me-3" :key="e">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    :value="e"
-                    :id="e"
-                    v-model="qualicifacions"
-                  />
-                  <label class="form-check-label" :for="e">
-                    {{ e }}
-                  </label>
-                </div>
-              </template>
             </div>
-            <h6 class="small text-muted">লিঙ্গ</h6>
-            <div class="d-flex flex-wrap mb-4">
-              <div class="mb-3 me-3">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  value="male"
-                  id="male"
-                  v-model="form_data.gender"
-                />
-                <label class="form-check-label" for="male"> male </label>
-              </div>
-              <div class="mb-3 me-3">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  value="female"
-                  id="female"
-                  v-model="form_data.gender"
-                />
-                <label class="form-check-label" for="female"> female </label>
-              </div>
-              <div class="mb-3 me-3">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  value="others"
-                  id="others"
-                  v-model="form_data.gender"
-                />
-                <label class="form-check-label" for="others"> others </label>
+            <div class="col-md-12">
+              <label class="form-label">Day of service</label>
+              <div class="d-flex flex-wrap">
+                <template v-for="day in working_day_list">
+                  <div class="mb-0 me-3" :key="day">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      :value="day"
+                      :id="day"
+                      v-model="working_days"
+                      :required="working_days.length ? false : true"
+                      :disabled="
+                        working_days.includes(`Everyday`) && day != `Everyday`
+                      "
+                    />
+                    <label class="form-check-label" :for="day">
+                      {{ day }}
+                    </label>
+                  </div>
+                </template>
               </div>
             </div>
 
-            <h6 class="small text-muted">যে যে দিন সেবা দিতে ইচ্ছুক</h6>
-            <div class="d-flex flex-wrap mb-4">
-              <template v-for="day in working_day_list">
-                <div class="mb-3 me-3" :key="day">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    :value="day"
-                    :id="day"
-                    v-model="working_days"
-                    :disabled="
-                      working_days.includes(`Everyday`) && day != `Everyday`
-                    "
-                  />
-                  <label class="form-check-label" :for="day">
-                    {{ day }}
-                  </label>
-                </div>
-              </template>
-            </div>
-
-            <h6 class="small text-muted">
-              সিলেট শহরের যে যে ওয়ার্ডে সেবা দিতে ইচ্ছুক
-            </h6>
-            <div class="d-flex flex-wrap mb-4">
-              <template v-for="i in 27">
-                <div class="mb-3 me-3" :key="i">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    :value="i"
-                    :id="i"
-                    v-model="working_area"
-                  />
-                  <label class="form-check-label" :for="i"> {{ i }} </label>
-                </div>
-              </template>
-            </div>
-            <div class="input-field pb-3">
-              <h6 class="small text-muted">ফোন নাম্বার</h6>
-              <div class="input-group flex-nowrap">
-                <span
-                  class="input-group-text bg-white p-0"
-                  style="width: 85px"
-                  id="addon-wrapping"
-                >
-                  <select
-                    class="form-select form-select-sm border-0 p-3"
-                    style="font-weight: 500"
-                    aria-label=".form-select-sm example"
-                  >
-                    <option value="+880">+880</option>
-                  </select>
-                </span>
-
+            <div class="col-md-4">
+              <label for="" class="form-label">Mobile No</label>
+              <ValidationProvider
+                rules="required|numeric|length:11"
+                v-slot="{ errors }"
+              >
                 <input
                   type="number"
                   required
-                  class="form-control py-3"
-                  placeholder="1XXXXXXXXX"
+                  class="form-control form-control-sm is-invalid"
+                  placeholder="01XXXXXXXXX"
                   aria-label="phone"
-                  aria-describedby="addon-wrapping"
-                  v-model="phone"
+                  v-model="form_data.mobile"
                 />
-              </div>
+                <div class="invalid-feedback">
+                  {{ errors[0] }}
+                </div>
+              </ValidationProvider>
             </div>
-            <ValidationProvider
-              class="form-floating my-3 d-block"
-              rules="required|numeric"
-              v-slot="{ errors }"
-            >
+            <div class="col-md-4">
+              <label for="nid" class="form-label">NID No </label>
+
               <input
                 v-model="form_data.nid"
-                id=" nid"
-                class="is-invalid form-control"
                 type="number"
+                id=" nid"
+                class="form-control form-control-sm"
+                required
               />
-              <label for="nid">জাতীয় পরিচয়পত্র নম্বর </label>
-              <div class="invalid-feedback">
-                {{ errors[0] }}
+            </div>
+            <div class="col-md-4">
+              <label for=" " class="form-label">Select city</label>
+              <select
+                class="form-select form-select-sm"
+                aria-label="Default select example"
+                v-model="form_data.city"
+                required
+              >
+                <option value="" disabled selected>Select one</option>
+
+                <template v-for="(city, index) in getCity">
+                  <option
+                    :value="city.name"
+                    :key="index"
+                    :disabled="city.length == 0"
+                  >
+                    {{ city.name }}
+                  </option>
+                </template>
+              </select>
+            </div>
+            <div class="col-12" v-if="form_data.city">
+              <label for=" " class="form-label"
+                >Select Ward of {{ form_data.city }} city</label
+              >
+
+              <div class="d-flex flex-wrap" v-if="form_data.city">
+                <template v-for="ward in getWard">
+                  <div class="mb-3 me-3 d-flex" :key="ward">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      :value="ward"
+                      :id="ward"
+                      :required="working_ward.length ? false : true"
+                      v-model="working_ward"
+                    />
+                    <label class="ms-2 form-check-label" :for="ward">
+                      {{ ward }}
+                    </label>
+                  </div>
+                </template>
               </div>
-            </ValidationProvider>
-            <h6 class="small text-muted mt-2">আপনার সম্পর্কে লিখুন</h6>
-            <ValidationProvider
-              class="form-group my-3 d-block"
-              rules="required"
-              v-slot="{ errors }"
-            >
+            </div>
+            <div class="col-12" v-if="working_ward.length">
+              <label for=" " class="form-label">
+                Select working area of {{ form_data.city }} city
+              </label>
+              <div class="d-flex flex-wrap">
+                <template v-for="ward in getArea">
+                  <div class="mb-3 me-3 d-flex" :key="ward">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      :value="ward"
+                      :id="ward"
+                      v-model="working_area"
+                      :required="working_area.length ? false : true"
+                    />
+                    <label class="ms-2 form-check-label" :for="ward">
+                      {{ ward }}
+                    </label>
+                  </div>
+                </template>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for=" " class="form-label">Payment Method</label>
+              <div class="d-flex flex-wrap">
+                <template v-for="p in payment_sys_list">
+                  <div class="me-3 mb-0" :key="p">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      :value="p"
+                      :id="p"
+                      v-model="form_data.payment_method"
+                      required
+                    />
+
+                    <label class="form-check-label" :for="p">
+                      {{ p }}
+                    </label>
+                  </div>
+                </template>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for=" " class="form-label"
+                >{{ form_data.payment_method }} Number</label
+              >
+              <ValidationProvider
+                rules="required|numeric|length:11"
+                v-slot="{ errors }"
+              >
+                <input
+                  type="number"
+                  required
+                  class="form-control form-control-sm is-invalid"
+                  placeholder="01XXXXXXXXX"
+                  v-model="form_data.payment_number"
+                />
+                <div class="invalid-feedback">
+                  {{ errors[0] }}
+                </div>
+              </ValidationProvider>
+            </div>
+            <div class="col-12">
+              <label
+                for="formFile"
+                class="d-block text-center"
+                style="cursor: pointer"
+              >
+                <img
+                  v-if="previewImage"
+                  :src="previewImage"
+                  width="200"
+                  class="uploading-image d-block mb-1 mx-auto border rounded p-1"
+                />
+                <img
+                  v-else
+                  src="~/static/img/add.jpg"
+                  alt=""
+                  class="d-block mb-1 mx-auto border rounded p-1"
+                  width="180"
+                />
+                <span class="btn btn-sm btn-secondary py-0">{{
+                  previewImage ? "Change photo" : "Upload Your Photo"
+                }}</span>
+              </label>
+              <input
+                class="form-control form-control-sm upload_image d-none"
+                type="file"
+                id="formFile"
+                accept=".jpeg,.jpg,.png,image/jpeg,image/png"
+                aria-label="upload image button"
+                @change="uploadImage"
+                required
+              />
+            </div>
+            <div class="col-12">
+              <label class="form-label">Write about yourself</label>
+
               <textarea
                 v-model="form_data.short_description"
                 id="details"
-                class="is-invalid form-control"
+                class="is-invalid form-control form-control-sm"
                 rows="2"
+                required
               ></textarea>
-              <div class="invalid-feedback">
-                {{ errors[0] }}
-              </div>
-            </ValidationProvider>
+            </div>
+
             <div>
-              <div class="d-flex align-items-center">
-                <input type="checkbox" id="checkbox" required />
-                <p for="checkbox" class="mt-3 ms-2 small">
+              <div class="d-flex align-items-center mb-2">
+                <input type="checkbox" id="checkbox" name="checkbox" required />
+                <label for="checkbox" class="ms-1 small">
                   Accept the
                   <a href="#" class="text-primary text-decoration-none"
                     >Terms</a
@@ -199,13 +273,13 @@
                   <a href="#" class="text-primary text-decoration-none"
                     >Privacy Policy</a
                   >
-                </p>
+                </label>
               </div>
 
               <div class="d-grid gap-2">
                 <button
                   class="btn btn-primary btn-sm"
-                  :disabled="phone.length != 10 || disable_btn"
+                  :disabled="disable_btn"
                   type="submit"
                 >
                   Submit
@@ -228,25 +302,75 @@ export default {
     ValidationObserver,
     ValidationProvider,
   },
+  computed: {
+    getAddress() {
+      const address = this.$store.getters["data/address"];
+      return address;
+    },
+    getCity() {
+      const address = this.$store.getters["data/address"];
+      const city = [];
+
+      for (const i in address) {
+        const city_obj = {
+          name: i,
+          length: Object.keys(address[i]).length,
+        };
+
+        city.push(city_obj);
+      }
+      return city;
+    },
+    getWard() {
+      const address = this.$store.getters["data/address"];
+      const city = this.form_data.city;
+      const ward_list = address[city];
+      const ward = [];
+
+      for (const i in ward_list) {
+        ward.push(i);
+      }
+
+      return ward;
+    },
+    getArea() {
+      const address = this.$store.getters["data/address"];
+      const city = this.form_data.city;
+      const wards = this.working_ward;
+      const area = [];
+
+      for (const i in wards) {
+        const word = wards[i];
+        const area_arr = address[city][word];
+        area.push(...area_arr);
+      }
+
+      return area;
+    },
+  },
 
   data() {
     return {
-      phone: "",
+      previewImage: null,
       form_data: {
-        mobile: "+880",
+        mobile: "",
         name: "",
         working_area: "",
         working_days: "",
         institution: "",
         short_description: "",
         qualicifacions: "",
-        // image_url: "",
-        country_code: "+880",
+        city: "",
+        payment_method: "Bkash",
+        payment_number: "",
         nid: "",
-        gender: "",
+        gender: "male",
       },
       disable_btn: false,
       qualicifacions: ["N/A"],
+      gender_list: ["male", "female", "others"],
+      payment_sys_list: ["Bkash", "Nogod", "Rocket", "Upay"],
+      working_ward: [],
       working_area: [],
       working_days: [],
       working_day_list: this.$store.getters["info/working_day_list"],
@@ -254,23 +378,33 @@ export default {
         this.$store.getters["info/nursing_education_program"],
     };
   },
-  computed: {
-    CountryCode() {
-      return this.$store.getters["CountryCode"];
-    },
-  },
 
   methods: {
+    uploadImage(e) {
+      this.image_url = e.target.files[0];
+
+      const image = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(image);
+      reader.onload = (e) => {
+        this.previewImage = e.target.result;
+        console.log(this.image_url["name"]);
+      };
+    },
     async submitForm() {
-      this.form_data.mobile = "+880" + this.phone;
       this.form_data.working_area = this.working_area.toString();
       this.form_data.working_days = this.working_days.toString();
       this.form_data.qualicifacions = this.qualicifacions.toString();
+      const formData = new FormData();
+      formData.append("image_url", this.image_url, this.image_url["name"]);
+      for (const obj in this.form_data) {
+        formData.append(obj, this.form_data[obj]);
+      }
       this.$nextTick(() => {
         this.$nuxt.$loading.start();
         this.disable_btn = true;
         this.$axios
-          .post(`patners/caregiver-regi/`, this.form_data, {
+          .post(`patners/caregiver-regi/`, formData, {
             headers: {
               "Content-Type": "application/json",
             },
@@ -283,11 +417,14 @@ export default {
             this.$nuxt.$loading.finish();
           })
           .catch((error) => {
-            console.log(error.response);
-            if (error.response) {
-              console.log(error.response);
+            if (error.response && error.response.data) {
+              const err_data = error.response.data;
+              if (err_data.mobile || err_data.nid) {
+                this.$toast.error("Already Registered!");
+              }
+            } else {
+              this.$toast.error("Error found! Try again");
             }
-            this.$toast.error("Error found! Try again");
 
             this.$nuxt.$loading.finish();
             console.log(error.message || error.response.data.message);
@@ -299,6 +436,8 @@ export default {
       return;
     },
   },
-  mounted() {},
+  mounted() {
+    this.$store.dispatch("data/getAddress");
+  },
 };
 </script>

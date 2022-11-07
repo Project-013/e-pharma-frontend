@@ -1,186 +1,230 @@
 <template>
   <section class="main-body">
     <div class="col-lg-7 col-md-10 col-11 mx-auto py-5">
-      <div class="p-4 rounded shadow bg-light border mb-5 fw-bold">
+      <div class="p-4 rounded shadow bg-light border mb-5">
         <h4 class="mb-5">
           Register as <span style="color: #084298">সেবক পার্টনার !</span>
         </h4>
         <ValidationObserver v-slot="{ handleSubmit }">
-          <form class="form" @submit.prevent="handleSubmit(submitForm)">
-            <ValidationProvider
-              class="form-floating my-3 d-block"
-              rules="required"
-              v-slot="{ errors }"
-            >
+          <form
+            class="form small row g-3"
+            @submit.prevent="handleSubmit(submitForm)"
+          >
+            <div class="col-md-6">
+              <label for="" class="form-label">Name of Pharmacy </label>
               <input
                 v-model="form_data.pharmacy_name"
                 id=" name"
-                class="is-invalid form-control"
+                class="form-control form-control-sm"
+                required
               />
-              <label for="patient_name">ফার্মেসির নাম</label>
-              <div class="invalid-feedback">
-                {{ errors[0] }}
-              </div>
-            </ValidationProvider>
-            <ValidationProvider
-              class="form-floating my-3 d-block"
-              rules="required"
-              v-slot="{ errors }"
-            >
+            </div>
+            <div class="col-md-6">
+              <label for=" " class="form-label">Your Name</label>
               <input
                 v-model="form_data.name"
-                id=" name"
-                class="is-invalid form-control"
+                id="name"
+                class="form-control form-control-sm"
               />
-              <label for="patient_name">আপনার নাম</label>
-              <div class="invalid-feedback">
-                {{ errors[0] }}
-              </div>
-            </ValidationProvider>
+            </div>
 
-            <div class="input-field pb-3">
-              <h6 class="small text-dark">ফোন নাম্বার</h6>
-              <div class="input-group flex-nowrap">
-                <span
-                  class="input-group-text bg-light p-0"
-                  style="width: 85px"
-                  id="addon-wrapping"
-                >
-                  <select
-                    class="form-select form-select-sm border-0 p-3"
-                    style="font-weight: 500"
-                    aria-label=".form-select-sm example"
-                  >
-                    <option value="+880">+880</option>
-                  </select>
-                </span>
-
+            <div class="col-md-6">
+              <label for=" " class="form-label">Mobile No</label>
+              <ValidationProvider
+                rules="required|numeric|length:11"
+                v-slot="{ errors }"
+              >
                 <input
                   type="number"
                   required
-                  class="form-control py-3"
-                  placeholder="1XXXXXXXXX"
+                  class="form-control form-control-sm is-invalid"
+                  placeholder="01XXXXXXXXX"
                   aria-label="phone"
-                  aria-describedby="addon-wrapping"
-                  v-model="phone"
+                  v-model="form_data.mobile"
                 />
-              </div>
+                <div class="invalid-feedback">
+                  {{ errors[0] }}
+                </div>
+              </ValidationProvider>
             </div>
 
-            <ValidationProvider
-              class="form-floating my-3 d-block"
-              rules="required|numeric"
-              v-slot="{ errors }"
-            >
+            <div class="col-md-6">
+              <label for="tred_licence" class="form-label">
+                Trade Licence No
+              </label>
+
               <input
                 v-model="form_data.tred_licence"
-                id=" nid"
-                class="is-invalid form-control"
+                class="form-control form-control-sm"
                 type="number"
+                required
               />
-              <label for="tred_licence">ট্রেড লাইসেন্স নং </label>
-              <div class="invalid-feedback">
-                {{ errors[0] }}
-              </div>
-            </ValidationProvider>
-            <ValidationProvider
-              class="form-floating my-3 d-block"
-              rules="required|numeric"
-              v-slot="{ errors }"
-            >
+            </div>
+            <div class="col-md-6">
+              <label for="nid" class="form-label">NID No </label>
               <input
                 v-model="form_data.nid"
                 id=" nid"
                 type="number"
-                class="is-invalid form-control"
+                class="form-control form-control-sm"
+                required
               />
-              <label for="nid">জাতীয় পরিচয়পত্র নম্বর </label>
-              <div class="invalid-feedback">
-                {{ errors[0] }}
-              </div>
-            </ValidationProvider>
-            <ValidationProvider
-              class="form-floating my-3 d-block"
-              rules="required"
-              v-slot="{ errors }"
-            >
+            </div>
+            <div class="col-md-6">
+              <label for=" " class="form-label">Service Providers Name</label>
+
               <input
                 v-model="form_data.service_provider_name"
-                id=" name"
-                class="is-invalid form-control"
+                id="name"
+                class="form-control form-control-sm"
+                required
               />
-              <label for="patient_name">সেবা দাতার নাম</label>
-              <div class="invalid-feedback">
-                {{ errors[0] }}
-              </div>
-            </ValidationProvider>
-
-            <div class="input-field pb-3">
-              <h6 class="small text-dark">সেবা দাতার ফোন নাম্বার</h6>
-              <div class="input-group flex-nowrap">
-                <span
-                  class="input-group-text bg-light p-0"
-                  style="width: 85px"
-                  id="addon-wrapping"
-                >
-                  <select
-                    class="form-select form-select-sm border-0 p-3"
-                    style="font-weight: 500"
-                    aria-label=".form-select-sm example"
-                  >
-                    <option value="+880">+880</option>
-                  </select>
-                </span>
-
+            </div>
+            <div class="col-md-6">
+              <label for="" class="form-label"
+                >Service Providers Mobile No</label
+              >
+              <ValidationProvider
+                rules="required|numeric|length:11"
+                v-slot="{ errors }"
+              >
                 <input
                   type="number"
                   required
-                  class="form-control py-3"
-                  placeholder="1XXXXXXXXX"
+                  class="form-control form-control-sm is-invalid"
+                  placeholder="01XXXXXXXXX"
                   aria-label="phone"
-                  aria-describedby="addon-wrapping"
-                  v-model="phone2"
+                  v-model="form_data.service_provider_mobile"
                 />
+                <div class="invalid-feedback">
+                  {{ errors[0] }}
+                </div>
+              </ValidationProvider>
+            </div>
+            <div class="col-md-6">
+              <label for=" " class="form-label">Select city</label>
+              <select
+                class="form-select form-select-sm"
+                aria-label="Default select example"
+                v-model="form_data.city"
+                required
+              >
+                <option value="" disabled selected>Select one</option>
+
+                <template v-for="(city, index) in getCity">
+                  <option
+                    :value="city.name"
+                    :key="index"
+                    :disabled="city.length == 0"
+                  >
+                    {{ city.name }}
+                  </option>
+                </template>
+              </select>
+            </div>
+            <div class="col-12" v-if="form_data.city">
+              <label for=" " class="form-label"
+                >Select Ward of {{ form_data.city }} city</label
+              >
+
+              <div class="d-flex flex-wrap" v-if="form_data.city">
+                <template v-for="ward in getWard">
+                  <div class="mb-3 me-3 d-flex" :key="ward">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      :value="ward"
+                      :required="working_ward.length ? false : true"
+                      :id="ward"
+                      v-model="working_ward"
+                    />
+                    <label class="ms-2 form-check-label" :for="ward">
+                      {{ ward }}
+                    </label>
+                  </div>
+                </template>
+              </div>
+            </div>
+            <div class="col-12" v-if="working_ward.length">
+              <label for=" " class="form-label"
+                >Select working area of {{ form_data.city }} city</label
+              >
+              <div class="d-flex flex-wrap">
+                <template v-for="ward in getArea">
+                  <div class="mb-3 me-3 d-flex" :key="ward">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      :required="working_area.length ? false : true"
+                      :value="ward"
+                      :id="`Home` + ward"
+                      v-model="working_area"
+                    />
+                    <label class="ms-2 form-check-label" :for="`Home` + ward">
+                      {{ ward }}
+                    </label>
+                  </div>
+                </template>
               </div>
             </div>
 
-            <h6 class="small text-dark">
-              সিলেট শহরের যে যে ওয়ার্ডে সেবা দিতে ইচ্ছুক
-            </h6>
-            <div class="d-flex flex-wrap mb-4">
-              <template v-for="i in 27">
-                <div class="mb-3 me-3" :key="i">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    :value="i"
-                    :id="i"
-                    v-model="working_area"
-                  />
-                  <label class="form-check-label" :for="i"> {{ i }} </label>
-                </div>
-              </template>
+            <div class="col-md-6">
+              <label for=" " class="form-label">Payment Method</label>
+              <div class="d-flex flex-wrap">
+                <template v-for="p in payment_sys_list">
+                  <div class="me-3 mb-0" :key="p">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      :value="p"
+                      :id="p"
+                      v-model="form_data.payment_method"
+                      required
+                    />
+
+                    <label class="form-check-label" :for="p">
+                      {{ p }}
+                    </label>
+                  </div>
+                </template>
+              </div>
             </div>
-            <h6 class="small text-dark mt-2">আপনার সম্পর্কে লিখুন</h6>
-            <ValidationProvider
-              class="form-group my-3 d-block"
-              rules="required"
-              v-slot="{ errors }"
-            >
+            <div class="col-md-6">
+              <label for=" " class="form-label"
+                >{{ form_data.payment_method }} Number</label
+              >
+              <ValidationProvider
+                rules="required|numeric|length:11"
+                v-slot="{ errors }"
+              >
+                <input
+                  type="number"
+                  required
+                  class="form-control form-control-sm is-invalid"
+                  placeholder="01XXXXXXXXX"
+                  v-model="form_data.payment_number"
+                />
+                <div class="invalid-feedback">
+                  {{ errors[0] }}
+                </div>
+              </ValidationProvider>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label">Write about yourself</label>
+
               <textarea
                 v-model="form_data.short_description"
                 id="details"
-                class="is-invalid form-control"
+                class="is-invalid form-control form-control-sm"
                 rows="2"
+                required
               ></textarea>
-              <div class="invalid-feedback">
-                {{ errors[0] }}
-              </div>
-            </ValidationProvider>
+            </div>
             <div>
-              <div class="d-flex align-items-center">
-                <input type="checkbox" id="checkbox" required />
-                <p for="checkbox" class="mt-3 ms-2 small">
+              <div class="d-flex align-items-center mb-2">
+                <input type="checkbox" id="checkbox" name="checkbox" required />
+                <label for="checkbox" class="ms-1 small">
                   Accept the
                   <a href="#" class="text-primary text-decoration-none"
                     >Terms</a
@@ -189,15 +233,11 @@
                   <a href="#" class="text-primary text-decoration-none"
                     >Privacy Policy</a
                   >
-                </p>
+                </label>
               </div>
 
               <div class="d-grid gap-2">
-                <button
-                  class="btn btn-primary btn-sm"
-                  :disabled="phone.length != 10 || disable_btn"
-                  type="submit"
-                >
+                <button class="btn btn-primary btn-sm" type="submit">
                   Submit
                 </button>
               </div>
@@ -218,6 +258,53 @@ export default {
     ValidationObserver,
     ValidationProvider,
   },
+  computed: {
+    getAddress() {
+      const address = this.$store.getters["data/address"];
+      return address;
+    },
+    getCity() {
+      const address = this.$store.getters["data/address"];
+      const city = [];
+
+      for (const i in address) {
+        const city_obj = {
+          name: i,
+          length: Object.keys(address[i]).length,
+        };
+
+        city.push(city_obj);
+        console.log(Object.keys(address[i]).length);
+      }
+      return city;
+    },
+    getWard() {
+      const address = this.$store.getters["data/address"];
+      const city = this.form_data.city;
+      const ward_list = address[city];
+      const ward = [];
+
+      for (const i in ward_list) {
+        ward.push(i);
+      }
+
+      return ward;
+    },
+    getArea() {
+      const address = this.$store.getters["data/address"];
+      const city = this.form_data.city;
+      const wards = this.working_ward;
+      const area = [];
+
+      for (const i in wards) {
+        const word = wards[i];
+        const area_arr = address[city][word];
+        area.push(...area_arr);
+      }
+
+      return area;
+    },
+  },
 
   data() {
     return {
@@ -227,37 +314,30 @@ export default {
         mobile: "+880",
         name: "",
         pharmacy_name: "",
-        qualicifacions: "",
         working_area: "",
-        working_days: "",
-        working_times: "",
         short_description: "",
         // image_url: "",
-        country_code: "+880",
+        city: "",
         nid: "",
+        payment_method: "Bkash",
+        payment_number: "",
         tred_licence: "",
         service_provider_name: "",
         service_provider_mobile: "",
       },
       disable_btn: false,
+      working_ward: [],
       working_area: [],
-      working_days: [],
-      working_times: [],
-      qualicifacions: [],
       working_day_list: this.$store.getters["info/working_day_list"],
       working_time_list: this.$store.getters["info/working_time_list"],
       pt_education_program: this.$store.getters["info/pt_education_program"],
+      payment_sys_list: ["Bkash", "Nogod", "Rocket", "Upay"],
     };
   },
 
   methods: {
     async submitForm() {
-      this.form_data.mobile = "+880" + this.phone;
-      this.form_data.service_provider_mobile = "+880" + this.phone2;
       this.form_data.working_area = this.working_area.toString();
-      this.form_data.working_days = this.working_days.toString();
-      this.form_data.working_times = this.working_times.toString();
-      this.form_data.qualicifacions = this.qualicifacions.toString();
       this.$nextTick(() => {
         this.$nuxt.$loading.start();
         this.disable_btn = true;
@@ -275,11 +355,14 @@ export default {
             this.$nuxt.$loading.finish();
           })
           .catch((error) => {
-            console.log(error.response);
-            if (error.response) {
-              console.log(error.response);
+            if (error.response && error.response.data) {
+              const err_data = error.response.data;
+              if (err_data.mobile || err_data.nid || err_data.tred_licence) {
+                this.$toast.error("Already Registered!");
+              }
+            } else {
+              this.$toast.error("Error found! Try again");
             }
-            this.$toast.error("Error found! Try again");
 
             this.$nuxt.$loading.finish();
             console.log(error.message || error.response.data.message);
@@ -291,6 +374,8 @@ export default {
       return;
     },
   },
-  mounted() {},
+  mounted() {
+    this.$store.dispatch("data/getAddress");
+  },
 };
 </script>

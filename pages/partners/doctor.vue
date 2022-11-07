@@ -20,6 +20,7 @@
                 required
               />
             </div>
+
             <div class="col-md-4">
               <label for=" " class="form-label">Gender</label>
               <div class="d-flex flex-wrap">
@@ -84,7 +85,7 @@
                 </template>
               </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-md-6">
               <label for=" " class="form-label">Speciality</label>
               <select
                 class="form-select form-select-sm"
@@ -100,7 +101,7 @@
                 </template>
               </select>
             </div>
-            <div class="col-lg-6">
+            <div class="col-md-6">
               <label for=" " class="form-label">BMDC Regi. No </label>
 
               <input
@@ -110,16 +111,6 @@
                 required
                 type="number"
               />
-            </div>
-
-            <div class="col-12 d-none">
-              <input
-                v-model="form_data.nid"
-                id=" nid"
-                class="form-control form-control-sm"
-                required
-              />
-              <label for="nid">জাতীয় পরিচয়পত্র নম্বর </label>
             </div>
 
             <div class="col-12">
@@ -193,7 +184,7 @@
                 <div class="col-md-6">
                   <label for=" " class="form-label">Consultation Fee</label>
                   <input
-                    type="text"
+                    type="number"
                     class="form-control form-control-sm"
                     placeholder="Enter amount"
                     v-model="form_data.fee_chamber"
@@ -231,7 +222,7 @@
                     </template>
                   </div>
                 </div>
-                <div class="col-12">
+                <div class="col-md-8">
                   <label for=" " class="form-label">Service Time</label>
                   <div class="d-flex flex-wrap">
                     <template v-for="time in working_time_list">
@@ -254,18 +245,8 @@
                     </template>
                   </div>
                 </div>
-                <div class="col-md-6 d-none">
-                  <label for=" " class="form-label">Consultation Fee</label>
-                  <input
-                    type="text"
-                    class="form-control form-control-sm"
-                    placeholder="Enter amount"
-                    v-model="form_data.fee_home_call"
-                    :required="type.includes(`Home Call`) ? true : false"
-                  />
-                </div>
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                   <label for=" " class="form-label">Select city</label>
                   <select
                     class="form-select form-select-sm"
@@ -276,7 +257,13 @@
                     <option value="" disabled selected>select one</option>
 
                     <template v-for="(city, index) in getCity">
-                      <option :value="city" :key="index">{{ city }}</option>
+                      <option
+                        :value="city.name"
+                        :key="index"
+                        :disabled="city.length == 0"
+                      >
+                        {{ city.name }}
+                      </option>
                     </template>
                   </select>
                 </div>
@@ -381,7 +368,7 @@
                 <div class="col-md-6">
                   <label for=" " class="form-label">Consultation Fee</label>
                   <input
-                    type="text"
+                    type="number"
                     class="form-control form-control-sm"
                     placeholder="Enter amount"
                     v-model="form_data.fee_video_call"
@@ -408,7 +395,7 @@
               </div>
             </div>
 
-            <div class="col-lg-12">
+            <div class="col-md-6">
               <label for=" " class="form-label"
                 >Insititute/Chamber Address</label
               >
@@ -421,7 +408,7 @@
               />
             </div>
 
-            <div class="col-12">
+            <div class="col-md-6">
               <label for=" " class="form-label">Mobile No</label>
               <ValidationProvider
                 rules="required|numeric|length:11"
@@ -440,7 +427,7 @@
                 </div>
               </ValidationProvider>
             </div>
-            <div class="col-12">
+            <div class="col-md-6">
               <label for=" " class="form-label">Payment Method</label>
               <div class="d-flex flex-wrap">
                 <template v-for="p in payment_sys_list">
@@ -461,7 +448,7 @@
                 </template>
               </div>
             </div>
-            <div class="col-12">
+            <div class="col-md-6">
               <label for=" " class="form-label"
                 >{{ form_data.payment_method }} Number</label
               >
@@ -501,8 +488,8 @@
                   class="d-block mb-1 mx-auto border rounded p-1"
                   width="180"
                 />
-                <span class="btn btn-sm btn-outline-dark py-0">{{
-                  previewImage ? "Change photo" : "Add photo"
+                <span class="btn btn-sm btn-secondary py-0">{{
+                  previewImage ? "Change photo" : "Upload Your Photo"
                 }}</span>
               </label>
               <input
@@ -516,8 +503,8 @@
               />
             </div>
 
-            <div class="form-group my-3">
-              <label for="formFile" class="form-label">Experience</label>
+            <div class="col-12">
+              <label class="form-label">Experience</label>
 
               <textarea
                 v-model="form_data.experience"
@@ -527,10 +514,8 @@
                 required
               ></textarea>
             </div>
-            <div class="form-group my-3 d-block">
-              <label for="formFile" class="form-label"
-                >Write about yourself</label
-              >
+            <div class="col-12">
+              <label class="form-label">Write about yourself</label>
 
               <textarea
                 v-model="form_data.short_description"
@@ -541,9 +526,9 @@
               ></textarea>
             </div>
             <div>
-              <div class="d-flex align-items-center">
+              <div class="d-flex align-items-center mb-2">
                 <input type="checkbox" id="checkbox" name="checkbox" required />
-                <p for="checkbox" class="mt-3 ms-2 small">
+                <label for="checkbox" class="ms-1 small">
                   Accept the
                   <a href="#" class="text-primary text-decoration-none"
                     >Terms</a
@@ -552,7 +537,7 @@
                   <a href="#" class="text-primary text-decoration-none"
                     >Privacy Policy</a
                   >
-                </p>
+                </label>
               </div>
 
               <div class="d-grid gap-2">
@@ -584,7 +569,7 @@ export default {
     return {
       previewImage: null,
       form_data: {
-        mobile: "+880",
+        mobile: "",
         name: "",
         specialty: "",
         bmdc_regi_no: "",
@@ -645,8 +630,13 @@ export default {
       const city = [];
 
       for (const i in address) {
-        city.push(i);
-        console.log(address[i]);
+        const city_obj = {
+          name: i,
+          length: Object.keys(address[i]).length,
+        };
+
+        city.push(city_obj);
+        console.log(Object.keys(address[i]).length);
       }
       return city;
     },
@@ -671,7 +661,6 @@ export default {
       for (const i in wards) {
         const word = wards[i];
         const area_arr = address[city][word];
-        console.log();
         area.push(...area_arr);
       }
 
@@ -727,11 +716,14 @@ export default {
             this.$nuxt.$loading.finish();
           })
           .catch((error) => {
-            console.log(error.response);
-            if (error.response) {
-              console.log(error.response);
+            if (error.response && error.response.data) {
+              const err_data = error.response.data;
+              if (err_data.mobile || err_data.bmdc_regi_no) {
+                this.$toast.error("Already Registered!");
+              }
+            } else {
+              this.$toast.error("Error found! Try again");
             }
-            this.$toast.error("Error found! Try again");
 
             this.$nuxt.$loading.finish();
             console.log(error.message || error.response.data.message);
