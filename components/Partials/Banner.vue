@@ -7,9 +7,12 @@
             <h3 class="heading_1">Quality Digital Healthcare</h3>
             <h1 class="heading_2">Services Is Our Commitment</h1>
             <p class="small">
-              sasthosebok.com is a complete online service oriented healthcare
-              organization. The purpose of which is to ensure digital healthcare
-              to the people of the country...
+              <span class="fw-bold">
+                {{ $config.uniProject ? "E-pharna" : "sasthosebok.com" }}
+              </span>
+              is a complete online service oriented healthcare organization. The
+              purpose of which is to ensure digital healthcare to the people of
+              the country...
             </p>
             <a href="#" class="main-btn mt-4 fill-btn">Appointment</a>
             <NuxtLink to="/about" class="main-btn mt-4 ms-3"

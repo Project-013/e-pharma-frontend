@@ -9,19 +9,28 @@
             <ul class="list-unstyled p-0">
               <li>
                 <a href="#"
-                  ><i class="icofont-location-pin me-2"></i> #533, Kakoli
-                  Shoping Center(4th Floor), Zindabazar, Sylhet-3100</a
+                  ><i class="icofont-location-pin me-2"></i>
+                  {{
+                    $config.uniProject
+                      ? "Osmaninagar, Sylhet-3100"
+                      : "#533, Kakoli Shoping Center(4th Floor), Zindabazar, Sylhet-3100"
+                  }}</a
                 >
               </li>
               <li>
                 <a href="tel:+8801959970664"
-                  ><i class="icofont-ui-call me-2"></i>+8801959970664</a
-                >
+                  ><i class="icofont-ui-call me-2"></i>
+                  {{ $config.uniProject ? "+8801771147384" : "+8801959970664" }}
+                </a>
               </li>
               <li>
                 <a href="mailto:info@sasthosebok.com"
-                  ><i class="icofont-ui-message me-2"></i
-                  >info@sasthosebok.com</a
+                  ><i class="icofont-ui-message me-2"></i>
+                  {{
+                    $config.uniProject
+                      ? "info@e-pharma.com"
+                      : "info@sasthosebok.com"
+                  }}</a
                 >
               </li>
             </ul>
@@ -171,7 +180,11 @@
     <div class="container-fluid copyright-section py-1 small">
       <small class="p-0 text-light">
         Copyright &copy;
-        <a href="https://sasthosebok.com/" class="">sasthosebok.com.</a>
+        <a href="https://sasthosebok.com/" class="">
+          <span class="fw-bold">
+            {{ $config.uniProject ? "E-pharna" : "sasthosebok.com" }}
+          </span>
+        </a>
         All Rights Reserved, developed by
         <a
           href="https://www.linkedin.com/in/sajibsd013/"

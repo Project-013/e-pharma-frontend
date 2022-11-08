@@ -7,8 +7,10 @@
         What we are ?
       </h1>
       <p class="text-justify small">
-        <NuxtLink to="/" class="text-decoration-none text-dark h6"
-          >sasthosebok.com</NuxtLink
+        <NuxtLink to="/" class="text-decoration-none text-dark h6">
+          <span class="fw-bold">
+            {{ $config.uniProject ? "E-pharna" : "sasthosebok.com" }}
+          </span></NuxtLink
         >
         is a complete online service oriented healthcare organization. The
         purpose of which is to ensure digital healthcare to the people of the
@@ -34,16 +36,20 @@
         Or suddenly someone needs blood pressure test, diabetes test or
         nebulization etc. at home. But you don't know anyone who is experienced
         in this matter. Just like this,
-        <NuxtLink to="/" class="text-decoration-none text-dark h6"
-          >sasthosebok.com</NuxtLink
+        <NuxtLink to="/" class="text-decoration-none text-dark h6">
+          <span class="fw-bold">
+            {{ $config.uniProject ? "E-pharna" : "sasthosebok.com" }}
+          </span></NuxtLink
         >
         is very close to you and your family in digital solution of various
         healthcare related issues.
         <br />
         <br />
         All the digital healthcare services you can enjoy through
-        <NuxtLink to="/" class="text-decoration-none text-dark h6"
-          >sasthosebok.com</NuxtLink
+        <NuxtLink to="/" class="text-decoration-none text-dark h6">
+          <span class="fw-bold">
+            {{ $config.uniProject ? "E-pharna" : "sasthosebok.com" }}
+          </span></NuxtLink
         >
         include specialist doctor appointments, dedicated home nursing services,
         instant blood pressure or diabetes tests or nebulizers through Sebok
@@ -53,15 +59,19 @@
         <br />
         You can easily ensure the good health of your family by using the
         digital platform of
-        <NuxtLink to="/" class="text-decoration-none text-dark h6"
-          >sasthosebok.com</NuxtLink
+        <NuxtLink to="/" class="text-decoration-none text-dark h6">
+          <span class="fw-bold">
+            {{ $config.uniProject ? "E-pharna" : "sasthosebok.com" }}
+          </span></NuxtLink
         >
         Because no matter where we live, no matter how we live, first of all the
         happiness and peace of our family and loved ones is real. In order to
         keep our family a little better, we work inhumanly at home and abroad
         with a smile. So come to the digital platform of
-        <NuxtLink to="/" class="text-decoration-none text-dark h6"
-          >sasthosebok.com</NuxtLink
+        <NuxtLink to="/" class="text-decoration-none text-dark h6">
+          <span class="fw-bold">
+            {{ $config.uniProject ? "E-pharna" : "sasthosebok.com" }}
+          </span></NuxtLink
         >
         and keep yourself and your family well.
       </p>

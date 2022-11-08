@@ -11,7 +11,7 @@
                   class="text-dark text-decoration-none"
                 >
                   <i class="icofont-ui-call text-primary"></i>
-                  Call : +8801959970664
+                  {{ $config.uniProject ? "+8801771147384" : "+8801959970664" }}
                 </a>
               </li>
               <li class="list-group-item border-0 small">
@@ -20,12 +20,23 @@
                   class="text-dark text-decoration-none"
                 >
                   <i class="icofont-ui-message text-primary"></i>
-                  <span class="__cf_email__">info@sasthosebok.com</span>
+                  <span class="__cf_email__">
+                    {{
+                      $config.uniProject
+                        ? "info@e-pharma.com"
+                        : "info@sasthosebok.com"
+                    }}
+                  </span>
                 </a>
               </li>
               <li class="list-group-item border-0 small text-dark">
                 <i class="icofont-location-pin text-primary"></i>
-                #533, Kakoli Shoping Center(4th Floor), Zindabazar, Sylhet-3100
+
+                {{
+                  $config.uniProject
+                    ? "Osmaninagar, Sylhet-3100"
+                    : "#533, Kakoli Shoping Center(4th Floor), Zindabazar, Sylhet-3100"
+                }}
               </li>
               <li
                 class="list-group-item border-0 small"
