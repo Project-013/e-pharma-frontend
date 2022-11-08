@@ -3,7 +3,7 @@
     <div class="col-lg-7 col-md-10 col-11 mx-auto py-5">
       <div class="p-4 rounded shadow bg-light border mb-5">
         <h4 class="mb-5">
-          Register as <span style="color: #084298">সেবক পার্টনার !</span>
+          Register as <span style="color: #084298">সেবক পার্টনার!</span>
         </h4>
         <ValidationObserver v-slot="{ handleSubmit }">
           <form

@@ -1,9 +1,11 @@
 <template>
   <header class="sticky-top">
-    <nav class="navbar navbar-expand-lg navbar-white bg-white border-bottom">
+    <nav
+      class="navbar navbar-expand-lg navbar-white bg-white border-bottom py-1"
+    >
       <div class="container">
         <NLink class="navbar-brand text-success" to="/">
-          <img src="../static/img/logo.png" alt="sasthosebok.com" width="50" />
+          <img src="~/static/img/logo.png" alt="sasthosebok.com" width="55" />
           <!-- <p class="small ms-2" style="font-size: 15px">
             জরুরী মুহুর্তে, <br />
             জীবনের প্রয়োজনে
@@ -32,10 +34,11 @@
           <img src="../static/img/icons/menu.svg" alt="me" width="30" />
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mx-auto mt-4 mt-lg-0">
+          <ul class="navbar-nav mx-auto mt-3 mt-lg-0">
             <li class="nav-item">
               <NLink class="nav-link" aria-current="page" to="/"> Home </NLink>
             </li>
+
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -102,7 +105,7 @@
               <NLink class="nav-link" to="/contact-us"> Contact us</NLink>
             </li>
           </ul>
-          <div class="ms-auto">
+          <div class="d-flex justify-content-center">
             <template v-if="$auth.loggedIn">
               <span class="dropdown text-light">
                 <a
@@ -153,7 +156,7 @@
               </span>
             </template>
             <template v-else>
-              <div class="ms-auto">
+              <div class="">
                 <NuxtLink class="" to="/login">
                   <small class="btn btn-outline-dark btn-sm px-4">Login </small>
                 </NuxtLink>
@@ -172,29 +175,10 @@
 <script>
 export default {};
 </script>
-<style>
-.navbar-nav li {
-  margin: 0 5px;
-}
-.dropdown-menu {
-  width: fit-content !important;
-}
-.dropdown:hover > .dropdown-menu {
-  display: block !important;
-}
-.navbar-nav li a {
-  font-weight: 500;
-  color: #4a6f8a;
-  text-transform: capitalize;
-}
-.nav-link,
-.dropdown-item {
-  font-size: 13.5px !important;
-}
-.navbar-nav li a:hover {
-  color: #0046c0;
-}
+<style scoped>
+.dropdown-item:hover,
+.nav-item .nav-link:hover,
 .nuxt-link-exact-active {
-  color: #0046c0;
+  color: var(--secondary-text) !important;
 }
 </style>

@@ -4,7 +4,7 @@
       <div class="p-4 rounded shadow bg-light mb-5 border">
         <h4 class="mb-5">
           Register as
-          <span style="color: #084298">সেবক Nurse/Midwife</span>
+          <span style="color: #084298">সেবক Nurse/Midwife!</span>
         </h4>
         <ValidationObserver v-slot="{ handleSubmit }">
           <form

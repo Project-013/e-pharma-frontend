@@ -19,38 +19,27 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/img/logo.png' },
-      // {
-      //   rel:'stylesheet', href:'/css/bootstrap.min.css'
-      // },
+
     ],
     script: [
-      { src: '/js/bootstrap.bundle.min.js', type: 'text/javascript' },
-
+      // { src: '@static/assets/js/bootstrap.bundle.min.js', type: 'text/javascript' },
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    "@/static/css/style.css",
-    "@/static/assets/css/bootstrap.min.css",
-    // "@/static/assets/css/owl.carousel.css",
-    // "@/static/assets/css/owl.theme.default.min.css",
-    // "@/static/assets/css/meanmenu.css",
     "@/static/assets/css/icofont.min.css",
-    // "@/static/assets/css/slick.min.css",
-    // "@/static/assets/css/slick-theme.min.css",
-    // "@/static/assets/css/magnific-popup.min.css",
-    // "@/static/assets/css/animate.min.css",
-    // "@/static/assets/css/odometer.min.css",
+    "@/static/assets/css/responsive-style.css",
     "@/static/assets/css/style.css",
-    "@/static/assets/css/responsive.css",
-    // "@/static/assets/css/theme-dark.css",
+    // "@/static/assets/css/bootstrap.min.css",
+
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     "~/plugins/vee-validate",
     { src: "~/plugins/highcharts.js", mode: 'client' },
+    { src: '~/plugins/bootstrap.js', mode: 'client' },
     // { src: '~/plugins/vuex-persist.js', mode: 'client' },
 
   ],
@@ -167,8 +156,8 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: 'http://localhost:8000/',
-    // baseURL: 'https://api.sasthosebok.com/'
+    // baseURL: 'http://localhost:8000/',
+    baseURL: 'https://api.sasthosebok.com/'
 
   },
 
@@ -181,10 +170,10 @@ export default {
   // loading: '~/components/LoadingBar.vue',
 
   publicRuntimeConfig: {
-    apibaseURL: 'http://localhost:8000',
-    HostURL: 'http://localhost:3000',
-    // HostURL: 'https://sasthosebok.com/',
-    // apibaseURL: 'https://api.sasthosebok.com/',
+    // apibaseURL: 'http://localhost:8000',
+    // HostURL: 'http://localhost:3000',
+    HostURL: 'https://sasthosebok.com/',
+    apibaseURL: 'https://api.sasthosebok.com/',
     apiToken: "y6&kvg54iu%!tg!aoas9d+$titza-d9w6%*6%f@4v1w5x=l(+9",
   },
 

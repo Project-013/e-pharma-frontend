@@ -1,8 +1,9 @@
 <template>
   <section class="">
-    <PartialsCarousel />
-    <PartialsServices />
-    <PartialsSpeciality />
+    <!-- <PartialsCarousel /> -->
+    <PartialsBanner />
+    <!-- <PartialsServices /> -->
+    <!-- <PartialsSpeciality /> -->
   </section>
 </template>
 

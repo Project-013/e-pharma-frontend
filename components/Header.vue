@@ -4,59 +4,66 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-sm-9 col-lg-9">
-            <div class="header-top-item">
-              <div class="header-top-left">
-                <ul>
-                  <li>
-                    <a href="tel:+8801959970664">
-                      <i class="icofont-ui-call"></i>
-                      Call : +8801959970664
-                    </a>
-                  </li>
-                  <li>
-                    <a href="mailto:info@sasthosebok.com">
-                      <i class="icofont-ui-message"></i>
-                      <span class="__cf_email__">info@sasthosebok.com</span>
-                    </a>
-                    <a class="d-block text-decoration-none text-white"> </a>
-                  </li>
-                  <li>
-                    <i class="icofont-location-pin"></i>
-                    #533, Kakoli Shoping Center(4th Floor), Zindabazar,
-                    Sylhet-3100
-                  </li>
-                  <li v-if="this.$auth.user && this.$auth.user.is_admin">
-                    <NuxtLink to="/admin" class="border px-2 py-1 rounded">
-                      <i class="icofont-dashboard"></i>
-                      Admin Dashboard
-                    </NuxtLink>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <ul class="list-group list-group-horizontal p-0 small">
+              <li class="list-group-item border-0 small">
+                <a
+                  href="tel:+8801959970664"
+                  class="text-dark text-decoration-none"
+                >
+                  <i class="icofont-ui-call text-primary"></i>
+                  Call : +8801959970664
+                </a>
+              </li>
+              <li class="list-group-item border-0 small">
+                <a
+                  href="mailto:info@sasthosebok.com"
+                  class="text-dark text-decoration-none"
+                >
+                  <i class="icofont-ui-message text-primary"></i>
+                  <span class="__cf_email__">info@sasthosebok.com</span>
+                </a>
+              </li>
+              <li class="list-group-item border-0 small text-dark">
+                <i class="icofont-location-pin text-primary"></i>
+                #533, Kakoli Shoping Center(4th Floor), Zindabazar, Sylhet-3100
+              </li>
+              <li
+                class="list-group-item border-0 small"
+                v-if="this.$auth.user && this.$auth.user.is_admin"
+              >
+                <NuxtLink to="/admin" class="border px-2 py-1 rounded">
+                  <i class="icofont-dashboard"></i>
+                  Admin Dashboard
+                </NuxtLink>
+              </li>
+            </ul>
           </div>
-          <div class="col-sm-3 col-lg-3">
-            <div class="header-top-item">
-              <div class="header-top-right">
-                <ul>
-                  <li>
-                    <a href="#">
-                      <i class="icofont-facebook"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="icofont-twitter"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="icofont-pinterest"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+          <div class="col-sm-3 col-lg-3 d-flex justify-content-end">
+            <ul class="list-group list-group-horizontal">
+              <li class="list-group-item border-0 text-dark px-2">
+                <a
+                  href="https://www.facebook.com/sasthosebok"
+                  target="_blank"
+                  class="social-icon text-decoration-none"
+                >
+                  <i class="icofont-facebook"></i>
+                </a>
+              </li>
+              <li class="list-group-item border-0 small text-dark px-0">
+                <a
+                  href="https://www.youtube.com/channel/UCR63fQJagOYOOiZUUiiz5yg"
+                  target="_blank"
+                  class="social-icon text-decoration-none"
+                >
+                  <i class="icofont-youtube"></i>
+                </a>
+              </li>
+              <li class="list-group-item border-0 small text-dark px-2">
+                <a href="#" class="social-icon text-decoration-none">
+                  <i class="icofont-instagram"></i>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

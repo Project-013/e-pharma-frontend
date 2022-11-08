@@ -2,7 +2,6 @@
   <div class="root">
     <Header />
     <Navbar />
-
     <Nuxt />
     <Footer />
   </div>
@@ -12,8 +11,4 @@
 export default {};
 </script>
 
-<style scoped>
-.root {
-  /* margin: 110000 !important; */
-}
-</style>
+<style scoped></style>
