@@ -3,7 +3,11 @@
     <div class="container pb-3">
       <div class="row">
         <div class="col-lg-3 col-md-6 mb-4">
-          <h5 class="text-uppercase">sasthosebok.com</h5>
+          <h5 class="text-uppercase">
+            <span class="fw-bold">
+              {{ $config.uniProject ? "E-health" : "sasthosebok.com" }}
+            </span>
+          </h5>
 
           <div class="contact-info">
             <ul class="list-unstyled p-0">
@@ -116,17 +120,17 @@
           <h5>Quick Links</h5>
           <ul class="link-widget p-0">
             <li>
-              <NuxtLink to="about">About us</NuxtLink>
+              <NuxtLink to="about" class="text-light">About us</NuxtLink>
             </li>
             <li>
-              <a href="#">Blog</a>
+              <a href="#" class="text-light">Blog</a>
             </li>
 
             <li>
-              <NuxtLink to="/faq">FAQ</NuxtLink>
+              <NuxtLink to="/faq" class="text-light">FAQ</NuxtLink>
             </li>
             <li>
-              <a href="#">Contact us</a>
+              <a href="#" class="text-light">Contact us</a>
             </li>
             <li>
               <NuxtLink to="/privacy-policy" class="text-light">
@@ -182,16 +186,17 @@
         Copyright &copy;
         <a href="https://sasthosebok.com/" class="">
           <span class="fw-bold">
-            {{ $config.uniProject ? "E-pharna" : "sasthosebok.com" }}
+            {{ $config.uniProject ? "E-health" : "sasthosebok.com" }}
           </span>
         </a>
-        All Rights Reserved, developed by
+        All Rights Reserved,
+        <!-- developed by
         <a
           href="https://www.linkedin.com/in/sajibsd013/"
           target="_blank"
           class=""
           >Sajib Sutradhar</a
-        >
+        > -->
       </small>
     </div>
   </section>

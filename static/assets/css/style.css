@@ -132,16 +132,6 @@ p {
   line-height: 1.625rem;
 }
 
-.card {
-  border-radius: 0.625rem;
-  background-color: var(--bg-white);
-  box-shadow: 0.5084rem 1.1419rem 2.5rem 0 rgb(0 0 0 / 8%);
-  padding: 3.75rem 3.125rem 4.6875rem;
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
-  border: 0;
-}
-
 @keyframes movebounce {
   0% {
     -webkit-transform: translateY(0);
@@ -167,7 +157,7 @@ p {
 .nav-item .nav-link {
   font-size: 1.125rem;
   font-weight: 400;
-  color: var(--primary-text);
+  color: var(--primary-text) !important;
   font-family: var(--secondary-font);
   text-transform: capitalize;
   font-size: 15px !important;
@@ -175,7 +165,7 @@ p {
 }
 .dropdown-menu {
   width: fit-content !important;
-  margin: 0 auto;
+  margin: 0 auto !important;
   padding: 0 !important;
 }
 .dropdown:hover > .dropdown-menu {

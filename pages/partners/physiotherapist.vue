@@ -3,7 +3,7 @@
     <div class="col-lg-7 col-md-10 col-11 mx-auto py-5">
       <div class="p-4 rounded shadow bg-light mb-5 border">
         <h4 class="mb-5">
-          Register as <span style="color: #084298">সেবক Physiotherapist!</span>
+          Register as <span style="color: #084298"> Physiotherapist!</span>
         </h4>
         <ValidationObserver v-slot="{ handleSubmit }">
           <form
@@ -11,7 +11,7 @@
             @submit.prevent="handleSubmit(submitForm)"
           >
             <div class="col-12">
-              <label for="" class="form-label">Name of Caregiver </label>
+              <label for="" class="form-label">Name of Physiotherapist </label>
 
               <input
                 v-model="form_data.name"
@@ -448,6 +448,8 @@ export default {
               const err_data = error.response.data;
               if (err_data.mobile || err_data.nid) {
                 this.$toast.error("Already Registered!");
+              } else {
+                this.$toast.error("Error found! Try again");
               }
             } else {
               this.$toast.error("Error found! Try again");

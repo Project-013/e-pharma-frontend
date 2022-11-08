@@ -4,7 +4,7 @@
       <div class="p-4 rounded shadow bg-light mb-5 border">
         <h4 class="mb-5">
           Register as
-          <span style="color: #084298">সেবক Nurse/Midwife!</span>
+          <span style="color: #084298"> Nurse/Midwife!</span>
         </h4>
         <ValidationObserver v-slot="{ handleSubmit }">
           <form
@@ -474,6 +474,8 @@ export default {
               const err_data = error.response.data;
               if (err_data.mobile || err_data.nid) {
                 this.$toast.error("Already Registered!");
+              } else {
+                this.$toast.error("Error found! Try again");
               }
             } else {
               this.$toast.error("Error found! Try again");

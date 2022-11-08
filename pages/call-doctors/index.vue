@@ -25,7 +25,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6" v-if="!$config.uniProject">
         <iframe
           width="560"
           height="315"

@@ -9,7 +9,7 @@
       <p class="text-justify small">
         <NuxtLink to="/" class="text-decoration-none text-dark h6">
           <span class="fw-bold">
-            {{ $config.uniProject ? "E-pharna" : "sasthosebok.com" }}
+            {{ $config.uniProject ? "E-health" : "sasthosebok.com" }}
           </span></NuxtLink
         >
         is a complete online service oriented healthcare organization. The
@@ -38,7 +38,7 @@
         in this matter. Just like this,
         <NuxtLink to="/" class="text-decoration-none text-dark h6">
           <span class="fw-bold">
-            {{ $config.uniProject ? "E-pharna" : "sasthosebok.com" }}
+            {{ $config.uniProject ? "E-health" : "sasthosebok.com" }}
           </span></NuxtLink
         >
         is very close to you and your family in digital solution of various
@@ -48,7 +48,7 @@
         All the digital healthcare services you can enjoy through
         <NuxtLink to="/" class="text-decoration-none text-dark h6">
           <span class="fw-bold">
-            {{ $config.uniProject ? "E-pharna" : "sasthosebok.com" }}
+            {{ $config.uniProject ? "E-health" : "sasthosebok.com" }}
           </span></NuxtLink
         >
         include specialist doctor appointments, dedicated home nursing services,
@@ -61,7 +61,7 @@
         digital platform of
         <NuxtLink to="/" class="text-decoration-none text-dark h6">
           <span class="fw-bold">
-            {{ $config.uniProject ? "E-pharna" : "sasthosebok.com" }}
+            {{ $config.uniProject ? "E-health" : "sasthosebok.com" }}
           </span></NuxtLink
         >
         Because no matter where we live, no matter how we live, first of all the
@@ -70,7 +70,7 @@
         with a smile. So come to the digital platform of
         <NuxtLink to="/" class="text-decoration-none text-dark h6">
           <span class="fw-bold">
-            {{ $config.uniProject ? "E-pharna" : "sasthosebok.com" }}
+            {{ $config.uniProject ? "E-health" : "sasthosebok.com" }}
           </span></NuxtLink
         >
         and keep yourself and your family well.

@@ -23,7 +23,7 @@
                   <span class="__cf_email__">
                     {{
                       $config.uniProject
-                        ? "info@e-pharma.com"
+                        ? "info@e-health.com"
                         : "info@sasthosebok.com"
                     }}
                   </span>

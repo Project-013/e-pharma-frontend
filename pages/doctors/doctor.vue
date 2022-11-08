@@ -175,7 +175,8 @@ export default {
           }
         })
         .catch((error) => {
-          this.$router.push("/doctors");
+          console.log(error.response);
+          // this.$router.push("/doctors");
           console.log(error.response.data.message || error.message);
           // context.commit('error', error)
         });

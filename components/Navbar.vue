@@ -128,10 +128,7 @@
                     width="35"
                   />
                 </a>
-                <ul
-                  class="dropdown-menu dropdown-menu-end mt-3"
-                  aria-labelledby=""
-                >
+                <ul class="dropdown-menu mt-3" aria-labelledby="">
                   <li>
                     <NuxtLink to="/profile" class="dropdown-item">
                       Profile

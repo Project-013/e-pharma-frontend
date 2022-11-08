@@ -2,7 +2,7 @@
   <div class="row justify-content-center justify-content-md-start g-5">
     <template v-for="(doctor, index) in doctors">
       <div class="col-lg-3 col-md-4 col-11" :key="index">
-        <div class="card h-100 shadow">
+        <div class="card h-100 shadow p-0">
           <NuxtLink :to="'/doctors/doctor/?id=' + doctor.id">
             <img
               :src="$config.apibaseURL + doctor.image_url"

@@ -3,7 +3,7 @@
     <div class="col-lg-8 col-md-10 col-11 mx-auto py-5">
       <div class="p-4 rounded shadow border bg-light mb-5">
         <h4 class="mb-5">
-          Register as <span style="color: #084298">সেবক Caregiver!</span>
+          Register as <span style="color: #084298"> Caregiver!</span>
         </h4>
         <ValidationObserver v-slot="{ handleSubmit }">
           <form
@@ -421,6 +421,8 @@ export default {
               const err_data = error.response.data;
               if (err_data.mobile || err_data.nid) {
                 this.$toast.error("Already Registered!");
+              } else {
+                this.$toast.error("Error found! Try again");
               }
             } else {
               this.$toast.error("Error found! Try again");

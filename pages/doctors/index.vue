@@ -8,6 +8,7 @@
             দক্ষ চিকিৎসক ও রোগীর দূরত্ব কমিয়ে উন্নত স্বাস্থ্যপরামর্শ উন্মুক্ত
             করার লক্ষ্যে
           </p>
+
           <div class="search_box mb-4">
             <div class="d-flex align-items-center px-2 rounded">
               <img
@@ -25,7 +26,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6" v-if="!$config.uniProject">
         <iframe
           width="560"
           height="315"

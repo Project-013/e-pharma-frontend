@@ -8,13 +8,15 @@
             <h1 class="heading_2">Services Is Our Commitment</h1>
             <p class="small">
               <span class="fw-bold">
-                {{ $config.uniProject ? "E-pharna" : "sasthosebok.com" }}
+                {{ $config.uniProject ? "E-health" : "sasthosebok.com" }}
               </span>
               is a complete online service oriented healthcare organization. The
               purpose of which is to ensure digital healthcare to the people of
               the country...
             </p>
-            <a href="#" class="main-btn mt-4 fill-btn">Appointment</a>
+            <NuxtLink to="/doctors" class="main-btn mt-4 fill-btn"
+              >Appointment</NuxtLink
+            >
             <NuxtLink to="/about" class="main-btn mt-4 ms-3"
               >Learn More</NuxtLink
             >
@@ -52,11 +54,12 @@
 
         <div class="row g-3 g-md-5 justify-content-center">
           <div class="col-lg-3 col-md-4 col-6">
-            <img
-              src="~/static/img/services/s1.svg"
-              class="w-100 p-0 pointer rounded-3 shadow service-image"
-              title="Coming Soon"
-            />
+            <NuxtLink to="/doctors">
+              <img
+                src="~/static/img/services/s1.svg"
+                class="w-100 p-0 pointer rounded-3 shadow service-image"
+              />
+            </NuxtLink>
           </div>
           <div class="col-lg-3 col-md-4 col-6">
             <img

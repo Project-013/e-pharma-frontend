@@ -4,7 +4,7 @@
       <div class="p-4 rounded shadow bg-light border mb-5">
         <h4 class="mb-5">
           Register as
-          <span style="color: #084298">সেবক সেবক DMF/CP! </span>
+          <span style="color: #084298"> DMF/CP! </span>
         </h4>
         <ValidationObserver v-slot="{ handleSubmit }">
           <form
@@ -12,7 +12,7 @@
             @submit.prevent="handleSubmit(submitForm)"
           >
             <div class="col-12">
-              <label for=" " class="form-label">Name of Doctor</label>
+              <label for=" " class="form-label">Name of DMF/CP</label>
               <input
                 v-model="form_data.name"
                 id="name"
@@ -527,6 +527,8 @@ export default {
               const err_data = error.response.data;
               if (err_data.mobile) {
                 this.$toast.error("Already Registered!");
+              } else {
+                this.$toast.error("Error found! Try again");
               }
             } else {
               this.$toast.error("Error found! Try again");
