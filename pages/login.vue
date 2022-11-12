@@ -171,6 +171,7 @@ export default {
         }, 1000);
       }
     },
+
     async sendOTP() {
       this.disable_btn = true;
       const data = {
@@ -178,18 +179,31 @@ export default {
         type: this.form_data.type,
       };
 
-      this.$store.commit("auth_state/setLoginForm", { ...this.form_data });
+      // this.$store.commit("auth_state/setLoginForm", { ...this.form_data });
 
       try {
-        const response = await this.$axios.post("send-otp/", data);
-        if (response.status === 201) {
-          this.form_data.otp_status = true;
-          this.form_data.count_down = 180;
-          this.countDownTimer();
-          this.$store.commit(" auth_state/setLoginForm", { ...this.form_data });
-
-          this.$toast.info("Please enter verification code... ");
-        }
+        this.$axios
+          .post(`send-otp/`, data, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          .then((res) => {
+            console.log(res);
+            if (res.status === 201) {
+              console.log(res.data);
+              this.$toast.info("Please enter verification code... ");
+              this.form_data.otp_status = true;
+              this.form_data.count_down = 180;
+              this.countDownTimer();
+            }
+            this.$nuxt.$loading.finish();
+          })
+          .catch((error) => {
+            console.log(error);
+            this.$nuxt.$loading.finish();
+            console.log(error.message || error.response.data.message);
+          });
       } catch (e) {
         console.log(e.response);
         this.$toast.error("Error Found! Try again...");

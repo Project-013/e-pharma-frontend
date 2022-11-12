@@ -225,20 +225,17 @@ export default {
         type: this.form_data.type,
       };
 
-      this.$store.commit("auth_state/setRegiForm", { ...this.form_data });
-
       try {
         const response = await this.$axios.post("send-otp/", data);
         if (response.status === 201) {
           this.form_data.otp_status = true;
           this.form_data.count_down = 180;
           this.countDownTimer();
-          this.$store.commit("auth_state/setRegiForm", { ...this.form_data });
 
           this.$toast.info("Please enter OTP... ");
         }
       } catch (e) {
-        console.log(e.response);
+        console.log(e);
 
         this.$toast.error("Error Found! Try again...");
       }

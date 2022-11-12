@@ -69,7 +69,8 @@ export const state = () => ({
 
   export const actions = {
     async getAddress({commit}) {
-      const API_URL = HostURL+'/data/city.json';
+      const API_URL =  window.location.origin+'/data/city.json';
+      console.log(window.location.origin);
 
     
         await this.$axios
@@ -84,7 +85,6 @@ export const state = () => ({
           .then((res) => {
             if (res.status === 200) {
                 commit('setAddress', res.data)
-                
             }
           })
           .catch((error) => {
@@ -96,7 +96,7 @@ export const state = () => ({
   
     async getSpesialistList({commit}) {
       console.log("Calling....");
-      const API_URL = HostURL+'/data/data.json';
+      const API_URL = window.location.origin+'/data/data.json';
       console.log(API_URL);
 
 

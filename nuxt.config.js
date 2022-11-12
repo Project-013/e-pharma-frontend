@@ -8,6 +8,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'sasthosebok.com || স্বাস্থ্যসেবক',
+    // title: 'E-Health',
     htmlAttrs: {
       lang: 'en'
     },
@@ -171,13 +172,11 @@ export default {
 
   publicRuntimeConfig: {
     // apibaseURL: 'http://localhost:8000',
-    // HostURL: 'http://localhost:3000',
-    HostURL: 'https://sasthosebok.com/',
     apibaseURL: 'https://api.sasthosebok.com/',
     apiToken: "y6&kvg54iu%!tg!aoas9d+$titza-d9w6%*6%f@4v1w5x=l(+9",
     // type: "v1",
     uniProject: false,
-
+    isApp: false
   },
 
 }

@@ -1,161 +1,66 @@
 <template>
-  <section class="services-area pb-70">
-    <div class="container">
-      <div class="section-title-two">
-        <span>Services</span>
-        <h2>Our Services</h2>
-      </div>
-      <div class="row">
-        <div class="col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay=".3s">
-          <div class="service-item">
-            <div class="d-table">
-              <div class="d-table-cell">
-                <div class="service-front">
-                  <i class="icofont-doctor"></i>
-                  <h3>Expert Doctor</h3>
-                  <p>Coming Soon</p>
-                </div>
-                <div class="service-end">
-                  <i class="icofont-doctor"></i>
-                  <h3>Expert Doctor</h3>
-                  <p>Coming Soon</p>
-                  <a href="#" class="btn btn-outline-dark">View</a>
-                </div>
-              </div>
-            </div>
+  <section class="container">
+    <div class="wrapper pt-5">
+      <div class="container">
+        <h3 class="text-dark" v-if="!$config.isApp">Our Services</h3>
+
+        <div class="row g-3 g-md-5 justify-content-center">
+          <div class="col-lg-3 col-md-4 col-6">
+            <NuxtLink to="/doctors">
+              <img
+                src="~/static/img/services/s1.svg"
+                class="w-100 p-0 pointer rounded-3 shadow service-image"
+              />
+            </NuxtLink>
           </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay=".5s">
-          <div class="service-item">
-            <div class="d-table">
-              <div class="d-table-cell">
-                <div class="service-front">
-                  <i class="icofont-prescription"></i>
-                  <h3>Diagnosis</h3>
-                  <p>Coming Soon</p>
-                </div>
-                <div class="service-end">
-                  <i class="icofont-prescription"></i>
-                  <h3>Diagnosis</h3>
-                  <p>Coming Soon</p>
-                  <a href="#" class="btn btn-outline-dark">View</a>
-                </div>
-              </div>
-            </div>
+          <div class="col-lg-3 col-md-4 col-6">
+            <img
+              src="~/static/img/services/s2.svg"
+              class="w-100 p-0 pointer rounded-3 shadow service-image"
+              title="Coming Soon"
+            />
           </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay=".7s">
-          <div class="service-item">
-            <div class="d-table">
-              <div class="d-table-cell">
-                <div class="service-front">
-                  <i class="icofont-patient-file"></i>
-                  <h3>Pathology</h3>
-                  <p>Coming Soon</p>
-                </div>
-                <div class="service-end">
-                  <i class="icofont-patient-file"></i>
-                  <h3>Pathology</h3>
-                  <p>Coming Soon</p>
-                  <a href="#" class="btn btn-outline-dark">View</a>
-                </div>
-              </div>
-            </div>
+          <div class="col-lg-3 col-md-4 col-6">
+            <img
+              src="~/static/img/services/s3.svg"
+              class="w-100 p-0 pointer rounded-3 shadow service-image"
+              title="Coming Soon"
+            />
           </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay=".9s">
-          <div class="service-item">
-            <div class="d-table">
-              <div class="d-table-cell">
-                <div class="service-front">
-                  <i class="icofont-tooth"></i>
-                  <h3>Dental Care</h3>
-                  <p>Coming Soon</p>
-                </div>
-                <div class="service-end">
-                  <i class="icofont-tooth"></i>
-                  <h3>Dental Care</h3>
-                  <p>Coming Soon</p>
-                  <a href="#" class="btn btn-outline-dark">View</a>
-                </div>
-              </div>
-            </div>
+          <div class="col-lg-3 col-md-4 col-6">
+            <img
+              src="~/static/img/services/s4.svg"
+              class="w-100 p-0 pointer rounded-3 shadow service-image"
+              title="Coming Soon"
+            />
           </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay=".3s">
-          <div class="service-item">
-            <div class="d-table">
-              <div class="d-table-cell">
-                <div class="service-front">
-                  <i class="icofont-heart-beat-alt"></i>
-                  <h3>Cardiology</h3>
-                  <p>Coming Soon</p>
-                </div>
-                <div class="service-end">
-                  <i class="icofont-heart-beat-alt"></i>
-                  <h3>Cardiology</h3>
-                  <p>Coming Soon</p>
-                  <a href="#" class="btn btn-outline-dark">View</a>
-                </div>
-              </div>
-            </div>
+          <div class="col-lg-3 col-md-4 col-6">
+            <img
+              src="~/static/img/services/s5.svg"
+              class="w-100 p-0 pointer rounded-3 shadow service-image"
+              title="Coming Soon"
+            />
           </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay=".5s">
-          <div class="service-item">
-            <div class="d-table">
-              <div class="d-table-cell">
-                <div class="service-front">
-                  <i class="icofont-drug"></i>
-                  <h3>Medicine</h3>
-                  <p>Coming Soon</p>
-                </div>
-                <div class="service-end">
-                  <i class="icofont-drug"></i>
-                  <h3>Medicine</h3>
-                  <p>Coming Soon</p>
-                  <a href="#" class="btn btn-outline-dark">View</a>
-                </div>
-              </div>
-            </div>
+          <div class="col-lg-3 col-md-4 col-6">
+            <img
+              src="~/static/img/services/s6.svg"
+              class="w-100 p-0 pointer rounded-3 shadow service-image"
+              title="Coming Soon"
+            />
           </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay=".7s">
-          <div class="service-item">
-            <div class="d-table">
-              <div class="d-table-cell">
-                <div class="service-front">
-                  <i class="icofont-dna-alt-1"></i>
-                  <h3>Neurology</h3>
-                  <p>Coming Soon</p>
-                </div>
-                <div class="service-end">
-                  <i class="icofont-dna-alt-1"></i>
-                  <h3>Neurology</h3>
-                  <p>Coming Soon</p>
-                  <a href="#" class="btn btn-outline-dark">View</a>
-                </div>
-              </div>
-            </div>
+          <div class="col-lg-3 col-md-4 col-6">
+            <img
+              src="~/static/img/services/s7.svg"
+              class="w-100 p-0 pointer rounded-3 shadow service-image"
+              title="Coming Soon"
+            />
           </div>
-        </div>
-        <div class="col-sm-6 col-lg-3 wow fadeInUp" data-wow-delay=".9s">
-          <div class="service-item">
-            <div class="d-table">
-              <div class="d-table-cell">
-                <div class="service-front">
-                  <i class="icofont-ambulance-cross"></i>
-                  <h3>Ambulance</h3>
-                  <p>Coming Soon</p>
-                </div>
-                <div class="service-end">
-                  <i class="icofont-ambulance-cross"></i>
-                  <h3>Ambulance</h3>
-                  <p>Coming Soon</p>
-                  <a href="#" class="btn btn-outline-dark">View</a>
-                </div>
-              </div>
-            </div>
+          <div class="col-lg-3 col-md-4 col-6">
+            <img
+              src="~/static/img/services/s8.svg"
+              class="w-100 p-0 pointer rounded-3 shadow service-image"
+              title="Coming Soon"
+            />
           </div>
         </div>
       </div>

@@ -1,8 +1,10 @@
 <template>
   <section class="main-body">
+    <!-- <img src="~/static/img/partners/doctor.png" height="100px" alt="Doctors" /> -->
+
     <div class="col-lg-7 col-md-10 col-11 mx-auto py-5">
       <div class="p-4 rounded shadow bg-light border mb-5">
-        <h4 class="mb-5">
+        <h4 class="mb-3">
           Register as
           <span style="color: #084298"> Doctor! </span>
         </h4>
@@ -469,12 +471,8 @@
               </ValidationProvider>
             </div>
 
-            <div class="col-12">
-              <label
-                for="formFile"
-                class="d-block text-center"
-                style="cursor: pointer"
-              >
+            <div class="col-12 d-flex justify-content-center">
+              <label for="formFile" class="text-center" style="cursor: pointer">
                 <img
                   v-if="previewImage"
                   :src="previewImage"
@@ -520,7 +518,7 @@
               <textarea
                 v-model="form_data.short_description"
                 id="details"
-                class="is-invalid form-control form-control-sm"
+                class="form-control form-control-sm"
                 rows="2"
                 required
               ></textarea>

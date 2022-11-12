@@ -53,6 +53,7 @@ export default {
           }
         })
         .catch((error) => {
+          console.log(error.response);
           console.log(error.response.data.message || error.message);
           // context.commit('error', error)
         });
