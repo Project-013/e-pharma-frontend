@@ -163,7 +163,7 @@ export default {
   methods: {
     async getDoctors() {
       await this.$axios
-        .get(`specialist-doctors/${this.$route.query.id}`, {
+        .get(`patners/doctor/${this.$route.query.id}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + this.$config.apiToken,
