@@ -83,7 +83,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+  mounted(){
+    // console.log(this.$auth);
+  }
+
+};
 </script>
 
 <style></style>

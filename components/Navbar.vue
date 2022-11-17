@@ -56,11 +56,6 @@
                   </NLink>
                 </li>
                 <li>
-                  <NLink class="dropdown-item" to="/call-doctors">
-                    Call Doctorts
-                  </NLink>
-                </li>
-                <li>
                   <NLink class="dropdown-item" to="/caregivers">
                     Find Caregivers
                   </NLink>
@@ -88,14 +83,9 @@
                     Find Doctorts
                   </NLink>
                 </li>
-                <li>
-                  <NLink class="dropdown-item" to="/call-doctors">
-                    Call Doctorts
-                  </NLink>
-                </li>
               </ul>
             </li>
-            <li class="nav-item">
+            <li class="nav-item d-none">
               <NLink class="nav-link" to="/blog"> Blog </NLink>
             </li>
             <li class="nav-item">

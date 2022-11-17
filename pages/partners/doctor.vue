@@ -401,7 +401,6 @@
               <label for=" " class="form-label"
                 >Insititute/Chamber Address</label
               >
-
               <input
                 v-model="form_data.institution_or_chamber_address"
                 id=" nid"
@@ -411,23 +410,43 @@
             </div>
 
             <div class="col-md-6">
-              <label for=" " class="form-label">Mobile No</label>
-              <ValidationProvider
-                rules="required|numeric|length:11"
-                v-slot="{ errors }"
-              >
-                <input
-                  type="number"
-                  required
-                  class="form-control form-control-sm is-invalid"
-                  placeholder="01XXXXXXXXX"
-                  aria-label="phone"
-                  v-model="form_data.mobile"
-                />
-                <div class="invalid-feedback">
-                  {{ errors[0] }}
-                </div>
-              </ValidationProvider>
+              <label for="" class="form-label">Mobile No</label>
+              <div class="d-flex">
+                <select
+                  class="form-select form-select-sm"
+                  v-model="country_code"
+                  style="width: 110px"
+                >
+                  <template v-for="(c, index) in countryCode">
+                    <option :value="c.dial_code" :key="index">
+                      {{ c.dial_code }}
+                      ({{ c.code }})
+                    </option>
+                  </template>
+
+                  <template v-if="countryCode.length == 0">
+                    <option value="+880">+880</option>
+                  </template>
+                </select>
+
+                <ValidationProvider
+                  rules="required|numeric|length:10"
+                  v-slot="{ errors }"
+                  class="w-100"
+                >
+                  <input
+                    type="number"
+                    required
+                    class="form-control form-control-sm is-invalid"
+                    placeholder="1XXXXXXXXX"
+                    aria-label="phone"
+                    v-model="mobile"
+                  />
+                  <div class="invalid-feedback">
+                    {{ errors[0] }}
+                  </div>
+                </ValidationProvider>
+              </div>
             </div>
             <div class="col-md-6">
               <label for=" " class="form-label">Payment Method</label>
@@ -566,6 +585,9 @@ export default {
   data() {
     return {
       previewImage: null,
+      mobile: "",
+      country_code: "+880",
+
       form_data: {
         mobile: "",
         name: "",
@@ -664,6 +686,9 @@ export default {
 
       return area;
     },
+    countryCode() {
+      return this.$store.getters["CountryCode"];
+    },
   },
 
   methods: {
@@ -682,6 +707,7 @@ export default {
       if (this.others_q && !this.qualicifacions.includes(this.others_q)) {
         this.qualicifacions.push(this.others_q);
       }
+      this.form_data.mobile = this.country_code + this.mobile;
       this.form_data.working_area = this.working_area.toString();
       this.form_data.working_days_chamber = this.working_days_c.toString();
       this.form_data.working_days_home_call = this.working_days_h.toString();
@@ -701,7 +727,7 @@ export default {
         this.$nuxt.$loading.start();
         this.disable_btn = true;
         this.$axios
-          .post(`patners/doctor-regi/`, formData, {
+          .post(`patners/doctor/`, formData, {
             headers: {
               "Content-Type": "multipart/form-data",
             },
@@ -738,6 +764,7 @@ export default {
   mounted() {
     this.$store.dispatch("data/getAddress");
     this.$store.dispatch("data/getSpesialistList");
+    this.$store.dispatch("getCountryCodes");
   },
 };
 </script>

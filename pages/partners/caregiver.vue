@@ -77,26 +77,46 @@
               </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-6">
               <label for="" class="form-label">Mobile No</label>
-              <ValidationProvider
-                rules="required|numeric|length:11"
-                v-slot="{ errors }"
-              >
-                <input
-                  type="number"
-                  required
-                  class="form-control form-control-sm is-invalid"
-                  placeholder="01XXXXXXXXX"
-                  aria-label="phone"
-                  v-model="form_data.mobile"
-                />
-                <div class="invalid-feedback">
-                  {{ errors[0] }}
-                </div>
-              </ValidationProvider>
+              <div class="d-flex">
+                <select
+                  class="form-select form-select-sm"
+                  v-model="country_code"
+                  style="width: 110px"
+                >
+                  <template v-for="(c, index) in countryCode">
+                    <option :value="c.dial_code" :key="index">
+                      {{ c.dial_code }}
+                      ({{ c.code }})
+                    </option>
+                  </template>
+
+                  <template v-if="countryCode.length == 0">
+                    <option value="+880">+880</option>
+                  </template>
+                </select>
+
+                <ValidationProvider
+                  rules="required|numeric|length:10"
+                  v-slot="{ errors }"
+                  class="w-100"
+                >
+                  <input
+                    type="number"
+                    required
+                    class="form-control form-control-sm is-invalid"
+                    placeholder="1XXXXXXXXX"
+                    aria-label="phone"
+                    v-model="mobile"
+                  />
+                  <div class="invalid-feedback">
+                    {{ errors[0] }}
+                  </div>
+                </ValidationProvider>
+              </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <label for="nid" class="form-label">NID No </label>
 
               <input
@@ -107,7 +127,7 @@
                 required
               />
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <label for=" " class="form-label">Select city</label>
               <select
                 class="form-select form-select-sm"
@@ -342,11 +362,17 @@ export default {
 
       return area;
     },
+    countryCode() {
+      return this.$store.getters["CountryCode"];
+    },
   },
 
   data() {
     return {
       previewImage: null,
+      mobile: "",
+      country_code: "+880",
+
       form_data: {
         mobile: "",
         name: "",
@@ -387,6 +413,8 @@ export default {
       };
     },
     async submitForm() {
+      this.form_data.mobile = this.country_code + this.mobile;
+
       this.form_data.working_area = this.working_area.toString();
       this.form_data.working_days = this.working_days.toString();
       this.form_data.qualicifacions = this.qualicifacions.toString();
@@ -435,6 +463,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch("data/getAddress");
+    this.$store.dispatch("getCountryCodes");
   },
 };
 </script>

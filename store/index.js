@@ -28,7 +28,7 @@ export const state = () => ({
           )
           .then((res) => {
             if (res.status === 200) {
-                commit('setCountryCode', res.data)
+                commit('setCountryCodes', res.data)
             }
           })
           .catch((error) => {
