@@ -1,32 +1,42 @@
 <template>
-  <div @drop.prevent="onDrop" class="my-5 bg-dark">
-    <slot></slot>
+  <div class="card text-center m-3">
+    <h3 class="card-header">Vue.js Pagination Tutorial & Example</h3>
+    <div class="card-body">
+      <div v-for="item in pageOfItems" :key="item.id">{{ item.name }}</div>
+    </div>
+    <div class="card-footer pb-0 pt-3">
+      <jw-pagination
+        :items="exampleItems"
+        :pageSize="12"
+        @changePage="onChangePage"
+      ></jw-pagination>
+    </div>
   </div>
 </template>
 
-<script setup>
-import { onMounted, onUnmounted } from "vue";
-const emit = defineEmits(["files-dropped"]);
+<script>
+// an example array of items to be paged
+const exampleItems = [...Array(150).keys()].map((i) => ({
+  id: i + 1,
+  name: "Item " + (i + 1),
+}));
+import JwPagination from "jw-vue-pagination";
+export default {
+  components: {
+    JwPagination,
+  },
 
-function onDrop(e) {
-  emit("files-dropped", [...e.dataTransfer.files]);
-}
-
-function preventDefaults(e) {
-  e.preventDefault();
-}
-
-const events = ["dragenter", "dragover", "dragleave", "drop"];
-
-onMounted(() => {
-  events.forEach((eventName) => {
-    document.body.addEventListener(eventName, preventDefaults);
-  });
-});
-
-onUnmounted(() => {
-  events.forEach((eventName) => {
-    document.body.removeEventListener(eventName, preventDefaults);
-  });
-});
+  data() {
+    return {
+      exampleItems,
+      pageOfItems: [],
+    };
+  },
+  methods: {
+    onChangePage(pageOfItems) {
+      // update page of items
+      this.pageOfItems = pageOfItems;
+    },
+  },
+};
 </script>

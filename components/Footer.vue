@@ -82,7 +82,7 @@
               </NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/partners/dmf-doctor" class="text-light">
+              <NuxtLink to="/partners/dmf-doctor" class="text-light d-none">
                 Register as DMF/CP
               </NuxtLink>
             </li>
@@ -123,14 +123,12 @@
               <NuxtLink to="about" class="text-light">About us</NuxtLink>
             </li>
             <li>
-              <a href="#" class="text-light">Blog</a>
-            </li>
-
-            <li>
-              <NuxtLink to="/faq" class="text-light">FAQ</NuxtLink>
+              <NuxtLink to="/faq" class="text-light">FAQs</NuxtLink>
             </li>
             <li>
-              <a href="#" class="text-light">Contact us</a>
+              <NuxtLink to="/contact-us" class="text-light"
+                >Contact us</NuxtLink
+              >
             </li>
             <li>
               <NuxtLink to="/privacy-policy" class="text-light">
@@ -189,14 +187,13 @@
             {{ $config.uniProject ? "E-health" : "sasthosebok.com" }}
           </span>
         </a>
-        All Rights Reserved,
-        <!-- developed by
+        All Rights Reserved, developed by
         <a
           href="https://www.linkedin.com/in/sajibsd013/"
           target="_blank"
           class=""
           >Sajib Sutradhar</a
-        > -->
+        >
       </small>
     </div>
   </section>
