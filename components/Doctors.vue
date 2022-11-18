@@ -6,7 +6,7 @@
       <div
         v-for="doctor in pageOfItems"
         :key="doctor.id"
-        class="col-lg-3 col-md-2 col-6 p-sm-3 p-1"
+        class="col-lg-3 col-md-4 col-6 p-sm-3 p-1"
       >
         <div class="card h-100 shadow p-0 m-0">
           <NuxtLink :to="'/doctors/doctor/?id=' + doctor.id">
@@ -16,30 +16,30 @@
               class="w-100"
             />
           </NuxtLink>
-          <div class="card-body pb-0">
-            <small class="text-success mt-0 pt-0 d-block mb-2 fw-semibold">{{
-              doctor.specialty
-            }}</small>
-            <h5 class="mb-0 fw-bold" style="color: #2b325c">
+          <div class="card-body pb-1">
+            <h5 class="mb-0 fw-bold text-uppercase" style="color: #2b325c">
               {{ doctor.name }}
             </h5>
-            <p class="fst-italic">
+            <p class="text-muted small mb-0 pb-0">
               {{ doctor.qualicifacions }}
             </p>
+            <small class="text-success fw-semibold mt-0 pt-0">{{
+              doctor.specialty
+            }}</small>
+
+            <!-- <p>
+              Consultation Fee:
+              <span class="fw-semibold"
+                ><span class="fw-bold" style="font-size: 24px">৳</span>800</span
+              >
+            </p> -->
           </div>
           <div class="card-footer bg-white border-0 pb-3">
-            <!-- <h6 class="mark p-2 mb-3">
-              Consultation Fee -
-              <span class="text-danger">{{ doctor.fee }} TAKA</span>
-            </h6>
-            <h6 class="text-muted text-center small">
-              <span class="">{{ doctor.mobile }}</span>
-            </h6> -->
             <NuxtLink
               :to="'/doctors/doctor/?id=' + doctor.id"
-              class="btn btn-sm btn-dark w-100"
+              class="btn btn-sm btn-dark w-100 d-flex align-items-center justify-content-center"
             >
-              Book Now<span class="d-none">Appointment</span>
+              Book <span class="d-none d-sm-block ms-1"> Appointment</span>
             </NuxtLink>
           </div>
         </div>

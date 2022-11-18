@@ -72,7 +72,7 @@
           class="alert alert-warning display-6 text-center py-5"
           role="alert"
         >
-          Nothing Found!
+          Coming soon!
         </div>
       </div>
     </div>
@@ -87,7 +87,7 @@ export default {
       name: "",
       specialty: "",
       type: "",
-      s_type_list: ["Doctor Appointment", "Video Call"],
+      s_type_list: ["Private Chamber", "Video Call", "Home Call"],
     };
   },
   computed: {

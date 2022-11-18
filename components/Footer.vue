@@ -97,22 +97,22 @@
           <h5>Our Services</h5>
           <ul class="link-widget p-0">
             <li>
-              <NuxtLink to="/doctors" class="text-light">
-                Find Doctors
-              </NuxtLink>
+              <NLink class="text-light" to="/doctors"> Find Doctorts </NLink>
+            </li>
+
+            <li>
+              <NLink class="text-light" to="/nurse"> Find Nurse </NLink>
             </li>
             <li>
-              <NuxtLink to="/" class="text-light"> Find Ambulances </NuxtLink>
+              <NLink class="text-light" to="/caregivers">
+                Find Caregivers
+              </NLink>
             </li>
+
             <li>
-              <NuxtLink to="/" class="text-light">
-                Find Oxysen Cylinder
-              </NuxtLink>
-            </li>
-            <li>
-              <NuxtLink to="/call-doctors" class="text-light">
-                Call Doctors
-              </NuxtLink>
+              <NLink class="text-light" to="/physiotherapist">
+                Find Physiotherapist
+              </NLink>
             </li>
           </ul>
         </div>

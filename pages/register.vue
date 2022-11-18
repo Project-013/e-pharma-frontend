@@ -253,7 +253,6 @@ export default {
 
       try {
         const response = await this.$axios.post("auth/register", data);
-        console.log(response);
         if (response.status === 201) {
           try {
             const response = await this.$auth.loginWith("local", {
@@ -261,10 +260,12 @@ export default {
             });
             if (response.status === 200) {
               this.$toast.success("Successfully created");
-              this.$store.commit("auth_state/setLoginForm", null);
-              this.$store.commit("auth_state/setRegiForm", null);
+            } else {
+              this.$toast.error("OTP Not Mathed!");
             }
-          } catch (e) {}
+          } catch (e) {
+            this.$toast.error("Error Found! Try again...");
+          }
         } else {
           this.$toast.error("Error Found! Try again...");
         }

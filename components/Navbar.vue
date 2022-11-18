@@ -55,14 +55,19 @@
                     Find Doctorts
                   </NLink>
                 </li>
+
+                <li>
+                  <NLink class="dropdown-item" to="/nurse"> Find Nurse </NLink>
+                </li>
                 <li>
                   <NLink class="dropdown-item" to="/caregivers">
                     Find Caregivers
                   </NLink>
                 </li>
+
                 <li>
-                  <NLink class="dropdown-item" to="/caregivers">
-                    Find Nurse
+                  <NLink class="dropdown-item" to="/physiotherapist">
+                    Find Physiotherapist
                   </NLink>
                 </li>
               </ul>

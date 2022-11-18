@@ -140,10 +140,10 @@
 
             <div
               class="card border-muted"
-              v-if="type.includes(`Doctor Appointment`)"
+              v-if="type.includes(`Private Chamber`)"
             >
               <div class="card-body row g-3">
-                <h6 class="small">**Required for Doctor Appointment Service</h6>
+                <h6 class="small">**Required for Private Chamber Service</h6>
                 <div class="col-12">
                   <label for=" " class="form-label">Day of service</label>
 
@@ -178,9 +178,7 @@
                     class="form-control form-control-sm"
                     placeholder="Ex. 1PM to 10PM"
                     v-model="form_data.working_times_chamber"
-                    :required="
-                      type.includes(`Doctor Appointment`) ? true : false
-                    "
+                    :required="type.includes(`Private Chamber`) ? true : false"
                   />
                 </div>
                 <div class="col-md-6">
@@ -190,9 +188,7 @@
                     class="form-control form-control-sm"
                     placeholder="Enter amount"
                     v-model="form_data.fee_chamber"
-                    :required="
-                      type.includes(`Doctor Appointment`) ? true : false
-                    "
+                    :required="type.includes(`Private Chamber`) ? true : false"
                   />
                 </div>
               </div>
@@ -632,7 +628,7 @@ export default {
       working_time_list: this.$store.getters["data/working_time_list"],
       doctor_education_program:
         this.$store.getters["data/doctor_education_program"],
-      s_type_list: ["Doctor Appointment", "Home Call", "Video Call"],
+      s_type_list: ["Private Chamber", "Home Call", "Video Call"],
       gender_list: ["male", "female", "others"],
       payment_sys_list: ["Bkash", "Nogod", "Rocket", "Upay"],
     };

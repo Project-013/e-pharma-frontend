@@ -1,36 +1,58 @@
 <template>
   <section class="container">
-    <div class="row justify-content-center my-3">
-      <div class="col-md-6 shadow bg-white col-lg-4 p-0">
-        <div class="card m-0">
+    <div class="row g-4 justify-content-center bg-white py-5">
+      <div class="col-md-4 col-lg-3">
+        <div class="card shadow h-100 p-0">
           <img
             :src="$config.apibaseURL + doctor.image_url"
             :alt="doctor.name"
             class="w-100"
           />
-          <div class="card-body">
-            <h6 class="text-success small">{{ doctor.speciality }}</h6>
-            <h5 class="card-title" style="color: #2b325c">
+          <div class="card-body p- py-3">
+            <h5 class="mb-0 fw-bold text-uppercase" style="color: #2b325c">
               {{ doctor.name }}
             </h5>
-            <p class="qualifications">{{ doctor.qualifications }}</p>
-            <pre class="small">{{ doctor.expericence }}</pre>
-            <div class="d-flex">
-              <pre
-                class="p-2 mb-3"
-              ><span class="text-muted">{{ doctor.time }}</span></pre>
+            <p class="text-muted small mb-0 pb-0">
+              {{ doctor.qualicifacions }}
+            </p>
+            <small class="text-success fw-semibold mt-0 pt-0">{{
+              doctor.specialty
+            }}</small>
+            <pre class="fw-semibold mt-1 pt-0 d-none">{{
+              doctor.experience
+            }}</pre>
+            <pre
+              class="fw-semibold mt-1 pt-0"
+            ><i class="icofont-location-pin "></i>{{
+              doctor.institution_or_chamber_address
+            }}</pre>
+
+            <div class="my-2 fst-italic">
+              Consultation Fee:
+              <div class="fw-semibold ps-3">
+                <p
+                  class="_fee py-0 my-0"
+                  v-if="doctor.type && doctor.type.includes('Private Chamber')"
+                >
+                  Private Chamber - <i class="icofont-taka"></i
+                  >{{ doctor.fee_chamber }}
+                </p>
+                <p
+                  class="_fee py-0 my-0"
+                  v-if="doctor.type && doctor.type.includes('Video Call')"
+                >
+                  Video Call - <i class="icofont-taka"></i
+                  >{{ doctor.fee_video_call }}
+                </p>
+                <p
+                  class="_fee py-0 my-0"
+                  v-if="doctor.type && doctor.type.includes('Home Call')"
+                >
+                  Home Call - <i class="icofont-taka"></i>1500
+                </p>
+              </div>
             </div>
 
-            <h6 class="mark p-2">
-              Consultation Fee :
-              <span class="text-danger">{{ doctor.fee }} TAKA</span>
-            </h6>
-            <h6 class="text-muted text-center small">
-              <span class="">{{ doctor.mobile }}</span>
-            </h6>
-            <p class="small">
-              <em> Final appointment time is confirmed after payment. </em>
-            </p>
             <template v-if="$auth.loggedIn === false">
               <h6 class="text-center my-3 lead">
                 Please
@@ -46,118 +68,170 @@
           </div>
         </div>
       </div>
-      <template v-if="$auth.loggedIn">
-        <div class="col-md-6 shadow bg-white">
-          <div class="row">
-            <ValidationObserver
-              class="col-md-6 col-11 mx-auto"
-              v-slot="{ handleSubmit }"
-            >
-              <form
-                class="form mt-5 text-muted"
-                @submit.prevent="handleSubmit(submitForm)"
-              >
-                <h6>Make an Appointment</h6>
+      <div v-if="$auth.loggedIn" class="col-md-6 bg-white">
+        <ValidationObserver
+          class="card shadow h-100 p-0"
+          v-slot="{ handleSubmit }"
+        >
+          <div class="card-body">
+            <h6 class="mb-4 fw-bold text-uppercase" style="color: #2b325c">
+              Make an Appointment
+            </h6>
 
-                <ValidationProvider
-                  class="form-floating my-3 d-block"
-                  rules="required"
-                  v-slot="{ errors }"
+            <form class="" @submit.prevent="handleSubmit(submitForm)">
+              <div class="form-group my-2">
+                <select
+                  class="form-select form-select-sm"
+                  required
+                  v-model="form_data.type"
                 >
-                  <input
-                    v-model="form_data.patient_name"
-                    id="patient_name"
-                    class="is-invalid form-control"
-                    placeholder=" "
-                  />
-                  <label for="patient_name">Patient name</label>
-                  <div class="invalid-feedback">
-                    {{ errors[0] }}
-                  </div>
-                </ValidationProvider>
-                <ValidationProvider
-                  class="form-floating my-3 d-block"
-                  rules="required"
-                  v-slot="{ errors }"
-                >
-                  <input
-                    v-model="form_data.patient_age"
-                    id="patient_age"
-                    class="is-invalid form-control"
-                    placeholder=" "
-                  />
-                  <label for="patient_age">Age</label>
-                  <div class="invalid-feedback">
-                    {{ errors[0] }}
-                  </div>
-                </ValidationProvider>
-                <ValidationProvider
-                  class="form-floating my-3 d-block"
-                  rules="required"
-                  v-slot="{ errors }"
-                >
-                  <input
-                    v-model="form_data.patient_phone"
-                    id="patient_phone"
-                    class="is-invalid form-control"
-                    placeholder=" "
-                  />
-                  <label for="patient_name">Phone</label>
-                  <div class="invalid-feedback">
-                    {{ errors[0] }}
-                  </div>
-                </ValidationProvider>
-                <ValidationProvider
-                  class="form-group my-3 d-block"
-                  rules="required"
-                  v-slot="{ errors }"
-                >
-                  <textarea
-                    v-model="form_data.details"
-                    id="details"
-                    class="is-invalid form-control"
-                    placeholder="সংক্ষেপে সমস্যা: যেমন মাথাব্যাথা "
-                    rows="4"
-                  ></textarea>
-                  <div class="invalid-feedback">
-                    {{ errors[0] }}
-                  </div>
+                  <option value="" disabled selected>
+                    Select Service Type
+                  </option>
+                  <template v-for="(type, index) in s_type_list">
+                    <option
+                      :value="type"
+                      :key="index"
+                      v-if="doctor.type && doctor.type.includes(type)"
+                    >
+                      {{ type }}
+                    </option>
+                  </template>
+                </select>
+              </div>
 
-                  <h6 class="mark p-2 my-3">
-                    Consultation Fee -
-                    <span class="text-danger">{{ doctor.fee }} TAKA</span>
-                  </h6>
-                  <button class="btn btn-secondary btn-sm w-100">
-                    Make payment & Confirm
-                  </button>
-                </ValidationProvider>
-              </form>
-            </ValidationObserver>
+              <div class="form-group my-2 d-block">
+                <label class="form-label" for="patient_name"
+                  >Patient name</label
+                >
+
+                <input
+                  v-model="form_data.patient_name"
+                  id="patient_name"
+                  class="form-control form-control-sm"
+                  placeholder="রোগীর নাম"
+                  required
+                />
+              </div>
+
+              <div class="form-group my-2 d-block">
+                <label class="form-label" for="patient_age">Age</label>
+
+                <input
+                  v-model="form_data.patient_age"
+                  id="patient_age"
+                  class="form-control form-control-sm"
+                  placeholder="রোগীর বয়স"
+                  type="number"
+                  required
+                />
+              </div>
+              <div class="form-group my-2 d-block">
+                <label class="form-label" for="patient_name">Phone</label>
+
+                <input
+                  v-model="form_data.patient_phone"
+                  id="patient_phone"
+                  class="form-control form-control-sm"
+                  placeholder=" "
+                  required
+                />
+              </div>
+              <div class="form-group my-2 d-block">
+                <label class="form-label" for="patient_name"
+                  >Select appointment Date</label
+                >
+
+                <input
+                  class="form-control form-control-sm"
+                  placeholder=" "
+                  type="date"
+                  :min="new Date().toISOString().split('T')[0]"
+                  required
+                />
+              </div>
+
+              <div class="form-group my-3 d-block">
+                <textarea
+                  v-model="form_data.details"
+                  id="details"
+                  class="form-control form-control-sm"
+                  placeholder="সংক্ষেপে সমস্যা: যেমন মাথাব্যাথা "
+                  rows="2"
+                  required
+                ></textarea>
+
+                <p
+                  v-if="getfee"
+                  class="p-1 mt-3 mb-1 text-center lead fw-semibold fst-italic"
+                >
+                  Total Fee -
+                  <span class="text-success"
+                    ><i class="icofont-taka"></i>{{ Number(getfee) + 50 }}
+                  </span>
+                </p>
+
+                <button
+                  style="background-color: #2b325c"
+                  class="btn btn-dark btn-sm mt-3 w-100 text-uppercase"
+                >
+                  Make APPOINTMENT
+                </button>
+              </div>
+            </form>
           </div>
-        </div>
-      </template>
+        </ValidationObserver>
+      </div>
     </div>
   </section>
 </template>
 
 <script>
-import { ValidationObserver, ValidationProvider } from "vee-validate";
+import { ValidationObserver } from "vee-validate";
 
 export default {
   components: {
     ValidationObserver,
-    ValidationProvider,
+  },
+  computed: {
+    getfee() {
+      if (this.form_data.type == "Private Chamber") {
+        return this.doctor.fee_chamber;
+      }
+      const { type } = this.form_data;
+
+      switch (type) {
+        case "Private Chamber":
+          // code block
+          return this.doctor.fee_chamber;
+        case "Video Call":
+          // code block
+          return this.doctor.fee_video_call;
+
+        case "Home Call":
+          // code block
+          return 1500;
+          break;
+        default:
+        // code block
+      }
+
+      return "";
+    },
   },
   data() {
     return {
       doctor: {},
       form_data: {
+        type: "",
+        fee: "",
         patient_name: "",
         patient_age: "",
-        patient_phone: "",
+        patient_phone: this.$auth.user.phone,
         details: "",
         doctor_id: this.$route.query.id ? this.$route.query.id : "",
       },
+      s_type_list: ["Private Chamber", "Video Call", "Home Call"],
     };
   },
   methods: {
@@ -213,6 +287,10 @@ export default {
 
 <style scoped>
 .qualifications {
-  font-size: 13px !important;
+  font-size: 14px !important;
+}
+._fee {
+  font-size: 13.5px !important;
+  line-height: 1.5;
 }
 </style>
