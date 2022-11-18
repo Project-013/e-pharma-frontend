@@ -6,7 +6,7 @@
       <div
         v-for="doctor in pageOfItems"
         :key="doctor.id"
-        class="col-lg-3 col-md-4 col-6 p-sm-3 p-1"
+        class="col-lg-3 col-md-2 col-6 p-sm-3 p-1"
       >
         <div class="card h-100 shadow p-0 m-0">
           <NuxtLink :to="'/doctors/doctor/?id=' + doctor.id">
@@ -48,7 +48,7 @@
     <div class="d-flex align-items-center mt-3">
       <jw-pagination
         :items="doctors"
-        :pageSize="3"
+        :pageSize="12"
         @changePage="onChangePage"
         :labels="customLabels"
         class="mx-auto"
