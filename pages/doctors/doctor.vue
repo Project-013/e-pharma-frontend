@@ -1,7 +1,7 @@
 <template>
   <section class="container">
     <div class="row g-4 justify-content-center bg-white py-5">
-      <div class="col-md-4 col-lg-3">
+      <div class="col-md-5 col-lg-4">
         <div class="card shadow h-100 p-0">
           <img
             :src="$config.apibaseURL + doctor.image_url"
@@ -99,8 +99,7 @@
                   </template>
                 </select>
               </div>
-
-              <div class="form-group my-2 d-block">
+              <div class="form-group my-2">
                 <label class="form-label" for="patient_name"
                   >Patient name</label
                 >
@@ -113,8 +112,7 @@
                   required
                 />
               </div>
-
-              <div class="form-group my-2 d-block">
+              <div class="form-group my-2">
                 <label class="form-label" for="patient_age">Age</label>
 
                 <input
@@ -126,38 +124,39 @@
                   required
                 />
               </div>
-              <div class="form-group my-2 d-block">
+              <div class="form-group my-2" v-if="form_data.type">
+                <label class="form-label" for="patient_name"
+                  >Select appointment Date</label
+                >
+
+                <client-only class=""
+                  ><date-picker
+                    class="form-control form-control-sm"
+                    placeholder="MM/DD/YYYY"
+                    format="MM/dd/yyyy"
+                    v-model="form_data.date"
+                    :disabled-dates="disabledDates"
+                    type="date"
+                /></client-only>
+              </div>
+              <div class="form-group my-2">
                 <label class="form-label" for="patient_name">Phone</label>
 
                 <input
-                  v-model="form_data.patient_phone"
+                  v-model="getPhone"
                   id="patient_phone"
                   class="form-control form-control-sm"
                   placeholder=" "
                   required
                 />
               </div>
-              <div class="form-group my-2 d-block">
-                <label class="form-label" for="patient_name"
-                  >Select appointment Date</label
-                >
-
-                <input
-                  class="form-control form-control-sm"
-                  placeholder=" "
-                  type="date"
-                  :min="new Date().toISOString().split('T')[0]"
-                  required
-                />
-              </div>
-
-              <div class="form-group my-3 d-block">
+              <div class="form-group my-3">
                 <textarea
                   v-model="form_data.details"
                   id="details"
                   class="form-control form-control-sm"
                   placeholder="সংক্ষেপে সমস্যা: যেমন মাথাব্যাথা "
-                  rows="2"
+                  rows="3"
                   required
                 ></textarea>
 
@@ -194,6 +193,18 @@ export default {
     ValidationObserver,
   },
   computed: {
+    getPhone() {
+      if (this.$auth.user.phone) {
+        return this.$auth.user.phone;
+      }
+      return "";
+    },
+    getUserID() {
+      if (this.$auth.user.phone) {
+        return this.$auth.user.id;
+      }
+      return "";
+    },
     getfee() {
       if (this.form_data.type == "Private Chamber") {
         return this.doctor.fee_chamber;
@@ -218,6 +229,46 @@ export default {
 
       return "";
     },
+    disabledDates() {
+      const { type } = this.form_data;
+      var date = new Date();
+      date.setDate(date.getDate() - 1);
+      let disable_days = {
+        to: date,
+        days: [],
+      };
+
+      const days = [];
+      let working_days = "";
+
+      switch (type) {
+        case "Private Chamber":
+          working_days = this.doctor.working_days_chamber;
+          break;
+        case "Video Call":
+          working_days = this.doctor.working_days_video_call;
+          break;
+
+        case "Home Call":
+          working_days = this.doctor.working_days_home_call;
+          break;
+        default:
+          working_days = "";
+      }
+      if (working_days) {
+        for (const d in this.working_day_list) {
+          const day = this.working_day_list[d];
+          if (working_days.includes("Everyday")) {
+            break;
+          } else if (working_days.includes(day) == false) {
+            days.push(Number(d));
+          }
+        }
+      }
+
+      disable_days["days"] = days;
+      return disable_days;
+    },
   },
   data() {
     return {
@@ -227,11 +278,22 @@ export default {
         fee: "",
         patient_name: "",
         patient_age: "",
-        patient_phone: this.$auth.user.phone,
+        patient_phone: "",
         details: "",
+        date: "",
+        user_id: "",
         doctor_id: this.$route.query.id ? this.$route.query.id : "",
       },
       s_type_list: ["Private Chamber", "Video Call", "Home Call"],
+      working_day_list: [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ],
     };
   },
   methods: {
@@ -246,9 +308,13 @@ export default {
         .then((res) => {
           if (res.status === 200) {
             this.doctor = res.data;
+          } else {
+            this.$router.push("/doctors");
           }
         })
         .catch((error) => {
+          this.$router.push("/doctors");
+
           console.log(error.response);
           // this.$router.push("/doctors");
           console.log(error.response.data.message || error.message);
@@ -256,20 +322,32 @@ export default {
         });
     },
     async submitForm() {
+      this.form_data.fee = this.getfee;
+      this.form_data.patient_phone = this.getPhone;
+      this.form_data.user_id = this.getUserID;
       this.$nextTick(() => {
         this.$nuxt.$loading.start();
         this.$axios
-          .post(`specialist-doctors/appointment`, this.form_data, {
+          .post(`appointment/doctor/`, this.form_data, {
             headers: {
               "Content-Type": "application/json",
             },
           })
           .then((res) => {
             if (res.status === 201) {
+              this.$toast.success("Success! we will contact you soon..");
+              this.$router.push("/profile");
+            } else {
+              this.$toast.error("Error found! Try again");
             }
+
             this.$nuxt.$loading.finish();
           })
+
           .catch((error) => {
+            this.$toast.error("Error found! Try again");
+
+            console.log(error.response);
             this.$nuxt.$loading.finish();
             console.log(error.message || error.response.data.message);
           });
@@ -285,12 +363,19 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .qualifications {
   font-size: 14px !important;
 }
 ._fee {
   font-size: 13.5px !important;
   line-height: 1.5;
+}
+.vdp-datepicker * {
+  border: none !important;
+  width: 100%;
+}
+.vdp-datepicker input:focus-visible {
+  border: none !important;
 }
 </style>

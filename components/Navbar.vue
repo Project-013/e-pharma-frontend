@@ -123,15 +123,20 @@
                     width="35"
                   />
                 </a>
-                <ul class="dropdown-menu mt-3" aria-labelledby="">
-                  <li>
-                    <NuxtLink to="/profile" class="dropdown-item">
-                      Profile
+                <ul class="dropdown-menu" aria-labelledby="">
+                  <li v-if="this.$auth.user && this.$auth.user.is_admin">
+                    <NuxtLink to="/admin" class="dropdown-item">
+                      <i class="icofont-dashboard me-1"></i>Admin Dashboard
                     </NuxtLink>
                   </li>
                   <li>
-                    <NuxtLink to="profile/setting" class="dropdown-item">
-                      Settings
+                    <NuxtLink to="/profile" class="dropdown-item">
+                      <i class="icofont-ui-user me-1"></i>Profile
+                    </NuxtLink>
+                  </li>
+                  <li>
+                    <NuxtLink to="/profile/setting" class="dropdown-item">
+                      <i class="icofont-gear me-1"></i>Settings
                     </NuxtLink>
                   </li>
                   <div class="dropdown-divider"></div>
@@ -141,7 +146,7 @@
                       class="dropdown-item pointer"
                       @click="$auth.logout()"
                     >
-                      Logout
+                      <i class="icofont-logout me-1"></i>Logout
                     </a>
                   </li>
                 </ul>

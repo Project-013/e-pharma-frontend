@@ -99,7 +99,9 @@ export default {
         ({ status, specialty, type, name }) => {
           return (
             status == "approved" &&
-            (this.name ? name.includes(this.name) : true) &&
+            (this.name
+              ? name.toUpperCase().includes(this.name.toUpperCase())
+              : true) &&
             (this.type ? type.includes(this.type) : true) &&
             (this.specialty && this.specialty != "all"
               ? specialty == this.specialty

@@ -111,7 +111,6 @@
                 id=" nid"
                 class="form-control form-control-sm"
                 required
-                type="number"
               />
             </div>
 
@@ -376,7 +375,7 @@
 
                 <div class="col-md-6">
                   <label for=" " class="form-label">Whatsapp Number</label>
-                  <ValidationProvider rules="length:11" v-slot="{ errors }">
+                  <ValidationProvider rules="" v-slot="{ errors }">
                     <input
                       type="number"
                       :required="type.includes(`Video Call`) ? true : false"
@@ -426,7 +425,7 @@
                 </select>
 
                 <ValidationProvider
-                  rules="required|numeric|length:10"
+                  rules="required|numeric"
                   v-slot="{ errors }"
                   class="w-100"
                 >
@@ -469,10 +468,7 @@
               <label for=" " class="form-label"
                 >{{ form_data.payment_method }} Number</label
               >
-              <ValidationProvider
-                rules="required|numeric|length:11"
-                v-slot="{ errors }"
-              >
+              <ValidationProvider rules="required|numeric" v-slot="{ errors }">
                 <input
                   type="number"
                   required

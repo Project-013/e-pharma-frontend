@@ -1,10 +1,9 @@
 <template>
   <div v-if="loading" class="loading-page row">
-    <div class="spinner_box p-5 col-md-4 mx-auto">
-      <div class="spinner-grow text-success spinner" role="status">
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="spinner-grow" role="status">
         <span class="visually-hidden">Loading...</span>
       </div>
-      <p class="small msg text-dark fw-bold">{{ msg }}</p>
     </div>
   </div>
 </template>
@@ -28,4 +27,14 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.loading-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  z-index: 99999 !important;
+}
+</style>

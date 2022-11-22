@@ -41,6 +41,7 @@ export default {
     "~/plugins/vee-validate",
     { src: "~/plugins/highcharts.js", mode: 'client' },
     { src: '~/plugins/bootstrap.js', mode: 'client' },
+    { src: '~/plugins/vue-datepicker', ssr: false },
     // { src: '~/plugins/vuex-persist.js', mode: 'client' },
 
   ],
@@ -50,18 +51,9 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    '@nuxtjs/fontawesome',
     '@nuxtjs/composition-api/module'
   ],
   
-  fontawesome: {
-    component: 'Fa',
-    suffix: false,
-    icons: {
-      solid: true,
-      brands: true,
-    },
-},
 
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -94,50 +86,6 @@ export default {
       }
     ]
   },
-  // auth: {
-  //   strategies: {
-  //     local: {
-  //       scheme: 'refresh',
-  //       localStorage: {
-  //         prefix: 'auth.'
-  //       },
-  //       token: {
-  //         prefix: 'access.',
-  //         property: 'access',
-  //         maxAge: 86400,
-  //         type: 'Bearer'
-  //       },
-  //       refreshToken: {
-  //         prefix: 'refresh.',
-  //         property: 'refresh',
-  //         data: 'refresh',
-  //         maxAge: 60 * 60 * 24 * 15
-  //       },
-  //       user: {
-  //         property: 'user',
-  //         autoFetch: true
-  //       },
-  //       // endpoints: {
-  //       //   login: { url: '/token/', method: 'post'},
-  //       //   refresh: { url: '/token/refresh/', method: 'post' },
-  //       //   user: { url: '/user', method: 'get' },
-  //       //   // logout: { url: '/logout', method: 'post'}
-  //       //   logout: false
-  //       // },
-
-  //       endpoints: {
-  //         login: { url: '/auth/login/', method: 'post'},
-  //         refresh: { url: '/auth/token-refresh/', method: 'post' },
-  //         user: { url: '/auth/user/', method: 'get' },
-  //         logout: { url: '/auth/logout', method: 'post' },
-
-  //       },
-  //       tokenType : "bearer",
-
-
-  //     }
-  //   }
-  // },
 
   auth: {
     strategies: {
@@ -157,8 +105,8 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: 'http://localhost:8000/',
-    // baseURL: 'https://api.sasthosebok.com/'
+    // baseURL: 'http://localhost:8000/',
+    baseURL: 'https://api.sasthosebok.com/'
 
   },
 
@@ -168,11 +116,11 @@ export default {
   build: {
     transpile: ["vee-validate/dist/rules"],
   },
-  // loading: '~/components/LoadingBar.vue',
+  loading: '~/components/LoadingBar.vue',
 
   publicRuntimeConfig: {
-    apibaseURL: 'http://localhost:8000',
-    // apibaseURL: 'https://api.sasthosebok.com/',
+    // apibaseURL: 'http://localhost:8000',
+    apibaseURL: 'https://api.sasthosebok.com/',
     // type: "v1",
     uniProject: false,
     isApp: false
