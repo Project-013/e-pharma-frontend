@@ -8,59 +8,38 @@
           <div class="col-lg-3 col-md-4 col-6">
             <NuxtLink to="/doctors">
               <img
-                src="~/static/img/services/s1.svg"
+                src="~/static/img/services/doctor.svg"
                 class="w-100 p-0 pointer rounded-3 shadow service-image"
               />
             </NuxtLink>
           </div>
+
           <div class="col-lg-3 col-md-4 col-6">
-            <img
-              src="~/static/img/services/s2.svg"
-              class="w-100 p-0 pointer rounded-3 shadow service-image"
-              title="Coming Soon"
-            />
+            <NuxtLink to="/physiotherapist">
+              <img
+                src="~/static/img/services/physiotherapist.svg"
+                class="w-100 p-0 pointer rounded-3 shadow service-image"
+                title="Coming Soon"
+              />
+            </NuxtLink>
           </div>
           <div class="col-lg-3 col-md-4 col-6">
-            <img
-              src="~/static/img/services/s3.svg"
-              class="w-100 p-0 pointer rounded-3 shadow service-image"
-              title="Coming Soon"
-            />
+            <NuxtLink to="/nurse">
+              <img
+                src="~/static/img/services/caregivers.svg"
+                class="w-100 p-0 pointer rounded-3 shadow service-image"
+                title="Coming Soon"
+              />
+            </NuxtLink>
           </div>
           <div class="col-lg-3 col-md-4 col-6">
-            <img
-              src="~/static/img/services/s4.svg"
-              class="w-100 p-0 pointer rounded-3 shadow service-image"
-              title="Coming Soon"
-            />
-          </div>
-          <div class="col-lg-3 col-md-4 col-6">
-            <img
-              src="~/static/img/services/s5.svg"
-              class="w-100 p-0 pointer rounded-3 shadow service-image"
-              title="Coming Soon"
-            />
-          </div>
-          <div class="col-lg-3 col-md-4 col-6">
-            <img
-              src="~/static/img/services/s6.svg"
-              class="w-100 p-0 pointer rounded-3 shadow service-image"
-              title="Coming Soon"
-            />
-          </div>
-          <div class="col-lg-3 col-md-4 col-6">
-            <img
-              src="~/static/img/services/s7.svg"
-              class="w-100 p-0 pointer rounded-3 shadow service-image"
-              title="Coming Soon"
-            />
-          </div>
-          <div class="col-lg-3 col-md-4 col-6">
-            <img
-              src="~/static/img/services/s8.svg"
-              class="w-100 p-0 pointer rounded-3 shadow service-image"
-              title="Coming Soon"
-            />
+            <NuxtLink to="/medicine">
+              <img
+                src="~/static/img/services/medicine.svg"
+                class="w-100 p-0 pointer rounded-3 shadow service-image"
+                title="Coming Soon"
+              />
+            </NuxtLink>
           </div>
         </div>
       </div>

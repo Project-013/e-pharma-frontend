@@ -413,6 +413,14 @@ pre {
   animation: a-eight 20s infinite linear;
 }
 
+.vdp-datepicker * {
+  border: none !important;
+  width: 100%;
+}
+.vdp-datepicker input:focus-visible {
+  border: none !important;
+}
+
 @-webkit-keyframes a-eight {
   0% {
     -webkit-transform: translate(0, 0);

@@ -13,7 +13,7 @@
             <img
               :src="$config.apibaseURL + doctor.image_url"
               :alt="doctor.name"
-              class="w-100"
+              class="_doctor_img w-100"
             />
           </NuxtLink>
           <div class="card-body pb-1">

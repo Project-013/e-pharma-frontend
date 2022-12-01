@@ -62,11 +62,6 @@
                   type="number"
                   required
                   class="form-control py-3"
-                  :class="
-                    form_data.phone.length != 10
-                      ? ` `
-                      : `border-success bg-success bg-opacity-25`
-                  "
                   placeholder="1XXXXXXXXX"
                   aria-label="phone"
                   aria-describedby="addon-wrapping"

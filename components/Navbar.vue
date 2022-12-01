@@ -155,10 +155,14 @@
             <template v-else>
               <div class="">
                 <NuxtLink class="" to="/login">
-                  <small class="btn btn-outline-dark btn-sm px-4">Login </small>
+                  <small class="btn btn-outline-dark btn-sm px-4"
+                    ><i class="icofont-sign-in"></i> Login
+                  </small>
                 </NuxtLink>
                 <NuxtLink class="" to="/register">
-                  <small class="btn btn-dark btn-sm px-3">Register</small>
+                  <small class="btn btn-dark btn-sm px-3"
+                    ><i class="icofont-sign-in"></i> Register</small
+                  >
                 </NuxtLink>
               </div>
             </template>

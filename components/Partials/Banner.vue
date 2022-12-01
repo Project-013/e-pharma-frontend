@@ -14,12 +14,12 @@
               purpose of which is to ensure digital healthcare to the people of
               the country...
             </p>
-            <NuxtLink to="/doctors" class="main-btn mt-4 fill-btn"
-              >Appointment</NuxtLink
-            >
-            <NuxtLink to="/about" class="main-btn mt-4 ms-3"
-              >Learn More</NuxtLink
-            >
+            <NuxtLink to="/doctors" class="main-btn mt-4 fill-btn small"
+              >Appointment <i class="icofont-arrow-right"></i
+            ></NuxtLink>
+            <NuxtLink to="/about" class="main-btn mt-4 ms-1 small"
+              >Learn More <i class="icofont-info-circle"></i
+            ></NuxtLink>
           </div>
           <div class="col-lg-6">
             <div class="banner-area">

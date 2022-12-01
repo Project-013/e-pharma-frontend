@@ -29,7 +29,8 @@
             </div>
           </div>
           <div class="col-md-4">
-            <select
+            <!-- {{ sortedDoctorList }} -->
+            <!-- <select
               class="form-select form-select-sm"
               aria-label="Default select example"
               v-model="specialty"
@@ -40,6 +41,20 @@
               <template v-for="(spesialist, index) in getSpesialistList">
                 <option :value="spesialist" :key="index">
                   {{ spesialist }}
+                </option>
+              </template>
+            </select> -->
+            <select
+              class="form-select form-select-sm"
+              aria-label="Default select example"
+              v-model="specialty"
+              required
+            >
+              <option value="" disabled selected>Select Speciality</option>
+              <option value="all">All</option>
+              <template v-for="(d, index) in getSpesialis">
+                <option :value="d" :key="index">
+                  {{ d }}
                 </option>
               </template>
             </select>
@@ -110,6 +125,17 @@ export default {
         }
       );
       return filterd_data;
+    },
+    getSpesialis() {
+      const list = [];
+      this.doctors.map(({ status, specialty }) => {
+        if (status == "approved" && list.includes(specialty) == false) {
+          list.push(specialty);
+        }
+        return;
+      });
+
+      return list;
     },
   },
 

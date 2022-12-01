@@ -68,7 +68,10 @@
           </div>
         </div>
       </div>
-      <div v-if="$auth.loggedIn" class="col-md-6 bg-white">
+      <div
+        v-if="$auth.loggedIn && !$route.query.type"
+        class="col-md-6 bg-white"
+      >
         <ValidationObserver
           class="card shadow h-100 p-0"
           v-slot="{ handleSubmit }"
@@ -166,7 +169,7 @@
                 >
                   Total Fee -
                   <span class="text-success"
-                    ><i class="icofont-taka"></i>{{ Number(getfee) + 50 }}
+                    ><i class="icofont-taka"></i>{{ getfee }}
                   </span>
                 </p>
 
@@ -206,22 +209,19 @@ export default {
       return "";
     },
     getfee() {
-      if (this.form_data.type == "Private Chamber") {
-        return this.doctor.fee_chamber;
-      }
       const { type } = this.form_data;
 
       switch (type) {
         case "Private Chamber":
           // code block
-          return this.doctor.fee_chamber;
+          return Number(this.doctor.fee_chamber) + 50;
         case "Video Call":
           // code block
-          return this.doctor.fee_video_call;
+          return Number(this.doctor.fee_video_call) + 50;
 
         case "Home Call":
           // code block
-          return 1500;
+          return 1500 + 50;
           break;
         default:
         // code block
