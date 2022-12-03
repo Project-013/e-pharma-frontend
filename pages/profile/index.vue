@@ -1,13 +1,40 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center my-3 mb-5">
-      <div class="col-lg-9 card shadow p-3">
-        <div class="text-center py-3">
-          <img src="/img/icons/user_icon.svg" alt="user icon" width="80" />
-          <h5 class="my-3">{{ $auth.user.full_name }}</h5>
+  <div class="container mb-3">
+    <div class="row g-4 justify-content-center bg-white py-3">
+      <div class="col-lg-4">
+        <div class="card p-3 h-100">
+          <div class="d-flex justify-content-end p-0 m-0">
+            <div class="p-0 m-0">
+              <NuxtLink
+                class="dropdown-item text-dark small"
+                to="/profile/Setting"
+              >
+                <i class="icofont-edit text-primary small"></i>
+              </NuxtLink>
+            </div>
+          </div>
+          <img
+            src="/img/icons/user_icon.svg"
+            class="d-block mx-auto"
+            alt="user icon"
+            width="80"
+          />
+          <h5 class="mt-4">
+            {{ $auth.user.full_name }} ({{ $auth.user.user_type }})
+          </h5>
+          <p class="my-0 small fw-semibold">
+            <i class="icofont-ui-message me-1 text-primary"></i>
+            {{ $auth.user.email }}
+          </p>
+          <p class="my-0 small fw-semibold">
+            <i class="icofont-ui-call text-primary"></i> {{ $auth.user.phone }}
+          </p>
         </div>
-        <hr />
-        <ProfileDoctorAppoiment />
+      </div>
+      <div class="col-lg-8">
+        <div class="card h-100 p-3">
+          <ProfileDoctorAppoiment />
+        </div>
       </div>
     </div>
   </div>

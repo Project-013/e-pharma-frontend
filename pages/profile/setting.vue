@@ -119,7 +119,7 @@
                         class="form-control form-control-sm"
                         name="name"
                         id="name"
-                        v-model="getUser.full_name"
+                        v-model="user_data.full_name"
                         required
                       />
                     </div>
@@ -132,7 +132,7 @@
                         type="text"
                         class="form-control form-control-sm bg-white"
                         name="mobile"
-                        v-model="getUser.phone"
+                        v-model="user_data.phone"
                         required
                         disabled
                       />
@@ -143,7 +143,7 @@
                         type="email"
                         class="form-control form-control-sm"
                         name="email"
-                        v-model="getUser.email"
+                        v-model="user_data.email"
                       />
                     </div>
                     <div class="mb-3">
@@ -152,7 +152,7 @@
                         type="date"
                         class="form-control form-control-sm"
                         name="birthday"
-                        v-model="getUser.birthday"
+                        v-model="user_data.birthday"
                       />
                     </div>
                     <div class="form-group form-check mb-3">
@@ -309,14 +309,51 @@
 <script>
 export default {
   computed: {
-    getUser() {
+    userData() {
       const user_data = { ...this.$auth.user };
       return user_data;
     },
   },
+  data() {
+    return {
+      user_data: { ...this.$auth.user },
+    };
+  },
   methods: {
-    updateProfile() {
-      console.log(this.getUser);
+    async updateProfile() {
+      this.$nextTick(() => {
+        this.$nuxt.$loading.start();
+        this.disable_btn = true;
+        this.$axios
+          .put(`auth/user/${this.$auth.user.id}/`, this.user_data, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          .then((res) => {
+            console.log(res);
+            if (res.status === 200) {
+              this.$toast.success("Success! Profile updaded succefully..");
+              // this.$auth.user();
+              this.$auth.fetchUser();
+              this.$router.push("/profile");
+            } else {
+              this.$toast.error("Error found! Try again");
+            }
+            this.$nuxt.$loading.finish();
+          })
+          .catch((error) => {
+            console.log(error.response);
+            this.$toast.error("Error found! Try again");
+
+            this.$nuxt.$loading.finish();
+            console.log(error.message || error.response.data.message);
+          });
+
+        this.disable_btn = false;
+      });
+
+      return;
     },
   },
   beforeCreate() {

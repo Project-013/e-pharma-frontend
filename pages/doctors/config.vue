@@ -77,7 +77,6 @@
                 <select
                   class="form-select form-select-sm"
                   v-model="appointment.payment_method"
-                  required
                 >
                   <option value="" disabled selected>
                     Select Payment Method
@@ -97,7 +96,6 @@
                     id="patient_name"
                     v-model="appointment.transaction_id"
                     class="form-control form-control-sm"
-                    required
                   />
                 </div>
 

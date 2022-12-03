@@ -110,6 +110,12 @@ export default {
       return this.$store.getters["data/spesialist_list"];
     },
     sortedDoctorList() {
+      console.log(this.$route);
+      if (this.$route.query.stype) {
+        this.type = this.$route.query.stype.replace("-", " ");
+      }
+
+      console.log(this.type);
       const filterd_data = this.doctors.filter(
         ({ status, specialty, type, name }) => {
           return (
