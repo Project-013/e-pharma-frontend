@@ -94,6 +94,9 @@
 
 @media (max-width: 767px) {
   /* custom css */
+  .wrapper {
+    padding: 2.125rem 0 !important;
+  }
   .main-btn {
     font-size: 0.875rem;
   }

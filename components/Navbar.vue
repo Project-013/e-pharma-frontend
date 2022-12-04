@@ -4,7 +4,7 @@
       class="navbar navbar-expand-lg navbar-white bg-white border-bottom py-1"
     >
       <div class="container">
-        <NLink class="navbar-brand text-success" to="/">
+        <NLink class="navbar-brand d-none d-md-block text-success" to="/">
           <img src="~/static/img/logo.png" alt="sasthosebok.com" width="55" />
           <!-- <p class="small ms-2" style="font-size: 15px">
             জরুরী মুহুর্তে, <br />
@@ -22,18 +22,15 @@
           <img src="../static/img/icons/menu.svg" alt="me" width="30" />
         </button> -->
 
-        <button
-          class="navbar-toggler border-0"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <a class="navbar-toggler border-0" @click="toggleNavbar" type="button">
           <img src="../static/img/icons/menu.svg" alt="me" width="30" />
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        </a>
+
+        <div
+          class="collapse navbar-collapse order-1 order-lg-0"
+          :class="show ? 'show' : 'hide'"
+          id="navbarSupportedContent"
+        >
           <ul class="navbar-nav mx-auto mt-3 mt-lg-0">
             <li class="nav-item">
               <NLink class="nav-link" aria-current="page" to="/"> Home </NLink>
@@ -100,73 +97,73 @@
               <NLink class="nav-link" to="/contact-us"> Contact us</NLink>
             </li>
           </ul>
-          <div class="d-flex justify-content-center">
-            <template v-if="$auth.loggedIn">
-              <span class="dropdown text-light">
-                <a
-                  class="dropdown-toggle text-dark border rounded p-2 text-decoration-none"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <span style="font-size: 14px">
-                    welcome
+        </div>
+        <div class="d-flex justify-content-center">
+          <template v-if="$auth.loggedIn">
+            <span class="dropdown text-light">
+              <a
+                class="dropdown-toggle text-dark border rounded p-2 text-decoration-none"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <span style="font-size: 14px">
+                  welcome
 
-                    <small class="" style="font-weight: 500; color: #084298"
-                      >{{ $auth.user.full_name }} </small
-                    >!
-                  </span>
+                  <small class="" style="font-weight: 500; color: #084298"
+                    >{{ $auth.user.full_name }} </small
+                  >!
+                </span>
 
-                  <img
-                    src="../static/img/icons/user_icon.svg"
-                    alt="user icon"
-                    width="35"
-                  />
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="">
-                  <li v-if="this.$auth.user && this.$auth.user.is_admin">
-                    <NuxtLink to="/admin" class="dropdown-item">
-                      <i class="icofont-dashboard me-1"></i>Admin Dashboard
-                    </NuxtLink>
-                  </li>
-                  <li>
-                    <NuxtLink to="/profile" class="dropdown-item">
-                      <i class="icofont-ui-user me-1"></i>Profile
-                    </NuxtLink>
-                  </li>
-                  <li>
-                    <NuxtLink to="/profile/setting" class="dropdown-item">
-                      <i class="icofont-gear me-1"></i>Settings
-                    </NuxtLink>
-                  </li>
-                  <div class="dropdown-divider"></div>
-                  <li>
-                    <a
-                      style="cursor: pointer"
-                      class="dropdown-item pointer"
-                      @click="$auth.logout()"
-                    >
-                      <i class="icofont-logout me-1"></i>Logout
-                    </a>
-                  </li>
-                </ul>
-              </span>
-            </template>
-            <template v-else>
-              <div class="">
-                <NuxtLink class="" to="/login">
-                  <small class="btn btn-outline-dark btn-sm px-4"
-                    ><i class="icofont-sign-in"></i> Login
-                  </small>
-                </NuxtLink>
-                <NuxtLink class="" to="/register">
-                  <small class="btn btn-dark btn-sm px-3"
-                    ><i class="icofont-sign-in"></i> Register</small
+                <img
+                  src="../static/img/icons/user_icon.svg"
+                  alt="user icon"
+                  width="35"
+                />
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="">
+                <li v-if="this.$auth.user && this.$auth.user.is_admin">
+                  <NuxtLink to="/admin" class="dropdown-item">
+                    <i class="icofont-dashboard me-1"></i>Admin Dashboard
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/profile" class="dropdown-item">
+                    <i class="icofont-ui-user me-1"></i>Profile
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink to="/profile/setting" class="dropdown-item">
+                    <i class="icofont-gear me-1"></i>Settings
+                  </NuxtLink>
+                </li>
+                <div class="dropdown-divider"></div>
+                <li>
+                  <a
+                    style="cursor: pointer"
+                    class="dropdown-item pointer"
+                    @click="$auth.logout()"
                   >
-                </NuxtLink>
-              </div>
-            </template>
-          </div>
+                    <i class="icofont-logout me-1"></i>Logout
+                  </a>
+                </li>
+              </ul>
+            </span>
+          </template>
+          <template v-else>
+            <div class="">
+              <NuxtLink class="" to="/login">
+                <small class="btn btn-outline-dark btn-sm"
+                  ><i class="icofont-sign-in"></i> Login
+                </small>
+              </NuxtLink>
+              <NuxtLink class="" to="/register">
+                <small class="btn btn-dark btn-sm p"
+                  ><i class="icofont-sign-in"></i> Register</small
+                >
+              </NuxtLink>
+            </div>
+          </template>
         </div>
       </div>
     </nav>
@@ -174,12 +171,35 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      show: false,
+    };
+  },
+  methods: {
+    toggleNavbar() {
+      console.log(this.show);
+      this.show = !this.show;
+    },
+  },
+  watch: {
+    $route(to, from) {
+      console.log(to, from);
+      console.log(this.show);
+      this.show = false;
+    },
+  },
+};
 </script>
 <style scoped>
 .dropdown-item:hover,
 .nav-item .nav-link:hover,
 .nuxt-link-exact-active {
   color: var(--secondary-text) !important;
+}
+
+.navbar-nav {
+  transition: all 0.3s ease !important;
 }
 </style>

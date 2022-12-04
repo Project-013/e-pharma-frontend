@@ -1,8 +1,8 @@
 <template>
-  <section id="contact" class="footer_wrapper wrapper mt-3">
-    <div class="container pb-3">
+  <section id="contact" class="footer_wrapper pt-5 mt-3">
+    <div class="container">
       <div class="row">
-        <div class="col-lg-3 col-md-6 mb-4">
+        <div class="col-lg-3 col-md-6">
           <h5 class="text-uppercase">
             <span class="fw-bold">
               {{ $config.uniProject ? "E-health" : "sasthosebok.com" }}
@@ -179,7 +179,7 @@
         </div>
       </div>
     </div>
-    <div class="container-fluid copyright-section py-1 small">
+    <div class="container-fluid copyright-section py-1 small mb-0">
       <small class="p-0 text-light">
         Copyright &copy;
         <a href="https://sasthosebok.com/" class="">

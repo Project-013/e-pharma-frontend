@@ -1,46 +1,50 @@
 <template>
   <div class="">
-    <div
-      class="row justify-content-center justify-content-md-start g-sm-5 gy-3 _card"
-    >
+    <div class="row justify-content-center justify-content-md-start">
       <div
         v-for="doctor in pageOfItems"
         :key="doctor.id"
-        class="col-lg-3 col-md-4 col-6 p-sm-3 p-1"
+        class="col-md-4 col-12 p-sm-3 p-1"
       >
-        <div class="card h-100 shadow p-0 m-0">
-          <NuxtLink :to="'/doctors/doctor/?id=' + doctor.id">
-            <img
-              :src="$config.apibaseURL + doctor.image_url"
-              :alt="doctor.name"
-              class="_doctor_img w-100"
-            />
-          </NuxtLink>
-          <div class="card-body pb-1">
-            <h5 class="mb-0 fw-bold text-uppercase" style="color: #2b325c">
-              {{ doctor.name }}
-            </h5>
-            <p class="text-muted small mb-0 pb-0">
-              {{ doctor.qualicifacions }}
-            </p>
-            <small class="text-success fw-semibold mt-0 pt-0">{{
-              doctor.specialty
-            }}</small>
+        <div class="card h-100 p-2">
+          <div class="row">
+            <NuxtLink
+              class="col-5 d-flex justify-content-center align-items-center"
+              :to="'/doctors/doctor/?id=' + doctor.id"
+            >
+              <img
+                :src="$config.apibaseURL + doctor.image_url"
+                :alt="doctor.name"
+                class="w-100 rounded-circle"
+              />
+            </NuxtLink>
+            <div class="col-7">
+              <NuxtLink :to="'/doctors/doctor/?id=' + doctor.id">
+                <h5 class="mb-0 fw-bold text-uppercase" style="color: #2b325c">
+                  {{ doctor.name }}
+                </h5>
+              </NuxtLink>
 
-            <!-- <p>
+              <p class="text-muted my-2 lh-1">
+                {{ doctor.qualicifacions }}
+              </p>
+              <p class="text-success small mb-0 lh-1 fw-semibold mt-0 pt-0">
+                {{ doctor.specialty }}
+              </p>
+
+              <!-- <p>
               Consultation Fee:
               <span class="fw-semibold"
                 ><span class="fw-bold" style="font-size: 24px">৳</span>800</span
               >
             </p> -->
-          </div>
-          <div class="card-footer bg-white border-0 pb-3">
-            <NuxtLink
-              :to="'/doctors/doctor/?id=' + doctor.id"
-              class="btn btn-sm btn-dark w-100 d-flex align-items-center justify-content-center"
-            >
-              Book <span class="d-none d-sm-block ms-1"> Appointment</span>
-            </NuxtLink>
+              <NuxtLink
+                :to="'/doctors/doctor/?id=' + doctor.id"
+                class="btn btn-sm btn-dark w-100 mt-3"
+              >
+                Book Appointment
+              </NuxtLink>
+            </div>
           </div>
         </div>
       </div>
@@ -96,7 +100,7 @@ export default {
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   ._card * {
-    font-size: 96% !important;
+    font-size: 94% !important;
   }
 }
 

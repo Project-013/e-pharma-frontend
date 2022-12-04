@@ -8,7 +8,23 @@
           <div class="col-lg-3 col-md-4 col-6">
             <NuxtLink to="/doctors">
               <img
-                src="~/static/img/services/doctor.svg"
+                src="~/static/img/services/Dr_apointment.svg"
+                class="w-100 p-0 pointer rounded-3 shadow service-image"
+              />
+            </NuxtLink>
+          </div>
+          <div class="col-lg-3 col-md-4 col-6">
+            <NuxtLink to="/doctors?stype=Home-Call">
+              <img
+                src="~/static/img/services/home.svg"
+                class="w-100 p-0 pointer rounded-3 shadow service-image"
+              />
+            </NuxtLink>
+          </div>
+          <div class="col-lg-3 col-md-4 col-6">
+            <NuxtLink to="/doctors?stype=Video-Call">
+              <img
+                src="~/static/img/services/Video.svg"
                 class="w-100 p-0 pointer rounded-3 shadow service-image"
               />
             </NuxtLink>
