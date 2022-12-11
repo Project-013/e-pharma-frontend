@@ -20,7 +20,7 @@ export const state = () => ({
     ],
     nursing_education_program: ["Diploma in Nursing","Diploma in MidWife", "B.Sc in Nursing"],
     pt_education_program: ["Diploma in PT", "B.Sc in PT"],
-    doctor_education_program: ["FCPS", "MD", "MS", "D-Card", "VVD" ,"Others"],
+    doctor_education_program: ["FCPS", "MD", "MS", "D-Card", "VVD" ],
     dmf_doctor_education_program: ["DMF" ,"Others"],
     address:[],
     spesialist_list:[]

@@ -1,70 +1,71 @@
 <template>
   <section class="container">
     <div class="row g-4 justify-content-center bg-white py-5">
+      <h3 v-if="form_data.type" class="text-dark text-center">
+        {{ form_data.type }} Appoionment
+      </h3>
       <div class="col-md-5 col-lg-4">
-        <div class="card shadow h-100 p-0">
-          <img
-            :src="$config.apibaseURL + doctor.image_url"
-            :alt="doctor.name"
-            class="w-100"
-          />
-          <div class="card-body p- py-3">
-            <h5 class="mb-0 fw-bold text-uppercase" style="color: #2b325c">
-              {{ doctor.name }}
-            </h5>
-            <p class="text-muted small mb-0 pb-0">
-              {{ doctor.qualicifacions }}
-            </p>
-            <small class="text-success fw-semibold mt-0 pt-0">{{
-              doctor.specialty
-            }}</small>
-            <pre class="fw-semibold mt-1 pt-0 d-none">{{
-              doctor.experience
-            }}</pre>
-            <pre
-              class="fw-semibold mt-1 pt-0"
-            ><i class="icofont-location-pin "></i>{{
+        <div v-if="doctor.name">
+          <div class="card _card h-100 p-0">
+            <img
+              :src="$config.apibaseURL + doctor.image_url"
+              :alt="doctor.name"
+              class="w-75 d-block mx-auto py-2 rounded-circle"
+            />
+            <div class="card-body p- py-3">
+              <h5 class="mb-0 fw-bold text-uppercase" style="color: #2b325c">
+                {{ doctor.name }}
+              </h5>
+              <p class="text-muted small mb-0 pb-0">
+                {{ doctor.qualicifacions }}
+              </p>
+              <small class="text-success fw-semibold mt-0 pt-0">{{
+                doctor.specialty
+              }}</small>
+              <pre class="fw-semibold mt-1 pt-0 d-none">{{
+                doctor.experience
+              }}</pre>
+              <pre
+                class="fw-semibold mt-1 pt-0"
+              ><i class="icofont-location-pin "></i> {{
               doctor.institution_or_chamber_address
             }}</pre>
+              <pre
+                v-if="doctor.working_times_chamber"
+                class="fw-semibold small my-0 pt-0"
+              ><i class="icofont-clock-time"></i
+              > {{ doctor.working_times_chamber }}
+            </pre>
+              <h5
+                v-if="doctor.fee_chamber && form_data.type == 'Private Chamber'"
+                class="p-1 mb-1 text-center fw-semibold fst-italic"
+              >
+                Consultation Fee
+                <span class="text-success"
+                  ><i class="icofont-taka"></i> {{ doctor.fee_chamber }}
+                </span>
+              </h5>
 
-            <div class="my-2 fst-italic">
-              Consultation Fee:
-              <div class="fw-semibold ps-3">
-                <p
-                  class="_fee py-0 my-0"
-                  v-if="doctor.type && doctor.type.includes('Private Chamber')"
-                >
-                  Private Chamber - <i class="icofont-taka"></i
-                  >{{ doctor.fee_chamber }}
+              <template v-if="$auth.loggedIn === false">
+                <p class="text-center mark my-3">
+                  Please
+                  <NuxtLink
+                    :to="`/login?redirect=` + $route.fullPath"
+                    class="text-decoration-none"
+                    >Login</NuxtLink
+                  >
+
+                  to get appointment
                 </p>
-                <p
-                  class="_fee py-0 my-0"
-                  v-if="doctor.type && doctor.type.includes('Video Call')"
-                >
-                  Video Call - <i class="icofont-taka"></i
-                  >{{ doctor.fee_video_call }}
-                </p>
-                <p
-                  class="_fee py-0 my-0"
-                  v-if="doctor.type && doctor.type.includes('Home Call')"
-                >
-                  Home Call - <i class="icofont-taka"></i>1500
-                </p>
-              </div>
+              </template>
             </div>
-
-            <template v-if="$auth.loggedIn === false">
-              <h6 class="text-center my-3 lead">
-                Please
-                <NuxtLink
-                  :to="`/login?redirect=` + $route.fullPath"
-                  class="text-decoration-none"
-                  >Login</NuxtLink
-                >
-
-                to get appointment
-              </h6>
-            </template>
+          </div>
+        </div>
+        <div v-else>
+          <div class="text-center py-5">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
           </div>
         </div>
       </div>
@@ -72,10 +73,7 @@
         v-if="$auth.loggedIn && !$route.query.type"
         class="col-md-6 bg-white"
       >
-        <ValidationObserver
-          class="card shadow h-100 p-0"
-          v-slot="{ handleSubmit }"
-        >
+        <ValidationObserver class="card h-100 p-0" v-slot="{ handleSubmit }">
           <div class="card-body">
             <h6 class="mb-4 fw-bold text-uppercase" style="color: #2b325c">
               Make an Appointment
@@ -214,15 +212,14 @@ export default {
       switch (type) {
         case "Private Chamber":
           // code block
-          return Number(this.doctor.fee_chamber) + 50;
+          return Number(this.doctor.fee_chamber);
         case "Video Call":
           // code block
-          return Number(this.doctor.fee_video_call) + 50;
+          return Number(this.doctor.fee_video_call);
 
         case "Home Call":
           // code block
-          return 1500 + 50;
-          break;
+          return 1500;
         default:
         // code block
       }
@@ -298,28 +295,36 @@ export default {
   },
   methods: {
     async getDoctors() {
-      await this.$axios
-        .get(`patners/doctor/${this.$route.query.id}`, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + this.$config.apiToken,
-          },
-        })
-        .then((res) => {
-          if (res.status === 200) {
-            this.doctor = res.data;
-          } else {
-            this.$router.push("/doctors");
-          }
-        })
-        .catch((error) => {
-          this.$router.push("/doctors");
+      this.$nextTick(() => {
+        this.$nuxt.$loading.start();
 
-          console.log(error.response);
-          // this.$router.push("/doctors");
-          console.log(error.response.data.message || error.message);
-          // context.commit('error', error)
-        });
+        this.$axios
+          .get(`patners/doctor/${this.$route.query.id}`, {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + this.$config.apiToken,
+            },
+          })
+          .then((res) => {
+            if (res.status === 200) {
+              this.doctor = res.data;
+              this.$nuxt.$loading.finish();
+            } else {
+              this.$nuxt.$loading.finish();
+
+              this.$router.push("/doctors");
+            }
+          })
+          .catch((error) => {
+            this.$router.push("/doctors");
+            this.$nuxt.$loading.finish();
+
+            console.log(error.response);
+            // this.$router.push("/doctors");
+            console.log(error.response.data.message || error.message);
+            // context.commit('error', error)
+          });
+      });
     },
     async submitForm() {
       this.form_data.fee = this.getfee;
@@ -358,7 +363,13 @@ export default {
   },
   mounted() {
     this.getDoctors();
-    console.log(this.$route.fullPath);
+    if (
+      !this.form_data.type &&
+      this.$route.query.stype &&
+      this.$route.query.stype != "undefined"
+    ) {
+      this.form_data.type = this.$route.query.stype.replace("-", " ");
+    }
   },
 };
 </script>
@@ -377,5 +388,13 @@ export default {
 }
 .vdp-datepicker input:focus-visible {
   border: none !important;
+}
+@media only screen and (max-width: 600px) {
+  ._card h5 {
+    font-size: 90% !important;
+  }
+  ._card p {
+    font-size: 80% !important;
+  }
 }
 </style>

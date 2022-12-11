@@ -1,8 +1,6 @@
 <template>
   <div class="container">
-    <div
-      class="col-md-9 bg-white mx-auto p-sm-5 p-3 pt-3 pb-5 my-4 rounded shadow"
-    >
+    <div class="col-md-9 bg-white mx-auto p-sm-5 p-3 pt-3 pb-5 my-4 card">
       <h1 class="mb-3 display-4" style="font-weight: 350; color: #084298">
         What we are ?
       </h1>

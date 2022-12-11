@@ -2,14 +2,10 @@
   <section class="">
     <div class="banner_wrapper p-sm-5 p-3">
       <div class="container">
-        <div class="mt-5">
+        <div class="my-3">
           <h1 class="heading_2">Specialist Doctors</h1>
-          <p class="small text-justify">
-            দক্ষ চিকিৎসক ও রোগীর দূরত্ব কমিয়ে উন্নত স্বাস্থ্যপরামর্শ উন্মুক্ত
-            করার লক্ষ্যে
-          </p>
         </div>
-        <div class="row mt-5 g-3 mb-0">
+        <div class="row g-3 mb-0">
           <div class="col-md-4">
             <div class="rounded bg-white">
               <div class="d-flex align-items-center px-2 rounded">
@@ -78,16 +74,15 @@
       </div>
     </div>
 
-    <div class="container my-5">
+    <div class="container">
       <div v-if="sortedDoctorList.length">
         <Doctors :doctors="sortedDoctorList" />
       </div>
       <div v-else>
-        <div
-          class="alert alert-warning display-6 text-center py-5"
-          role="alert"
-        >
-          Coming soon!
+        <div class="text-center py-5">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
         </div>
       </div>
     </div>
@@ -110,12 +105,9 @@ export default {
       return this.$store.getters["data/spesialist_list"];
     },
     sortedDoctorList() {
-      console.log(this.$route);
-      if (this.$route.query.stype) {
+      if (!this.type && this.$route.query.stype) {
         this.type = this.$route.query.stype.replace("-", " ");
       }
-
-      console.log(this.type);
       const filterd_data = this.doctors.filter(
         ({ status, specialty, type, name }) => {
           return (
@@ -147,22 +139,35 @@ export default {
 
   methods: {
     async getDoctors() {
-      await this.$axios
-        .get(`patners/doctor/`, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        })
-        .then((res) => {
-          if (res.status === 200) {
-            this.doctors = res.data;
-          }
-        })
-        .catch((error) => {
-          console.log(error.response);
-          console.log(error.response.data.message || error.message);
-          // context.commit('error', error)
-        });
+      this.$nextTick(() => {
+        this.$nuxt.$loading.start();
+
+        this.$axios
+          .get(`patners/doctor/`, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          .then((res) => {
+            if (res.status === 200) {
+              this.doctors = res.data;
+              this.$nuxt.$loading.finish();
+            }
+          })
+          .catch((error) => {
+            this.$nuxt.$loading.finish();
+
+            console.log(error.response);
+            console.log(error.response.data.message || error.message);
+            // context.commit('error', error)
+          });
+      });
+    },
+  },
+
+  watch: {
+    type(to, from) {
+      this.$router.push("/doctors?stype=" + to.replace(" ", "-"));
     },
   },
   mounted() {

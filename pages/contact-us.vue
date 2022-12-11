@@ -1,7 +1,10 @@
 <template>
   <div class="container">
     <div class="raw my-5">
-      <div class="col-md-7 mx-auto shadow rounded p-md-5 p-3">
+      <div class="col-md-7 mx-auto card rounded p-md-5 p-3">
+        <h1 class="mb-3 display-4" style="font-weight: 350; color: #084298">
+          Contact us
+        </h1>
         <div class="row">
           <div class="col mb-3">
             <label class="form-label">First Name</label>

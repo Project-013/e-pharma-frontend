@@ -1,7 +1,7 @@
 <template>
   <section class="main-body">
     <div class="col-lg-4 col-md-6 col-11 mx-auto py-5">
-      <div class="p-4 rounded shadow bg-white mb-5">
+      <div class="p-3 card bg-white mb-5">
         <div class="sign-info">
           <h4 class="mb-5" style="color: #084298">
             Register now to explore more!
@@ -214,27 +214,45 @@ export default {
       }
     },
     async sendOTP() {
-      this.disable_btn = true;
-      const data = {
-        phone: this.form_data.country_code + this.form_data.phone,
-        type: this.form_data.type,
-      };
+      this.$nextTick(() => {
+        this.$nuxt.$loading.start();
+        this.disable_btn = true;
+        const data = {
+          phone: this.form_data.country_code + this.form_data.phone,
+          type: this.form_data.type,
+        };
+        try {
+          this.$axios
+            .post(`send-otp/`, data, {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            })
+            .then((res) => {
+              console.log(res);
+              if (res.status === 201) {
+                console.log(res.data);
+                this.$toast.info("Please enter verification code... ");
+                this.form_data.otp_status = true;
+                this.form_data.count_down = 180;
+                this.countDownTimer();
+                this.$nuxt.$loading.finish();
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+              this.$nuxt.$loading.finish();
 
-      try {
-        const response = await this.$axios.post("send-otp/", data);
-        if (response.status === 201) {
-          this.form_data.otp_status = true;
-          this.form_data.count_down = 180;
-          this.countDownTimer();
+              console.log(error.message || error.response.data.message);
+            });
+        } catch (e) {
+          this.$nuxt.$loading.finish();
 
-          this.$toast.info("Please enter OTP... ");
+          console.log(e.response);
+          this.$toast.error("Error Found! Try again...");
         }
-      } catch (e) {
-        console.log(e);
-
-        this.$toast.error("Error Found! Try again...");
-      }
-      this.disable_btn = false;
+        this.disable_btn = false;
+      });
     },
 
     async submitOTP() {

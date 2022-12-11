@@ -1,9 +1,9 @@
 <template>
   <div class="root">
-    <Header v-if="!$config.isApp" />
-    <Navbar v-if="!$config.isApp" />
+    <Header />
+    <Navbar />
     <Nuxt />
-    <Footer v-if="!$config.isApp" />
+    <Footer />
   </div>
 </template>
 

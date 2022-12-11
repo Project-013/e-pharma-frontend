@@ -4,13 +4,13 @@
       <div
         v-for="doctor in pageOfItems"
         :key="doctor.id"
-        class="col-md-4 col-12 p-sm-3 p-1"
+        class="col-lg-4 col-md-6 p-sm-3 p-1"
       >
-        <div class="card h-100 p-2">
+        <div class="card h-100 p-2 _card">
           <div class="row">
             <NuxtLink
               class="col-5 d-flex justify-content-center align-items-center"
-              :to="'/doctors/doctor/?id=' + doctor.id"
+              :to="`/doctors/doctor/?id=${doctor.id}&stype=${$route.query.stype}`"
             >
               <img
                 :src="$config.apibaseURL + doctor.image_url"
@@ -19,7 +19,9 @@
               />
             </NuxtLink>
             <div class="col-7">
-              <NuxtLink :to="'/doctors/doctor/?id=' + doctor.id">
+              <NuxtLink
+                :to="`/doctors/doctor/?id=${doctor.id}&stype=${$route.query.stype}`"
+              >
                 <h5 class="mb-0 fw-bold text-uppercase" style="color: #2b325c">
                   {{ doctor.name }}
                 </h5>
@@ -39,7 +41,7 @@
               >
             </p> -->
               <NuxtLink
-                :to="'/doctors/doctor/?id=' + doctor.id"
+                :to="`/doctors/doctor/?id=${doctor.id}&stype=${$route.query.stype}`"
                 class="btn btn-sm btn-dark w-100 mt-3"
               >
                 Book Appointment
@@ -52,7 +54,7 @@
     <div class="d-flex align-items-center mt-3">
       <jw-pagination
         :items="doctors"
-        :pageSize="12"
+        :pageSize="9"
         @changePage="onChangePage"
         :labels="customLabels"
         class="mx-auto"
@@ -99,8 +101,11 @@ export default {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-  ._card * {
-    font-size: 94% !important;
+  ._card h5 {
+    font-size: 90% !important;
+  }
+  ._card p {
+    font-size: 80% !important;
   }
 }
 

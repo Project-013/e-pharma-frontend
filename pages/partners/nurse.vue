@@ -1,7 +1,7 @@
 <template>
   <section class="main-body">
     <div class="col-lg-7 col-md-10 col-11 mx-auto py-5">
-      <div class="p-4 rounded shadow bg-light mb-5 border">
+      <div class="p-3 bg-white card mb-5 border">
         <h4 class="mb-3">
           Register as
           <span style="color: #084298"> Nurse/Midwife!</span>
@@ -289,7 +289,6 @@
                 accept=".jpeg,.jpg,.png,image/jpeg,image/png"
                 aria-label="upload image button"
                 @change="uploadImage"
-                required
               />
             </div>
 
@@ -371,10 +370,10 @@ export default {
       qualicifacions: [],
       gender_list: ["male", "female", "others"],
       payment_sys_list: ["Bkash", "Nogod", "Rocket", "Upay"],
-      working_day_list: this.$store.getters["info/working_day_list"],
-      working_time_list: this.$store.getters["info/working_time_list"],
+      working_day_list: this.$store.getters["data/working_day_list"],
+      working_time_list: this.$store.getters["data/working_time_list"],
       nursing_education_program:
-        this.$store.getters["info/nursing_education_program"],
+        this.$store.getters["data/nursing_education_program"],
     };
   },
   computed: {
@@ -445,7 +444,9 @@ export default {
       console.log(this.form_data);
 
       const formData = new FormData();
-      formData.append("image_url", this.image_url, this.image_url["name"]);
+      if (this.image_url) {
+        formData.append("image_url", this.image_url, this.image_url["name"]);
+      }
       for (const obj in this.form_data) {
         formData.append(obj, this.form_data[obj]);
       }

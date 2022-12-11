@@ -39,7 +39,6 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     "~/plugins/vee-validate",
-    { src: "~/plugins/highcharts.js", mode: 'client' },
     { src: '~/plugins/bootstrap.js', mode: 'client' },
     { src: '~/plugins/vue-datepicker', ssr: false },
     // { src: '~/plugins/vuex-persist.js', mode: 'client' },

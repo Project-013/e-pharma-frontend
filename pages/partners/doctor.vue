@@ -3,7 +3,7 @@
     <!-- <img src="~/static/img/partners/doctor.png" height="100px" alt="Doctors" /> -->
 
     <div class="col-lg-7 col-md-10 col-11 mx-auto py-5">
-      <div class="p-4 rounded shadow bg-light border mb-5">
+      <div class="p-3 card bg-white border mb-5">
         <h4 class="mb-3">
           Register as
           <span style="color: #084298"> Doctor! </span>
@@ -75,7 +75,17 @@
                     </label>
                   </div>
                 </template>
-                <template class="" v-if="qualicifacions.includes(`Others`)">
+                <div class="me-3 mb-0">
+                  <input
+                    class="form-check-input text-dark"
+                    type="checkbox"
+                    value="Others"
+                    id="Others"
+                    v-model="o_qualicifacions"
+                  />
+                  <label class="form-check-label" for="Others"> Others </label>
+                </div>
+                <template class="" v-if="o_qualicifacions.includes(`Others`)">
                   <div class="" rules="required">
                     <input
                       v-model="others_q"
@@ -407,33 +417,16 @@
             <div class="col-md-6">
               <label for="" class="form-label">Mobile No</label>
               <div class="d-flex">
-                <select
-                  class="form-select form-select-sm"
-                  v-model="country_code"
-                  style="width: 110px"
-                >
-                  <template v-for="(c, index) in countryCode">
-                    <option :value="c.dial_code" :key="index">
-                      {{ c.dial_code }}
-                      ({{ c.code }})
-                    </option>
-                  </template>
-
-                  <template v-if="countryCode.length == 0">
-                    <option value="+880">+880</option>
-                  </template>
-                </select>
-
                 <ValidationProvider
-                  rules="required|numeric"
+                  rules="required"
                   v-slot="{ errors }"
                   class="w-100"
                 >
                   <input
-                    type="number"
+                    type="text"
                     required
                     class="form-control form-control-sm is-invalid"
-                    placeholder="1XXXXXXXXX"
+                    placeholder="+8801XXXXXXXXX"
                     aria-label="phone"
                     v-model="mobile"
                   />
@@ -618,6 +611,7 @@ export default {
       working_times_h: [],
       working_times_v: [],
       qualicifacions: ["MBBS"],
+      o_qualicifacions: [],
       type: [],
       spesialist_list: this.$store.getters["data/spesialist"],
       working_day_list: this.$store.getters["data/working_day_list"],
@@ -677,9 +671,6 @@ export default {
       }
 
       return area;
-    },
-    countryCode() {
-      return this.$store.getters["CountryCode"];
     },
   },
 
@@ -756,7 +747,6 @@ export default {
   mounted() {
     this.$store.dispatch("data/getAddress");
     this.$store.dispatch("data/getSpesialistList");
-    this.$store.dispatch("getCountryCodes");
   },
 };
 </script>
