@@ -328,9 +328,9 @@ export default {
       disable_btn: false,
       working_ward: [],
       working_area: [],
-      working_day_list: this.$store.getters["info/working_day_list"],
-      working_time_list: this.$store.getters["info/working_time_list"],
-      pt_education_program: this.$store.getters["info/pt_education_program"],
+      working_day_list: this.$store.getters["data/working_day_list"],
+      working_time_list: this.$store.getters["data/working_time_list"],
+      pt_education_program: this.$store.getters["data/pt_education_program"],
       payment_sys_list: ["Bkash", "Nogod", "Rocket", "Upay"],
     };
   },

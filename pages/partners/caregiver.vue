@@ -368,9 +368,9 @@ export default {
       working_ward: [],
       working_area: [],
       working_days: [],
-      working_day_list: this.$store.getters["info/working_day_list"],
+      working_day_list: this.$store.getters["data/working_day_list"],
       nursing_education_program:
-        this.$store.getters["info/nursing_education_program"],
+        this.$store.getters["data/nursing_education_program"],
     };
   },
 
@@ -412,6 +412,7 @@ export default {
             this.$nuxt.$loading.finish();
           })
           .catch((error) => {
+            console.log(error.response);
             if (error.response && error.response.data) {
               const err_data = error.response.data;
               if (err_data.mobile || err_data.nid) {

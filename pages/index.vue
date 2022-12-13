@@ -1,9 +1,7 @@
 <template>
   <section class="">
-    <!-- <PartialsCarousel /> -->
-    <PartialsBanner v-if="!$config.isApp" />
+    <PartialsBanner />
     <PartialsServices />
-    <!-- <PartialsSpeciality /> -->
   </section>
 </template>
 
