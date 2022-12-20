@@ -1,0 +1,66 @@
+
+
+  <div v-if="get_doctor.name">
+          <div class="card _card h-100 p-0">
+            <img
+              :src="$config.apibaseURL + get_doctor.image_url"
+              :alt="get_doctor.name"
+              class="w-75 d-block mx-auto py-2 rounded-circle"
+            />
+            <div class="card-body p- py-3">
+              <h5 class="mb-0 fw-bold text-uppercase" style="color: #2b325c">
+                {{ get_doctor.name }}
+              </h5>
+              <p class="text-muted small mb-0 pb-0">
+                {{ get_doctor.qualicifacions }}
+              </p>
+              <small class="text-success fw-semibold mt-0 pt-0">{{
+                get_doctor.specialty
+              }}</small>
+              <pre class="fw-semibold mt-1 pt-0 d-none">{{
+                get_doctor.experience
+              }}</pre>
+              <pre
+                class="fw-semibold mt-1 pt-0"
+              ><i class="icofont-location-pin "></i> {{
+              get_doctor.institution_or_chamber_address
+            }}</pre>
+              <pre
+                v-if="get_doctor.working_times_chamber"
+                class="fw-semibold small my-0 pt-0"
+              ><i class="icofont-clock-time"></i
+              > {{ get_doctor.working_times_chamber }}
+            </pre>
+              <h5
+                v-if="get_doctor.fee_chamber && form_data.type == 'Private Chamber'"
+                class="p-1 mb-1 text-center fw-semibold fst-italic"
+              >
+                Consultation Fee
+                <span class="text-success"
+                  ><i class="icofont-taka"></i> {{ get_doctor.fee_chamber }}
+                </span>
+              </h5>
+
+              <template v-if="$auth.loggedIn === false">
+                <p class="text-center mark my-3">
+                  Please
+                  <NuxtLink
+                    :to="`/login?redirect=` + $route.fullPath"
+                    class="text-decoration-none"
+                    >
+                    Login
+                    </NuxtLink>
+                    or
+                  <NuxtLink
+                    :to="`/register?redirect=` + $route.fullPath"
+                    class="text-decoration-none"
+                    >
+                    Register
+                    </NuxtLink>
+
+                  to get appointment
+                </p>
+              </template>
+            </div>
+          </div>
+        </div>

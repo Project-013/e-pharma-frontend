@@ -79,11 +79,18 @@
         </div>
       </div>
     </div>
+    {{doctors}}
   </header>
 </template>
 
 <script>
-export default {};
+export default {
+
+  mounted(){
+    this.$store.dispatch("doctors/getDoctors");
+  },
+
+};
 </script>
 
 <style></style>

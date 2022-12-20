@@ -6,34 +6,7 @@
           <h1 class="heading_2">Find A Physiotherapist Now</h1>
           <p class="small text-justify"></p>
         </div>
-        <div class="row mt-5 g-3 mb-0">
-          <div class="col-md-4">
-            <div class="rounded bg-white">
-              <div class="d-flex align-items-center px-2 rounded">
-                <img
-                  src="/img/icons/search.svg"
-                  style="width: 18px"
-                  alt=""
-                  class="me-2"
-                />
-                <input
-                  type="search"
-                  class="form-control form-select-sm border-0 my-0"
-                  placeholder="Search Nurse by name"
-                />
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <select
-              class="form-select form-select-sm"
-              aria-label="Default select example"
-              required
-            >
-              <option value="" disabled selected>Select Area</option>
-            </select>
-          </div>
-        </div>
+       
       </div>
     </div>
 
@@ -43,7 +16,7 @@
           class="alert alert-warning display-6 text-center py-5"
           role="alert"
         >
-          Coming soon!
+          Call +8801959970664
         </div>
       </div>
     </div>

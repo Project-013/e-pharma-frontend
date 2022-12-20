@@ -4,45 +4,47 @@
       <h3 v-if="form_data.type" class="text-dark text-center">
         {{ form_data.type }} Appoionment
       </h3>
+
       <div class="col-md-5 col-lg-4">
-        <div v-if="doctor.name">
+      
+      <div v-if="get_doctor.name">
           <div class="card _card h-100 p-0">
             <img
-              :src="$config.apibaseURL + doctor.image_url"
-              :alt="doctor.name"
+              :src="$config.apibaseURL + get_doctor.image_url"
+              :alt="get_doctor.name"
               class="w-75 d-block mx-auto py-2 rounded-circle"
             />
             <div class="card-body p- py-3">
               <h5 class="mb-0 fw-bold text-uppercase" style="color: #2b325c">
-                {{ doctor.name }}
+                {{ get_doctor.name }}
               </h5>
               <p class="text-muted small mb-0 pb-0">
-                {{ doctor.qualicifacions }}
+                {{ get_doctor.qualicifacions }}
               </p>
               <small class="text-success fw-semibold mt-0 pt-0">{{
-                doctor.specialty
+                get_doctor.specialty
               }}</small>
               <pre class="fw-semibold mt-1 pt-0 d-none">{{
-                doctor.experience
+                get_doctor.experience
               }}</pre>
               <pre
                 class="fw-semibold mt-1 pt-0"
               ><i class="icofont-location-pin "></i> {{
-              doctor.institution_or_chamber_address
+              get_doctor.institution_or_chamber_address
             }}</pre>
               <pre
-                v-if="doctor.working_times_chamber"
+                v-if="get_doctor.working_times_chamber"
                 class="fw-semibold small my-0 pt-0"
               ><i class="icofont-clock-time"></i
-              > {{ doctor.working_times_chamber }}
+              > {{ get_doctor.working_times_chamber }}
             </pre>
               <h5
-                v-if="doctor.fee_chamber && form_data.type == 'Private Chamber'"
+                v-if="get_doctor.fee_chamber && form_data.type == 'Private Chamber'"
                 class="p-1 mb-1 text-center fw-semibold fst-italic"
               >
                 Consultation Fee
                 <span class="text-success"
-                  ><i class="icofont-taka"></i> {{ doctor.fee_chamber }}
+                  ><i class="icofont-taka"></i> {{ get_doctor.fee_chamber }}
                 </span>
               </h5>
 
@@ -52,8 +54,16 @@
                   <NuxtLink
                     :to="`/login?redirect=` + $route.fullPath"
                     class="text-decoration-none"
-                    >Login</NuxtLink
-                  >
+                    >
+                    Login
+                    </NuxtLink>
+                    or
+                  <NuxtLink
+                    :to="`/register?redirect=` + $route.fullPath"
+                    class="text-decoration-none"
+                    >
+                    Register
+                    </NuxtLink>
 
                   to get appointment
                 </p>
@@ -63,9 +73,7 @@
         </div>
         <div v-else>
           <div class="text-center py-5">
-            <div class="spinner-border" role="status">
-              <span class="visually-hidden">Loading...</span>
-            </div>
+            <h4>Nothing Found!</h4>
           </div>
         </div>
       </div>
@@ -194,6 +202,11 @@ export default {
     ValidationObserver,
   },
   computed: {
+    get_doctor(){
+      const doctors = this.$store.getters["doctors/doctors"]
+      const doctor = doctors.find((doctor)=> doctor.id == this.$route.query.id)
+      return doctor
+    },
     getPhone() {
       if (this.$auth.user.phone) {
         return this.$auth.user.phone;
@@ -294,38 +307,38 @@ export default {
     };
   },
   methods: {
-    async getDoctors() {
-      this.$nextTick(() => {
-        this.$nuxt.$loading.start();
+    // async getDoctors() {
+    //   this.$nextTick(() => {
+    //     this.$nuxt.$loading.start();
 
-        this.$axios
-          .get(`patners/doctor/${this.$route.query.id}`, {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + this.$config.apiToken,
-            },
-          })
-          .then((res) => {
-            if (res.status === 200) {
-              this.doctor = res.data;
-              this.$nuxt.$loading.finish();
-            } else {
-              this.$nuxt.$loading.finish();
+    //     this.$axios
+    //       .get(`patners/doctor/${this.$route.query.id}`, {
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //           Authorization: "Bearer " + this.$config.apiToken,
+    //         },
+    //       })
+    //       .then((res) => {
+    //         if (res.status === 200) {
+    //           this.doctor = res.data;
+    //           this.$nuxt.$loading.finish();
+    //         } else {
+    //           this.$nuxt.$loading.finish();
 
-              this.$router.push("/doctors");
-            }
-          })
-          .catch((error) => {
-            this.$router.push("/doctors");
-            this.$nuxt.$loading.finish();
+    //           this.$router.push("/doctors");
+    //         }
+    //       })
+    //       .catch((error) => {
+    //         this.$router.push("/doctors");
+    //         this.$nuxt.$loading.finish();
 
-            console.log(error.response);
-            // this.$router.push("/doctors");
-            console.log(error.response.data.message || error.message);
-            // context.commit('error', error)
-          });
-      });
-    },
+    //         console.log(error.response);
+    //         // this.$router.push("/doctors");
+    //         console.log(error.response.data.message || error.message);
+    //         // context.commit('error', error)
+    //       });
+    //   });
+    // },
     async submitForm() {
       this.form_data.fee = this.getfee;
       this.form_data.patient_phone = this.getPhone;
@@ -362,7 +375,7 @@ export default {
     },
   },
   mounted() {
-    this.getDoctors();
+    // this.getDoctors();
     if (
       !this.form_data.type &&
       this.$route.query.stype &&

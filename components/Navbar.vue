@@ -234,19 +234,15 @@ export default {
   },
   methods: {
     toggleNavbar() {
-      console.log(this.show);
       this.show = !this.show;
     },
   },
   watch: {
     $route(to, from) {
-      console.log(to, from);
-      console.log(this.show);
       this.show = false;
     },
   },
   mounted() {
-    console.log(this.$router);
   },
 };
 </script>

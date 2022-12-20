@@ -421,6 +421,12 @@ pre {
   border: none !important;
 }
 
+.vdp-datepicker__calendar{
+  width: 250px!important;
+  border: 1px solid black!important;
+
+}
+
 @-webkit-keyframes a-eight {
   0% {
     -webkit-transform: translate(0, 0);

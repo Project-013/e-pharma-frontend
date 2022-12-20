@@ -73,16 +73,15 @@
         </div>
       </div>
     </div>
-
     <div class="container">
-      <div v-if="sortedDoctorList.length">
-        <Doctors :doctors="sortedDoctorList" />
+
+      <div class="row" v-if="sortedDoctorList.length">
+        <Doctors class="" :doctors="sortedDoctorList" />
       </div>
       <div v-else>
         <div class="text-center py-5">
-          <div class="spinner-border" role="status">
-            <span class="visually-hidden">Loading...</span>
-          </div>
+          <h4>Nothing Found!</h4>
+        
         </div>
       </div>
     </div>
@@ -101,14 +100,18 @@ export default {
     };
   },
   computed: {
+    get_doctors(){
+      return this.$store.getters["doctors/doctors"]
+    },
     getSpesialistList() {
       return this.$store.getters["data/spesialist_list"];
     },
     sortedDoctorList() {
+
       if (!this.type && this.$route.query.stype) {
         this.type = this.$route.query.stype.replace("-", " ");
       }
-      const filterd_data = this.doctors.filter(
+      const filterd_data = this.get_doctors.filter(
         ({ status, specialty, type, name }) => {
           return (
             status == "approved" &&
@@ -126,7 +129,7 @@ export default {
     },
     getSpesialis() {
       const list = [];
-      this.doctors.map(({ status, specialty }) => {
+      this.get_doctors.map(({ status, specialty }) => {
         if (status == "approved" && list.includes(specialty) == false) {
           list.push(specialty);
         }
@@ -135,34 +138,35 @@ export default {
 
       return list;
     },
+  
   },
 
   methods: {
-    async getDoctors() {
-      this.$nextTick(() => {
-        this.$nuxt.$loading.start();
+    // async getDoctors() {
+    //   this.$nextTick(() => {
+    //     this.$nuxt.$loading.start();
 
-        this.$axios
-          .get(`patners/doctor/`, {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          })
-          .then((res) => {
-            if (res.status === 200) {
-              this.doctors = res.data;
-              this.$nuxt.$loading.finish();
-            }
-          })
-          .catch((error) => {
-            this.$nuxt.$loading.finish();
+    //     this.$axios
+    //       .get(`patners/doctor/`, {
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //         },
+    //       })
+    //       .then((res) => {
+    //         if (res.status === 200) {
+    //           this.doctors = res.data;
+    //           this.$nuxt.$loading.finish();
+    //         }
+    //       })
+    //       .catch((error) => {
+    //         this.$nuxt.$loading.finish();
 
-            console.log(error.response);
-            console.log(error.response.data.message || error.message);
-            // context.commit('error', error)
-          });
-      });
-    },
+    //         console.log(error.response);
+    //         console.log(error.response.data.message || error.message);
+    //         // context.commit('error', error)
+    //       });
+    //   });
+    // },
   },
 
   watch: {
@@ -171,7 +175,7 @@ export default {
     },
   },
   mounted() {
-    this.getDoctors();
+    // this.getDoctors();
     this.$store.dispatch("data/getSpesialistList");
   },
 };

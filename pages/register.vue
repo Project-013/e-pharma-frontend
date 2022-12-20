@@ -234,7 +234,7 @@ export default {
                 console.log(res.data);
                 this.$toast.info("Please enter verification code... ");
                 this.form_data.otp_status = true;
-                this.form_data.count_down = 180;
+                this.form_data.count_down = 60;
                 this.countDownTimer();
                 this.$nuxt.$loading.finish();
               }

@@ -53,8 +53,8 @@
               {{ appointment.details }}
             </p>
           </div>
-          <div class="col-sm-6">
-            <p class="text-dark small mb-0 pb-0">
+          <div class="col-sm-6" >
+            <p class="text-dark small mb-0 pb-0" v-if="appointment.fee!=0">
               Payment Status:
               <span
                 class="badge"
@@ -94,7 +94,8 @@
             <NuxtLink
               v-if="
                 appointment.payment_status == `unpaid` &&
-                appointment.service_status == `approved`
+                appointment.fee != 0 &&
+                appointment.service_status == `approved` 
               "
               class="btn btn-sm mt-3 btn-dark w-100"
               :to="'/doctors/config?type=payment&id=' + appointment.id"

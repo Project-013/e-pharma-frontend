@@ -15,7 +15,7 @@
           class="alert alert-warning display-6 text-center py-5"
           role="alert"
         >
-          Coming Soon!
+          Call +8801959970664
         </div>
       </div>
     </div>
