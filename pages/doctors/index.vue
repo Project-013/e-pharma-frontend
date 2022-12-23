@@ -1,5 +1,5 @@
 <template>
-  <section class="">
+  <section class="center_box">
     <div class="banner_wrapper p-sm-5 p-3">
       <div class="container">
         <div class="my-3">

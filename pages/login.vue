@@ -1,9 +1,9 @@
 <template>
-  <section class="">
-    <div class="col-lg-4 col-md-6 col-11 mx-auto py-5">
+  <section class="center_box">
+    <div class="col-lg-4 col-md-6 col-11 mx-auto py-3">
       <div class="p-3 card bg-white mb-5">
         <div class="sign-info">
-          <h4 class="mb-5" style="color: #084298">Welcome Back!</h4>
+          <h5 class="mb-3" >Welcome Back!</h5>
         </div>
 
         <ValidationObserver v-slot="{ handleSubmit }">
@@ -12,11 +12,11 @@
               <div class="input-group flex-nowrap">
                 <span
                   class="input-group-text bg-white p-0"
-                  style="width: 85px"
+                  style="width: 73px"
                   id="addon-wrapping"
                 >
                   <select
-                    class="form-select form-select-sm border-0"
+                    class="form-select form-select-sm border-0 pe-0"
                     style="font-weight: 500"
                     aria-label=".form-select-sm example"
                     v-model="form_data.country_code"
@@ -78,7 +78,7 @@
               <div class="input-group flex-nowrap">
                 <span
                   class="input-group-text bg-white text-center"
-                  style="width: 85px"
+                  style="width: 73px"
                   id="addon-wrapping"
                 >
                   OPT

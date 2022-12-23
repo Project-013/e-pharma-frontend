@@ -1,8 +1,11 @@
 <template>
-  <section class="">
-    <PartialsBanner />
-    <PartialsServices />
-  </section>
+  <div class="center_box">
+    <div class="pb-3">
+      <!-- <PartialsBanner /> -->
+      <!-- <PartialsCarousel/> -->
+      <PartialsServices />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -14,7 +17,12 @@ export default {
       this.$router.push(this.$route.query.redirect);
     }
   },
-  created() {
-  },
+  created() {},
 };
 </script>
+
+<style scoped>
+.box {
+  height: 1000px;
+}
+</style>

@@ -2,7 +2,7 @@
   <div class="root">
     <Header />
     <Navbar />
-    <Nuxt />
+    <Nuxt class="" />
     <Footer />
   </div>
 </template>
@@ -11,4 +11,9 @@
 export default {};
 </script>
 
-<style scoped></style>
+<style scoped>
+.nuxt_root{
+   min-height: 100vh!important;
+}
+
+</style>

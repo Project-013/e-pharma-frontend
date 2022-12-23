@@ -1,11 +1,11 @@
 <template>
-  <section class="main-body">
-    <div class="col-lg-4 col-md-6 col-11 mx-auto py-5">
+  <section class="center_box">
+    <div class="col-lg-4 col-md-6 col-11 mx-auto py-3">
       <div class="p-3 card bg-white mb-5">
         <div class="sign-info">
-          <h4 class="mb-5" style="color: #084298">
+          <h5 class="mb-3" >
             Register now to explore more!
-          </h4>
+          </h5>
         </div>
         <ValidationObserver v-slot="{ handleSubmit }">
           <form class="form" @submit.prevent="handleSubmit(sendOTP)">
@@ -13,7 +13,7 @@
               <div class="input-group flex-nowrap">
                 <span
                   class="input-group-text bg-white text-center"
-                  style="width: 85px"
+                  style="width: 73px"
                   id="addon-wrapping"
                 >
                   <img
@@ -33,15 +33,15 @@
                 />
               </div>
             </div>
-            <div class="input-field pb-3">
+            <div class="input-field pb-1">
               <div class="input-group flex-nowrap">
                 <span
                   class="input-group-text bg-white p-0"
-                  style="width: 85px"
+                  style="width: 73px"
                   id="addon-wrapping"
                 >
                   <select
-                    class="form-select form-select-sm border-0 p-3"
+                    class="form-select form-select-sm border-0 pe-0"
                     style="font-weight: 500"
                     aria-label=".form-select-sm example"
                     v-model="form_data.country_code"
@@ -126,7 +126,7 @@
               <div class="input-group flex-nowrap">
                 <span
                   class="input-group-text bg-white text-center"
-                  style="width: 85px"
+                  style="width: 73px"
                   id="addon-wrapping"
                 >
                   OPT
@@ -135,7 +135,7 @@
                   type="number"
                   required
                   class="form-control py-3"
-                  placeholder="Enter Verification Code"
+                  placeholder="Enter OTP"
                   aria-describedby="addon-wrapping"
                   v-model="form_data.otp"
                 />

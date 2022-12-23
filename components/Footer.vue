@@ -1,6 +1,6 @@
 <template>
-  <section class="mb-5 mb-md-0 pt-4">
-    <section id="contact" class="footer_wrapper d-none d-md-block pt-5 mt-3">
+  <section class="mb-5 d-none d-md-block mb-md-0 pt-4 ">
+    <section id="contact" class="footer_wrapper  pt-5 mt-3">
       <div class="container">
         <div class="row">
           <div class="col-lg-3 col-md-6 mb-4">
@@ -136,7 +136,7 @@
                 >
               </li>
               <li>
-                <NuxtLink to="/privacy-policy" class="text-light">
+                <NuxtLink to="/privacy" class="text-light">
                   Privacy Policy
                 </NuxtLink>
               </li>

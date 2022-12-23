@@ -101,7 +101,7 @@
                     <option
                       :value="type"
                       :key="index"
-                      v-if="doctor.type && doctor.type.includes(type)"
+                      v-if="get_doctor.type && get_doctor.type.includes(type)"
                     >
                       {{ type }}
                     </option>
@@ -112,7 +112,6 @@
                 <label class="form-label" for="patient_name"
                   >Patient name</label
                 >
-
                 <input
                   v-model="form_data.patient_name"
                   id="patient_name"

@@ -1,17 +1,18 @@
 <template>
-  <section id="home" class="home">
+  <div id="home" class="home">
     <div class="banner_wrapper wrapper">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-6 order-1 order-lg-0">
-            <h1 class="heading_1 text-white text-uppercase">
+            <h2 class="heading_1 text-white text-uppercase">
               {{ $config.uniProject ? "E-health" : "sasthosebok.com" }}
-            </h1>
-            <h4 class="heading_2 text-white">
-              Quality Digital Healthcare Services Is Our Commitment
-            </h4>
+            </h2>
+
             <div class="d-none d-md-block">
-              <p class="small">
+              <h5 class="heading_2 text-white">
+                Quality Digital Healthcare Services Is Our Commitment
+              </h5>
+              <p class="small d-none">
                 <span class="fw-bold">
                   {{ $config.uniProject ? "E-health" : "sasthosebok.com" }}
                 </span>
@@ -55,7 +56,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>

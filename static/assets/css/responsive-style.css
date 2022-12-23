@@ -93,6 +93,15 @@
 }
 
 @media (max-width: 767px) {
+
+  .center_box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 0px 0 75px 0;
+  }
   /* custom css */
   .wrapper {
     padding: 2.125rem 0 !important;

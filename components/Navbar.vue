@@ -1,34 +1,53 @@
 <template>
   <header class="sticky-top">
+    <div
+      class="navbar border-bottom bg-light d-flex justify-content-start d-none "
+    >
+      <a
+        class="navbar-toggler border-0 me-1"
+        @click="toggleNavbar"
+        type="button"
+      >
+        <!-- <img src="../static/img/icons/menu.svg" alt="me" width="30" /> -->
+        <i class="icofont-navigation-menu"></i>
+      </a>
+      <NLink class="navbar-brand text-success" to="/">
+        <img
+          src="~/static/img/logo.png"
+          alt="sasthosebok.com"
+          class="d-none d-md-block"
+          width="55"
+        />
+        <h5
+          style="font-weight: 500; color: #084298"
+          class="text-uppercase fw-bold d-block d-md-none my-0 py-0"
+        >
+          sasthosebok.com
+        </h5>
+      </NLink>
+    </div>
     <nav
-      class="navbar navbar-expand-md navbar-white bg-white border-bottom py-1 d-none d-md-block"
+      class="navbar navbar-expand-md navbar-white bg-light border-bottom py-1 d-none d-md-block"
     >
       <div class="container">
-        <NLink class="navbar-brand text-success" to="/">
-          <img src="~/static/img/logo.png" alt="sasthosebok.com" width="55" />
-          <!-- <p class="small ms-2" style="font-size: 15px">
-            জরুরী মুহুর্তে, <br />
-            জীবনের প্রয়োজনে
-          </p> -->
-        </NLink>
-
-        <!-- <button
-          class="border-0 d-lg-none bg-white p-2"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasExample"
-          aria-controls="offcanvasExample"
-        >
-          <img src="../static/img/icons/menu.svg" alt="me" width="30" />
-        </button> -->
-
-        <a
-          class="navbar-toggler border-0 d-none"
-          @click="toggleNavbar"
-          type="button"
-        >
-          <img src="../static/img/icons/menu.svg" alt="me" width="30" />
-        </a>
+        <div class="d-flex justify-content-center align-items-center">
+          <a
+            class="navbar-toggler border-0 me-1"
+            @click="toggleNavbar"
+            type="button"
+          >
+            <!-- <img src="../static/img/icons/menu.svg" alt="me" width="30" /> -->
+            <i class="icofont-navigation-menu"></i>
+          </a>
+          <NLink class="navbar-brand text-success" to="/">
+            <img
+              src="~/static/img/logo.png"
+              alt="sasthosebok.com"
+              class=""
+              width="55"
+            />
+          </NLink>
+        </div>
 
         <div
           class="collapse navbar-collapse order-1 order-md-0"
@@ -36,7 +55,7 @@
         >
           <NavItem class="mx-auto" />
         </div>
-        <div class="ms-auto d-flex justify-content-center">
+        <div class="ms-auto d-flex justify-content-center d-none d-md-block">
           <template v-if="$auth.loggedIn">
             <span class="dropdown text-light">
               <a
@@ -89,7 +108,7 @@
             </span>
           </template>
           <template v-else>
-            <div class="">
+            <div>
               <NuxtLink class="" to="/login">
                 <small class="btn btn-outline-dark btn-sm"
                   ><i class="icofont-sign-in"></i> Login
@@ -151,74 +170,48 @@
           ></button>
         </div>
         <div class="offcanvas-body">
-          <div class="ms-auto d-flex justify-content-center">
-            <template v-if="$auth.loggedIn">
-              <span class="dropdown text-light">
-                <a
-                  class="dropdown-toggle text-dark border rounded p-2 text-decoration-none"
-                  type="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <span style="font-size: 14px">
-                    welcome
+          <template v-if="$auth.loggedIn">
+            <h5 class="mb-3">Welcome!</h5>
 
-                    <small class="" style="font-weight: 500; color: #084298"
-                      >{{ $auth.user.full_name }} </small
-                    >!
-                  </span>
+            <h3 class="" style="font-weight: 500; color: #084298">
+              {{ $auth.user.full_name }}
+            </h3>
+            <hr />
 
-                  <img
-                    src="../static/img/icons/user_icon.svg"
-                    alt="user icon"
-                    width="35"
-                  />
+            <ul class="list-group mt-5">
+              <li
+                class="list-group-item"
+                v-if="this.$auth.user && this.$auth.user.is_admin"
+              >
+                <NuxtLink to="/admin">
+                  <i class="icofont-dashboard me-1"></i>Admin Dashboard
+                </NuxtLink>
+              </li>
+
+              <li class="list-group-item">
+                <a class="pointer" @click="$auth.logout()">
+                  <i class="icofont-logout me-1"></i>Logout
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="">
-                  <li v-if="this.$auth.user && this.$auth.user.is_admin">
-                    <NuxtLink to="/admin" class="dropdown-item">
-                      <i class="icofont-dashboard me-1"></i>Admin Dashboard
-                    </NuxtLink>
-                  </li>
-                  <li>
-                    <NuxtLink to="/profile" class="dropdown-item">
-                      <i class="icofont-ui-user me-1"></i>Profile
-                    </NuxtLink>
-                  </li>
-                  <li>
-                    <NuxtLink to="/profile/setting" class="dropdown-item">
-                      <i class="icofont-gear me-1"></i>Settings
-                    </NuxtLink>
-                  </li>
-                  <div class="dropdown-divider"></div>
-                  <li>
-                    <a
-                      style="cursor: pointer"
-                      class="dropdown-item pointer"
-                      @click="$auth.logout()"
-                    >
-                      <i class="icofont-logout me-1"></i>Logout
-                    </a>
-                  </li>
-                </ul>
-              </span>
-            </template>
-            <template v-else>
-              <div class="">
-                <NuxtLink class="" to="/login">
-                  <small class="btn btn-outline-dark btn-sm"
-                    ><i class="icofont-sign-in"></i> Login
-                  </small>
-                </NuxtLink>
-                <NuxtLink class="" to="/register">
-                  <small class="btn btn-dark btn-sm p"
-                    ><i class="icofont-sign-in"></i> Register</small
-                  >
-                </NuxtLink>
-              </div>
-            </template>
-          </div>
-          <NavItem />
+              </li>
+            </ul>
+          </template>
+          <template v-else>
+            <div class="mt-5">
+              <h5 class="mb-3">Welcome!</h5>
+              <NuxtLink class="d-block" to="/login">
+                <small class="btn btn-outline-dark btn-sm w-100"
+                  ><i class="icofont-sign-in"></i> Login
+                </small>
+              </NuxtLink>
+
+              <p class="text-center small my-2">or</p>
+              <NuxtLink class="d-block" to="/register">
+                <small class="btn btn-dark btn-sm w-100"
+                  ><i class="icofont-sign-in"></i> Register</small
+                >
+              </NuxtLink>
+            </div>
+          </template>
         </div>
       </div>
     </div>
@@ -242,8 +235,7 @@ export default {
       this.show = false;
     },
   },
-  mounted() {
-  },
+  mounted() {},
 };
 </script>
 <style scoped>
