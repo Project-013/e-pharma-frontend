@@ -42,7 +42,6 @@ export default {
     { src: '~/plugins/bootstrap.js', mode: 'client' },
     { src: '~/plugins/vue-datepicker', ssr: false },
     // { src: '~/plugins/vuex-persist.js', mode: 'client' },
-
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -50,8 +49,13 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    '@nuxtjs/composition-api/module'
+    '@nuxtjs/composition-api/module',
+    '@nuxt/image',
+
   ],
+  image: {
+    // Options
+  },
   
 
 

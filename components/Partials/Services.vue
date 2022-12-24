@@ -5,65 +5,50 @@
 
       <div class="col-lg-3 col-md-4 col-6">
         <NuxtLink to="/doctors?stype=Private-Chamber">
-          <img
-            src="~/static/img/services/001-advice.png"
-            class="w-50 mx-auto d-block pointer"
-          />
+          <nuxt-img src="/img/services/001-advice.png" class="w-50 mx-auto d-block pointer" placeholder  />
           <h6 class="small text-center mt-3">Private Chamber Appoionment</h6>
         </NuxtLink>
       </div>
       <div class="col-lg-3 col-md-4 col-6">
         <NuxtLink to="/nurse">
-          <img
-            src="~/static/img/services/003-nurse.png"
-            class="w-50 mx-auto d-block pointer"
-          />
+          <nuxt-img src="/img/services/003-nurse.png" class="w-50 mx-auto d-block pointer" placeholder  />
           <h6 class="small text-center mt-3">Nurse / Midwife</h6>
         </NuxtLink>
       </div>
       <div class="col-lg-3 col-md-4 col-6">
         <NuxtLink to="/doctors?stype=Home-Call">
-          <img
-            src="~/static/img/services/002-medical-staff.png"
-            class="w-50 mx-auto d-block pointer"
-          />
+          <nuxt-img src="/img/services/002-medical-staff.png" class="w-50 mx-auto d-block pointer" placeholder  />
           <h6 class="small text-center mt-3">Doctor Home call</h6>
         </NuxtLink>
       </div>
       <div class="col-lg-3 col-md-4 col-6">
         <NuxtLink to="/doctors?stype=Video-Call">
-          <img
-            src="~/static/img/services/Video.png"
-            class="w-50 mx-auto d-block pointer"
-          />
+          <nuxt-img src="/img/services/Video.png" class="w-50 mx-auto d-block pointer" placeholder  />
           <h6 class="small text-center mt-3">Video Call (Telemedicine)</h6>
         </NuxtLink>
       </div>
       <div class="col-lg-3 col-md-4 col-6">
         <NuxtLink to="/physiotherapist">
-          <img
-            src="~/static/img/services/phy.png"
-            class="w-50 mx-auto d-block pointer"
-          />
+          <nuxt-img src="/img/services/phy.png" class="w-50 mx-auto d-block pointer" placeholder  />
           <h6 class="small text-center mt-3">Physiotherapist</h6>
         </NuxtLink>
       </div>
       <div class="col-lg-3 col-md-4 col-6">
         <NuxtLink to="/medicine">
-          <img
-            src="~/static/img/services/medicines.png"
-            class="w-50 mx-auto d-block pointer"
-          />
+          <nuxt-img src="/img/services/medicines.png" class="w-50 mx-auto d-block pointer" placeholder  />
           <h6 class="small text-center mt-3">Medicine Home Delivery</h6>
         </NuxtLink>
       </div>
       <div class="col-lg-3 col-md-4 col-6">
         <NuxtLink to="/caregivers">
-          <img
-            src="~/static/img/services/caregivers1.png"
-            class="w-50 mx-auto d-block pointer"
-          />
+          <nuxt-img src="/img/services/caregivers1.png" class="w-50 mx-auto d-block pointer" placeholder  />
           <h6 class="small text-center mt-3">Caregivers</h6>
+        </NuxtLink>
+      </div>
+      <div class="col-lg-3 col-md-4 col-6">
+        <NuxtLink to="/sample">
+          <nuxt-img src="/img/services/blood-test.png" class="w-50 mx-auto d-block pointer" placeholder  />
+          <h6 class="small text-center mt-3">HOME SAMPLE COLLECTION</h6>
         </NuxtLink>
       </div>
     </div>

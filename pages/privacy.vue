@@ -1,6 +1,6 @@
 <template>
   <div class="container text-dark">
-    <h1>Privacy Policy</h1>
+    <h1 class="mt-4">Privacy Policy</h1>
     <p>Last updated: December 23, 2022</p>
     <p>
       This Privacy Policy describes Our policies and procedures on the
@@ -11,13 +11,7 @@
     <p>
       We use Your Personal data to provide and improve the Service. By using the
       Service, You agree to the collection and use of information in accordance
-      with this Privacy Policy. This Privacy Policy has been created with the
-      help of the
-      <a
-        href="https://www.freeprivacypolicy.com/free-privacy-policy-generator/"
-        target="_blank"
-        >Free Privacy Policy Generator</a
-      >.
+      with this Privacy Policy. 
     </p>
     <h1>Interpretation and Definitions</h1>
     <h2>Interpretation</h2>
@@ -175,13 +169,7 @@
       Cookies can be &quot;Persistent&quot; or &quot;Session&quot; Cookies.
       Persistent Cookies remain on Your personal computer or mobile device when
       You go offline, while Session Cookies are deleted as soon as You close
-      Your web browser. Learn more about cookies on the
-      <a
-        href="https://www.freeprivacypolicy.com/blog/sample-privacy-policy-template/#Use_Of_Cookies_And_Tracking"
-        target="_blank"
-        >Free Privacy Policy website</a
-      >
-      article.
+      Your web browser. 
     </p>
     <p>
       We use both Session and Persistent Cookies for the purposes set out below:

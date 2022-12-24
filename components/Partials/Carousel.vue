@@ -5,7 +5,7 @@
       class="carousel slide"
       data-bs-ride="false"
     >
-      <div class="carousel-indicators d-none ">
+      <div class="carousel-indicators d-none">
         <button
           type="button"
           data-bs-target="#carouselExampleCaptions"
@@ -41,47 +41,29 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img
-            src="~/static/img/slider/slider1.png"
-            class="d-block w-100"
-            alt="..."
-          />
+          <NuxtLink to="/doctors">
+            <nuxt-img src="/img/slider/slider1.png"   class="d-block w-100" />
+          </NuxtLink>
         </div>
         <div class="carousel-item">
-          <!-- <img src="..." class="d-block w-100" alt="..." /> -->
-          <img
-            src="~/static/img/slider/slider2.png"
-            class="d-block w-100"
-            alt="..."
-          />
- 
+          <NuxtLink to="/nurse">
+            <nuxt-img src="/img/slider/slider2.png"   class="d-block w-100" />
+          </NuxtLink>
         </div>
         <div class="carousel-item">
-          <!-- <img src="..." class="d-block w-100" alt="..." /> -->
-          <img
-            src="~/static/img/slider/slider1.png"
-            class="d-block w-100"
-            alt="..."
-          />
-  
+          <NuxtLink to="/physiotherapist">
+            <nuxt-img src="/img/slider/slider3.png"   class="d-block w-100" />
+          </NuxtLink>
         </div>
         <div class="carousel-item">
-          <!-- <img src="..." class="d-block w-100" alt="..." /> -->
-          <img
-            src="~/static/img/slider/slider1.png"
-            class="d-block w-100"
-            alt="..."
-          />
-      
+          <NuxtLink to="/medicine">
+            <nuxt-img src="/img/slider/slider4.png"   class="d-block w-100" />
+          </NuxtLink>
         </div>
         <div class="carousel-item">
-          <!-- <img src="..." class="d-block w-100" alt="..." /> -->
-          <img
-            src="~/static/img/slider/slider1.png"
-            class="d-block w-100"
-            alt="..."
-          />
-     
+          <NuxtLink to="/caregivers">
+            <nuxt-img src="/img/slider/slider5.png"   class="d-block w-100" />
+          </NuxtLink>
         </div>
       </div>
       <button

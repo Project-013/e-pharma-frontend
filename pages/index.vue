@@ -1,7 +1,6 @@
 <template>
   <div class="center_box">
     <div class="pb-3 ">
-      <!-- <PartialsBanner /> -->
       <PartialsCarousel/>
       <PartialsServices />
       <PartialsPartners />

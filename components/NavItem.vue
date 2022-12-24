@@ -21,7 +21,7 @@
           </li>
 
           <li>
-            <NLink class="dropdown-item" to="/nurse"> Find Nurse </NLink>
+            <NLink class="dropdown-item" to="/nurse"> Find Nurse/Midwife </NLink>
           </li>
           <li>
             <NLink class="dropdown-item" to="/caregivers">
@@ -32,6 +32,11 @@
           <li>
             <NLink class="dropdown-item" to="/physiotherapist">
               Find Physiotherapist
+            </NLink>
+          </li>
+          <li>
+            <NLink class="dropdown-item" to="/medicine">
+              Medcine Home Delivery
             </NLink>
           </li>
         </ul>
@@ -48,11 +53,17 @@
         </a>
         <ul class="dropdown-menu">
           <li>
-            <NLink class="dropdown-item" to="/doctors"> Find Doctorts </NLink>
+            <NLink class="dropdown-item" to="/doctors?stype=Private-Chamber"> Private Chamber</NLink>
+          </li>
+          <li>
+            <NLink class="dropdown-item" to="/doctors?stype=Home-Call"> Home Call</NLink>
+          </li>
+          <li>
+            <NLink class="dropdown-item" to="/doctors?stype=Video-Call"> Video Call (Telemedicine)</NLink>
           </li>
         </ul>
       </li>
-      <li class="nav-item d-none">
+      <li class="nav-item">
         <NLink class="nav-link" to="/blog"> Blog </NLink>
       </li>
       <li class="nav-item">

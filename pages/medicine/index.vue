@@ -3,7 +3,7 @@
     <div class="banner_wrapper p-sm-5 p-3">
       <div class="container">
         <div class="mt-5">
-          <h1 class="heading_2">Fastest Home Medicine Home Delivery</h1>
+          <h1 class="heading_2">Fastest Medicine Home Delivery</h1>
           <p class="small text-justify"></p>
         </div>
       </div>
