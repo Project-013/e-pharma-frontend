@@ -131,14 +131,14 @@
           <span class="small">Home</span>
         </NuxtLink>
         <NuxtLink
-          :to="$auth.loggedIn ? '/profile' : '/login'"
+          :to="$auth.loggedIn ? '/profile' : '/login?redirect=/profile'"
           class="nav-link text-dark"
         >
           <i class="icofont-ui-user"></i>
           <span class="small">Profile</span>
         </NuxtLink>
         <NuxtLink
-          :to="$auth.loggedIn ? '/profile/setting' : '/login'"
+          :to="$auth.loggedIn ? '/profile/setting' : '/login?redirect=/profile/setting'"
           class="nav-link text-dark"
         >
           <i class="icofont-gear"></i>

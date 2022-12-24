@@ -1,9 +1,9 @@
 <template>
   <section class="container">
     <div class="row g-4 justify-content-center bg-white py-5">
-      <h3 v-if="form_data.type" class="text-dark text-center">
+      <h5 v-if="form_data.type" class="text-center">
         {{ form_data.type }} Appoionment
-      </h3>
+      </h5>
 
       <div class="col-md-5 col-lg-4">
       

@@ -1,7 +1,7 @@
 <template>
   <section class="center_box">
     <div class="col-lg-4 col-md-6 col-11 mx-auto py-3">
-      <div class="p-3 card bg-white mb-5">
+      <div class="p-3 card bg-white mb-5 py-5">
         <div class="sign-info">
           <h5 class="mb-3" >
             Register now to explore more!

@@ -1,9 +1,10 @@
 <template>
   <div class="center_box">
-    <div class="pb-3">
+    <div class="pb-3 ">
       <!-- <PartialsBanner /> -->
-      <!-- <PartialsCarousel/> -->
+      <PartialsCarousel/>
       <PartialsServices />
+      <PartialsPartners />
     </div>
   </div>
 </template>
