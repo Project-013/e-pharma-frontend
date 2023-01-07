@@ -1,20 +1,20 @@
 <template>
   <div class="my-2">
-    <div v-if="appointments.length">
-      <h6 class="fw-bold ">DOCTORS APPOINTMENTS</h6>
+    <div v-if="Homediagnostics.length">
+      <h6 class="fw-bold ">Home diagnostic</h6>
 
-      <!-- {{ appointments }} -->
+      <!-- {{ Homediagnostics }} -->
       <div
         class="card mb-3 p-0"
-        v-for="appointment in appointments"
-        :key="appointment.id"
+        v-for="services in Homediagnostics"
+        :key="services.id"
       >
         <div class="row card-body">
           <div class="col-12 mb-2 d-flex justify-content-end">
             <div class="mx-2">
               <NuxtLink
                 class="dropdown-item text-dark small"
-                :to="'/doctors/config?type=edit&id=' + appointment.id"
+                :to="'/diagnostic/config?type=edit&id=' + services.id"
               >
                 <i class="icofont-edit small"></i>
               </NuxtLink>
@@ -22,7 +22,7 @@
             <div class="">
               <button
                 class="dropdown-item text-dark small"
-                @click="onDelete(`${appointment.id}`)"
+                @click="onDelete(`${services.id}`)"
               >
                 <i class="icofont-trash small"></i>
               </button>
@@ -31,42 +31,40 @@
           <div class="col-sm-6">
             <h6 class="mb-0 fw-bold text-uppercase">
               Name :
-              {{ appointment.patient_name }}
+              {{ services.name }}
             </h6>
             <p class="text-dark small mb-0 pb-0">
-              Patient age :
-              {{ appointment.patient_age }} year
-            </p>
-            <p class="text-dark small mb-0 pb-0">
               phone:
-              {{ appointment.patient_phone }}
+              {{ services.phone }}
             </p>
-            <p class="text-dark small mb-0 pb-0">
-              Service type:
-              {{ appointment.type }}
-            </p>
-            <p class="text-dark mb-0 pb-0 mark fw-semibold small">
-              Date:
-              {{ new Date(appointment.date).toLocaleString() }}
-            </p>
+       
             <p class="text-dark mb-0 pb-0">
-              Details :
-              {{ appointment.details }}
+              Address :
+              {{ services.address }}
             </p>
+           <div class="my-2">
+            <p class="text-dark mb-0 pb-0">Prescription:</p>
+             <img
+                :src="$config.apibaseURL + services.image_url"
+                class="d-block mb-1 border rounded p-1"
+                width="300"
+              />
+           </div>
+
           </div>
           <div class="col-sm-6" >
-            <p class="text-dark small mb-0 pb-0" v-if="appointment.fee!=0">
+            <p class="text-dark small mb-0 pb-0" v-if="services.fee">
               Payment Status:
               <span
                 class="badge"
                 :class="
-                  appointment.payment_status == `pending`
+                  services.payment_status == `pending`
                     ? 'text-bg-warning'
-                    : appointment.payment_status == `unpaid`
+                    : services.payment_status == `unpaid`
                     ? 'text-bg-danger'
                     : 'text-bg-success'
                 "
-                >{{ appointment.payment_status }}
+                >{{ services.payment_status }}
               </span>
             </p>
             <p class="text-dark small mb-0 pb-0">
@@ -74,40 +72,36 @@
               <span
                 class="badge"
                 :class="
-                  appointment.service_status == `pending`
+                  services.service_status == `pending`
                     ? 'text-bg-warning'
-                    : appointment.service_status == `cancelled`
+                    : services.service_status == `cancelled`
                     ? 'text-bg-danger'
-                    : appointment.service_status == `completed`
+                    : services.service_status == `completed`
                     ? 'text-bg-success'
                     : 'text-bg-primary'
                 "
-                >{{ appointment.service_status }}
+                >{{ services.service_status }}
               </span>
             </p>
-            <h5 class="p-1 mt-3 mb-1 text-center fw-semibold fst-italic">
+            <h5 class="p-1 mt-3 mb-1 text-center fw-semibold fst-italic" v-if="services.fee">
               Total Fee -
               <span class="text-success"
-                ><i class="icofont-taka"></i>{{ appointment.fee }}
+                ><i class="icofont-taka"></i>{{ services.fee }}
               </span>
             </h5>
 
             <NuxtLink
               v-if="
-                appointment.payment_status == `unpaid` &&
-                appointment.fee != 0 &&
-                appointment.service_status == `approved` 
+                services.payment_status == `unpaid` &&
+                services.fee != 0 &&
+                services.service_status == `approved` 
               "
               class="btn btn-sm mt-3 btn-dark w-100"
-              :to="'/doctors/config?type=payment&id=' + appointment.id"
+              :to="'/diagnostic/config?type=payment&id=' + services.id"
               >Make Payment</NuxtLink
             >
           </div>
-          <NuxtLink
-            class="btn btn-sm mt-3 btn-dark w-100"
-            :to="'/doctors/doctor/?type=v&id=' + appointment.doctor_id"
-            >View Doctors Profile</NuxtLink
-          >
+
         </div>
       </div>
     </div>
@@ -119,7 +113,7 @@
 export default {
   data() {
     return {
-      appointments: [],
+      Homediagnostics: [],
       p_method: ["Bkash", "Nogod", "Rocket", "Upay"],
       form_data: {
         payment_method: "",
@@ -130,16 +124,17 @@ export default {
   },
 
   methods: {
-    async getAppointments() {
+    async getHomediagnostics() {
       await this.$axios
-        .get(`appointment/doctor/?user_id=${this.$auth.user.id}`, {
+        .get(`services/diagnostic/?user_id=${this.$auth.user.id}`, {
           headers: {
             "Content-Type": "application/json",
           },
         })
         .then((res) => {
+            console.log(res);
           if (res.status === 200) {
-            this.appointments = res.data;
+            this.Homediagnostics = res.data;
           }
         })
         .catch((error) => {
@@ -157,13 +152,13 @@ export default {
         this.$nuxt.$loading.start();
         this.disable_btn = true;
         this.$axios
-          .delete(`appointment/doctor/` + id + "/", {
+          .delete(`services/diagnostic/` + id + "/", {
             headers: {
               "Content-Type": "application/json",
             },
           })
           .then((res) => {
-            this.getAppointments();
+            this.getHomediagnostics();
 
             console.log(res);
             if (res.status === 201) {
@@ -183,7 +178,7 @@ export default {
     },
   },
   mounted() {
-    this.getAppointments();
+    this.getHomediagnostics();
   },
 };
 </script>

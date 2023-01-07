@@ -1,7 +1,7 @@
 <template>
   <header class="sticky-top">
     <div
-      class="navbar border-bottom bg-light d-flex justify-content-start d-none "
+      class="navbar border-bottom bg-light d-flex justify-content-start d-none"
     >
       <a
         class="navbar-toggler border-0 me-1"
@@ -138,17 +138,17 @@
           <span class="small">Profile</span>
         </NuxtLink>
         <NuxtLink
-          :to="$auth.loggedIn ? '/profile/setting' : '/login?redirect=/profile/setting'"
+          :to="
+            $auth.loggedIn
+              ? '/profile/setting'
+              : '/login?redirect=/profile/setting'
+          "
           class="nav-link text-dark"
         >
           <i class="icofont-gear"></i>
           <span class="small">Setting</span>
         </NuxtLink>
 
-        <a class="nav-link" v-if="$route.path != '/'" @click="$router.go(-1)">
-          <i class="icofont-arrow-left"></i>
-          <span class="small">Back</span>
-        </a>
         <a class="nav-link" @click="toggleNavbar">
           <i class="icofont-navigation-menu"></i>
           <span class="small">Menu</span>
@@ -215,6 +215,10 @@
         </div>
       </div>
     </div>
+ 
+    <a href="tel:+8801959970664" class="d-flex align-items-center __call ">
+        <img src="/img/icons/call.gif" class="rounded-circle" width="50" />
+      </a>
   </header>
 </template>
 
@@ -246,5 +250,17 @@ export default {
 .nav-item .nav-link:hover,
 .nuxt-link-exact-active {
   color: var(--secondary-text) !important;
+}
+.__call {
+  bottom: 70px;
+  right: 10px;
+  width: fit-content;
+  position: fixed;
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .__call {
+    bottom: 15px;
+  }
 }
 </style>

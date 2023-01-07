@@ -1,6 +1,6 @@
 <template>
-  <section class="main-body">
-    <div class="col-lg-8 col-md-10 col-11 mx-auto py-5">
+  <section class="center_box">
+    <div class="col-lg-8 col-md-10 col-11 mx-auto py-3">
       <div class="p-3 card bg-white mb-5">
         <h4 class="mb-3">
           Register as <span style="color: #084298"> Caregiver!</span>

@@ -1,21 +1,26 @@
 <template>
-  <section class="">
-    <div class="banner_wrapper p-sm-5 p-3">
-      <div class="container">
-        <div class="mt-5">
-          <h1 class="heading_2">Find A Caragiver Now</h1>
-          <p class="small text-justify"></p>
+  <section class="center_box">
+    <div class="container">
+      <div class="row my-3 justify-content-center">
+        <div class="col-md-5">
+          <img src="/img/cards/old-lady-with-nurse.jpg" class="d-block w-100" />
         </div>
-      </div>
-    </div>
-
-    <div class="container my-5">
-      <div>
-        <div
-          class="alert alert-warning display-6 text-center py-5"
-          role="alert"
-        >
-          Call +8801959970664
+        <div class="col-md-5 p-3">
+          <h3 class="text-dark mb-3">কেয়ারগিভার সেবা</h3>
+          <p class="text-justify _service_desc">
+            অস্ত্রোপচারের পর অথবা প্যারালাইসিস রোগী কিংবা যে কোন বয়স্ক ও অসুস্থ
+            রোগীর প্রাইমারি চিকিৎসা প্রদান, ঔষধ খাওয়ানো, হাঁটাচলা করতে সহায়তা
+            কিংবা গোসল করানো এরকম সার্বিক খেয়াল রাখার জন্য সিলেট শহরের মধ্যে হোম
+            কেয়ারগিভার সার্ভিস দেয়া হয়।
+            <strong class="text-primary"> সিলেট শহরের</strong> অভিজ্ঞ কেয়ারগিভার
+            দ্বারা সার্ভিসটি পরিচালনা করা হয়। আমদের আছে পুরুষ রোগীর জন্য পুরুষ
+            কেয়ারগিভার এবং মহিলাদের জন্য মহিলা কেয়ারগিভার। সার্ভিসটি পেতে কল
+            করুন।
+          </p>
+          <a href="tel:+8801602655774" class="lead fw-bold text-dark"
+            ><i class="icofont-ui-call text-primary me-2"></i>
+            +8801602655774
+          </a>
         </div>
       </div>
     </div>

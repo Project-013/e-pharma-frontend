@@ -39,6 +39,11 @@
               Medcine Home Delivery
             </NLink>
           </li>
+          <li>
+            <NLink class="dropdown-item" to="/diagnostic">
+              Mobile Diagnostic
+            </NLink>
+          </li>
         </ul>
       </li>
       <li class="nav-item dropdown">

@@ -48,7 +48,7 @@
             >
               <option value="" disabled selected>Select Speciality</option>
               <option value="all">All</option>
-              <template v-for="(d, index) in getSpesialis">
+              <template v-for="(d, index) in getSpesialist">
                 <option :value="d" :key="index">
                   {{ d }}
                 </option>
@@ -127,7 +127,7 @@ export default {
       );
       return filterd_data;
     },
-    getSpesialis() {
+    getSpesialist() {
       const list = [];
       this.get_doctors.map(({ status, specialty }) => {
         if (status == "approved" && list.includes(specialty) == false) {
@@ -136,7 +136,7 @@ export default {
         return;
       });
 
-      return list;
+      return list.sort();
     },
   
   },

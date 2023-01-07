@@ -1,6 +1,6 @@
 <template>
-  <section class="main-body">
-    <div class="col-lg-7 col-md-10 col-11 mx-auto py-5">
+  <section class="center_box">
+    <div class="col-lg-7 col-md-10 col-11 mx-auto py-3">
       <div class="p-4 rounded shadow bg-light border mb-5">
         <h4 class="mb-3">
           Register as

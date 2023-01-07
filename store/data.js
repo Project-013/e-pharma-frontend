@@ -95,7 +95,7 @@ export const actions = {
 
       await this.$axios
         .get(
-          API_URL,
+          "/speciality",
           {
             headers: {
               "Content-Type": "application/json",
@@ -103,8 +103,9 @@ export const actions = {
           }
         )
         .then((res) => {
+          console.log(res.data);
           if (res.status === 200) {
-              commit('setSpesialistList', res.data.Spesialist)
+              commit('setSpesialistList', res.data)
               
           }
         })

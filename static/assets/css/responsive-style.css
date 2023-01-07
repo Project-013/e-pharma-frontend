@@ -146,3 +146,10 @@
     padding-left: 0.625rem;
   }
 }
+
+
+@media only screen and (max-width: 600px) {
+  ._service_desc {
+    font-size: 80% !important;
+  }
+}

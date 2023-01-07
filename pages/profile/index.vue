@@ -34,7 +34,10 @@
       <div class="col-lg-8">
         <div class="card h-100 p-3">
           <ProfileDoctorAppoiment />
+          <ProfileHomeMedicine />
+          <ProfileMobileDiagnostic />
         </div>
+ 
       </div>
     </div>
   </div>

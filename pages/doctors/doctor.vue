@@ -1,193 +1,204 @@
 <template>
-  <section class="container">
-    <div class="row g-4 justify-content-center bg-white py-5">
-      <h5 v-if="form_data.type" class="text-center">
-        {{ form_data.type }} Appoionment
-      </h5>
-
-      <div class="col-md-5 col-lg-4">
-      
-      <div v-if="get_doctor.name">
-          <div class="card _card h-100 p-0">
-            <img
-              :src="$config.apibaseURL + get_doctor.image_url"
-              :alt="get_doctor.name"
-              class="w-75 d-block mx-auto py-2 rounded-circle"
-            />
-            <div class="card-body p- py-3">
-              <h5 class="mb-0 fw-bold text-uppercase" style="color: #2b325c">
-                {{ get_doctor.name }}
-              </h5>
-              <p class="text-muted small mb-0 pb-0">
-                {{ get_doctor.qualicifacions }}
-              </p>
-              <small class="text-success fw-semibold mt-0 pt-0">{{
-                get_doctor.specialty
-              }}</small>
-              <pre class="fw-semibold mt-1 pt-0 d-none">{{
-                get_doctor.experience
-              }}</pre>
-              <pre
-                class="fw-semibold mt-1 pt-0"
-              ><i class="icofont-location-pin "></i> {{
+  <section class="center_box">
+    <div class="container">
+      <div class="row g-4 justify-content-center bg-white py-3">
+        <div class="col-md-5 col-lg-4">
+          <div v-if="get_doctor && get_doctor.name">
+            <div class="card _card h-100 p-0">
+              <img
+                :src="$config.apibaseURL + get_doctor.image_url"
+                :alt="get_doctor.name"
+                class="w-75 d-block mx-auto py-2 rounded-circle"
+              />
+              <div class="card-body p- py-3">
+                <h5 class="mb-0 fw-bold text-uppercase" style="color: #2b325c">
+                  {{ get_doctor.name }}
+                </h5>
+                <p class="text-muted small mb-0 pb-0">
+                  {{ get_doctor.qualicifacions }}
+                </p>
+                <small class="text-success fw-semibold mt-0 pt-0">{{
+                  get_doctor.specialty
+                }}</small>
+                <pre class="mt-1 pt-2">{{ get_doctor.experience }}</pre>
+                <pre class="mt-1 pt-0"><i class="icofont-location-pin "></i> {{
               get_doctor.institution_or_chamber_address
             }}</pre>
-              <pre
-                v-if="get_doctor.working_times_chamber"
-                class="fw-semibold small my-0 pt-0"
-              ><i class="icofont-clock-time"></i
+                <pre
+                  v-if="get_doctor.working_times_chamber"
+                  class="small my-0 pt-0"
+                ><i class="icofont-clock-time"></i
               > {{ get_doctor.working_times_chamber }}
             </pre>
-              <h5
-                v-if="get_doctor.fee_chamber && form_data.type == 'Private Chamber'"
-                class="p-1 mb-1 text-center fw-semibold fst-italic"
-              >
-                Consultation Fee
-                <span class="text-success"
-                  ><i class="icofont-taka"></i> {{ get_doctor.fee_chamber }}
-                </span>
-              </h5>
+                <h5
+                  v-if="
+                    get_doctor.fee_chamber &&
+                    form_data.type == 'Private Chamber'
+                  "
+                  class="p-1 text-center fw-semibold fst-italic"
+                >
+                  Consultation Fee
+                  <span class="text-success"
+                    ><i class="icofont-taka"></i>{{ get_doctor.fee_chamber }}
+                  </span>
+                </h5>
+                <h5
+                  v-if="
+                    get_doctor.fee_video_call && form_data.type == 'Video Call'
+                  "
+                  class="p-1 text-center fw-semibold fst-italic"
+                >
+                  Consultation Fee
+                  <span class="text-success"
+                    ><i class="icofont-taka"></i>{{ get_doctor.fee_video_call }}
+                  </span>
+                </h5>
 
-              <template v-if="$auth.loggedIn === false">
-                <p class="text-center mark my-3">
-                  Please
-                  <NuxtLink
-                    :to="`/login?redirect=` + $route.fullPath"
-                    class="text-decoration-none"
+                <template v-if="$auth.loggedIn === false">
+                  <p class="text-center mark my-3">
+                    Please
+                    <NuxtLink
+                      :to="`/login?redirect=` + $route.fullPath"
+                      class="text-decoration-none"
                     >
-                    Login
+                      Login
                     </NuxtLink>
                     or
-                  <NuxtLink
-                    :to="`/register?redirect=` + $route.fullPath"
-                    class="text-decoration-none"
+                    <NuxtLink
+                      :to="`/register?redirect=` + $route.fullPath"
+                      class="text-decoration-none"
                     >
-                    Register
+                      Register
                     </NuxtLink>
 
-                  to get appointment
-                </p>
-              </template>
+                    to get appointment
+                  </p>
+                </template>
+              </div>
+            </div>
+          </div>
+          <div v-else>
+            <div class="text-center py-5">
+              <h4>Nothing Found!</h4>
             </div>
           </div>
         </div>
-        <div v-else>
-          <div class="text-center py-5">
-            <h4>Nothing Found!</h4>
-          </div>
-        </div>
-      </div>
-      <div
-        v-if="$auth.loggedIn && !$route.query.type"
-        class="col-md-6 bg-white"
-      >
-        <ValidationObserver class="card h-100 p-0" v-slot="{ handleSubmit }">
-          <div class="card-body">
-            <h6 class="mb-4 fw-bold text-uppercase" style="color: #2b325c">
-              Make an Appointment
-            </h6>
+        <div
+          v-if="$auth.loggedIn && !$route.query.type"
+          class="col-md-6 bg-white"
+        >
+          <!-- v-if="$auth.loggedIn && !$route.query.type" -->
 
-            <form class="" @submit.prevent="handleSubmit(submitForm)">
-              <div class="form-group my-2">
-                <select
-                  class="form-select form-select-sm"
-                  required
-                  v-model="form_data.type"
-                >
-                  <option value="" disabled selected>
-                    Select Service Type
-                  </option>
-                  <template v-for="(type, index) in s_type_list">
-                    <option
-                      :value="type"
-                      :key="index"
-                      v-if="get_doctor.type && get_doctor.type.includes(type)"
-                    >
-                      {{ type }}
+          <ValidationObserver class="card h-100 p-0" v-slot="{ handleSubmit }">
+            <div class="card-body">
+              <h6 class="mb-4 fw-bold text-uppercase" style="color: #2b325c">
+                Make an Appointment
+              </h6>
+
+              <form class="" @submit.prevent="handleSubmit(submitForm)">
+                <div class="form-group my-2">
+                  <select
+                    class="form-select form-select-sm"
+                    required
+                    v-model="form_data.type"
+                  >
+                    <option value="" disabled selected>
+                      Select Service Type
                     </option>
-                  </template>
-                </select>
-              </div>
-              <div class="form-group my-2">
-                <label class="form-label" for="patient_name"
-                  >Patient name</label
-                >
-                <input
-                  v-model="form_data.patient_name"
-                  id="patient_name"
-                  class="form-control form-control-sm"
-                  placeholder="রোগীর নাম"
-                  required
-                />
-              </div>
-              <div class="form-group my-2">
-                <label class="form-label" for="patient_age">Age</label>
-
-                <input
-                  v-model="form_data.patient_age"
-                  id="patient_age"
-                  class="form-control form-control-sm"
-                  placeholder="রোগীর বয়স"
-                  type="number"
-                  required
-                />
-              </div>
-              <div class="form-group my-2" v-if="form_data.type">
-                <label class="form-label" for="patient_name"
-                  >Select appointment Date</label
-                >
-
-                <client-only class=""
-                  ><date-picker
+                    <template v-for="(type, index) in s_type_list">
+                      <option
+                        :value="type"
+                        :key="index"
+                        v-if="get_doctor.type && get_doctor.type.includes(type)"
+                      >
+                        {{ type }}
+                      </option>
+                    </template>
+                  </select>
+                </div>
+                <div class="form-group my-2">
+                  <label class="form-label" for="patient_name"
+                    >Patient name</label
+                  >
+                  <input
+                    v-model="form_data.patient_name"
+                    id="patient_name"
                     class="form-control form-control-sm"
-                    placeholder="MM/DD/YYYY"
-                    format="MM/dd/yyyy"
-                    v-model="form_data.date"
-                    :disabled-dates="disabledDates"
-                    type="date"
-                /></client-only>
-              </div>
-              <div class="form-group my-2">
-                <label class="form-label" for="patient_name">Phone</label>
+                    placeholder="রোগীর নাম"
+                    required
+                  />
+                </div>
+                <div class="form-group my-2">
+                  <label class="form-label" for="patient_age">Age</label>
 
-                <input
-                  v-model="getPhone"
-                  id="patient_phone"
-                  class="form-control form-control-sm"
-                  placeholder=" "
-                  required
-                />
-              </div>
-              <div class="form-group my-3">
-                <textarea
-                  v-model="form_data.details"
-                  id="details"
-                  class="form-control form-control-sm"
-                  placeholder="সংক্ষেপে সমস্যা: যেমন মাথাব্যাথা "
-                  rows="3"
-                  required
-                ></textarea>
+                  <input
+                    v-model="form_data.patient_age"
+                    id="patient_age"
+                    class="form-control form-control-sm"
+                    placeholder="রোগীর বয়স"
+                    type="number"
+                    required
+                  />
+                </div>
+                <div class="form-group my-2" v-if="form_data.type">
+                  <label class="form-label" for="patient_name"
+                    >Select appointment Date</label
+                  >
 
-                <p
-                  v-if="getfee"
-                  class="p-1 mt-3 mb-1 text-center lead fw-semibold fst-italic"
-                >
-                  Total Fee -
-                  <span class="text-success"
-                    ><i class="icofont-taka"></i>{{ getfee }}
-                  </span>
-                </p>
+                  <client-only class=""
+                    ><date-picker
+                      class="form-control form-control-sm"
+                      placeholder="MM/DD/YYYY"
+                      format="MM/dd/yyyy"
+                      v-model="form_data.date"
+                      :disabled-dates="disabledDates"
+                      type="date"
+                  /></client-only>
+                </div>
+                <div class="form-group my-2">
+                  <label class="form-label" for="patient_name">Phone</label>
 
-                <button
-                  style="background-color: #2b325c"
-                  class="btn btn-dark btn-sm mt-3 w-100 text-uppercase"
-                >
-                  Make APPOINTMENT
-                </button>
-              </div>
-            </form>
-          </div>
-        </ValidationObserver>
+                  <input
+                    v-model="getPhone"
+                    id="patient_phone"
+                    class="form-control form-control-sm"
+                    placeholder=" "
+                    required
+                    disabled
+                  />
+                </div>
+                <div class="form-group my-3">
+                  <textarea
+                    v-model="form_data.details"
+                    id="details"
+                    class="form-control form-control-sm"
+                    placeholder="সংক্ষেপে সমস্যা: যেমন মাথাব্যাথা "
+                    rows="3"
+                    required
+                  ></textarea>
+                    <!-- v-if="getfee" -->
+
+
+                  <p
+                    class="p-1 mb-1 text-center lead fw-semibold fst-italic"
+                  >
+                    Total Fee -
+                    <span class="text-success"
+                      ><i class="icofont-taka"></i>{{ getfee }}
+                    </span>
+                  </p>
+
+                  <button
+                    style="background-color: #2b325c"
+                    class="btn btn-dark btn-sm mt-3 w-100 text-uppercase"
+                  >
+                    Make APPOINTMENT
+                  </button>
+                </div>
+              </form>
+            </div>
+          </ValidationObserver>
+        </div>
       </div>
     </div>
   </section>
@@ -201,10 +212,12 @@ export default {
     ValidationObserver,
   },
   computed: {
-    get_doctor(){
-      const doctors = this.$store.getters["doctors/doctors"]
-      const doctor = doctors.find((doctor)=> doctor.id == this.$route.query.id)
-      return doctor
+    get_doctor() {
+      const doctors = this.$store.getters["doctors/doctors"];
+      const doctor = doctors.find(
+        (doctor) => doctor.id == this.$route.query.id
+      );
+      return doctor;
     },
     getPhone() {
       if (this.$auth.user.phone) {
@@ -219,15 +232,13 @@ export default {
       return "";
     },
     getfee() {
-      const { type } = this.form_data;
-
-      switch (type) {
+      switch (this.form_data.type) {
         case "Private Chamber":
           // code block
-          return Number(this.doctor.fee_chamber);
+          return Number(this.get_doctor.fee_chamber);
         case "Video Call":
           // code block
-          return Number(this.doctor.fee_video_call);
+          return Number(this.get_doctor.fee_video_call);
 
         case "Home Call":
           // code block
@@ -264,6 +275,7 @@ export default {
         default:
           working_days = "";
       }
+
       if (working_days) {
         for (const d in this.working_day_list) {
           const day = this.working_day_list[d];
@@ -306,38 +318,6 @@ export default {
     };
   },
   methods: {
-    // async getDoctors() {
-    //   this.$nextTick(() => {
-    //     this.$nuxt.$loading.start();
-
-    //     this.$axios
-    //       .get(`patners/doctor/${this.$route.query.id}`, {
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //           Authorization: "Bearer " + this.$config.apiToken,
-    //         },
-    //       })
-    //       .then((res) => {
-    //         if (res.status === 200) {
-    //           this.doctor = res.data;
-    //           this.$nuxt.$loading.finish();
-    //         } else {
-    //           this.$nuxt.$loading.finish();
-
-    //           this.$router.push("/doctors");
-    //         }
-    //       })
-    //       .catch((error) => {
-    //         this.$router.push("/doctors");
-    //         this.$nuxt.$loading.finish();
-
-    //         console.log(error.response);
-    //         // this.$router.push("/doctors");
-    //         console.log(error.response.data.message || error.message);
-    //         // context.commit('error', error)
-    //       });
-    //   });
-    // },
     async submitForm() {
       this.form_data.fee = this.getfee;
       this.form_data.patient_phone = this.getPhone;
@@ -406,6 +386,9 @@ export default {
     font-size: 90% !important;
   }
   ._card p {
+    font-size: 90% !important;
+  }
+  ._card pre {
     font-size: 80% !important;
   }
 }

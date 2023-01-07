@@ -3,18 +3,20 @@
     <div class="container">
       <div class="row g-4 my-3 justify-content-center">
         <div class="col-md-5">
-          <img src="/img/cards/png-6.png" class="d-block w-100" />
+          <img
+            src="/img/cards/Blood-sample-collection.jpg"
+            class="d-block w-100"
+          />
         </div>
         <div class="col-md-5 p-3">
-          <h3 class="text-dark mb-3">মেডিসিন হোম ডেলিভারি সার্ভিস</h3>
+          <h3 class="text-dark mb-3">মোবাইল ডায়াগনস্টিক</h3>
           <p class="text-justify _service_desc">
-            <strong class="text-primary"> সিলেট শহরের</strong> মধ্যে
-            <strong class="text-primary"> স্বাস্থ্যসেবক ডটকম</strong> দিচ্ছে
-            সবচাইতে দ্রুত মেডিসিন হোম ডেলিভারি সার্ভিস। নির্ধারিত নাম্বারে একটি
-            ফোনকল কিংবা whatsapp অথবা অ্যাপ এর মাধ্যমে প্রেসক্রিপশনের কিংবা
-            ওষুধের ইমেজ সেন্ড করলেই স্বাস্থ্য সেবক ডটকম কর্তৃক অনুমোদিত একজন
-            ফার্মেসি সেবাদানকারী দ্রুত আপনার বাসায় প্রয়োজনীয় ঔষধ পৌঁছে দিয়ে
-            আসবে।
+            আমাদের উদ্দেশ্য হলো
+            <strong class="text-primary"> সিলেট শহরের</strong> রোগীদের উচ্চ
+            মানের বিশেষ স্বাস্থ্যসেবা প্রদান করা যারা চিকিৎসা বা রুটিন স্বাস্থ্য
+            পরীক্ষার উদ্দেশ্যে রক্ত/প্রস্রাব/মলের নমুনা দিতে হাসপাতালে আসতে
+            অক্ষম। আমাদের প্রশিক্ষিত এবং দক্ষ ফ্লেবোটোমিস্টরা আপনার অবস্থান থেকে
+            নমুনা সংগ্রহ করবেন৷ রোগীর সন্তুষ্টি আমাদের অগ্রাধিকার৷
           </p>
           <p class="text-justify _service_desc">
             অর্ডারটি সাবমিট করার পর কিছুক্ষন অপেক্ষা করুন, এডমিন আপনার সাথে
@@ -45,7 +47,7 @@
                 Register
               </NuxtLink>
 
-              to get <span class="fw-bold">MEDICINE HOME DELIVERY</span> Service
+              to get <span class="fw-bold">MOBILE DIAGNOSTIC</span> Service
             </p>
           </template>
           <div v-if="$auth.loggedIn" class="bg-white">
@@ -55,7 +57,7 @@
             >
               <div class="card-body">
                 <h6 class="mb-3 fw-bold text-uppercase" style="color: #2b325c">
-                  Order Now!
+                  Get Service Now!
                 </h6>
 
                 <form class="" @submit.prevent="handleSubmit(submitForm)">
@@ -83,18 +85,6 @@
                     <label class="form-label" for="name">Address</label>
                     <textarea
                       v-model="form_data.address"
-                      id="details"
-                      class="form-control form-control-sm"
-                      rows="2"
-                      required
-                    ></textarea>
-                  </div>
-                  <div class="form-group my-3">
-                    <label class="form-label" for="name"
-                      >Name of medicine</label
-                    >
-                    <textarea
-                      v-model="form_data.medicine"
                       id="details"
                       class="form-control form-control-sm"
                       rows="2"
@@ -134,6 +124,7 @@
                       accept=".jpeg,.jpg,.png,image/jpeg,image/png"
                       aria-label="upload image button"
                       @change="uploadImage"
+                      required
                     />
                   </div>
                   <button
@@ -185,7 +176,6 @@ export default {
         name: "",
         phone: "",
         address: "",
-        medicine: "",
         user_id: "",
       },
       previewImage: null,
@@ -219,7 +209,7 @@ export default {
         this.$nuxt.$loading.start();
         this.disable_btn = true;
         this.$axios
-          .post(`services/medicine/`, formData, {
+          .post(`services/diagnostic/`, formData, {
             headers: {
               "Content-Type": "multipart/form-data",
             },

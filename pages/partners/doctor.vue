@@ -1,8 +1,8 @@
 <template>
-  <section class="main-body">
+  <section class="center_box">
     <!-- <img src="~/static/img/partners/doctor.png" height="100px" alt="Doctors" /> -->
 
-    <div class="col-lg-7 col-md-10 col-11 mx-auto py-5">
+    <div class="col-lg-7 col-md-10 col-11 mx-auto py-3">
       <div class="p-3 card bg-white border mb-5">
         <h4 class="mb-3">
           Register as
@@ -106,9 +106,9 @@
                 required
               >
                 <option value="" disabled selected>select one</option>
-                <template v-for="(spesialist, index) in getSpesialistList">
-                  <option :value="spesialist" :key="index">
-                    {{ spesialist }}
+                <template v-for="data in getSpesialistList">
+                  <option :value="data" :key="data.id">
+                    {{ data.speciality }}
                   </option>
                 </template>
               </select>
@@ -428,7 +428,7 @@
                     class="form-control form-control-sm is-invalid"
                     placeholder="+8801XXXXXXXXX"
                     aria-label="phone"
-                    v-model="mobile"
+                    v-model="form_data.mobile"
                   />
                   <div class="invalid-feedback">
                     {{ errors[0] }}
@@ -570,8 +570,6 @@ export default {
   data() {
     return {
       previewImage: null,
-      mobile: "",
-      country_code: "+880",
 
       form_data: {
         mobile: "",
@@ -690,7 +688,6 @@ export default {
       if (this.others_q && !this.qualicifacions.includes(this.others_q)) {
         this.qualicifacions.push(this.others_q);
       }
-      this.form_data.mobile = this.country_code + this.mobile;
       this.form_data.working_area = this.working_area.toString();
       this.form_data.working_days_chamber = this.working_days_c.toString();
       this.form_data.working_days_home_call = this.working_days_h.toString();
@@ -723,6 +720,7 @@ export default {
             this.$nuxt.$loading.finish();
           })
           .catch((error) => {
+            console.log(error.response);
             if (error.response && error.response.data) {
               const err_data = error.response.data;
               if (err_data.mobile || err_data.bmdc_regi_no) {
