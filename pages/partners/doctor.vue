@@ -107,7 +107,7 @@
               >
                 <option value="" disabled selected>select one</option>
                 <template v-for="data in getSpesialistList">
-                  <option :value="data" :key="data.id">
+                  <option :value="data.speciality" :key="data.id">
                     {{ data.speciality }}
                   </option>
                 </template>
