@@ -99,6 +99,13 @@ export default {
   font-size: 13px !important;
 }
 
+  ._card h5 {
+    font-size: 95% !important;
+  }
+  ._card p {
+    font-size: 85% !important;
+  }
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   ._card h5 {

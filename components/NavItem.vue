@@ -46,7 +46,7 @@
           </li>
         </ul>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown d-none">
         <a
           class="nav-link dropdown-toggle"
           href="#"
@@ -56,20 +56,26 @@
         >
           Doctors
         </a>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu ">
           <li>
-            <NLink class="dropdown-item" to="/doctors?stype=Private-Chamber"> Private Chamber</NLink>
+            <NLink class="dropdown-item" to="/doctors/?stype=Private-Chamber"> Private Chamber</NLink>
           </li>
           <li>
-            <NLink class="dropdown-item" to="/doctors?stype=Home-Call"> Home Call</NLink>
+            <NLink class="dropdown-item" to="/doctors/?stype=Home-Call"> Home Call</NLink>
           </li>
           <li>
-            <NLink class="dropdown-item" to="/doctors?stype=Video-Call"> Video Call (Telemedicine)</NLink>
+            <NLink class="dropdown-item" to="/doctors/?stype=Video-Call"> Video Call (Telemedicine)</NLink>
           </li>
         </ul>
       </li>
       <li class="nav-item">
         <NLink class="nav-link" to="/blog"> Blog </NLink>
+      </li>
+      <li class="nav-item">
+        <NLink class="nav-link" to="/bmi"> BMI Calculator </NLink>
+      </li>
+      <li class="nav-item">
+        <NLink class="nav-link" to="/career">Career</NLink>
       </li>
       <li class="nav-item">
         <NLink class="nav-link" to="/about"> What are we? </NLink>

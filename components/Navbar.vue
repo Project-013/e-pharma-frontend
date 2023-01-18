@@ -148,6 +148,10 @@
           <i class="icofont-gear"></i>
           <span class="small">Setting</span>
         </NuxtLink>
+        <NuxtLink to="/bmi" class="nav-link text-dark">
+          <i class="icofont-calculations"></i>
+          <span class="small">BMI</span>
+        </NuxtLink>
 
         <a class="nav-link" @click="toggleNavbar">
           <i class="icofont-navigation-menu"></i>
@@ -212,13 +216,32 @@
               </NuxtLink>
             </div>
           </template>
+          <ul class="list-group mt-5">
+
+            <li class="list-group-item">
+              <NuxtLink to="/work">
+               Work With us
+              </NuxtLink>
+            </li>
+
+            <li class="list-group-item">
+              <NuxtLink to="/career">
+               Career
+              </NuxtLink>
+            </li>
+            <li class="list-group-item">
+              <NuxtLink to="/faq">
+               FAQs
+              </NuxtLink>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
- 
-    <a href="tel:+8801959970664" class="d-flex align-items-center __call ">
-        <img src="/img/icons/call.gif" class="rounded-circle" width="50" />
-      </a>
+
+    <a href="tel:+8801959970664" class="d-flex align-items-center __call">
+      <img src="/img/icons/call.gif" class="rounded-circle" width="50" />
+    </a>
   </header>
 </template>
 

@@ -1,7 +1,9 @@
 <template>
-  <div class="container d-none d-sm-block">
+  <div class="container ">
     <div class="row g-2 g-md-4 justify-content-center -glow pt-5">
-      <h3 class="text-dark mb-0">Register as</h3>
+      <h3 class="text-dark mb-0"></h3>
+      <h3 class="text-dark mb-0 d-none d-sm-block">Register as</h3>
+
       <div class="col-lg-3 col-md-4 col-6">
         <NuxtLink to="/partners/doctor">
           <img

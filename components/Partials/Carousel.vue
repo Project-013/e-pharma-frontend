@@ -1,6 +1,6 @@
 <template>
   <div class="d-none d-sm-block">
-    <carousel loop="true" autoplay="true" perPage="1" autoplayTimeout="2000">
+    <carousel :loop="true" :autoplay="true" :perPage="1" :autoplayTimeout="2000">
       <slide>
         <img src="/img/slider/slider1.png" class="d-block w-100" />
       </slide>

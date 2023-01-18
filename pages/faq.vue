@@ -1,6 +1,6 @@
 <template>
   <section class="container my-5">
-    <div class="accordion my-4 w-75 w-md-100" id="accordionExample">
+    <div class="accordion my-4 col-md-8 w-md-100" id="accordionExample">
       <h3 class="text-dark">FAQs</h3>
       <template v-for="(faq, index) in faqs">
         <div :key="index">

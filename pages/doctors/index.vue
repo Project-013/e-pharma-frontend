@@ -1,5 +1,5 @@
 <template>
-  <section class="center_box">
+  <section class="mb-5 pb-5">
     <div class="banner_wrapper p-sm-5 p-3">
       <div class="container">
         <div class="my-3">
@@ -111,6 +111,7 @@ export default {
       if (!this.type && this.$route.query.stype) {
         this.type = this.$route.query.stype.replace("-", " ");
       }
+
       const filterd_data = this.get_doctors.filter(
         ({ status, specialty, type, name }) => {
           return (
@@ -171,7 +172,7 @@ export default {
 
   watch: {
     type(to, from) {
-      this.$router.push("/doctors?stype=" + to.replace(" ", "-"));
+      // this.$router.push("/doctors?stype=" + to.replace(" ", "-"));
     },
   },
   mounted() {
