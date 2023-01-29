@@ -1,7 +1,7 @@
 <template>
   <div class="my-2">
     <div v-if="appointments.length">
-      <h6 class="fw-bold ">DOCTORS APPOINTMENTS</h6>
+      <h6 class="fw-bold">DOCTORS APPOINTMENTS</h6>
 
       <!-- {{ appointments }} -->
       <div
@@ -54,8 +54,8 @@
               {{ appointment.details }}
             </p>
           </div>
-          <div class="col-sm-6" >
-            <p class="text-dark small mb-0 pb-0" v-if="appointment.fee!=0">
+          <div class="col-sm-6">
+            <p class="text-dark small mb-0 pb-0" v-if="appointment.fee != 0">
               Payment Status:
               <span
                 class="badge"
@@ -96,7 +96,7 @@
               v-if="
                 appointment.payment_status == `unpaid` &&
                 appointment.fee != 0 &&
-                appointment.service_status == `approved` 
+                appointment.service_status == `approved`
               "
               class="btn btn-sm mt-3 btn-dark w-100"
               :to="'/doctors/config?type=payment&id=' + appointment.id"
@@ -111,7 +111,9 @@
         </div>
       </div>
     </div>
-    
+    <div v-else>
+      <div class="alert alert-primary" role="alert">Nothing Found!</div>
+    </div>
   </div>
 </template>
 

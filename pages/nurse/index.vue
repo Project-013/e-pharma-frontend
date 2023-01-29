@@ -9,7 +9,11 @@
           <h3 class="text-dark mb-3">হোম নার্সিং/ মিডওয়াইফারি সেবা</h3>
           <p class="text-justify _service_desc">
             নবজাতক গর্ভবতী মা কিংবা বয়োবৃদ্ধ সবার জন্য একটি ডেডিকেটেড পরিষেবা
-            <strong class="text-primary">স্বাস্থ্যসেবক ডটকম</strong> নিশ্চিত
+
+            <strong class="text-primary">{{$config.uniProject
+                        ? "E-health"
+                        : "স্বাস্থ্যসেবক ডটকম"
+                    }}</strong> নিশ্চিত
             করে। যে সেবাটি
             <strong class="text-primary"> সিলেট শহরের</strong> সকল অভিজ্ঞ
             রেজিস্টার্ড নার্স/মিডওয়াইফ দ্বারা পরিচালিত করা হয়। যার ফলে সেবার

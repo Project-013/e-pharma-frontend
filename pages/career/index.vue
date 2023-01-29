@@ -3,7 +3,7 @@
     <div class="banner_wrapper p-3">
       <div class="container">
         <div class="my-3">
-          <h1 class="heading_2">Open Positions</h1>
+          <h1 class="heading_2 text-light">Open Positions</h1>
         </div>
       </div>
     </div>

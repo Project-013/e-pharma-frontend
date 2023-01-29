@@ -142,7 +142,7 @@
                 </NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/privacy-policy" class="text-light">
+                <NuxtLink to="/terms" class="text-light">
                   Terms & Conditions
                 </NuxtLink>
               </li>
@@ -190,7 +190,7 @@
       >
         <small class="p-0 text-light">
           Copyright &copy;
-          <a href="https://sasthosebok.com/" class="">
+          <a href="#" class="">
             <span class="fw-bold">
               {{ $config.uniProject ? "E-health" : "sasthosebok.com" }}
             </span>

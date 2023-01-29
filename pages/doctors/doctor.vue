@@ -263,14 +263,14 @@ export default {
 
       switch (type) {
         case "Private Chamber":
-          working_days = this.doctor.working_days_chamber;
+          working_days = this.get_doctor.working_days_chamber;
           break;
         case "Video Call":
-          working_days = this.doctor.working_days_video_call;
+          working_days = this.get_doctor.working_days_video_call;
           break;
 
         case "Home Call":
-          working_days = this.doctor.working_days_home_call;
+          working_days = this.get_doctor.working_days_home_call;
           break;
         default:
           working_days = "";

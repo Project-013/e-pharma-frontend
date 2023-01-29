@@ -17,7 +17,7 @@
         </a>
         <ul class="dropdown-menu">
           <li>
-            <NLink class="dropdown-item" to="/doctors"> Find Doctorts </NLink>
+            <NLink class="dropdown-item" to="/doctors"> Find Doctors </NLink>
           </li>
 
           <li>

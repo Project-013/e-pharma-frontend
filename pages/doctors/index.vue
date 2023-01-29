@@ -3,7 +3,7 @@
     <div class="banner_wrapper p-sm-5 p-3">
       <div class="container">
         <div class="my-3">
-          <h1 class="heading_2">Specialist Doctors</h1>
+          <h1 class="text-light">Specialist Doctors</h1>
         </div>
         <div class="row g-3 mb-0">
           <div class="col-md-4">

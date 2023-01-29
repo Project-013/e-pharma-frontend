@@ -9,17 +9,26 @@
           <h3 class="text-dark mb-3">মেডিসিন হোম ডেলিভারি সার্ভিস</h3>
           <p class="text-justify _service_desc">
             <strong class="text-primary"> সিলেট শহরের</strong> মধ্যে
-            <strong class="text-primary"> স্বাস্থ্যসেবক ডটকম</strong> দিচ্ছে
+            <strong class="text-primary"> {{$config.uniProject
+                        ? "E-health"
+                        : "স্বাস্থ্যসেবক ডটকম"
+                    }}</strong> দিচ্ছে
             সবচাইতে দ্রুত মেডিসিন হোম ডেলিভারি সার্ভিস। নির্ধারিত নাম্বারে একটি
             ফোনকল কিংবা whatsapp অথবা অ্যাপ এর মাধ্যমে প্রেসক্রিপশনের কিংবা
-            ওষুধের ইমেজ সেন্ড করলেই স্বাস্থ্য সেবক ডটকম কর্তৃক অনুমোদিত একজন
+            ওষুধের ইমেজ সেন্ড করলেই {{$config.uniProject
+                        ? "E-health"
+                        : "স্বাস্থ্যসেবক ডটকম"
+                    }} কর্তৃক অনুমোদিত একজন
             ফার্মেসি সেবাদানকারী দ্রুত আপনার বাসায় প্রয়োজনীয় ঔষধ পৌঁছে দিয়ে
             আসবে।
           </p>
           <p class="text-justify _service_desc">
             অর্ডারটি সাবমিট করার পর কিছুক্ষন অপেক্ষা করুন, এডমিন আপনার সাথে
             যোগাযোগ করবে । তারপর
-            <strong class="text-primary"> স্বাস্থ্যসেবক ডটকম</strong> কর্তৃক
+            <strong class="text-primary"> {{$config.uniProject
+                        ? "E-health"
+                        : "স্বাস্থ্যসেবক ডটকম"
+                    }}</strong> কর্তৃক
             নির্ধারিত ফি প্রদান করে সার্ভিসটি গ্রহন করুন।
           </p>
           <a href="tel:+8801602655774" class="lead fw-bold text-dark"
@@ -227,6 +236,7 @@ export default {
           .then((res) => {
             if (res.status === 201) {
               this.$toast.success("Success! we will contact you soon..");
+              
               this.$router.push("/profile");
             }
             this.$nuxt.$loading.finish();

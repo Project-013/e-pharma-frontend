@@ -1,8 +1,20 @@
 <template>
-  <div v-if="loading" class="loading-page row">
-    <div class="d-flex justify-content-center align-items-center">
-      <div class="spinner-grow" role="status">
-        <span class="visually-hidden">Loading...</span>
+  <div v-if="loading" class="loading-page row bg-light">
+    <div class="d-flex justify-content-center align-items-center ">
+       <div class="text-center d-flex align-items-center flex-column">
+        <img
+          src="~/static/img/logo.png"
+          alt="sasthosebok.com"
+          class=""
+          width="50"
+        />
+      <div class="spinner-grow my-5" role="status">
+
+        <!-- <small class="  small fw-bold mt-1 text-muted" style="font-size:10px">Loading...</small> -->
+       </div>
+
+         
+        <!-- <span class="visually-hidden">Loading...</span> -->
       </div>
     </div>
   </div>

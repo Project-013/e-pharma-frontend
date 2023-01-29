@@ -3,28 +3,30 @@ export default {
   ssr: false,
 
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  target: "static",
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'sasthosebok.com || স্বাস্থ্যসেবক',
+    title: "sasthosebok.com || স্বাস্থ্যসেবক",
     // title: 'E-Health',
     htmlAttrs: {
-      lang: 'en'
+      lang: "en",
     },
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '*sasthosebok.com* is a complete online service oriented organization. Install sasthosebok.com app to solve any medical problem no matter where you are in the country and get service. See less' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      {
+        hid: "description",
+        name: "description",
+        content:
+          "*sasthosebok.com* is a complete online service oriented organization. Install sasthosebok.com app to solve any medical problem no matter where you are in the country and get service. See less",
+      },
+      { name: "format-detection", content: "telephone=no" },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/img/logo.png' },
-
-    ],
+    link: [{ rel: "icon", type: "image/x-icon", href: "/img/logo.png" }],
     script: [
       // { src: '@static/assets/js/bootstrap.bundle.min.js', type: 'text/javascript' },
-    ]
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -33,14 +35,17 @@ export default {
     "@/static/assets/css/responsive-style.css",
     "@/static/assets/css/style.css",
     // "@/static/assets/css/bootstrap.min.css",
-
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     "~/plugins/vee-validate",
-    { src: '~/plugins/bootstrap.js', mode: 'client' },
-    { src: '~/plugins/vue-datepicker', ssr: false },
+    { src: "~/plugins/bootstrap.js", mode: "client" },
+    { src: "~/plugins/vue-datepicker", ssr: false },
+    {
+      src: "~/plugins/tawk-messenger.client.js",
+      mode: "client",
+    },
     // { src: '~/plugins/vuex-persist.js', mode: 'client' },
   ],
 
@@ -48,82 +53,72 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    '@nuxtjs/composition-api/module',
-
-  ],
-  
-
+  buildModules: ["@nuxtjs/composition-api/module"],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
-    '@nuxtjs/toast',
-    '@nuxtjs/auth-next',
-
+    "@nuxtjs/axios",
+    "@nuxtjs/toast",
+    "@nuxtjs/auth-next",
+    'nuxt-lazy-load'
   ],
-  
-  
 
   toast: {
-    position: 'top-center',
+    position: "top-center",
     duration: 2500,
-    action : [
+    action: [
       {
-        text : 'close',
-        onClick : (e, toastObject) => {
+        text: "close",
+        onClick: (e, toastObject) => {
           toastObject.goAway(0);
-        }
-      }],
-    register: [ // Register custom toasts
+        },
+      },
+    ],
+    register: [
+      // Register custom toasts
       {
-        name: 'my-error',
-        message: 'Oops...Something went wrong',
+        name: "my-error",
+        message: "Oops...Something went wrong",
         options: {
-          type: 'error'
-        }
-      }
-    ]
+          type: "error",
+        },
+      },
+    ],
   },
 
   auth: {
     strategies: {
       local: {
         endpoints: {
-          login: { url: '/auth/login', method: 'post', propertyName:'token' },
-          logout: { url: '/auth/logout', method: 'post' },
-          user: { url: '/auth/user', method: 'get' , propertyName:'user'}
+          login: { url: "/auth/login", method: "post", propertyName: "token" },
+          logout: { url: "/auth/logout", method: "post" },
+          user: { url: "/auth/user/", method: "get", propertyName: "user" },
           // user: false
         },
-        tokenType : "bearer",
-
-      }
-    }
+        tokenType: "bearer",
+      },
+    },
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     // baseURL: 'http://localhost:8000/',
-    baseURL: 'https://api.sasthosebok.com/'
-
+    baseURL: "https://api.sasthosebok.com/", 
   },
-
-  
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: ["vee-validate/dist/rules"],
   },
-  loading: '~/components/LoadingBar.vue',
+  loading: "~/components/LoadingBar.vue",
 
   publicRuntimeConfig: {
     // apibaseURL: 'http://localhost:8000',
-    apibaseURL: 'https://api.sasthosebok.com/',
+    apibaseURL: "https://api.sasthosebok.com/",
     // type: "v1",
     uniProject: false,
-    isApp: false
+    isApp: false,
   },
-
-}
+};

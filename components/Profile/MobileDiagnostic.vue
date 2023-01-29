@@ -1,9 +1,8 @@
 <template>
   <div class="my-2">
     <div v-if="Homediagnostics.length">
-      <h6 class="fw-bold ">Home diagnostic</h6>
+      <h6 class="fw-bold">Home diagnostic</h6>
 
-      <!-- {{ Homediagnostics }} -->
       <div
         class="card mb-3 p-0"
         v-for="services in Homediagnostics"
@@ -29,7 +28,7 @@
             </div>
           </div>
           <div class="col-sm-6">
-            <h6 class="mb-0 fw-bold text-uppercase">
+            <h6 class="mb-0 small fw-bold text-uppercase">
               Name :
               {{ services.name }}
             </h6>
@@ -37,22 +36,21 @@
               phone:
               {{ services.phone }}
             </p>
-       
+
             <p class="text-dark mb-0 pb-0">
               Address :
               {{ services.address }}
             </p>
-           <div class="my-2">
-            <p class="text-dark mb-0 pb-0">Prescription:</p>
-             <img
+            <div class="my-2">
+              <p class="text-dark mb-0 pb-0">Prescription:</p>
+              <img
                 :src="$config.apibaseURL + services.image_url"
                 class="d-block mb-1 border rounded p-1"
-                width="300"
+                width="200"
               />
-           </div>
-
+            </div>
           </div>
-          <div class="col-sm-6" >
+          <div class="col-sm-6">
             <p class="text-dark small mb-0 pb-0" v-if="services.fee">
               Payment Status:
               <span
@@ -83,7 +81,10 @@
                 >{{ services.service_status }}
               </span>
             </p>
-            <h5 class="p-1 mt-3 mb-1 text-center fw-semibold fst-italic" v-if="services.fee">
+            <h5
+              class="p-1 mt-3 mb-1 text-center fw-semibold fst-italic"
+              v-if="services.fee"
+            >
               Total Fee -
               <span class="text-success"
                 ><i class="icofont-taka"></i>{{ services.fee }}
@@ -94,18 +95,19 @@
               v-if="
                 services.payment_status == `unpaid` &&
                 services.fee != 0 &&
-                services.service_status == `approved` 
+                services.service_status == `approved`
               "
               class="btn btn-sm mt-3 btn-dark w-100"
               :to="'/diagnostic/config?type=payment&id=' + services.id"
               >Make Payment</NuxtLink
             >
           </div>
-
         </div>
       </div>
     </div>
-    
+    <div v-else>
+      <div class="alert alert-primary" role="alert">Nothing Found!</div>
+    </div>
   </div>
 </template>
 
@@ -115,10 +117,7 @@ export default {
     return {
       Homediagnostics: [],
       p_method: ["Bkash", "Nogod", "Rocket", "Upay"],
-      form_data: {
-        payment_method: "",
-        transaction_id: "",
-      },
+
       disable_btn: false,
     };
   },
@@ -132,7 +131,7 @@ export default {
           },
         })
         .then((res) => {
-            console.log(res);
+          console.log(res);
           if (res.status === 200) {
             this.Homediagnostics = res.data;
           }

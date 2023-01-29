@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row my-3 mb-5">
+    <div class="row my-3 mb-5 pb-5">
       <div class="col-12 mx-auto">
         <div class="row">
           <!--Right side navbar-->
@@ -334,7 +334,6 @@ export default {
             console.log(res);
             if (res.status === 200) {
               this.$toast.success("Success! Profile updaded succefully..");
-              // this.$auth.user();
               this.$auth.fetchUser();
               this.$router.push("/profile");
             } else {
@@ -343,7 +342,8 @@ export default {
             this.$nuxt.$loading.finish();
           })
           .catch((error) => {
-            console.log(error.response);
+            console.log('error.response',error);
+            console.log('error.response',error.response);
             this.$toast.error("Error found! Try again");
 
             this.$nuxt.$loading.finish();

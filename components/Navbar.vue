@@ -18,12 +18,7 @@
           class="d-none d-md-block"
           width="55"
         />
-        <h5
-          style="font-weight: 500; color: #084298"
-          class="text-uppercase fw-bold d-block d-md-none my-0 py-0"
-        >
-          sasthosebok.com
-        </h5>
+
       </NLink>
     </div>
     <nav
@@ -137,7 +132,7 @@
           <i class="icofont-ui-user"></i>
           <span class="small">Profile</span>
         </NuxtLink>
-        <NuxtLink
+        <!-- <NuxtLink
           :to="
             $auth.loggedIn
               ? '/profile/setting'
@@ -147,7 +142,7 @@
         >
           <i class="icofont-gear"></i>
           <span class="small">Setting</span>
-        </NuxtLink>
+        </NuxtLink> -->
         <NuxtLink to="/bmi" class="nav-link text-dark">
           <i class="icofont-calculations"></i>
           <span class="small">BMI</span>
@@ -234,12 +229,17 @@
                FAQs
               </NuxtLink>
             </li>
+            <li class="list-group-item">
+              <NuxtLink to="/blog">
+               Blog
+              </NuxtLink>
+            </li>
           </ul>
         </div>
       </div>
     </div>
 
-    <a href="tel:+8801959970664" class="d-flex align-items-center __call">
+    <a href="tel:+8801959970664" class="d-flex align-items-center __call d-none">
       <img src="/img/icons/call.gif" class="rounded-circle" width="50" />
     </a>
   </header>
@@ -276,7 +276,7 @@ export default {
 }
 .__call {
   bottom: 70px;
-  right: 10px;
+  left:15px;
   width: fit-content;
   position: fixed;
 }
@@ -284,6 +284,12 @@ export default {
 @media only screen and (min-width: 768px) {
   .__call {
     bottom: 15px;
+    left:15px;
   }
+}
+
+.tawk-mobile{
+  display: none!important;
+  background: rebeccapurple!important;
 }
 </style>

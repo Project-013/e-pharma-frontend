@@ -3,7 +3,7 @@
     <div class="banner_wrapper p-3">
       <div class="container">
         <div class="my-3">
-          <h2 class="heading_2">{{ job.title }} ({{ job.job_nature }})</h2>
+          <h2 class="heading_2 text-light">{{ job.title }} ({{ job.job_nature }})</h2>
           <h5 class="text-light">{{ job.depertment }}</h5>
           <!-- <p class="small my-0 py-0"><i class="icofont-home"></i> {{job.job_nature}}</p> -->
           <p class="lead my-0 py-0">
@@ -32,6 +32,7 @@
       <div>
         <h4>Job Nature:</h4>
         <pre class="ps-3 fw-normal">{{ job.job_nature }}</pre>
+        
       </div>
       <div>
         <h4>Working Schedule:</h4>

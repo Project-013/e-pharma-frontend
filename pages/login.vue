@@ -194,9 +194,11 @@ export default {
                 this.countDownTimer();
                 this.$nuxt.$loading.finish();
               }
+              this.$nuxt.$loading.finish();
+
             })
             .catch((error) => {
-              console.log(error);
+              console.log(error.response);
               this.$nuxt.$loading.finish();
 
               console.log(error.message || error.response.data.message);
@@ -219,12 +221,15 @@ export default {
       };
       try {
         const response = await this.$auth.loginWith("local", { data: data });
+        
+        
         if (response.status === 200) {
           this.$toast.success("Successfully authenticated");
         } else {
           this.$toast.error("Login failed! Try again");
         }
       } catch (e) {
+        console.log(e.response);
         this.$toast.error("Login failed! Try again");
       }
       this.disable_btn2 = false;

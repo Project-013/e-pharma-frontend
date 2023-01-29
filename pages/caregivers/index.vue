@@ -22,6 +22,115 @@
             +8801602655774
           </a>
         </div>
+        <div class="col-md-7 mx-auto">
+          <template v-if="$auth.loggedIn === false">
+            <p class="text-center mark my-3 p-1">
+              Please
+              <NuxtLink
+                :to="`/login?redirect=` + $route.fullPath"
+                class="text-decoration-none"
+              >
+                Login
+              </NuxtLink>
+              or
+              <NuxtLink
+                :to="`/register?redirect=` + $route.fullPath"
+                class="text-decoration-none"
+              >
+                Register
+              </NuxtLink>
+
+              to get <span class="fw-bold">MOBILE DIAGNOSTIC</span> Service
+            </p>
+          </template>
+          <div v-if="$auth.loggedIn" class="bg-white">
+            <ValidationObserver
+              class="card h-100 p-0"
+              v-slot="{ handleSubmit }"
+            >
+              <div class="card-body">
+                <h6 class="mb-3 fw-bold text-uppercase" style="color: #2b325c">
+                  Get Service Now!
+                </h6>
+
+                <form class="" @submit.prevent="handleSubmit(submitForm)">
+                  <div class="form-group my-2">
+                    <label class="form-label" for="name">Your name</label>
+                    <input
+                      v-model="getName"
+                      id="name"
+                      class="form-control form-control-sm"
+                      required
+                    />
+                  </div>
+                  <div class="form-group my-2">
+                    <label class="form-label" for="name">Phone</label>
+                    <input
+                      v-model="getPhone"
+                      id="patient_phone"
+                      class="form-control form-control-sm"
+                      placeholder=" "
+                      required
+                      disabled
+                    />
+                  </div>
+                  <div class="form-group my-3">
+                    <label class="form-label" for="name">Address</label>
+                    <textarea
+                      v-model="form_data.address"
+                      id="details"
+                      class="form-control form-control-sm"
+                      rows="2"
+                      required
+                    ></textarea>
+                  </div>
+
+                  <div class="my-3 d-flex justify-content-center">
+                    <label
+                      for="formFile"
+                      class="text-center"
+                      style="cursor: pointer"
+                    >
+                      <img
+                        v-if="previewImage"
+                        :src="previewImage"
+                        width="200"
+                        class="uploading-image d-block mb-1 mx-auto border rounded p-1"
+                      />
+                      <img
+                        v-else
+                        src="~/static/img/add.jpg"
+                        alt=""
+                        class="d-block mb-1 mx-auto border rounded p-1"
+                        width="180"
+                      />
+                      <span class="btn btn-sm btn-secondary py-0">{{
+                        previewImage
+                          ? "Change Prescription"
+                          : "Upload Prescription"
+                      }}</span>
+                    </label>
+                    <input
+                      class="form-control form-control-sm upload_image d-none"
+                      type="file"
+                      id="formFile"
+                      accept=".jpeg,.jpg,.png,image/jpeg,image/png"
+                      aria-label="upload image button"
+                      @change="uploadImage"
+                      required
+                    />
+                  </div>
+                  <button
+                    style="background-color: #2b325c"
+                    class="btn btn-dark btn-sm mt-3 w-100 text-uppercase"
+                  >
+                    Submit
+                  </button>
+                </form>
+              </div>
+            </ValidationObserver>
+          </div>
+        </div>
       </div>
     </div>
   </section>
