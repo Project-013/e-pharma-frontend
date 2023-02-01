@@ -57,7 +57,7 @@
         :pageSize="9"
         @changePage="onChangePage"
         :labels="customLabels"
-        class="mx-auto"
+        class="mx-auto "
       ></jw-pagination>
     </div>
   </div>

@@ -34,6 +34,11 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: "স্বাস্থ্যসেবক || Update comment",
+    };
+  },
   data() {
     return {
       comment: {},
@@ -53,8 +58,8 @@ export default {
             console.log(res);
             if (res.status === 200) {
               this.$toast.success("Success! Updated");
-              window.history.back()
-            //   this.$router.push(`/blog/post/?id=${this.$route.query.id}`);
+              window.history.back();
+              //   this.$router.push(`/blog/post/?id=${this.$route.query.id}`);
             } else {
               this.$toast.error("Error found! Try again");
             }
@@ -71,7 +76,7 @@ export default {
           });
       });
 
-        console.log();
+      console.log();
       return;
     },
     async getblogDetails() {
@@ -92,7 +97,6 @@ export default {
           // context.commit('error', error)
         });
     },
-  
   },
   mounted() {
     this.getblogDetails();

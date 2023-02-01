@@ -1,9 +1,8 @@
 <template>
-  <div class="center_box">
-    <div class="pb-3 ">
-      <Accept v-if="!$auth.loggedIn" class="d-block d-sm-none"/>
-      <PartialsCarousel/>
-      <PartialsServices />
+  <div class="">
+    <div class="">
+      <Web class="d-none d-md-block"/>
+      <App class="d-block d-md-none"/>
     </div>
   </div>
 </template>
@@ -18,7 +17,7 @@ export default {
     }
     this.$nextTick(() => {
       this.$nuxt.$loading.start()
-      setTimeout(() => this.$nuxt.$loading.finish(), 5)
+      setTimeout(() => this.$nuxt.$loading.finish(), 100)
     })
 
   },

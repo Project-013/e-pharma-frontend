@@ -10,22 +10,31 @@
     <div class="container mt-4">
       <div class="row g-3">
         <template v-for="(job, index) in jobs">
-          <NuxtLink :to="`/career/job?id=`+job.id" :key="index" class="col-md-8 col-11 mx-auto">
-          <div class="border p-3 rounded pointer shadow row">
-            <div class="col-md-8">
-              <h3 class="text-dark">{{job.title}}</h3>
-              <h6 class="">{{job.depertment}}</h6>
-              <!-- <p class="small my-0 py-0"><i class="icofont-home"></i> {{job.job_nature}}</p> -->
-              <p class="small my-0 py-0"><i class="icofont-location-pin"></i> Location: {{job.location}}</p>
-              <p class="small my-0 py-0"><i class="icofont-money"></i> Salary: {{job.salary}}</p>
+          <NuxtLink
+            :to="`/career/job?id=` + job.id"
+            :key="index"
+            class="col-md-8 col-11 mx-auto"
+          >
+            <div class="border p-3 rounded pointer shadow row">
+              <div class="col-md-8">
+                <h3 class="text-dark">{{ job.title }}</h3>
+                <h6 class="">{{ job.depertment }}</h6>
+                <!-- <p class="small my-0 py-0"><i class="icofont-home"></i> {{job.job_nature}}</p> -->
+                <p class="small my-0 py-0">
+                  <i class="icofont-location-pin"></i> Location:
+                  {{ job.location }}
+                </p>
+                <p class="small my-0 py-0">
+                  <i class="icofont-money"></i> Salary: {{ job.salary }}
+                </p>
+              </div>
+              <div
+                class="col-md-4 d-flex align-items-center justify-content-center"
+              >
+                <button class="btn btn-sm btn-outline-dark">View More</button>
+              </div>
             </div>
-            <div
-              class="col-md-4 d-flex align-items-center justify-content-center"
-            >
-              <button class="btn btn-sm btn-outline-dark">View More</button>
-            </div>
-          </div>
-        </NuxtLink>
+          </NuxtLink>
         </template>
       </div>
     </div>
@@ -35,6 +44,11 @@
 <script>
 export default {
   name: "career",
+  head() {
+    return {
+      title: "স্বাস্থ্যসেবক || career",
+    };
+  },
   data() {
     return {
       jobs: [],

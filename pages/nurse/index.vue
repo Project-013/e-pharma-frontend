@@ -10,11 +10,10 @@
           <p class="text-justify _service_desc">
             নবজাতক গর্ভবতী মা কিংবা বয়োবৃদ্ধ সবার জন্য একটি ডেডিকেটেড পরিষেবা
 
-            <strong class="text-primary">{{$config.uniProject
-                        ? "E-health"
-                        : "স্বাস্থ্যসেবক ডটকম"
-                    }}</strong> নিশ্চিত
-            করে। যে সেবাটি
+            <strong class="text-primary">{{
+              $config.uniProject ? "E-health" : "স্বাস্থ্যসেবক ডটকম"
+            }}</strong>
+            নিশ্চিত করে। যে সেবাটি
             <strong class="text-primary"> সিলেট শহরের</strong> সকল অভিজ্ঞ
             রেজিস্টার্ড নার্স/মিডওয়াইফ দ্বারা পরিচালিত করা হয়। যার ফলে সেবার
             সর্বোত্তম মান নিশ্চিত হয়।
@@ -30,7 +29,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  head() {
+    return {
+      title: "স্বাস্থ্যসেবক || নার্সিং/মিডওয়াইফারি  ",
+    };
+  },
+};
 </script>
 
 <style scoped></style>

@@ -1,6 +1,6 @@
 <template>
   <div class="center_box">
-    <div class="pb-3 ">
+    <div class="pb-3">
       <PartialsPartners />
     </div>
   </div>
@@ -9,6 +9,11 @@
 <script>
 export default {
   name: "IndexPage",
+  head() {
+    return {
+      title: "স্বাস্থ্যসেবক || Work with us ",
+    };
+  },
 
   mounted() {
     if (this.$route.query.redirect) {

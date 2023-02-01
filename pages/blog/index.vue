@@ -31,14 +31,16 @@
         </p>
       </template>
       <div v-else class="text-center py-3">
-        <NuxtLink class="btn btn-lg btn-outline-secondary py-2 px-sm-5" to="/blog/create"
+        <NuxtLink
+          class="btn btn-lg btn-outline-secondary py-2 px-sm-5"
+          to="/blog/create"
           >Create New Post <i class="icofont-pencil-alt-2 ms-2"></i>
         </NuxtLink>
       </div>
 
       <div class="col-md-7">
         <div v-for="blog in pageOfItems" :key="blog.id">
-          <Blog :blog="blog"/>
+          <Blog :blog="blog" />
           <!-- <div class="card p-0 my-2">
             <div class="row card-body">
               <div
@@ -94,6 +96,11 @@
 import JwPagination from "jw-vue-pagination";
 
 export default {
+  head() {
+    return {
+      title: "স্বাস্থ্যসেবক || Blog",
+    };
+  },
   components: {
     JwPagination,
   },

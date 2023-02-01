@@ -7,7 +7,7 @@
         </div>
         <div class="col-md-5 p-3">
           <h3 class="text-dark mb-3">হোম ফিজিওথেরাপী সেবা</h3>
-          <p class="text-justify _service_desc" >
+          <p class="text-justify _service_desc">
             স্টোক, প্যারালাইসিস বা বাত ব্যথার রোগিদের বাসায় গিয়ে ফিজিওথেরাপি
             দেয়া হয়।
             <strong class="text-primary"> সিলেট শহরের</strong> সব এলাকায় অভিজ্ঞ
@@ -28,7 +28,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  head() {
+    return {
+      title: "স্বাস্থ্যসেবক || ফিজিওথেরাপী",
+    };
+  },
+};
 </script>
 
 <style scoped></style>

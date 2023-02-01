@@ -1,5 +1,5 @@
 <template>
-  <div class="container mb-5 pb-5 ">
+  <div class="container mb-5 pb-5">
     <div class="row g-4 justify-content-center bg-white py-3">
       <div class="col-12">
         <div class="card p-3 h-100 text-center">
@@ -109,7 +109,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-5 ">
+            <div class="col-md-5">
               <div v-for="blog in blogs" :key="blog.id">
                 <Blog :blog="blog" />
               </div>
@@ -123,6 +123,11 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: "স্বাস্থ্যসেবক || Profile",
+    };
+  },
   data() {
     return {
       blogs: [],

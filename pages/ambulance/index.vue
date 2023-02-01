@@ -12,8 +12,7 @@
             নিজের পরিবারের প্রিয়জনদের আগলে রাখতে, আপনার নিজের যেমন পাশে থাকাটা
             জরুরি। তেমনি সিলেটের অন্যতম প্রধান রুগী পরিবহনকারী হিসাবে, আপনার
             সুসময়ের পাশাপাশি আপনার বিপর্যয়েও সুরক্ষা সহ পরিবহন সেবা নিয়ে আছি
-            আমরা। 
-
+            আমরা।
           </p>
           <a href="tel:+8801602655774" class="lead fw-bold text-dark"
             ><i class="icofont-ui-call text-primary me-2"></i>
@@ -26,7 +25,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  head() {
+    return {
+      title: "স্বাস্থ্যসেবক || এ্যাম্বুলেন্স",
+    };
+  },
+};
 </script>
 
 <style scoped></style>

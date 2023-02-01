@@ -7,7 +7,8 @@
       <div class="col-lg-2 col-md-3 col-6 ">
         <NuxtLink to="/doctors?stype=Private-Chamber">
            <img
-            src="/img/services/001-advice11.png"
+           alt="Private Chamber Appoinment"
+            src="/img/services/001-advice.png"
             class="mx-auto d-block pointer border p-3 rounded service_image "
           />
           <h6 class="small text-center mt-2 fw-semibold ">Private Chamber Appoinment</h6>

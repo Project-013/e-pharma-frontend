@@ -44,7 +44,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  head() {
+    return {
+      title: "স্বাস্থ্যসেবক || Contact us",
+    };
+  },
+};
 </script>
 
 <style></style>

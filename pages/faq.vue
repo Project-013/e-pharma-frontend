@@ -38,6 +38,11 @@
 <script>
 export default {
   name: "faq",
+  head() {
+    return {
+      title: "স্বাস্থ্যসেবক || FAQs ",
+    };
+  },
   data() {
     return {
       faqs: [],

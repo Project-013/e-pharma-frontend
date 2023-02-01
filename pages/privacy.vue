@@ -11,7 +11,7 @@
     <p>
       We use Your Personal data to provide and improve the Service. By using the
       Service, You agree to the collection and use of information in accordance
-      with this Privacy Policy. 
+      with this Privacy Policy.
     </p>
     <h1>Interpretation and Definitions</h1>
     <h2>Interpretation</h2>
@@ -33,12 +33,12 @@
         <p>
           <strong>Company</strong> (referred to as either &quot;the
           Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in
-          this Agreement) refers to 
+          this Agreement) refers to
           {{
-                      $config.uniProject
-                        ? "E-health, Osmaninagar, Sylhet-3100"
-                        : "sasthosebok.com, #533, Kakoli Shoping Center(4th Floor), Zindabazar, Sylhet-3100."
-                    }}
+            $config.uniProject
+              ? "E-health, Osmaninagar, Sylhet-3100"
+              : "sasthosebok.com, #533, Kakoli Shoping Center(4th Floor), Zindabazar, Sylhet-3100."
+          }}
         </p>
       </li>
       <li>
@@ -86,20 +86,14 @@
       </li>
       <li>
         <p>
-          <strong>Website</strong> refers to  {{
-                      $config.uniProject
-                        ? "E-health"
-                        : "sasthosebok.com"
-                    }}, accessible from
+          <strong>Website</strong> refers to
+          {{ $config.uniProject ? "E-health" : "sasthosebok.com" }}, accessible
+          from
           <a
             href="https://sasthosebok.com/"
             rel="external nofollow noopener"
             target="_blank"
-            >{{
-                      $config.uniProject
-                        ? "E-health"
-                        : "sasthosebok.com"
-                    }}</a
+            >{{ $config.uniProject ? "E-health" : "sasthosebok.com" }}</a
           >
         </p>
       </li>
@@ -181,7 +175,7 @@
       Cookies can be &quot;Persistent&quot; or &quot;Session&quot; Cookies.
       Persistent Cookies remain on Your personal computer or mobile device when
       You go offline, while Session Cookies are deleted as soon as You close
-      Your web browser. 
+      Your web browser.
     </p>
     <p>
       We use both Session and Persistent Cookies for the purposes set out below:
@@ -472,11 +466,12 @@
     </p>
     <ul>
       <li>
-        <p>By email:  {{
-                      $config.uniProject
-                        ? "info@E-health.com"
-                        : "info@sasthosebok.com"
-                    }}</p>
+        <p>
+          By email:
+          {{
+            $config.uniProject ? "info@E-health.com" : "info@sasthosebok.com"
+          }}
+        </p>
       </li>
       <li>
         <p>By phone number: +8801959970664</p>
@@ -486,11 +481,22 @@
 </template>
 
 <script>
-export default {};
+export default {
+  head() {
+    return {
+      title: "স্বাস্থ্যসেবক || Privacy & policy ",
+    };
+  },
+};
 </script>
 
 <style scoped>
-h1, h2,h3,h4,h5,h6{
-    color: black !important;;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: black !important;
 }
 </style>

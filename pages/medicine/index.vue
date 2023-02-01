@@ -3,7 +3,9 @@
     <div class="container">
       <div class="row g-4 my-3 justify-content-center">
         <div class="col-md-5">
-          <img src="/img/cards/png-6.png" class="d-block w-100" />
+          <img src="/img/cards/png-6.png"
+           alt="মেডিসিন হোম ডেলিভারি সার্ভিস"
+           class="d-block w-100" />
         </div>
         <div class="col-md-5 p-3">
           <h3 class="text-dark mb-3">মেডিসিন হোম ডেলিভারি সার্ভিস</h3>
@@ -165,6 +167,11 @@
 import { ValidationObserver } from "vee-validate";
 
 export default {
+  head() {
+    return {
+      title: "স্বাস্থ্যসেবক || মেডিসিন হোম ডেলিভারি",
+    };
+  },
   components: {
     ValidationObserver,
   },

@@ -21,11 +21,10 @@
           <p class="text-justify _service_desc">
             অর্ডারটি সাবমিট করার পর কিছুক্ষন অপেক্ষা করুন, এডমিন আপনার সাথে
             যোগাযোগ করবে । তারপর
-            <strong class="text-primary">{{$config.uniProject
-                        ? "E-health"
-                        : "স্বাস্থ্যসেবক ডটকম"
-                    }}</strong> কর্তৃক
-            নির্ধারিত ফি প্রদান করে সার্ভিসটি গ্রহন করুন।
+            <strong class="text-primary">{{
+              $config.uniProject ? "E-health" : "স্বাস্থ্যসেবক ডটকম"
+            }}</strong>
+            কর্তৃক নির্ধারিত ফি প্রদান করে সার্ভিসটি গ্রহন করুন।
           </p>
           <a href="tel:+8801602655774" class="lead fw-bold text-dark"
             ><i class="icofont-ui-call text-primary me-2"></i>
@@ -152,6 +151,11 @@ import { ValidationObserver } from "vee-validate";
 export default {
   components: {
     ValidationObserver,
+  },
+  head() {
+    return {
+      title: "স্বাস্থ্যসেবক || ডায়াগনস্টিক",
+    };
   },
   computed: {
     getPhone() {

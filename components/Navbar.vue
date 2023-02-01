@@ -21,7 +21,7 @@
 
       </NLink>
     </div>
-    <nav
+    <nav 
       class="navbar navbar-expand-md navbar-white bg-light border-bottom py-1 d-none d-md-block"
     >
       <div class="container">
@@ -119,7 +119,7 @@
         </div>
       </div>
     </nav>
-    <div class="mobile_nav d-block d-md-none">
+    <div class="mobile_nav d-block d-md-none" v-if="$auth.loggedIn">
       <nav class="nav">
         <NuxtLink to="/" class="nav-link text-dark">
           <i class="icofont-home"></i>

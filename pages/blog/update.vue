@@ -51,6 +51,11 @@ import "jodit/build/jodit.min.css";
 import { JoditEditor } from "jodit-vue";
 export default {
   components: { JoditEditor },
+  head() {
+    return {
+      title: "স্বাস্থ্যসেবক || Update Post",
+    };
+  },
   data() {
     return {
       blog: {},
@@ -107,7 +112,6 @@ export default {
           // context.commit('error', error)
         });
     },
-  
   },
   mounted() {
     this.getblogDetails();

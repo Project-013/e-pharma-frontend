@@ -4,13 +4,11 @@
       class="offcanvas offcanvas-top w-100 h-100 p-2"
       :class="show ? 'show' : 'hide'"
       tabindex="-1"
+      data-bs-scroll="true"
       id="offcanvasRight"
       aria-labelledby="offcanvasRightLabel"
     >
-      <!-- <div class="offcanvas-header py-0 my-0">
-          <i class="icofont-info-circle text-info display-2 my-0 p-0"></i>
-
-      </div> -->
+ 
       <div class="offcanvas-body">
         <div class="card border p-0 rounded shadow">
           <i class="icofont-info-circle text-info display-2 my-0 pt-2 px-2"></i>
@@ -45,6 +43,7 @@
             <button
               class="btn btn-dark text-white w-75 d-block mx-auto"
               @click="onAccept"
+              data-bs-dismiss="offcanvas" aria-label="Close"
             >
               I Accept
             </button>

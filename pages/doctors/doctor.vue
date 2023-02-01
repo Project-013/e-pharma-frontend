@@ -176,12 +176,9 @@
                     rows="3"
                     required
                   ></textarea>
-                    <!-- v-if="getfee" -->
+                  <!-- v-if="getfee" -->
 
-
-                  <p
-                    class="p-1 mb-1 text-center lead fw-semibold fst-italic"
-                  >
+                  <p class="p-1 mb-1 text-center lead fw-semibold fst-italic">
                     Total Fee -
                     <span class="text-success"
                       ><i class="icofont-taka"></i>{{ getfee }}
@@ -210,6 +207,11 @@ import { ValidationObserver } from "vee-validate";
 export default {
   components: {
     ValidationObserver,
+  },
+  head() {
+    return {
+      title: "Doctor || " + this.get_doctor.name,
+    };
   },
   computed: {
     get_doctor() {

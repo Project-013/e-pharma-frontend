@@ -74,14 +74,12 @@
       </div>
     </div>
     <div class="container">
-
       <div class="row" v-if="sortedDoctorList.length">
         <Doctors class="" :doctors="sortedDoctorList" />
       </div>
       <div v-else>
         <div class="text-center py-5">
           <h4>Nothing Found!</h4>
-        
         </div>
       </div>
     </div>
@@ -90,6 +88,11 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: "স্বাস্থ্যসেবক || Doctor",
+    };
+  },
   data() {
     return {
       doctors: [],
@@ -100,14 +103,13 @@ export default {
     };
   },
   computed: {
-    get_doctors(){
-      return this.$store.getters["doctors/doctors"]
+    get_doctors() {
+      return this.$store.getters["doctors/doctors"];
     },
     getSpesialistList() {
       return this.$store.getters["data/spesialist_list"];
     },
     sortedDoctorList() {
-
       if (!this.type && this.$route.query.stype) {
         this.type = this.$route.query.stype.replace("-", " ");
       }
@@ -139,14 +141,12 @@ export default {
 
       return list.sort();
     },
-  
   },
 
   methods: {
     // async getDoctors() {
     //   this.$nextTick(() => {
     //     this.$nuxt.$loading.start();
-
     //     this.$axios
     //       .get(`patners/doctor/`, {
     //         headers: {
@@ -161,7 +161,6 @@ export default {
     //       })
     //       .catch((error) => {
     //         this.$nuxt.$loading.finish();
-
     //         console.log(error.response);
     //         console.log(error.response.data.message || error.message);
     //         // context.commit('error', error)

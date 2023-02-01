@@ -35,6 +35,11 @@
 
 <script>
 export default {
+    head() {
+    return {
+      title: "স্বাস্থ্যসেবক || "+this.blog.title,
+    };
+  },
 
   data() {
     return {

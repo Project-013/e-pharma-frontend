@@ -308,6 +308,11 @@
 
 <script>
 export default {
+  head() {
+    return {
+      title: "স্বাস্থ্যসেবক || Setting",
+    };
+  },
   computed: {
     userData() {
       const user_data = { ...this.$auth.user };
@@ -342,8 +347,8 @@ export default {
             this.$nuxt.$loading.finish();
           })
           .catch((error) => {
-            console.log('error.response',error);
-            console.log('error.response',error.response);
+            console.log("error.response", error);
+            console.log("error.response", error.response);
             this.$toast.error("Error found! Try again");
 
             this.$nuxt.$loading.finish();
