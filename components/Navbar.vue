@@ -18,10 +18,9 @@
           class="d-none d-md-block"
           width="55"
         />
-
       </NLink>
     </div>
-    <nav 
+    <nav
       class="navbar navbar-expand-md navbar-white bg-light border-bottom py-1 d-none d-md-block"
     >
       <div class="container">
@@ -119,43 +118,35 @@
         </div>
       </div>
     </nav>
-    <div class="mobile_nav d-block d-md-none" v-if="$auth.loggedIn">
-      <nav class="nav">
-        <NuxtLink to="/" class="nav-link text-dark">
-          <i class="icofont-home"></i>
-          <span class="small">Home</span>
-        </NuxtLink>
+    <div class="mobile_nav d-block d-md-none">
+      <nav class="nav shadow-lg">
         <NuxtLink
           :to="$auth.loggedIn ? '/profile' : '/login?redirect=/profile'"
-          class="nav-link text-dark"
+          class="nav-link text-muted"
         >
-          <i class="icofont-ui-user"></i>
-          <span class="small">Profile</span>
+          <i class="icofont-ui-user text-muted"></i>
+          <span class="small fw-semibold text-muted">My Account</span>
         </NuxtLink>
-        <!-- <NuxtLink
-          :to="
-            $auth.loggedIn
-              ? '/profile/setting'
-              : '/login?redirect=/profile/setting'
-          "
-          class="nav-link text-dark"
-        >
-          <i class="icofont-gear"></i>
-          <span class="small">Setting</span>
-        </NuxtLink> -->
-        <NuxtLink to="/bmi" class="nav-link text-dark">
+
+        <NuxtLink to="/" class="nav-link text-muted">
+          <i class="icofont-home text-muted"></i>
+          <span class="small fw-semibold text-muted">Home</span>
+        </NuxtLink>
+
+        <NuxtLink to="/notifications" class="nav-link text-muted">
+          <i class="icofont-notification text-muted"></i>
+          <span class="small text-muted fw-semibold">Notification</span>
+        </NuxtLink>
+
+        <!-- <NuxtLink to="/bmi" class="nav-link text-dark">
           <i class="icofont-calculations"></i>
           <span class="small">BMI</span>
-        </NuxtLink>
-
-        <a class="nav-link" @click="toggleNavbar">
-          <i class="icofont-navigation-menu"></i>
-          <span class="small">Menu</span>
-        </a>
+        </NuxtLink> -->
       </nav>
-
+      <div style="z-index:1000" :class="show ? 'modal-backdrop fade show' : ''"></div>
       <div
-        class="offcanvas offcanvas-end w-75"
+      style="z-index:9000"
+        class="offcanvas offcanvas-end w-50"
         :class="show ? 'show' : 'hide'"
         tabindex="-1"
         id="offcanvasRight"
@@ -169,79 +160,106 @@
           ></button>
         </div>
         <div class="offcanvas-body">
-          <template v-if="$auth.loggedIn">
-            <h5 class="mb-3">Welcome!</h5>
-
-            <h3 class="" style="font-weight: 500; color: #084298">
-              {{ $auth.user.full_name }}
-            </h3>
-            <hr />
-
-            <ul class="list-group mt-5">
-              <li
-                class="list-group-item"
-                v-if="this.$auth.user && this.$auth.user.is_admin"
-              >
-                <NuxtLink to="/admin">
-                  <i class="icofont-dashboard me-1"></i>Admin Dashboard
-                </NuxtLink>
-              </li>
-
-              <li class="list-group-item">
-                <a class="pointer" @click="$auth.logout()">
-                  <i class="icofont-logout me-1"></i>Logout
-                </a>
-              </li>
-            </ul>
-          </template>
-          <template v-else>
-            <div class="mt-5">
-              <h5 class="mb-3">Welcome!</h5>
-              <NuxtLink class="d-block" to="/login">
-                <small class="btn btn-outline-dark btn-sm w-100"
-                  ><i class="icofont-sign-in"></i> Login
-                </small>
+          <div class="card h-100 p-0 m-0 border-0">
+            <div class="top card-body d-flex flex-column p-1">
+              <NuxtLink class="text-muted fw-semibold pb-3 app-nav-item" to="/">
+                <i class="icofont-home me-2"></i>Home
               </NuxtLink>
-
-              <p class="text-center small my-2">or</p>
-              <NuxtLink class="d-block" to="/register">
-                <small class="btn btn-dark btn-sm w-100"
-                  ><i class="icofont-sign-in"></i> Register</small
-                >
+              <NuxtLink
+                class="text-muted fw-semibold pb-3 app-nav-item"
+                v-if="$auth.loggedIn"
+                to="/profile"
+              >
+                <i class="icofont-user me-2 small"></i>My account
+              </NuxtLink>
+              <NuxtLink
+                to="/bmi"
+                class="text-muted fw-semibold pb-3 app-nav-item"
+              >
+                <i class="icofont-calculations me-2"></i>BMI Calculator
+              </NuxtLink>
+              <NuxtLink
+                class="text-muted fw-semibold pb-3 app-nav-item"
+                to="/work"
+              >
+                <i class="icofont-plus-circle me-2"></i>Work With us
+              </NuxtLink>
+              <NuxtLink
+                class="text-muted fw-semibold pb-3 app-nav-item"
+                to="/career"
+              >
+                <i class="icofont-search-job me-2"></i>Career
+              </NuxtLink>
+              <NuxtLink
+                class="text-muted fw-semibold pb-3 app-nav-item"
+                to="/blog"
+              >
+                <i class="icofont-blogger me-2"></i>Blog
+              </NuxtLink>
+              <NuxtLink
+                class="text-muted fw-semibold pb-3 app-nav-item"
+                to="/faq"
+              >
+                <i class="icofont-support-faq me-2"></i>FAQs
               </NuxtLink>
             </div>
-          </template>
-          <ul class="list-group mt-5">
-
-            <li class="list-group-item">
-              <NuxtLink to="/work">
-               Work With us
-              </NuxtLink>
-            </li>
-
-            <li class="list-group-item">
-              <NuxtLink to="/career">
-               Career
-              </NuxtLink>
-            </li>
-            <li class="list-group-item">
-              <NuxtLink to="/faq">
-               FAQs
-              </NuxtLink>
-            </li>
-            <li class="list-group-item">
-              <NuxtLink to="/blog">
-               Blog
-              </NuxtLink>
-            </li>
-          </ul>
+            <div
+              class="bottom card-footer p-1 mb-5 border-0 bg-white"
+              v-if="$auth.loggedIn"
+            >
+              <hr class="text-muted" />
+              <a
+                class="pointer text-muted fw-semibold pb-3 app-nav-item"
+                @click="$auth.logout()"
+              >
+                <i class="icofont-logout me-2"></i>Logout
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <a href="tel:+8801959970664" class="d-flex align-items-center __call d-none">
+    <a
+      href="tel:+8801959970664"
+      class="d-flex align-items-center __call d-none"
+    >
       <img src="/img/icons/call.gif" class="rounded-circle" width="50" />
     </a>
+
+    <div class="mobile_header shadow d-block d-md-none p-2 pb-3">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <p class="text-light my-0 py-0 small">Hello,</p>
+
+          <template v-if="$auth.loggedIn">
+            <span class="small text-light fw-semibold fw-italic my-0 py-0"
+              >{{ $auth.user.full_name }}!</span
+            >
+          </template>
+          <template v-else>
+            <span class="small text-light fw-italic fw-semibold my-0 py-0"
+              >Sir!</span
+            >
+          </template>
+        </div>
+        <div class="d-flex">
+          <NuxtLink to="/notifications" class="mx-3 position-relative">
+            <i class="icofont-notification text-light h5"></i>
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            >
+              0
+              <span class="visually-hidden">unread messages</span>
+            </span>
+          </NuxtLink>
+
+          <a class="nav-link mx-2" @click="toggleNavbar">
+            <i class="icofont-navigation-menu text-light h5"></i>
+          </a>
+        </div>
+      </div>
+    </div>
   </header>
 </template>
 
@@ -266,6 +284,15 @@ export default {
 };
 </script>
 <style scoped>
+.app-nav-item {
+  font-size: 12px !important;
+  transition: padding ease-in 0.4s;
+}
+.app-nav-item:hover {
+  padding-left: 10px;
+  color: #084092 !important;
+}
+
 .mobile_nav .nav-link {
   color: black !important;
 }
@@ -276,7 +303,7 @@ export default {
 }
 .__call {
   bottom: 70px;
-  left:15px;
+  left: 15px;
   width: fit-content;
   position: fixed;
 }
@@ -284,12 +311,16 @@ export default {
 @media only screen and (min-width: 768px) {
   .__call {
     bottom: 15px;
-    left:15px;
+    left: 15px;
   }
 }
 
-.tawk-mobile{
-  display: none!important;
-  background: rebeccapurple!important;
+.tawk-mobile {
+  display: none !important;
+  background: rebeccapurple !important;
+}
+.mobile_header {
+  background: #084092;
+  border-radius: 0 0 20px 20px;
 }
 </style>

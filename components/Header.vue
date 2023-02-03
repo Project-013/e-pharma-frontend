@@ -79,6 +79,7 @@
         </div>
       </div>
     </div>
+
   </header>
 </template>
 
@@ -92,4 +93,9 @@ export default {
 };
 </script>
 
-<style></style>
+
+
+<style>
+
+
+</style>

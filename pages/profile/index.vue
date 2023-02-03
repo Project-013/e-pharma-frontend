@@ -17,7 +17,8 @@
             src="/img/icons/user_icon.svg"
             class="d-block mx-auto"
             alt="user icon"
-            width="80"
+            width="55"
+            height="55"
           />
           <h5 class="mt-4">
             {{ $auth.user.full_name }} ({{ $auth.user.user_type }})

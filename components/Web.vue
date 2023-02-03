@@ -2,6 +2,7 @@
   <div>
     <PartialsCarousel />
     <PartialsServices />
+    <PartialsCount />
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="my-3 pb-5">
+  <div class="mb-5 pt-3 pb-5">
     <div class="container">
       <h5 class="text-dark">বিএমআই ক্যালকুলেটর</h5>
       <hr />
@@ -238,4 +238,11 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+@media only screen and (max-width: 600px) {
+  p ,h2{
+    font-size: 80% !important;
+  }
+
+}
+</style>

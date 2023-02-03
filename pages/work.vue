@@ -1,5 +1,5 @@
 <template>
-  <div class="center_box">
+  <div class="mb-5">
     <div class="pb-3">
       <PartialsPartners />
     </div>

@@ -1,6 +1,6 @@
 <template>
-  <section class="center_box">
-    <div class="col-lg-4 col-md-6 col-12 mx-auto py-3">
+  <section class="">
+    <div class="col-lg-4 col-md-6 col-12 mx-auto pt-3">
       <img
         class="mx-auto d-block"
         src="/img/icons/login.jpeg"
@@ -164,7 +164,7 @@
         </ValidationObserver>
 
         <div class="register-footer text-center pt-2">
-          <NuxtLink to="/login" class="small text-decoration-none text-dark"
+          <NuxtLink to="/app-login" class="small text-decoration-none text-dark"
             >Already have an account?
             <span class="text-primary text-decoration-underline">
               Sign In

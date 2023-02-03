@@ -1,5 +1,5 @@
 <template>
-  <section class="mb-5 pb-5">
+  <section class="mb-5 mt-3  pb-5">
     <div class="banner_wrapper p-3">
       <div class="container">
         <div class="my-3">

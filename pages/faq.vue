@@ -1,6 +1,6 @@
 <template>
-  <section class="container my-5">
-    <div class="accordion my-4 col-md-8 w-md-100" id="accordionExample">
+  <section class="container pb-5 pt-3 mb-5">
+    <div class="accordion col-md-8 w-md-100" id="accordionExample">
       <h3 class="text-dark">FAQs</h3>
       <template v-for="(faq, index) in faqs">
         <div :key="index">
@@ -14,7 +14,7 @@
                 aria-expanded="true"
                 :aria-controls="`collapse-${index}`"
               >
-                {{ faq.ques }}
+               <small> {{ faq.ques }}</small>
               </button>
             </h2>
             <div
@@ -25,7 +25,7 @@
               data-bs-parent="#accordionExample"
             >
               <div class="accordion-body">
-                {{ faq.ans }}
+                <p>{{ faq.ans }}</p>
               </div>
             </div>
           </div>
@@ -74,5 +74,11 @@ export default {
   background: #f9fafd !important;
   border: 1px solid #d8e2ef !important;
   box-shadow: 0px 3px 10px rgba(54, 124, 193, 0.3) !important;
+}
+@media only screen and (max-width: 600px) {
+  p ,h2{
+    font-size: 80% !important;
+  }
+
 }
 </style>
