@@ -3,8 +3,7 @@
     <AppRegister v-if="!$auth.$state.loggedIn" />
     <div v-else>
       <PartialsTopInfo />
-      <PartialsServices />
-      <PartialsCount />
+      <CommonSection />
     </div>
   </div>
 </template>

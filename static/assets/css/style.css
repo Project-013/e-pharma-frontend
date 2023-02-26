@@ -362,55 +362,7 @@ pre {
 .pointer {
   cursor: pointer !important;
 }
-.banner-area {
-  position: relative;
-  height: 300px;
-}
 
-.banner-item .banner-right img {
-  position: absolute;
-  max-width: 400px !important;
-  display: block;
-  margin: 0 auto;
-}
-
-.banner-item .banner-right img:nth-child(1) {
-  top: -80px;
-  right: 10px;
-  max-width: 510px;
-  z-index: 1;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.banner-item .banner-right img:nth-child(2) {
-  top: -80px;
-  right: 20px;
-  max-width: 510px;
-  -webkit-animation: a-four 5s infinite linear;
-  animation: a-four 5s infinite linear;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.banner-item .banner-right img:nth-child(3) {
-  top: -80px;
-  right: 0px;
-  max-width: 510px;
-  -webkit-animation: a-five 5s infinite linear;
-  animation: a-five 5s infinite linear;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.banner-item .banner-right img:nth-child(4) {
-  bottom: 215px;
-  left: 50px;
-  max-width: 360px;
-  z-index: -1;
-  -webkit-animation: a-eight 20s infinite linear;
-  animation: a-eight 20s infinite linear;
-}
 
 .vdp-datepicker * {
   border: none !important;
@@ -426,97 +378,6 @@ pre {
 
 }
 
-
-
-@-webkit-keyframes a-eight {
-  0% {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-  50% {
-    -webkit-transform: translate(75px, 0);
-    transform: translate(75px, 0);
-  }
-  100% {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-}
-
-@keyframes a-eight {
-  0% {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-  50% {
-    -webkit-transform: translate(75px, 0);
-    transform: translate(75px, 0);
-  }
-  100% {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-}
-
-@-webkit-keyframes a-four {
-  0% {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-  50% {
-    -webkit-transform: translate(-10px, -10px);
-    transform: translate(-10px, -10px);
-  }
-  100% {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-}
-
-@keyframes a-four {
-  0% {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-  50% {
-    -webkit-transform: translate(-10px, -10px);
-    transform: translate(-10px, -10px);
-  }
-  100% {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-}
-
-@-webkit-keyframes a-five {
-  0% {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-  50% {
-    -webkit-transform: translate(10px, 10px);
-    transform: translate(10px, 10px);
-  }
-  100% {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-}
-
-@keyframes a-five {
-  0% {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-  50% {
-    -webkit-transform: translate(10px, 10px);
-    transform: translate(10px, 10px);
-  }
-  100% {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-}
 
 .mobile_nav .nav {
   border-radius: 25px 25px 0 0;
@@ -557,4 +418,10 @@ pre {
 
 .text-justify{
   text-align: justify;
+}
+
+@media only screen and (max-width: 600px) {
+  ._service_desc {
+    font-size: 80% !important;
+  }
 }

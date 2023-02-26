@@ -84,13 +84,7 @@
 </template>
 
 <script>
-export default {
-
-  mounted(){
-    this.$store.dispatch("doctors/getDoctors");
-  },
-
-};
+export default {};
 </script>
 
 

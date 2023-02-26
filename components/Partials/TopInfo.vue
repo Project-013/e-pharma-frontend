@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div class="row gx-4 my-3 text-center">
-      <div v-for="data in data_list" class="col-4 " :key="data">
+      <div v-for="data in data_list" class="col-4 " :key="data.icon">
         <a :href="data.href" target="_blank" class="card bg-light shadow-sm border-0 p-2 ">
-          <i class="fs-1 text-primary mb-2" :class="data.icon"></i>
+          <i class="fs-1 text-success mb-2" :class="data.icon"></i>
           <h6 class="py-0 my-1 fw-semibold small">{{ data.key }}</h6>
         </a>
       </div>

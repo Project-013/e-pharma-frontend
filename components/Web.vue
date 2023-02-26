@@ -1,8 +1,9 @@
 <template>
   <div>
     <PartialsCarousel />
-    <PartialsServices />
-    <PartialsCount />
+    <CommonSection/>
+
+
   </div>
 </template>
 

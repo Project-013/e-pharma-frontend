@@ -128,8 +128,8 @@
           <span class="small fw-semibold text-muted">My Account</span>
         </NuxtLink>
 
-        <NuxtLink to="/" class="nav-link text-muted">
-          <i class="icofont-home text-muted"></i>
+        <NuxtLink to="/" class="nav-link text-muted " >
+          <i class="icofont-home text-muted "></i>
           <span class="small fw-semibold text-muted">Home</span>
         </NuxtLink>
 
@@ -143,10 +143,10 @@
           <span class="small">BMI</span>
         </NuxtLink> -->
       </nav>
-      <div style="z-index:1000" :class="show ? 'modal-backdrop fade show' : ''"></div>
+      <div style="z-index:1000"  @click="toggleNavbar" :class="show ? 'modal-backdrop fade show' : ''"></div>
       <div
       style="z-index:9000"
-        class="offcanvas offcanvas-end w-50"
+        class="offcanvas offcanvas-end w-75 my-3 py-0 rounded-start"
         :class="show ? 'show' : 'hide'"
         tabindex="-1"
         id="offcanvasRight"
@@ -161,7 +161,7 @@
         </div>
         <div class="offcanvas-body">
           <div class="card h-100 p-0 m-0 border-0">
-            <div class="top card-body d-flex flex-column p-1">
+            <div class="top card-body d-flex flex-column p-1 ps-3">
               <NuxtLink class="text-muted fw-semibold pb-3 app-nav-item" to="/">
                 <i class="icofont-home me-2"></i>Home
               </NuxtLink>
@@ -176,7 +176,7 @@
                 to="/bmi"
                 class="text-muted fw-semibold pb-3 app-nav-item"
               >
-                <i class="icofont-calculations me-2"></i>BMI Calculator
+                <i class="icofont-calculator me-2"></i>BMI Calculator
               </NuxtLink>
               <NuxtLink
                 class="text-muted fw-semibold pb-3 app-nav-item"
@@ -204,7 +204,7 @@
               </NuxtLink>
             </div>
             <div
-              class="bottom card-footer p-1 mb-5 border-0 bg-white"
+              class="bottom card-footer p-1 ps-3 mb-3 border-0 bg-white"
               v-if="$auth.loggedIn"
             >
               <hr class="text-muted" />
@@ -280,7 +280,9 @@ export default {
       this.show = false;
     },
   },
-  mounted() {},
+  mounted(){
+    this.$store.dispatch("doctors/getDoctors");
+  },
 };
 </script>
 <style scoped>
@@ -321,6 +323,8 @@ export default {
 }
 .mobile_header {
   background: #084092;
-  border-radius: 0 0 20px 20px;
+  /* border-radius: 0 0 20px 20px; */
+  border-radius: 100% 0% 100% 0% / 0% 65% 35% 100%  ;
+ 
 }
 </style>

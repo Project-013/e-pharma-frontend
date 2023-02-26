@@ -1,5 +1,5 @@
 <template>
-  <div class="center_box">
+  <div class="mb-5 pb-5">
     <div class="container">
       <div class="row g-4 justify-content-center bg-white py-5">
         <div class="col-md-6" v-if="$route.query.type == 'payment'">
