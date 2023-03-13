@@ -72,6 +72,9 @@
         <NLink class="nav-link" to="/blog"> Blog </NLink>
       </li>
       <li class="nav-item">
+        <NLink class="nav-link" to="/shop"> Shop </NLink>
+      </li>
+      <li class="nav-item">
         <NLink class="nav-link" to="/bmi"> BMI Calculator </NLink>
       </li>
       <li class="nav-item">

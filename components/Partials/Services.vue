@@ -113,13 +113,22 @@
           <h6 class="small text-center mt-2 fw-semibold">Emergency Oxygen home delivery</h6>
         </NuxtLink>
       </div>
-      <div class="col-lg-2 col-md-3 col-4">
+      <div class="col-lg-2 col-md-3 col-4 d-none">
         <NuxtLink to="/blood">
           <img
             src="/img/services/blood.png"
             class="mx-auto d-block pointer border p-2 rounded service_image"
           />
           <h6 class="small text-center mt-2 fw-semibold">E-Blood Bank</h6>
+        </NuxtLink>
+      </div>
+      <div class="col-lg-2 col-md-3 col-4">
+        <NuxtLink to="/children-care">
+          <img
+            src="/img/services/feeding.png"
+            class="mx-auto d-block pointer border p-2 rounded service_image"
+          />
+          <h6 class="small text-center mt-2 fw-semibold">Children's home care services</h6>
         </NuxtLink>
       </div>
     </div>

@@ -1,8 +1,12 @@
 <template>
   <div class="container">
+    <NuxtLink to="/shop" class="btn btn-primary  w-50 d-block mx-auto my-4  rounded-pill">
+      <i class="icofont-shopping-cart "></i>
+      <span class="small  fw-semibold">Shop Now</span>
+    </NuxtLink>
     <div class="row g-2 g-sm-5 my-2 text-center">
       <div v-for="data in data_list" class="col-3" :key="data.icon">
-        <div class="card bg-light shadow-sm border-0 py-3 p-1 ">
+        <div class="card bg-light shadow-sm border-0 py-3 p-1">
           <i class="fs-1 text-success mb-2" :class="data.icon"></i>
           <p class="py-0 my-0 fw-bold">{{ data.number }}+</p>
           <h6 class="py-0 my-1 fw-semibold">{{ data.key }}</h6>
@@ -33,7 +37,7 @@ export default {
           key: "Caregivers",
           number: 50,
         },
-                {
+        {
           icon: "icofont-users-alt-3",
           key: "Partners",
           number: 50,

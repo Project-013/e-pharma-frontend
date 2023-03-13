@@ -75,7 +75,7 @@
                     ></textarea>
                   </div>
                 </div>
-                <div class="">
+                <div class="d-none">
                   <select
                     class="form-select form-select-sm"
                     v-model="appointment.payment_method"
@@ -101,14 +101,15 @@
                     />
                   </div>
 
-                  <button
+                  
+                </div>
+                <button
                     type="submit"
                     class="btn btn-sm mt-3 btn-dark w-100"
                     :disabled="disable_btn"
                   >
                     Submit
                   </button>
-                </div>
               </form>
             </div>
           </div>

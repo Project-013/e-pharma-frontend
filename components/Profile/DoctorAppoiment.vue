@@ -1,11 +1,81 @@
 <template>
   <div class="my-2">
     <div v-if="appointments.length">
-      <h6 class="fw-bold">DOCTORS APPOINTMENTS</h6>
+      <h6 class="fw-bold small d-none">DOCTORS APPOINTMENTS</h6>
+      <div class="table-responsive">
+        <table class="table small table-sm table_service">
+          <thead>
+            <tr>
+              <th scope="col">Patient</th>
+              <th scope="col">Service</th>
+              <th scope="col">Date</th>
+              <th scope="col">Doctor</th>
+              <th scope="col">Status</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody v-for="appointment in appointments" :key="appointment.id">
+            <tr>
+              <th>{{ appointment.patient_name }}</th>
+              <td>{{ appointment.type }}</td>
+              <td>{{ new Date(appointment.date).toLocaleString() }}
+              </td>
+              <td>
+                <NuxtLink
+                  class="btn btn-sm btn-dark"
+                  :to="'/doctors/doctor/?type=v&id=' + appointment.doctor_id"
+                  >View</NuxtLink
+                >
+              </td>
+              <td><span
+                class="badge"
+                :class="
+                  appointment.service_status == `pending`
+                    ? 'text-bg-warning'
+                    : appointment.service_status == `cancelled`
+                    ? 'text-bg-danger'
+                    : appointment.service_status == `completed`
+                    ? 'text-bg-success'
+                    : 'text-bg-primary'
+                "
+                >{{ appointment.service_status }}
+              </span></td>
+              <td>
+                <div class=" d-flex ">
+                  <div>
+                    <NuxtLink
+                      class="dropdown-item text-dark small"
+                      :to="'/doctors/config?type=edit&id=' + appointment.id"
+                    >
+                      <i class="icofont-edit small"></i>
+                    </NuxtLink>
+                  </div>
+                  <div class="mx-2">
+                    <button
+                      class="dropdown-item text-dark small"
+                      @click="onDelete(`${appointment.id}`)"
+                    >
+                      <i class="icofont-trash small"></i>
+                    </button>
+                  </div>
+                    <div class="">
+                    <NuxtLink
+                      class=" small btn btn-dark btn-sm"
+                      :to="'/doctors/config?type=edit&id=' + appointment.id"
+                    >
+                      view
+                    </NuxtLink>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <!-- {{ appointments }} -->
       <div
-        class="card mb-3 p-0"
+        class="card mb-3 p-0 d-none"
         v-for="appointment in appointments"
         :key="appointment.id"
       >
@@ -29,11 +99,11 @@
             </div>
           </div>
           <div class="col-sm-6">
-            <h6 class="mb-0 fw-bold text-uppercase">
+            <h6 class="mb-0 fw-bold small text-uppercase">
               Name :
               {{ appointment.patient_name }}
             </h6>
-            <p class="text-dark small mb-0 pb-0">
+            <p class="text-dark small mb-0 pb-0 d-none">
               Patient age :
               {{ appointment.patient_age }} year
             </p>
@@ -49,12 +119,12 @@
               Date:
               {{ new Date(appointment.date).toLocaleString() }}
             </p>
-            <p class="text-dark mb-0 pb-0">
+            <p class="text-dark mb-0 pb-0 d-none">
               Details :
               {{ appointment.details }}
             </p>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-6 d-none">
             <p class="text-dark small mb-0 pb-0" v-if="appointment.fee != 0">
               Payment Status:
               <span

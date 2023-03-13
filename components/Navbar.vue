@@ -120,6 +120,10 @@
     </nav>
     <div class="mobile_nav d-block d-md-none">
       <nav class="nav shadow-lg">
+        <NuxtLink to="/" class="nav-link text-muted">
+          <i class="icofont-home text-muted"></i>
+          <span class="small fw-semibold text-muted">Home</span>
+        </NuxtLink>
         <NuxtLink
           :to="$auth.loggedIn ? '/profile' : '/login?redirect=/profile'"
           class="nav-link text-muted"
@@ -128,24 +132,32 @@
           <span class="small fw-semibold text-muted">My Account</span>
         </NuxtLink>
 
-        <NuxtLink to="/" class="nav-link text-muted " >
-          <i class="icofont-home text-muted "></i>
-          <span class="small fw-semibold text-muted">Home</span>
-        </NuxtLink>
-
+        <!-- 
         <NuxtLink to="/notifications" class="nav-link text-muted">
           <i class="icofont-notification text-muted"></i>
           <span class="small text-muted fw-semibold">Notification</span>
+        </NuxtLink> -->
+        <NuxtLink to="/shop" class="nav-link text-muted">
+          <i class="icofont-shopping-cart text-muted"></i>
+          <span class="small text-muted fw-semibold">Shop</span>
         </NuxtLink>
+        <a class="nav-link text-muted" @click="toggleNavbar">
+          <i class="icofont-navigation-menu text-muted"></i>
+          <span class="small text-muted fw-semibold">Menu</span>
+        </a>
 
         <!-- <NuxtLink to="/bmi" class="nav-link text-dark">
           <i class="icofont-calculations"></i>
           <span class="small">BMI</span>
         </NuxtLink> -->
       </nav>
-      <div style="z-index:1000"  @click="toggleNavbar" :class="show ? 'modal-backdrop fade show' : ''"></div>
       <div
-      style="z-index:9000"
+        style="z-index: 1000"
+        @click="toggleNavbar"
+        :class="show ? 'modal-backdrop fade show' : ''"
+      ></div>
+      <div
+        style="z-index: 9000"
         class="offcanvas offcanvas-end w-75 my-3 py-0 rounded-start"
         :class="show ? 'show' : 'hide'"
         tabindex="-1"
@@ -195,6 +207,13 @@
                 to="/blog"
               >
                 <i class="icofont-blogger me-2"></i>Blog
+              </NuxtLink>
+              <NuxtLink
+                class="text-muted fw-semibold pb-3 app-nav-item"
+                to="/shop"
+              >
+                <i class="icofont-shopping-cart me-2"></i>
+                Shop
               </NuxtLink>
               <NuxtLink
                 class="text-muted fw-semibold pb-3 app-nav-item"
@@ -280,8 +299,9 @@ export default {
       this.show = false;
     },
   },
-  mounted(){
+  mounted() {
     this.$store.dispatch("doctors/getDoctors");
+    this.$store.dispatch("product/getProduct");
   },
 };
 </script>
@@ -324,7 +344,6 @@ export default {
 .mobile_header {
   background: #084092;
   /* border-radius: 0 0 20px 20px; */
-  border-radius: 100% 0% 100% 0% / 0% 65% 35% 100%  ;
- 
+  border-radius: 100% 0% 100% 0% / 0% 65% 35% 100%;
 }
 </style>

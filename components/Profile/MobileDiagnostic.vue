@@ -1,10 +1,75 @@
 <template>
   <div class="my-2">
     <div v-if="Homediagnostics.length">
-      <h6 class="fw-bold">Home diagnostic</h6>
+      <h6 class="fw-bold small d-none">Home diagnostic</h6>
+
+      <div class="table-responsive">
+        <table class="table small table-sm table_service">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Date</th>
+              <th scope="col">Status</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody v-for="services in Homediagnostics" :key="services.id">
+            <!-- {{services}} -->
+            <tr>
+              <td>{{ services.name }}</td>
+              <td>
+                {{ new Date(services.created_date).toLocaleString() }}
+              </td>
+              <td>
+                <span
+                  class="badge"
+                  :class="
+                    services.service_status == `pending`
+                      ? 'text-bg-warning'
+                      : services.service_status == `cancelled`
+                      ? 'text-bg-danger'
+                      : services.service_status == `completed`
+                      ? 'text-bg-success'
+                      : 'text-bg-primary'
+                  "
+                  >{{ services.service_status }}
+                </span>
+              </td>
+              <td>
+                <div class="d-flex">
+                  <div>
+                    <NuxtLink
+                      class="dropdown-item text-dark small"
+                      :to="'/diagnostic/config?type=edit&id=' + services.id"
+                    >
+                      <i class="icofont-edit small"></i>
+                    </NuxtLink>
+                  </div>
+                  <div class="mx-2">
+                    <button
+                      class="dropdown-item text-dark small"
+                      @click="onDelete(`${services.id}`)"
+                    >
+                      <i class="icofont-trash small"></i>
+                    </button>
+                  </div>
+                  <div class="">
+                    <NuxtLink
+                      class="small btn btn-dark btn-sm"
+                      :to="'/diagnostic/config?type=edit&id=' + services.id"
+                    >
+                      view
+                    </NuxtLink>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
       <div
-        class="card mb-3 p-0"
+        class="card mb-3 p-0 d-none"
         v-for="services in Homediagnostics"
         :key="services.id"
       >
@@ -50,7 +115,7 @@
               />
             </div>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-6 d-none">
             <p class="text-dark small mb-0 pb-0" v-if="services.fee">
               Payment Status:
               <span
