@@ -32,16 +32,18 @@
               <p class="fw-bold text-success my-0">
                 {{ product.category }}
               </p>
-              <h6 class="my-2">
-                <span class="fw-bold" style="font-size: 24px">৳</span
-                >{{ product.offer }}
-                <del class="ms-3 fw-normal">৳{{ product.price }}</del>
-                <br />
-                <mark class=""
-                  >{{
-                    (100 - (product.offer / product.price) * 100).toFixed(2)
-                  }}% off</mark
+              <h6>
+                <span class="fw-bold">৳ </span>{{ product.offer }}
+              </h6>
+              <h6 class="my-2" v-if="product.offer != product.price">
+                <del class="fw-normal text-danger"
+                  >৳ {{ product.price }}</del
                 >
+                <mark>{{
+                    (100 - (product.offer / product.price) * 100).toFixed(2)
+                  }}% off</mark>
+                
+                  
               </h6>
               <!-- Button trigger modal -->
               <button
@@ -55,7 +57,9 @@
                 target="_blank"
                 class="btn btn-sm btn-dark"
               >
-              Buy Now
+                <i class="icofont-shopping-cart"></i>
+
+                Buy Now
               </a>
 
               <button
@@ -80,7 +84,7 @@
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">
+                  <h5 class="modal-title text-dark" id="exampleModalLabel">
                     {{ product.name }}
                   </h5>
                   <button
@@ -91,7 +95,7 @@
                   ></button>
                 </div>
                 <div class="modal-body">
-                  <div class="card">
+                  <div class="card p-1">
                     <img
                       :src="$config.apibaseURL + product.image"
                       :alt="product.name"
@@ -100,6 +104,7 @@
                     />
                     <div class="card-body">
                       <h6 class="mb-0 fw-bold text-uppercase pointer">
+                        product.price
                         {{ product.name }}
                       </h6>
                       <p class="fw-bold text-success my-0">
@@ -107,11 +112,17 @@
                       </p>
 
                       <h6 class="fw-semibold my-2">
-                        <span class="fw-bold" style="font-size: 24px">৳</span
-                        >{{ product.price }}
-                        <mark class="ms-3">{{ product.offer }}% off</mark>
+                        <span class="fw-bold">৳ </span>{{ product.price }}
+                        <mark class="" v-if="product.offer != product.price"
+                          >{{
+                            (
+                              100 -
+                              (product.offer / product.price) * 100
+                            ).toFixed(2)
+                          }}% off</mark
+                        >
                       </h6>
-                      <pre class="fw-semibold my-2"
+                      <pre class="fw-normal fst-italic my-2"
                         >{{ product.description }}
                       </pre>
                     </div>
@@ -199,10 +210,7 @@ export default {
 .qualifications {
   font-size: 13px !important;
 }
-._card h6 {
-  font-size: 90% !important;
-}
-._card h5 {
+._card h6, ._card h5{
   font-size: 90% !important;
 }
 ._card p {
@@ -211,14 +219,14 @@ export default {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-  ._card h6 {
-    font-size: 90% !important;
-  }
-  ._card h5 {
-    font-size: 90% !important;
+._card h6, ._card h5{
+    font-size: 75% !important;
   }
   ._card p {
-    font-size: 80% !important;
+    font-size: 65% !important;
+  }
+  ._card pre {
+    font-size: 75% !important;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <section class="">
+  <section class="mb-5 pb-5">
     <div class="bg-light p-3">
       <div class="container">
         <div class="my-3">
@@ -32,6 +32,7 @@
         <div class="col-md-2">
           <h6 class="mt-3">Categories</h6>
           <ul class="list-group ">
+            <NuxtLink class="list-group-item small" to="/shop" :class="!$route.query.category ? 'active': ''" >All</NuxtLink>
             <template v-for="(cat, index) in getCategorylist">
               <!-- <li class="list-group-item" ></li> -->
               <NuxtLink class="list-group-item small" :class="$route.query.category==cat ? 'active': ''" :to="`/shop?category=${cat}`" :key="index">{{ cat }}</NuxtLink>
