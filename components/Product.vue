@@ -104,7 +104,7 @@
                     />
                     <div class="card-body">
                       <h6 class="mb-0 fw-bold text-uppercase pointer">
-                        product.price
+                        
                         {{ product.name }}
                       </h6>
                       <p class="fw-bold text-success my-0">

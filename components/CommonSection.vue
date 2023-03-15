@@ -1,8 +1,8 @@
 <template>
   <div>
     <PartialsServices />
+    <PartialsSlider />
     <PartialsCount />
-    <PartialsDoctorSlider />
     <!-- <PartialsPartners /> -->
   </div>
 </template>

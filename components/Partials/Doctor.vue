@@ -2,7 +2,7 @@
   <div class="card h-100 p-0 m-1">
     <NuxtLink
       class="col-12 d-flex justify-content-center align-items-center card-img-top"
-      :to="`/doctors/doctor/?id=${doctor.id}&stype=${stype}`"
+      :to="`/doctors/doctor/?id=${doctor.id}`"
     >
       <img
         :src="$config.apibaseURL + doctor.image_url"
@@ -13,7 +13,7 @@
       />
     </NuxtLink>
     <div class="card-body p-0 px-1 mt-2">
-      <NuxtLink :to="`/doctors/doctor/?id=${doctor.id}&stype=${stype}`" >
+      <NuxtLink :to="`/doctors/doctor/?id=${doctor.id}`" >
         <h5 class="mb-2 fw-bold text-uppercase" style="color: #2b325c">
           {{ doctor.name }}
         </h5>
@@ -24,7 +24,7 @@
     </div>
     <div class="card-footer ">
       <NuxtLink
-        :to="`/doctors/doctor/?id=${doctor.id}&stype=${stype}`"
+        :to="`/doctors/doctor/?id=${doctor.id}`"
         class="btn btn-sm btn-dark w-100"
       >
         Book
@@ -37,7 +37,6 @@
 export default {
   props: {
     doctor: Object,
-    stype: String
   },
 
   data() {
