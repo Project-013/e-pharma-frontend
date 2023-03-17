@@ -55,6 +55,7 @@
       <jw-pagination
         :items="doctors"
         :pageSize="9"
+        :maxPages="3"
         @changePage="onChangePage"
         :labels="customLabels"
         class="mx-auto "

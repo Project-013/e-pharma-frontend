@@ -79,7 +79,13 @@
           </div>
           <div v-else>
             <div class="text-center py-5">
-              <h4>Nothing Found!</h4>
+              <!-- <h4>Nothing Found!</h4>
+               -->
+              <div class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -109,7 +115,11 @@
                       <option
                         :value="type"
                         :key="index"
-                        v-if="get_doctor.type && get_doctor.type.includes(type)"
+                        v-if="
+                          get_doctor &&
+                          get_doctor.type &&
+                          get_doctor.type.includes(type)
+                        "
                       >
                         {{ type }}
                       </option>
@@ -141,7 +151,7 @@
                   />
                 </div>
                 <div class="form-group my-2" v-if="form_data.type">
-                  <label class="form-label" for="patient_name"
+                  <label class="form-label" for="Phone"
                     >Select appointment Date</label
                   >
 
@@ -156,7 +166,7 @@
                   /></client-only>
                 </div>
                 <div class="form-group my-2">
-                  <label class="form-label" for="patient_name">Phone</label>
+                  <label class="form-label" for="Phone">Phone</label>
 
                   <input
                     v-model="getPhone"
@@ -178,7 +188,10 @@
                   ></textarea>
                   <!-- v-if="getfee" -->
 
-                  <p class="p-1 mb-1 text-center lead fw-semibold fst-italic">
+                  <p
+                    class="p-1 mb-1 text-center lead fw-semibold fst-italic"
+                    v-if="getfee"
+                  >
                     Total Fee -
                     <span class="text-success"
                       ><i class="icofont-taka"></i>{{ getfee }}
@@ -244,7 +257,7 @@ export default {
 
         case "Home Call":
           // code block
-          return 1500;
+          return Number(this.get_doctor.fee_home_call);
         default:
         // code block
       }
@@ -357,13 +370,13 @@ export default {
   },
   mounted() {
     // this.getDoctors();
-    if (
-      !this.form_data.type &&
-      this.$route.query.stype &&
-      this.$route.query.stype != "undefined"
-    ) {
-      this.form_data.type = this.$route.query.stype.replace("-", " ");
-    }
+    // if (
+    //   !this.form_data.type &&
+    //   this.$route.query.stype &&
+    //   this.$route.query.stype != "undefined"
+    // ) {
+    //   this.form_data.type = this.$route.query.stype.replace("-", " ");
+    // }
   },
 };
 </script>

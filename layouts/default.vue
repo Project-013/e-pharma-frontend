@@ -2,6 +2,7 @@
   <div class="root">
     <Header />
     <Navbar />
+    <Sidebar />
     <Nuxt class="" />
     <Footer />
   </div>

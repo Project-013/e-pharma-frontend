@@ -263,7 +263,7 @@
           </template>
         </div>
         <div class="d-flex">
-          <NuxtLink to="/notifications" class="mx-3 position-relative">
+          <NuxtLink to="/notifications" class="mx-3 position-relative d-none">
             <i class="icofont-notification text-light h5"></i>
             <span
               class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
@@ -272,13 +272,24 @@
               <span class="visually-hidden">unread messages</span>
             </span>
           </NuxtLink>
+          <NuxtLink to="/cart" class="mx-3 position-relative">
+            <i class="icofont-shopping-cart text-light h1"></i>
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            >
+              {{getTotalItem}}
+              <span class="visually-hidden">unread messages</span>
+            </span>
+          </NuxtLink>
 
-          <a class="nav-link mx-2" @click="toggleNavbar">
+          <a class="nav-link mx-2 d-none" @click="toggleNavbar">
             <i class="icofont-navigation-menu text-light h5"></i>
           </a>
         </div>
       </div>
     </div>
+    <!-- <Sidebar /> -->
+
   </header>
 </template>
 
@@ -288,6 +299,11 @@ export default {
     return {
       show: false,
     };
+  },
+  computed:{
+    getTotalItem() {
+      return this.$store.getters["product/items"].length;
+    },
   },
   methods: {
     toggleNavbar() {
@@ -306,6 +322,11 @@ export default {
 };
 </script>
 <style scoped>
+.dropdown-item:hover,
+.nav-item .nav-link:hover,
+.nuxt-link-exact-active {
+  color: var(--secondary-text) !important;
+}
 .app-nav-item {
   font-size: 12px !important;
   transition: padding ease-in 0.4s;
@@ -316,13 +337,9 @@ export default {
 }
 
 .mobile_nav .nav-link {
-  color: black !important;
+  color: black ;
 }
-.dropdown-item:hover,
-.nav-item .nav-link:hover,
-.nuxt-link-exact-active {
-  color: var(--secondary-text) !important;
-}
+
 .__call {
   bottom: 70px;
   left: 15px;

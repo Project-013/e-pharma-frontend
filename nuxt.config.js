@@ -46,7 +46,7 @@ export default {
     //   src: "~/plugins/tawk-messenger.client.js",
     //   mode: "client",
     // },
-    // { src: '~/plugins/vuex-persist.js', mode: 'client' },
+    { src: '~/plugins/vuex-persist.js', mode: 'client' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -66,10 +66,10 @@ export default {
 
   toast: {
     position: "top-center",
-    duration: 2500,
+    duration: 1500,
     action: [
       {
-        text: "close",
+        text: "X",
         onClick: (e, toastObject) => {
           toastObject.goAway(0);
         },

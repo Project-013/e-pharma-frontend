@@ -4,13 +4,12 @@
       <div
         v-for="product in pageOfItems"
         :key="product.id"
-        class="col-lg-4 col-md-4 p-sm-3 p-1"
+        class="col-lg-2 col-md-3 col-6 p-sm-3 p-1"
       >
-        <!-- {{product}} -->
         <div class="card h-100 p-2 _card">
-          <div class="row">
+          <div class="row g-3 card-body p-0">
             <div
-              class="col-5 pointer"
+              class="col-12 pointer"
               data-bs-toggle="modal"
               :data-bs-target="`#exampleModal${product.id}`"
             >
@@ -20,7 +19,7 @@
                 class="w-100"
               />
             </div>
-            <div class="col-7">
+            <div class="col-12">
               <h6
                 class="mb-0 fw-bold text-uppercase pointer"
                 data-bs-toggle="modal"
@@ -34,48 +33,33 @@
               </p>
               <h6>
                 <span class="fw-bold">৳ </span>{{ product.offer }}
-              </h6>
-              <h6 class="my-2" v-if="product.offer != product.price">
-                <del class="fw-normal text-danger"
+
+                <del class="fw-normal text-danger ms-2"
                   >৳ {{ product.price }}</del
                 >
-                <mark>{{
+              </h6>
+              <h6 class="my-2 d-none" v-if="product.offer != product.price">
+                <mark class="d-none"
+                  >{{
                     (100 - (product.offer / product.price) * 100).toFixed(2)
-                  }}% off</mark>
-                
-                  
+                  }}% off</mark
+                >
               </h6>
               <!-- Button trigger modal -->
-              <button
-                @click="addToCart(product)"
-                class="btn btn-sm btn-dark d-none"
-              >
-                Add to Cart
-              </button>
-              <a
-                href="tel:+8801959970664"
-                target="_blank"
-                class="btn btn-sm btn-dark"
-              >
-                <i class="icofont-shopping-cart"></i>
-
-                Buy Now
-              </a>
-
-              <button
-                type="button"
-                class="btn btn-sm btn-dark w-100 mt-2 d-none"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
-              >
-                Add to Bag
-              </button>
             </div>
+          </div>
+          <div class="card-footer">
+            <button
+              @click="addToCart(product)"
+              class="btn btn-sm btn-dark w-100"
+            >
+              Add to Cart
+            </button>
           </div>
 
           <!-- Modal -->
           <div
-            class="modal fade"
+            class="modal"
             :id="`exampleModal${product.id}`"
             tabindex="-1"
             aria-labelledby="exampleModalLabel"
@@ -104,7 +88,6 @@
                     />
                     <div class="card-body">
                       <h6 class="mb-0 fw-bold text-uppercase pointer">
-                        
                         {{ product.name }}
                       </h6>
                       <p class="fw-bold text-success my-0">
@@ -112,8 +95,14 @@
                       </p>
 
                       <h6 class="fw-semibold my-2">
-                        <span class="fw-bold">৳ </span>{{ product.price }}
-                        <mark class="" v-if="product.offer != product.price"
+                        <span class="fw-bold">৳ </span>{{ product.offer }}
+
+                        <del class="fw-normal text-danger ms-2"
+                          >৳ {{ product.price }}</del
+                        >
+                        <mark
+                          class="d-none"
+                          v-if="product.offer != product.price"
                           >{{
                             (
                               100 -
@@ -135,13 +124,15 @@
       </div>
     </div>
     <div class="d-flex align-items-center mt-3">
-      <jw-pagination
+      <JwPagination
         :items="product"
-        :pageSize="6"
+        :initialPage="initialPage"
+        :maxPages="3"
+        :pageSize="12"
         @changePage="onChangePage"
         :labels="customLabels"
         class="mx-auto"
-      ></jw-pagination>
+      ></JwPagination>
     </div>
   </div>
 </template>
@@ -159,6 +150,10 @@ export default {
   computed: {
     getitems() {
       return this.$store.getters["product/items"];
+    },
+    initialPage() {
+      let page = 1;
+      return page;
     },
   },
 
@@ -183,20 +178,15 @@ export default {
   methods: {
     onChangePage(pageOfItems) {
       // update page of items
+      console.log(pageOfItems);
+
       this.pageOfItems = pageOfItems;
     },
     addToCart(product) {
-      const { id, name, image_url } = product;
-      const price = Math.ceil((product.price / 100) * (100 - product.offer));
+      const { id, name, image,offer } = product;
       this.items = [...this.$store.getters["product/items"]];
-      this.items.push({ id, name, image_url, price });
+      this.items.push({ id, name, image, offer });
       this.$store.commit("product/setitems", [...this.items]);
-      var cost = 0;
-      this.items.map(({ price }) => {
-        cost = Number(cost) + Number(price);
-      });
-      this.$store.commit("product/setcost", cost);
-
       this.$toast.info("Added to cart");
     },
   },
@@ -210,7 +200,8 @@ export default {
 .qualifications {
   font-size: 13px !important;
 }
-._card h6, ._card h5{
+._card h6,
+._card h5 {
   font-size: 90% !important;
 }
 ._card p {
@@ -219,7 +210,8 @@ export default {
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
-._card h6, ._card h5{
+  ._card h6,
+  ._card h5 {
     font-size: 75% !important;
   }
   ._card p {

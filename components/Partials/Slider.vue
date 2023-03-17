@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <!-- {{getTopDoctorList}} -->
     <div class="my-5">
       <h5 class="text-dark mb-1 text-uppercase">
         Get Specialist Doctor's Appoinment
@@ -62,10 +63,13 @@ export default {
       return filterd_data;
     },
     getTopDoctorList() {
-      const filterd_data = this.get_doctors.filter(({ status, cat }) => {
+      const data1 = this.get_doctors.filter(({ status, cat }) => {
+        return status == "approved" && !cat.includes("top");
+      });
+      const data2 = this.get_doctors.filter(({ status, cat }) => {
         return status == "approved" && cat.includes("top");
       });
-      return filterd_data;
+      return [...data2,...data1];
     },
   },
 };

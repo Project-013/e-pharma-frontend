@@ -1,8 +1,10 @@
 <template>
-  <div class="card h-100 p-2 _card">
-    <div class="row card-body p-0">
+  <div class="card h-100 p-2 _card m-1">
+    <div class="row g-3 card-body p-0">
       <div
         class="col-12 pointer"
+        data-bs-toggle="modal"
+        :data-bs-target="`#exampleModal${product.id}`"
       >
         <img
           :src="$config.apibaseURL + product.image"
@@ -13,6 +15,8 @@
       <div class="col-12">
         <h6
           class="mb-0 fw-bold text-uppercase pointer"
+          data-bs-toggle="modal"
+          :data-bs-target="`#exampleModal${product.id}`"
           style="color: #2b325c"
         >
           {{ product.name }}
@@ -20,34 +24,25 @@
         <p class="fw-bold text-success my-0">
           {{ product.category }}
         </p>
-        <h6><span class="fw-bold">৳ </span>{{ product.offer }}</h6>
-        <h6 class="" v-if="product.offer != product.price">
-          <del class="fw-normal text-danger">৳ {{ product.price }}</del>
-          <mark
+        <h6>
+          <span class="fw-bold">৳ </span>{{ product.offer }}
+
+          <del class="fw-normal text-danger ms-2">৳ {{ product.price }}</del>
+        </h6>
+        <h6 class="my-2 d-none" v-if="product.offer != product.price">
+          <mark class="d-none"
             >{{ (100 - (product.offer / product.price) * 100).toFixed(2) }}%
             off</mark
           >
         </h6>
-
-
+        <!-- Button trigger modal -->
       </div>
     </div>
     <div class="card-footer">
-               <!-- Button trigger modal -->
-        <button @click="addToCart(product)" class="btn btn-sm btn-dark d-none">
-          Add to Cart
-        </button>
-        <a
-          href="tel:+8801959970664"
-          target="_blank"
-          class="btn btn-sm btn-dark"
-        >
-          <i class="icofont-shopping-cart"></i>
-
-          Buy Now
-        </a>
+      <button @click="addToCart(product)" class="btn btn-sm btn-dark w-100 ">
+        <small>Add to Cart</small>
+      </button>
     </div>
-
   </div>
 </template>
 
@@ -57,13 +52,35 @@ export default {
     product: Object,
   },
 
-  computed: {},
+  computed: {
+    getitems() {
+      return this.$store.getters["product/items"];
+    },
+  },
 
   data() {
-    return {};
+    return {
+      items: [],
+
+      cart: {
+        items: [],
+        cost: "",
+        total_cost: "",
+      },
+    };
   },
-  methods: {},
-  mounted() {},
+  methods: {
+    addToCart(product) {
+      const { id, name, image, offer } = product;
+      this.items = [...this.$store.getters["product/items"]];
+      this.items.push({ id, name, image, offer });
+      this.$store.commit("product/setitems", [...this.items]);
+      this.$toast.info("Added to cart");
+    },
+  },
+  mounted() {
+    this.items = [...this.getitems];
+  },
 };
 </script>
 

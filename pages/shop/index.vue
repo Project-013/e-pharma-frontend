@@ -2,44 +2,71 @@
   <section class="mb-5 pb-5">
     <div class="bg-light p-3">
       <div class="container">
-        <div class="my-3">
+        <div class="my-3 d-none">
           <h1 class="heading_2 text-dark">Our products</h1>
         </div>
         <div class="row g-3 mb-0">
           <div class="col-md-6">
             <div class="rounded border bg-white">
-              <div class="d-flex align-items-center p-2 rounded">
+              <div class="d-flex align-items-center  rounded">
                 <img
                   src="/img/icons/search.svg"
                   style="width: 18px"
                   alt=""
-                  class="me-2"
+                  class="ms-3"
                 />
                 <input
                   type="search"
-                  class="form-control form-select-sm border-0 my-0"
+                  class="form-control  border-0 my-0"
                   placeholder="Search Product"
                   v-model="name"
                 />
               </div>
             </div>
           </div>
+          <div class="col-md-6">
+            <select
+              class="form-select form-select"
+              aria-label="Default select example"
+              v-model="category"
+              required
+            >
+              <option value="">All</option>
+              <template v-for="(cat, index) in getCategorylist">
+                <!-- <li class="list-group-item" ></li> -->
+                <option :value="cat" :key="index"
+                  >{{ cat }}</option
+                >
+              </template>
+            </select>
+          </div>
         </div>
       </div>
     </div>
     <div class="container">
       <div class="row g-3">
-        <div class="col-md-2">
+        <div class="col-md-2 d-none">
           <h6 class="mt-3">Categories</h6>
-          <ul class="list-group ">
-            <NuxtLink class="list-group-item small" to="/shop" :class="!$route.query.category ? 'active': ''" >All</NuxtLink>
+          <ul class="list-group d-flex">
+            <NuxtLink
+              class="list-group-item small"
+              to="/shop"
+              :class="!$route.query.category ? 'active' : ''"
+              >All</NuxtLink
+            >
             <template v-for="(cat, index) in getCategorylist">
               <!-- <li class="list-group-item" ></li> -->
-              <NuxtLink class="list-group-item small" :class="$route.query.category==cat ? 'active': ''" :to="`/shop?category=${cat}`" :key="index">{{ cat }}</NuxtLink>
+              <NuxtLink
+                class="list-group-item small"
+                :class="$route.query.category == cat ? 'active' : ''"
+                :to="`/shop?category=${cat}`"
+                :key="index"
+                >{{ cat }}</NuxtLink
+              >
             </template>
           </ul>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-12">
           <div class="row" v-if="sortedProductList.length">
             <Product class="" :product="sortedProductList" />
           </div>
@@ -56,7 +83,7 @@
 
 <script>
 export default {
-    head() {
+  head() {
     return {
       title: "স্বাস্থ্যসেবক || Shop  ",
     };
@@ -74,15 +101,14 @@ export default {
     },
 
     sortedProductList() {
-
       const filterd_data = this.get_product.filter(({ category, name }) => {
         return (
           (this.name
             ? name.toUpperCase().includes(this.name.toUpperCase())
             : true) &&
           (this.type ? type.includes(this.type) : true) &&
-          (this.$route.query.category
-            ? category == this.$route.query.category
+          (this.category
+            ? category == this.category
             : true)
         );
       });
@@ -110,9 +136,9 @@ export default {
   },
   mounted() {
     // this.getproduct();
-      // if (this.$route.query.category) {
-      //   this.category = this.$route.query.category.replace("-", " ");
-      // }
+    if (this.$route.query.category) {
+      this.category = this.$route.query.category.replace("-", " ");
+    }
   },
 };
 </script>
