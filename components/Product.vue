@@ -48,10 +48,14 @@
               <!-- Button trigger modal -->
             </div>
           </div>
-          <div class="card-footer">
+          <div class="card-footer px-0 d-flex justify-content-between">
+            <NuxtLink class="btn btn-sm btn-dark " style="font-size:12px" :to="`/shop/product?productid=${product.id}`">
+              Buy Now
+            </NuxtLink>
             <button
               @click="addToCart(product)"
-              class="btn btn-sm btn-dark w-100"
+              class="btn btn-sm btn-dark "
+              style="font-size:12px"
             >
               Add to Cart
             </button>
@@ -83,7 +87,7 @@
                     <img
                       :src="$config.apibaseURL + product.image"
                       :alt="product.name"
-                      width="130"
+                      width="250"
                       class="mx-auto"
                     />
                     <div class="card-body">
@@ -183,7 +187,7 @@ export default {
       this.pageOfItems = pageOfItems;
     },
     addToCart(product) {
-      const { id, name, image,offer } = product;
+      const { id, name, image, offer } = product;
       this.items = [...this.$store.getters["product/items"]];
       this.items.push({ id, name, image, offer });
       this.$store.commit("product/setitems", [...this.items]);

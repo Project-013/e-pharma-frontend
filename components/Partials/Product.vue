@@ -1,17 +1,16 @@
 <template>
   <div class="card h-100 p-2 _card m-1">
     <div class="row g-3 card-body p-0">
-      <div
-        class="col-12 pointer"
-        data-bs-toggle="modal"
-        :data-bs-target="`#exampleModal${product.id}`"
+      <NuxtLink
+        :to="`/shop/product?productid=${product.id}`"
       >
         <img
           :src="$config.apibaseURL + product.image"
           :alt="product.name"
           class="w-100"
         />
-      </div>
+      </NuxtLink>
+
       <div class="col-12">
         <h6
           class="mb-0 fw-bold text-uppercase pointer"
@@ -38,9 +37,20 @@
         <!-- Button trigger modal -->
       </div>
     </div>
-    <div class="card-footer">
-      <button @click="addToCart(product)" class="btn btn-sm btn-dark w-100 ">
-        <small>Add to Cart</small>
+    <div class="card-footer px-0 d-flex justify-content-between">
+      <NuxtLink
+        class="btn btn-sm btn-dark"
+        style="font-size: 12px"
+        :to="`/shop/product?productid=${product.id}`"
+      >
+        Buy Now
+      </NuxtLink>
+      <button
+        @click="addToCart(product)"
+        class="btn btn-sm btn-dark"
+        style="font-size: 12px"
+      >
+        Add to Cart
       </button>
     </div>
   </div>

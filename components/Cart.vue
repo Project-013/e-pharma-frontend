@@ -45,19 +45,11 @@
           <span>Shipping costs :</span> <span>৳100</span>
         </p>
         <hr />
-        <p class="d-flex fw-bold justify-content-between">
+        <p class="d-flex fw-bold justify-content-between mb-0 pb-0">
           <span>Total cost :</span> <span>৳{{ getCost + 100 }}</span>
         </p>
       </div>
-      <div class="card-footer">
-        <div>
-          <NuxtLink
-            :to="$auth.loggedIn ? '/order' : '/login?redirect=/order'"
-            class="btn btn-sm btn-dark w-100"
-            >Place order</NuxtLink
-          >
-        </div>
-      </div>
+ 
     </div>
     <div class="alert alert-dark text-center" role="alert" v-else>
       Empty cart!

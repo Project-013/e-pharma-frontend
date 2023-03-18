@@ -272,7 +272,7 @@
               <span class="visually-hidden">unread messages</span>
             </span>
           </NuxtLink>
-          <NuxtLink to="/cart" class="mx-3 position-relative">
+          <NuxtLink to="/shop/cart" class="mx-3 position-relative">
             <i class="icofont-shopping-cart text-light h1"></i>
             <span
               class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"

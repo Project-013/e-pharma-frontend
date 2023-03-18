@@ -2,10 +2,42 @@
   <section class="center_box">
     <div class="container">
       <div class="row g-4 my-3 justify-content-center">
-        <div class="col-md-5 d-none">
-          <!-- <Cart/> -->
+        <div class="col-md-7">
+          <div class="card p-1">
+            <img
+              :src="$config.apibaseURL + product.image"
+              :alt="product.name"
+              width="250"
+              class="mx-auto"
+            />
+            <div class="card-body">
+              <h6 class="mb-0 fw-bold text-uppercase pointer">
+                {{ product.name }}
+              </h6>
+              <p class="fw-bold text-success my-0">
+                {{ product.category }}
+              </p>
+
+              <h6 class="fw-semibold my-2">
+                <span class="fw-bold">৳ </span>{{ product.offer }}
+
+                <del class="fw-normal text-danger ms-2"
+                  >৳ {{ product.price }}</del
+                >
+                <mark class="d-none" v-if="product.offer != product.price"
+                  >{{
+                    (100 - (product.offer / product.price) * 100).toFixed(2)
+                  }}% off</mark
+                >
+              </h6>
+              <pre class="fw-normal fst-italic my-2"
+                >{{ product.description }}
+                      </pre
+              >
+            </div>
+          </div>
         </div>
-        <div class="col-md-7 mx-auto">
+        <div class="col-md-5" v-if="getCart.length">
           <div v-if="$auth.loggedIn" class="bg-white">
             <ValidationObserver
               class="card h-100 p-0"
@@ -37,21 +69,28 @@
                       disabled
                     />
                   </div>
-                  
-                  <select
-                    class="form-select form-select-sm"
-                    v-model="form_data.payment_method"
-                  >
-                    <option value="" disabled selected>
-                      Select Payment Method
-                    </option>
-                    <template v-for="(type, index) in p_method">
-                      <option :value="type" :key="index">
-                        {{ type }}
+                  <div class="my-3">
+                    <label class="form-label" for="name">Payment Method</label>
+
+                    <select
+                      class="form-select form-select-sm"
+                      v-model="form_data.payment_method"
+                    >
+                      <option value="" disabled selected>
+                        Select Payment Method
                       </option>
-                    </template>
-                  </select>
-                  <div class="form-group my-2" v-if="form_data.payment_method!='Cash on Delivery'">
+                      <template v-for="(type, index) in p_method">
+                        <option :value="type" :key="index">
+                          {{ type }}
+                        </option>
+                      </template>
+                    </select>
+                  </div>
+
+                  <div
+                    class="form-group my-3"
+                    v-if="form_data.payment_method != 'Cash on Delivery'"
+                  >
                     <label class="form-label" for="transaction_id"
                       >Transaction ID</label
                     >
@@ -63,7 +102,7 @@
                     />
                   </div>
                   <div class="form-group my-3">
-                    <label class="form-label" for="name">Shipping Address</label>
+                    <label class="form-label" for="name">Address</label>
                     <textarea
                       v-model="form_data.address"
                       id="details"
@@ -72,14 +111,13 @@
                       required
                     ></textarea>
                   </div>
-             
+
                   <button
                     style="background-color: #2b325c"
                     class="btn btn-dark btn-sm mt-3 w-100 text-uppercase"
                   >
                     Submit
                   </button>
-                  {{getProduct}}
                 </form>
               </div>
             </ValidationObserver>
@@ -101,11 +139,15 @@ export default {
     getCart() {
       return [...this.$store.getters["product/items"]];
     },
-    getProduct() {
-      const arr = [];
-      this.getCart.map(({id})=> arr.push(id))
-      return arr;
+    product() {
+      const products = this.$store.getters["product/product"];
+      const product = products.find(
+        ({ id }) => id == this.$route.query.productid
+      );
+      console.log(products);
+      return product;
     },
+
     getCost() {
       // return this.$store.getters["product/cost"];
       const cost = this.getCart.reduce(
@@ -135,7 +177,7 @@ export default {
   },
   data() {
     return {
-      p_method: ["Cash on Delivery","Bkash", "Nogod", "Rocket", "Upay",],
+      p_method: ["Cash on Delivery", "Bkash", "Nogod", "Rocket", "Upay"],
 
       form_data: {
         name: "",
@@ -154,7 +196,7 @@ export default {
       this.form_data.phone = this.getPhone;
       this.form_data.name = this.getName;
       this.form_data.user_id = this.getUserID;
-      this.form_data.products = this.getProduct;
+      this.form_data.products = [this.$route.query.productid]
       this.form_data.total_cost = this.getCost;
 
       this.$nextTick(() => {
@@ -187,11 +229,6 @@ export default {
 
       return;
     },
-  },
-  beforeCreate() {
-    if (this.$auth.$state.loggedIn == false) {
-      this.$router.push("/");
-    }
   },
 };
 </script>

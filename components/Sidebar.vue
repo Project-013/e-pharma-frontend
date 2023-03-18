@@ -1,5 +1,5 @@
 <template>
-  <div id="sidebar" class="d-none d-md-block ">
+  <div id="sidebar" class="d-none d-md-block" v-if="getCart.length">
     <button
       class="sidebar_btn d-flex align-items-center"
       type="button"
@@ -30,6 +30,13 @@
         </button>
 
         <Cart />
+          <div>
+            <NuxtLink
+              :to="$auth.loggedIn ? '/shop/cart' : '/login?redirect=/shop/cart'"
+              class="btn btn-sm btn-dark w-100"
+              >Place order</NuxtLink
+            >
+          </div>
       </div>
     </div>
   </div>
@@ -37,13 +44,17 @@
 
 <script>
 export default {
+   computed: {
+    getCart() {
+      return [...this.$store.getters["product/items"]];
+    },
+  },
   mounted() {
     this.$store.dispatch("product/getProduct");
     // this.getTotal()
   },
 };
 </script>
-
 
 <style scoped>
 #sidebar {
@@ -76,5 +87,4 @@ export default {
   left: -35px;
   font-size: 26px !important;
 }
-
 </style>
