@@ -74,6 +74,7 @@
       </div>
     </div>
     <div class="container">
+      {{specialty}}
       <div class="row" v-if="sortedDoctorList.length">
         <Doctors class="" :doctors="sortedDoctorList" />
       </div>
@@ -112,6 +113,12 @@ export default {
     sortedDoctorList() {
       if (!this.type && this.$route.query.stype) {
         this.type = this.$route.query.stype.replace("-", " ");
+      }
+      if (!this.specialty && this.$route.query.specialty) {
+        let specialty_query = this.$route.query.specialty
+          specialty_query = specialty_query.replaceAll("-", " ");
+          specialty_query = specialty_query.replaceAll("_", "/");
+        this.specialty = specialty_query;
       }
 
       const filterd_data = this.get_doctors.filter(
@@ -171,7 +178,12 @@ export default {
 
   watch: {
     type(to, from) {
-      // this.$router.push("/doctors?stype=" + to.replace(" ", "-"));
+      this.$router.push("/doctors?stype=" + to.replace(" ", "-"));
+    },
+    specialty(to, from) {
+       to = to.replaceAll(" ", "-");
+       to = to.replaceAll("/", "_");
+      this.$router.push("/doctors?specialty=" +to);
     },
   },
   mounted() {

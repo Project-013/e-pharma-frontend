@@ -37,7 +37,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-5" v-if="getCart.length">
+        <div class="col-md-5" >
           <div v-if="$auth.loggedIn" class="bg-white">
             <ValidationObserver
               class="card h-100 p-0"
@@ -210,7 +210,6 @@ export default {
           })
           .then((res) => {
             if (res.status === 201) {
-              this.$store.commit("product/setitems", []);
               this.$toast.success("Success! we will contact you soon..");
               this.$router.push("/profile");
             }
@@ -233,4 +232,21 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+@media only screen and (max-width: 600px) {
+   h6,
+   h5 {
+    font-size: 60% !important;
+  }
+   p {
+    font-size: 60% !important;
+  }
+   pre {
+    font-size: 60% !important;
+  }
+  img{
+    width: 130px!important;
+  }
+
+}
+</style>

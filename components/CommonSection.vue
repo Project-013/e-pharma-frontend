@@ -2,7 +2,7 @@
   <div>
     <PartialsServices />
     <PartialsSlider />
-    <!-- <PartialsCount /> -->
+    <PartialsCount />
     <!-- <PartialsPartners /> -->
   </div>
 </template>

@@ -39,16 +39,16 @@
     </div>
     <div class="card-footer px-0 d-flex justify-content-between">
       <NuxtLink
-        class="btn btn-sm btn-dark"
-        style="font-size: 12px"
+        class="btn btn-sm btn-dark px-1"
+        style="font-size: 10px"
         :to="`/shop/product?productid=${product.id}`"
       >
         Buy Now
       </NuxtLink>
       <button
         @click="addToCart(product)"
-        class="btn btn-sm btn-dark"
-        style="font-size: 12px"
+        class="btn btn-sm btn-dark px-1"
+        style="font-size: 10px"
       >
         Add to Cart
       </button>
