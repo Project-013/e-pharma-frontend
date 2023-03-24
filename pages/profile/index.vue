@@ -35,11 +35,25 @@
       <div class="col-12">
         <div class="card h-100 p-sm-3 p-1">
           <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-8">
               <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                   <button
                     class="nav-link active"
+                    id="Orders-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#Orders-tab-pane"
+                    type="button"
+                    role="tab"
+                    aria-controls="Orders-tab-pane"
+                    aria-selected="true"
+                  >
+                    <small class="">Orders</small>
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link "
                     id="home-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#home-tab-pane"
@@ -83,6 +97,17 @@
               <div class="tab-content" id="myTabContent">
                 <div
                   class="tab-pane fade show active"
+                  id="Orders-tab-pane"
+                  role="tabpanel"
+                  aria-labelledby="Orders-tab"
+                  tabindex="0"
+                >
+                  
+                  <ProfileOrders />
+
+                </div>
+                <div
+                  class="tab-pane fade "
                   id="home-tab-pane"
                   role="tabpanel"
                   aria-labelledby="home-tab"
@@ -110,7 +135,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4">
               <div v-for="blog in blogs" :key="blog.id">
                 <Blog :blog="blog" />
               </div>

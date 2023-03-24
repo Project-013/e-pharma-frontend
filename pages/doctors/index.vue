@@ -74,7 +74,7 @@
       </div>
     </div>
     <div class="container">
-      {{specialty}}
+      {{ specialty }}
       <div class="row" v-if="sortedDoctorList.length">
         <Doctors class="" :doctors="sortedDoctorList" />
       </div>
@@ -115,9 +115,9 @@ export default {
         this.type = this.$route.query.stype.replace("-", " ");
       }
       if (!this.specialty && this.$route.query.specialty) {
-        let specialty_query = this.$route.query.specialty
-          specialty_query = specialty_query.replaceAll("-", " ");
-          specialty_query = specialty_query.replaceAll("_", "/");
+        let specialty_query = this.$route.query.specialty;
+        specialty_query = specialty_query.replaceAll("-", " ");
+        specialty_query = specialty_query.replaceAll("_", "/");
         this.specialty = specialty_query;
       }
 
@@ -181,9 +181,9 @@ export default {
       this.$router.push("/doctors?stype=" + to.replace(" ", "-"));
     },
     specialty(to, from) {
-       to = to.replaceAll(" ", "-");
-       to = to.replaceAll("/", "_");
-      this.$router.push("/doctors?specialty=" +to);
+      to = to.replaceAll(" ", "-");
+      to = to.replaceAll("/", "_");
+      this.$router.push("/doctors?specialty=" + to);
     },
   },
   mounted() {

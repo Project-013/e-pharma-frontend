@@ -7,6 +7,8 @@
         </div>
         <div class="row g-3 mb-0">
           <div class="col-md-6">
+            <label class="form-label"  for="">Search Product</label>
+
             <div class="rounded border bg-white">
               <div class="d-flex align-items-center  rounded">
                 <img
@@ -25,6 +27,7 @@
             </div>
           </div>
           <div class="col-md-6">
+            <label class="form-label"  for="">Select Category</label>
             <select
               class="form-select form-select"
               aria-label="Default select example"

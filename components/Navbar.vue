@@ -120,16 +120,16 @@
     </nav>
     <div class="mobile_nav d-block d-md-none">
       <nav class="nav shadow-lg">
-        <NuxtLink to="/" class="nav-link text-muted">
-          <i class="icofont-home text-muted"></i>
-          <span class="small fw-semibold text-muted">Home</span>
+        <NuxtLink to="/" class="nav-link ">
+          <i class="icofont-home "></i>
+          <span class="small fw-semibold ">Home</span>
         </NuxtLink>
         <NuxtLink
           :to="$auth.loggedIn ? '/profile' : '/login?redirect=/profile'"
-          class="nav-link text-muted"
+          class="nav-link "
         >
-          <i class="icofont-ui-user text-muted"></i>
-          <span class="small fw-semibold text-muted">My Account</span>
+          <i class="icofont-ui-user "></i>
+          <span class="small fw-semibold ">My Account</span>
         </NuxtLink>
 
         <!-- 
@@ -137,13 +137,13 @@
           <i class="icofont-notification text-muted"></i>
           <span class="small text-muted fw-semibold">Notification</span>
         </NuxtLink> -->
-        <NuxtLink to="/shop" class="nav-link text-muted">
-          <i class="icofont-shopping-cart text-muted"></i>
-          <span class="small text-muted fw-semibold">Shop</span>
+        <NuxtLink to="/shop" class="nav-link ">
+          <i class="icofont-shopping-cart "></i>
+          <span class="small  fw-semibold">Shop</span>
         </NuxtLink>
-        <a class="nav-link text-muted" @click="toggleNavbar">
-          <i class="icofont-navigation-menu text-muted"></i>
-          <span class="small text-muted fw-semibold">Menu</span>
+        <a class="nav-link " @click="toggleNavbar">
+          <i class="icofont-navigation-menu "></i>
+          <span class="small fw-semibold">Menu</span>
         </a>
 
         <!-- <NuxtLink to="/bmi" class="nav-link text-dark">
@@ -325,7 +325,8 @@ export default {
 .dropdown-item:hover,
 .nav-item .nav-link:hover,
 .nuxt-link-exact-active {
-  color: var(--secondary-text) !important;
+  /* color: var(--secondary-text) !important; */
+  color: #0d6efd !important;
 }
 .app-nav-item {
   font-size: 12px !important;
@@ -336,9 +337,9 @@ export default {
   color: #084092 !important;
 }
 
-.mobile_nav .nav-link {
+/* .mobile_nav .nav-link {
   color: black ;
-}
+} */
 
 .__call {
   bottom: 70px;

@@ -19,7 +19,7 @@
       </div>
       <div class="col-12">
         <BlogUpdate :blog="blog"/>
-        <NuxtLink :to="`/blog/post/?id=${blog.id}`" class="card-title mb-0 h5">
+        <NuxtLink :to="`/blog/post/?id=${blog.id}`" class="card-title mb-0 fw-semibold small">
           {{ blog.title }}
         </NuxtLink>
         <p class="mt-0 small text-muted">
@@ -34,7 +34,7 @@
           by <span class="text-primary fw-bold">{{blog.user.full_name}}</span>
         </p>
 
-        <p class="card-text">{{ blog.short_desc }}...</p>
+        <p class="card-text small">{{ blog.short_desc }}...</p>
 
         <NuxtLink :to="`/blog/post/?id=${blog.id}`" class="">
           Continue Reading

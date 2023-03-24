@@ -1,9 +1,7 @@
 <template>
   <div class="card h-100 p-2 _card m-1">
     <div class="row g-3 card-body p-0">
-      <NuxtLink
-        :to="`/shop/product?productid=${product.id}`"
-      >
+      <NuxtLink :to="`/shop/product?productid=${product.id}`">
         <img
           :src="$config.apibaseURL + product.image"
           :alt="product.name"
@@ -13,7 +11,7 @@
 
       <div class="col-12">
         <h6
-          class="mb-0 fw-bold text-uppercase pointer"
+          class="mb-0 fw-bold text-uppercase-none pointer"
           data-bs-toggle="modal"
           :data-bs-target="`#exampleModal${product.id}`"
           style="color: #2b325c"
@@ -26,7 +24,11 @@
         <h6>
           <span class="fw-bold">৳ </span>{{ product.offer }}
 
-          <del class="fw-normal text-danger ms-2">৳ {{ product.price }}</del>
+          <del
+            class="fw-normal text-danger ms-2"
+            v-if="product.offer != product.price"
+            >৳ {{ product.price }}</del
+          >
         </h6>
         <h6 class="my-2 d-none" v-if="product.offer != product.price">
           <mark class="d-none"
@@ -39,7 +41,7 @@
     </div>
     <div class="card-footer px-0 d-flex justify-content-between">
       <NuxtLink
-        class="btn btn-sm btn-dark px-1"
+        class="btn btn-sm btn-dark px-2"
         style="font-size: 10px"
         :to="`/shop/product?productid=${product.id}`"
       >
@@ -47,7 +49,7 @@
       </NuxtLink>
       <button
         @click="addToCart(product)"
-        class="btn btn-sm btn-dark px-1"
+        class="btn btn-sm btn-dark px-2 ms-2"
         style="font-size: 10px"
       >
         Add to Cart

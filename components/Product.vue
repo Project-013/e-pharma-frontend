@@ -21,7 +21,7 @@
             </div>
             <div class="col-12">
               <h6
-                class="mb-0 fw-bold text-uppercase pointer"
+                class="mb-0 fw-bold text-uppercase-none pointer"
                 data-bs-toggle="modal"
                 :data-bs-target="`#exampleModal${product.id}`"
                 style="color: #2b325c"
@@ -34,7 +34,7 @@
               <h6>
                 <span class="fw-bold">৳ </span>{{ product.offer }}
 
-                <del class="fw-normal text-danger ms-2"
+                <del class="fw-normal text-danger ms-2" v-if="product.offer != product.price"
                   >৳ {{ product.price }}</del
                 >
               </h6>
@@ -49,13 +49,17 @@
             </div>
           </div>
           <div class="card-footer px-0 d-flex justify-content-between">
-            <NuxtLink class="btn btn-sm btn-dark " style="font-size:12px" :to="`/shop/product?productid=${product.id}`">
+            <NuxtLink
+              class="btn btn-sm btn-dark"
+              style="font-size: 12px"
+              :to="`/shop/product?productid=${product.id}`"
+            >
               Buy Now
             </NuxtLink>
             <button
               @click="addToCart(product)"
-              class="btn btn-sm btn-dark "
-              style="font-size:12px"
+              class="btn btn-sm btn-dark ms-2"
+              style="font-size: 12px"
             >
               Add to Cart
             </button>
@@ -91,7 +95,7 @@
                       class="mx-auto"
                     />
                     <div class="card-body">
-                      <h6 class="mb-0 fw-bold text-uppercase pointer">
+                      <h6 class="mb-0 fw-bold text-uppercase-none pointer">
                         {{ product.name }}
                       </h6>
                       <p class="fw-bold text-success my-0">
@@ -101,12 +105,12 @@
                       <h6 class="fw-semibold my-2">
                         <span class="fw-bold">৳ </span>{{ product.offer }}
 
-                        <del class="fw-normal text-danger ms-2"
+                        <del
+                          class="fw-normal text-danger ms-2 "
+                          v-if="product.offer != product.price"
                           >৳ {{ product.price }}</del
                         >
-                        <mark
-                          class="d-none"
-                          v-if="product.offer != product.price"
+                        <mark class="d-none"
                           >{{
                             (
                               100 -
@@ -130,7 +134,7 @@
     <div class="d-flex align-items-center mt-3">
       <JwPagination
         :items="product"
-        :initialPage="initialPage"
+        :initialPage="getInitialPage"
         :maxPages="3"
         :pageSize="12"
         @changePage="onChangePage"
@@ -155,7 +159,7 @@ export default {
     getitems() {
       return this.$store.getters["product/items"];
     },
-    initialPage() {
+    getInitialPage() {
       let page = 1;
       return page;
     },
@@ -179,12 +183,19 @@ export default {
       },
     };
   },
+  watch: {
+    pageOfItems(oldItem, newItem) {
+      // console.log('oldItem',oldItem);
+      // console.log('newItem',newItem);
+    },
+  },
   methods: {
     onChangePage(pageOfItems) {
       // update page of items
-      console.log(pageOfItems);
+      // console.log(pageOfItems);
 
       this.pageOfItems = pageOfItems;
+      document.body.scrollTop = document.documentElement.scrollTop = 0;
     },
     addToCart(product) {
       const { id, name, image, offer } = product;
