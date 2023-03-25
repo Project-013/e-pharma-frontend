@@ -57,6 +57,15 @@
         </NuxtLink>
       </div>
       <div class="col-lg-2 col-md-3 col-4">
+        <NuxtLink to="/guidelines">
+          <img
+            src="/img/services/report.png"
+            class="mx-auto d-block pointer border p-2 rounded service_image"
+          />
+          <h6 class="small text-center mt-2 fw-semibold">International Journal/ Guidelines</h6>
+        </NuxtLink>
+      </div>
+      <div class="col-lg-2 col-md-3 col-4 d-none">
         <NuxtLink to="/physiotherapist">
           <img
             src="/img/services/phy.png"

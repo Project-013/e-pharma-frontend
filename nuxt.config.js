@@ -25,7 +25,8 @@ export default {
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/img/logo.png" }],
     script: [
-      // { src: '@static/assets/js/bootstrap.bundle.min.js', type: 'text/javascript' },
+      { src: '/assets/js/fb.js', type: 'text/javascript' },
+      // { src: '@/static/assets/js/bootstrap.bundle.min.js', type: 'text/javascript' },
     ],
   },
 
