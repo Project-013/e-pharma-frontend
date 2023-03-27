@@ -19,14 +19,23 @@ export default {
         hid: "description",
         name: "description",
         content:
-          "*sasthosebok.com* is a complete online service oriented organization. Install sasthosebok.com app to solve any medical problem no matter where you are in the country and get service. See less",
+          "sasthosebok.com is a complete online service-oriented healthcare organization. The purpose of which is to ensure digital healthcare to the people",
       },
+      {
+        name: "keywords",
+        content:
+          "Online healthcare service,Doctor service,Home nursing,Home physiotherapy,Home sample collection,Emergency oxygen delivery,Children’s home care,Medical product shop,Healthcare services near me,Online healthcare consultation,Healthcare tips and advice,Best healthcare providers in Sylhet,Best healthcare providers in Bangladesh,Healthcare products and equipment,How to find a reliable healthcare provider,Benefits of online healthcare services,Top healthcare tips,Best healthcare products,Affordable healthcare plans,স্বাস্থ্যসেবক, স্বাস্থ্য ,সেবক,sasthosebok,sastho sebok,sastho,sastho,",
+      },
+      { name: "robots", content: "index, follow" },
+      { name: "author", content: "Sajib Sutradhar" },
       { name: "format-detection", content: "telephone=no" },
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/img/logo.png" }],
     script: [
-      { src: '/assets/js/fb.js', type: 'text/javascript' },
-      // { src: '@/static/assets/js/bootstrap.bundle.min.js', type: 'text/javascript' },
+      {
+        src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3545205458668722",
+        crossorigin: "anonymous",
+      },
     ],
   },
 
@@ -47,7 +56,7 @@ export default {
     //   src: "~/plugins/tawk-messenger.client.js",
     //   mode: "client",
     // },
-    { src: '~/plugins/vuex-persist.js', mode: 'client' },
+    { src: "~/plugins/vuex-persist.js", mode: "client" },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -62,7 +71,7 @@ export default {
     "@nuxtjs/axios",
     "@nuxtjs/toast",
     "@nuxtjs/auth-next",
-    'nuxt-lazy-load'
+    "nuxt-lazy-load",
   ],
 
   toast: {
@@ -106,7 +115,7 @@ export default {
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
     // baseURL: 'http://localhost:8000/',
-    baseURL: "https://api.sasthosebok.com/", 
+    baseURL: "https://api.sasthosebok.com/",
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
