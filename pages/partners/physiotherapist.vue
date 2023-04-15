@@ -427,7 +427,7 @@ export default {
         this.$nuxt.$loading.start();
         this.disable_btn = true;
         this.$axios
-          .post(`patners/physiotherapist-regi/`, formData, {
+          .post(`patners/physiotherapist/`, formData, {
             headers: {
               "Content-Type": "application/json",
             },

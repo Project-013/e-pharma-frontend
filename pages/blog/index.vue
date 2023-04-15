@@ -122,19 +122,25 @@ export default {
       this.pageOfItems = pageOfItems;
     },
     async getBlogs() {
-      await this.$axios
-        .get(`blog/`)
-        .then((res) => {
-          console.log(res);
-          if (res.status === 200) {
-            this.blogs = res.data;
-          }
-        })
-        .catch((error) => {
-          console.log(error.response);
-          console.log(error.response.data.message || error.message);
-          // context.commit('error', error)
-        });
+      this.$nextTick(() => {
+        this.$nuxt.$loading.start();
+        this.$axios
+          .get(`blog/`)
+          .then((res) => {
+            console.log(res);
+            if (res.status === 200) {
+              this.blogs = res.data;
+            }
+            this.$nuxt.$loading.finish();
+          })
+          .catch((error) => {
+            this.$nuxt.$loading.finish();
+
+            console.log(error.response);
+            console.log(error.response.data.message || error.message);
+            // context.commit('error', error)
+          });
+      });
     },
   },
   mounted() {

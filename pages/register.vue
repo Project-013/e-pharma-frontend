@@ -77,17 +77,17 @@
             </div>
             <div>
               <div
-                class="d-flex align-items-center p-0 my-1 "
+                class="d-flex align-items-center p-0 my-1"
                 v-if="!form_data.otp_status"
               >
                 <input
-                class="p-0 m-0"
+                  class="p-0 m-0"
                   type="checkbox"
                   id="checkbox"
                   v-model="form_data.terms"
                   required
                 />
-                <p for="checkbox" class=" py-0 my-0 ms-1 small">
+                <p for="checkbox" class="py-0 my-0 ms-1 small">
                   Accept the
                   <a href="#" class="text-primary text-decoration-none"
                     >Terms</a
@@ -245,6 +245,7 @@ export default {
                 this.countDownTimer();
                 this.$nuxt.$loading.finish();
               }
+              this.$nuxt.$loading.finish();
             })
             .catch((error) => {
               console.log(error);

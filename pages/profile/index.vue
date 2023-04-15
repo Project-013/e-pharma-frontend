@@ -39,7 +39,7 @@
               <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                   <button
-                    class="nav-link active"
+                    class="p-2 m-0 nav-link active"
                     id="Orders-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#Orders-tab-pane"
@@ -53,7 +53,7 @@
                 </li>
                 <li class="nav-item" role="presentation">
                   <button
-                    class="nav-link "
+                    class="p-2 m-0 nav-link "
                     id="home-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#home-tab-pane"
@@ -67,7 +67,7 @@
                 </li>
                 <li class="nav-item" role="presentation">
                   <button
-                    class="nav-link"
+                    class="p-2 m-0 nav-link"
                     id="profile-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#profile-tab-pane"
@@ -81,7 +81,7 @@
                 </li>
                 <li class="nav-item" role="presentation">
                   <button
-                    class="nav-link"
+                    class="p-2 m-0 nav-link"
                     id="contact-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#contact-tab-pane"
@@ -90,7 +90,7 @@
                     aria-controls="contact-tab-pane"
                     aria-selected="false"
                   >
-                    <small class="">Diagnostic</small>
+                    <small class="p-0 m-0">Diagnostic</small>
                   </button>
                 </li>
               </ul>
@@ -102,12 +102,10 @@
                   aria-labelledby="Orders-tab"
                   tabindex="0"
                 >
-                  
                   <ProfileOrders />
-
                 </div>
                 <div
-                  class="tab-pane fade "
+                  class="tab-pane fade"
                   id="home-tab-pane"
                   role="tabpanel"
                   aria-labelledby="home-tab"
@@ -190,4 +188,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+@media only screen and (max-width: 600px) {
+  small {
+    font-size: 85% !important;
+  }
+}
+</style>

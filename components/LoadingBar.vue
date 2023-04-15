@@ -1,5 +1,5 @@
 <template>
-  <div v-if="loading" class="loading-page row bg-light">
+  <div v-if="loading" class="loading-page bg-light row m-0 p-0">
     <div class="d-flex justify-content-center align-items-center">
       <div class="text-center d-flex align-items-center flex-column">
         <img

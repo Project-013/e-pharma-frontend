@@ -18,8 +18,7 @@
             <tr>
               <th>{{ appointment.patient_name }}</th>
               <td>{{ appointment.type }}</td>
-              <td>{{ new Date(appointment.date).toLocaleString() }}
-              </td>
+              <td>{{ new Date(appointment.date).toLocaleString() }}</td>
               <td>
                 <NuxtLink
                   class="btn btn-sm btn-dark"
@@ -27,21 +26,23 @@
                   >View</NuxtLink
                 >
               </td>
-              <td><span
-                class="badge"
-                :class="
-                  appointment.service_status == `pending`
-                    ? 'text-bg-warning'
-                    : appointment.service_status == `cancelled`
-                    ? 'text-bg-danger'
-                    : appointment.service_status == `completed`
-                    ? 'text-bg-success'
-                    : 'text-bg-primary'
-                "
-                >{{ appointment.service_status }}
-              </span></td>
               <td>
-                <div class=" d-flex ">
+                <span
+                  class="badge"
+                  :class="
+                    appointment.service_status == `pending`
+                      ? 'text-bg-warning'
+                      : appointment.service_status == `cancelled`
+                      ? 'text-bg-danger'
+                      : appointment.service_status == `completed`
+                      ? 'text-bg-success'
+                      : 'text-bg-primary'
+                  "
+                  >{{ appointment.service_status }}
+                </span>
+              </td>
+              <td>
+                <div class="d-flex">
                   <div>
                     <NuxtLink
                       class="dropdown-item text-dark small"
@@ -58,9 +59,9 @@
                       <i class="icofont-trash small"></i>
                     </button>
                   </div>
-                    <div class="">
+                  <div class="">
                     <NuxtLink
-                      class=" small btn btn-dark btn-sm"
+                      class="small btn btn-dark btn-sm"
                       :to="'/doctors/config?type=edit&id=' + appointment.id"
                     >
                       view
@@ -203,7 +204,7 @@ export default {
 
   methods: {
     async getAppointments() {
-      await this.$axios
+      this.$axios
         .get(`appointment/doctor/?user_id=${this.$auth.user.id}`, {
           headers: {
             "Content-Type": "application/json",

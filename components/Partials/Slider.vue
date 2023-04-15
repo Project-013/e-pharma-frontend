@@ -2,9 +2,9 @@
   <div class="container">
     <!-- {{getTopDoctorList}} -->
     <div class="my-5">
-      <h5 class="text-dark mb-1 text-uppercase">
-        Get Specialist Doctor's Appoinment
-      </h5>
+      <h6 class="text-dark mb-1  d-flex justify-content-between">
+       <span class="text-uppercase">Get Specialist Doctor's Appoinment</span> <NLink class="fw-semibold" to="/doctors"> see all</NLink>
+      </h6>
       <carousel
         :loop="true"
         :autoplay="false"
@@ -18,21 +18,17 @@
     </div>
 
     <div class="my-5">
-      <h5 class="text-dark mb-1 text-uppercase">
-        Shop
-      </h5>
+      <h6 class="text-dark mb-1 d-flex justify-content-between ">
+        <span class="text-uppercase">Shop</span> <NLink class="fw-semibold" to="/shop"> see all</NLink>
+      </h6>
       <carousel
         :loop="true"
         :autoplay="false"
         :perPage="getInnerWidth < 576 ? 2.1 : getInnerWidth <= 768 ? 4.2 : 5.2"
         :paginationEnabled="false"
       >
-        <slide
-          class=""
-          v-for="product in get_product"
-          :key="product.id"
-        >
-          <PartialsProduct :product="product"  />
+        <slide class="" v-for="product in get_product" :key="product.id">
+          <PartialsProduct :product="product" />
         </slide>
       </carousel>
     </div>
@@ -69,7 +65,7 @@ export default {
       const data2 = this.get_doctors.filter(({ status, cat }) => {
         return status == "approved" && cat.includes("top");
       });
-      return [...data2,...data1];
+      return [...data2, ...data1];
     },
   },
 };
@@ -77,7 +73,7 @@ export default {
 
 <style scoped>
 @media only screen and (max-width: 600px) {
-  h5 {
+  h6 {
     font-size: 65% !important;
     line-height: 1.5;
   }

@@ -1,6 +1,6 @@
 <template>
   <section class="container pb-5 pt-3 mb-5">
-    <div class="accordion col-md-10 w-md-100" id="accordionExample">
+    <div class=" col-md-9 col-lg-7" id="accordionExample">
       <h4 class="text-dark my-3">International Journal/ Guidelines</h4>
 
       <div class="rounded border bg-white mb-4">
@@ -19,7 +19,7 @@
           />
         </div>
       </div>
-      <ui
+      <ul
         class="list-group"
         v-for="(guideline, index) in sortedList"
         :key="index"
@@ -40,7 +40,7 @@
             >Download PDF</a
           >
         </li>
-      </ui>
+      </ul>
     </div>
   </section>
 </template>
@@ -56,11 +56,9 @@ export default {
   computed: {
     sortedList() {
       const filterd_data = this.guidelines.filter(({ title }) => {
-        return (
-          (this.title
-            ? title.toUpperCase().includes(this.title.toUpperCase() )
-            : true) 
-        );
+        return this.title
+          ? title.toUpperCase().includes(this.title.toUpperCase())
+          : true;
       });
       return filterd_data;
     },
@@ -73,18 +71,24 @@ export default {
   },
   methods: {
     async getGuidelines() {
-      await this.$axios
-        .get(`guidelines`)
-        .then((res) => {
-          if (res.status === 200) {
-            this.guidelines = res.data;
-          }
-        })
-        .catch((error) => {
-          console.log(error.response);
-          console.log(error.response.data.message || error.message);
-          // context.commit('error', error)
-        });
+      this.$nextTick(() => {
+        this.$nuxt.$loading.start();
+        this.$axios
+          .get(`guidelines`)
+          .then((res) => {
+            if (res.status === 200) {
+              this.guidelines = res.data;
+            }
+            this.$nuxt.$loading.finish();
+          })
+          .catch((error) => {
+            this.$nuxt.$loading.finish();
+
+            console.log(error.response);
+            console.log(error.response.data.message || error.message);
+            // context.commit('error', error)
+          });
+      });
     },
   },
   mounted() {

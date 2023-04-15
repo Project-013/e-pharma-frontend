@@ -454,7 +454,7 @@ export default {
         this.$nuxt.$loading.start();
         this.disable_btn = true;
         this.$axios
-          .post(`patners/nurse-regi/`, formData, {
+          .post(`patners/nurse/`, formData, {
             headers: {
               "Content-Type": "application/json",
             },

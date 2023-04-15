@@ -21,14 +21,10 @@
           </li>
 
           <li>
-            <NLink class="dropdown-item" to="/nurse"> Find Nurse/Midwife </NLink>
-          </li>
-          <li>
-            <NLink class="dropdown-item" to="/caregivers">
-              Find Caregivers
+            <NLink class="dropdown-item" to="/nurse">
+              Find Nurse/Caregiver
             </NLink>
           </li>
-
           <li>
             <NLink class="dropdown-item" to="/physiotherapist">
               Find Physiotherapist
@@ -44,6 +40,9 @@
               Mobile Diagnostic
             </NLink>
           </li>
+          <li>
+            <NLink class="dropdown-item" to="/pharmacy"> Find Pharmacy </NLink>
+          </li>
         </ul>
       </li>
       <li class="nav-item dropdown d-none">
@@ -56,17 +55,27 @@
         >
           Doctors
         </a>
-        <ul class="dropdown-menu ">
+        <ul class="dropdown-menu">
           <li>
-            <NLink class="dropdown-item" to="/doctors/?stype=Private-Chamber"> Private Chamber</NLink>
+            <NLink class="dropdown-item" to="/doctors/?stype=Private-Chamber">
+              Private Chamber</NLink
+            >
           </li>
           <li>
-            <NLink class="dropdown-item" to="/doctors/?stype=Home-Call"> Home Call</NLink>
+            <NLink class="dropdown-item" to="/doctors/?stype=Home-Call">
+              Home Call</NLink
+            >
           </li>
           <li>
-            <NLink class="dropdown-item" to="/doctors/?stype=Video-Call"> Video Call (Telemedicine)</NLink>
+            <NLink class="dropdown-item" to="/doctors/?stype=Video-Call">
+              Video Call (Telemedicine)</NLink
+            >
           </li>
         </ul>
+      </li>
+
+      <li class="nav-item">
+        <NLink class="nav-link" to="/guidelines"> Guidelines </NLink>
       </li>
       <li class="nav-item">
         <NLink class="nav-link" to="/blog"> Blog </NLink>

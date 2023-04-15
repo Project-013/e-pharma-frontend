@@ -342,7 +342,7 @@ export default {
         this.$nuxt.$loading.start();
         this.disable_btn = true;
         this.$axios
-          .post(`patners/partner-regi/`, this.form_data, {
+          .post(`patners/pharmacy/`, this.form_data, {
             headers: {
               "Content-Type": "application/json",
             },

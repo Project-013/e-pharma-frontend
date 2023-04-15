@@ -31,7 +31,7 @@ export const mutations = {
 
 export const actions = {
   async getProduct({ commit }) {
-    await this.$axios
+    this.$axios
       .get(`shop/product/`, {
         headers: {
           "Content-Type": "application/json",

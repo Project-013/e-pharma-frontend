@@ -399,7 +399,7 @@ export default {
         this.$nuxt.$loading.start();
         this.disable_btn = true;
         this.$axios
-          .post(`patners/caregiver-regi/`, formData, {
+          .post(`patners/caregiver/`, formData, {
             headers: {
               "Content-Type": "application/json",
             },

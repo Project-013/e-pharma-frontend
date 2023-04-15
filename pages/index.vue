@@ -18,13 +18,10 @@ export default {
       this.$nuxt.$loading.start()
       setTimeout(() => this.$nuxt.$loading.finish(), 5)
     })
+  },
 
-  },
-  created() {
-  },
 };
 </script>
 
 <style scoped>
-
 </style>

@@ -16,7 +16,7 @@ export const mutations = {
 
 export const actions = {
   async getDoctors({commit}) {
-    await this.$axios.get(`patners/doctor/`, {
+    this.$axios.get(`patners/doctor/`, {
       headers: {
         "Content-Type": "application/json",
       },

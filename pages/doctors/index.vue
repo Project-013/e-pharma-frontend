@@ -25,21 +25,6 @@
             </div>
           </div>
           <div class="col-md-4">
-            <!-- {{ sortedDoctorList }} -->
-            <!-- <select
-              class="form-select form-select-sm"
-              aria-label="Default select example"
-              v-model="specialty"
-              required
-            >
-              <option value="" disabled selected>Select Speciality</option>
-              <option value="all">All</option>
-              <template v-for="(spesialist, index) in getSpesialistList">
-                <option :value="spesialist" :key="index">
-                  {{ spesialist }}
-                </option>
-              </template>
-            </select> -->
             <select
               class="form-select form-select-sm"
               aria-label="Default select example"
@@ -74,8 +59,8 @@
       </div>
     </div>
     <div class="container">
-      {{ specialty }}
       <div class="row" v-if="sortedDoctorList.length">
+        <h6 class="mt-2">{{ specialty == "all" ? "" : specialty }}</h6>
         <Doctors class="" :doctors="sortedDoctorList" />
       </div>
       <div v-else>
@@ -84,11 +69,18 @@
         </div>
       </div>
     </div>
+    <div class="container">
+      <div v-for="(type, index) of s_type_list" :key="index">
+        <DoctorSlider :doctors="get_doctors" :type="type" />
+      </div>
+    </div>
   </section>
 </template>
 
 <script>
+import DoctorSlider from '~/components/Partials/DoctorSlider.vue';
 export default {
+  components: { DoctorSlider },
   head() {
     return {
       title: "স্বাস্থ্যসেবক || Doctor",

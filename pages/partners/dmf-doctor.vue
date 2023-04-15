@@ -65,7 +65,7 @@
                     </label>
                   </div>
                 </template>
-                <template class="" v-if="qualicifacions.includes(`Others`)">
+                <template  v-if="qualicifacions.includes(`Others`)">
                   <div class="" rules="required">
                     <input
                       v-model="others_q"

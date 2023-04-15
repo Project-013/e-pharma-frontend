@@ -85,7 +85,7 @@
                   />
                   <label class="form-check-label" for="Others"> Others </label>
                 </div>
-                <template class="" v-if="o_qualicifacions.includes(`Others`)">
+                <template v-if="o_qualicifacions.includes(`Others`)">
                   <div class="" rules="required">
                     <input
                       v-model="others_q"
