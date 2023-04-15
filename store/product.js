@@ -38,7 +38,7 @@ export const actions = {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.status === 200) {
           commit("setProduct", res.data);
         }

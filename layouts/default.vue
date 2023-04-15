@@ -1,15 +1,31 @@
 <template>
   <div class="root">
-    <Header />
-    <Navbar />
-    <Sidebar />
-    <Nuxt class="" />
-    <Footer />
+    <div v-if="isApp">
+      <Navbar v-if="$auth.$state.loggedIn" />
+      <Nuxt />
+    </div>
+    <div v-else>
+      <Header />
+      <Navbar />
+      <Sidebar />
+      <Nuxt />
+      <Footer />
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  computed:{
+    isApp(){
+      return window.innerWidth < 576;
+    }
+
+  },
+  mounted() {
+    console.log("Called");
+  },
+};
 </script>
 
 <style scoped>

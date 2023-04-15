@@ -85,7 +85,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+   mounted() {
+    // this.$store.dispatch("doctors/getDoctors");
+    // this.$store.dispatch("product/getProduct");
+    // console.log("Called Header !");
+  },
+};
 </script>
 
 

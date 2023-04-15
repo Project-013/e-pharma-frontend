@@ -8,7 +8,7 @@
 <script>
 export default {
   name: "IndexPage",
-  layout: window.innerWidth<576?"app":"default",
+  // layout: window.innerWidth<576?"app":"default",
 
   mounted() {
     if (this.$route.query.redirect) {

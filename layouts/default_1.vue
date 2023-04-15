@@ -1,13 +1,16 @@
 <template>
   <div class="root">
-    <Navbar v-if="$auth.$state.loggedIn" />
-    <Nuxt />
+    <Header />
+    <Navbar />
+    <Sidebar />
+    <Nuxt class="" />
+    <Footer />
   </div>
 </template>
 
 <script>
 export default {
-  mounted(){
+    mounted(){
     console.log("Called");
   }
 };

@@ -318,6 +318,7 @@ export default {
   mounted() {
     this.$store.dispatch("doctors/getDoctors");
     this.$store.dispatch("product/getProduct");
+    console.log("Called Navbar!");
   },
 };
 </script>
