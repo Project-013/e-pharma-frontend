@@ -1,12 +1,135 @@
 <template>
-  <div>
-    <!-- {{ $auth.$state.loggedIn }} -->
-    <h4>FAQs</h4>
+  <div class="container">
+    <div class="card shadow p-4 border-0">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active"
+            id="home-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#home-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="home-tab-pane"
+            aria-selected="true"
+          >
+            FAQs
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="profile-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#profile-tab-pane"
+            type="button"
+            role="tab"
+            aria-controls="profile-tab-pane"
+            aria-selected="false"
+          >
+            BMI FAQs
+          </button>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div
+          class="tab-pane fade show active"
+          id="home-tab-pane"
+          role="tabpanel"
+          aria-labelledby="home-tab"
+          tabindex="0"
+        >
+          <DataTable title="FAQs" :columns="faqs_columns" :rows="faqs_rows" />
+        </div>
+        <div
+          class="tab-pane fade"
+          id="profile-tab-pane"
+          role="tabpanel"
+          aria-labelledby="profile-tab"
+          tabindex="0"
+        >
+          <DataTable
+            title="BMI FAQs"
+            :columns="faqs_columns"
+            :rows="bmifaqs_rows"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
+  head() {
+    return {
+      title: "Admin || FAQs ",
+    };
+  },
+  data() {
+    return {
+      faqs: [],
+      bmifaqs: [],
+      faqs_columns: [
+        { label: "Questions", field: "ques" },
+        { label: "Answer", field: "ans" },
+      ],
+    };
+  },
+  computed: {
+    faqs_rows() {
+      const data = [];
+      for (let faq of this.faqs) {
+        console.log(faq);
+        const { ques, ans } = faq;
+        data.push({ ques, ans });
+      }
+      return data;
+    },
+    bmifaqs_rows() {
+      const data = [];
+      for (let faq of this.bmifaqs) {
+        console.log(faq);
+        const { ques, ans } = faq;
+        data.push({ ques, ans });
+      }
+      return data;
+    },
+  },
+  methods: {
+    async getFaqs() {
+      await this.$axios
+        .get(`faqs`)
+        .then((res) => {
+          if (res.status === 200) {
+            this.faqs = res.data;
+          }
+        })
+        .catch((error) => {
+          console.log(error.response);
+          console.log(error.response.data.message || error.message);
+          // context.commit('error', error)
+        });
+    },
+    async getBmiFaqs() {
+      await this.$axios
+        .get(`bmi-faqs`)
+        .then((res) => {
+          if (res.status === 200) {
+            this.bmifaqs = res.data;
+          }
+        })
+        .catch((error) => {
+          console.log(error.response);
+          console.log(error.response.data.message || error.message);
+          // context.commit('error', error)
+        });
+    },
+  },
+  mounted() {
+    this.getFaqs();
+    this.getBmiFaqs();
+  },
   name: "FAQs",
   layout: "admin",
   beforeCreate() {
@@ -17,4 +140,19 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+/* Materialize Table style */
+@import url(http://fonts.googleapis.com/icon?family=Material+Icons);
+.sorting {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+}
+table tr td {
+  /* display: none!important; */
+  white-space: normal !important;
+}
+
+ul.material-pagination {
+  list-style-type: none;
+}
+</style>

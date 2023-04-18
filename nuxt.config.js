@@ -56,6 +56,7 @@ export default {
     //   src: "~/plugins/tawk-messenger.client.js",
     //   mode: "client",
     // },
+    { src: '~/plugins/materialize-table.js', mode: 'client' },
     { src: "~/plugins/vuex-persist.js", mode: "client" },
   ],
 
