@@ -1,5 +1,4 @@
 <template>
-  
   <header class="sticky-top" style="z-index: 99999">
     <div
       class="navbar border-bottom bg-light d-flex justify-content-start d-none"
@@ -121,16 +120,16 @@
     </nav>
     <div class="mobile_nav d-block d-md-none">
       <nav class="nav shadow-lg">
-        <NuxtLink to="/" class="nav-link ">
-          <i class="icofont-home "></i>
-          <span class="small fw-semibold ">Home</span>
+        <NuxtLink to="/" class="nav-link">
+          <i class="icofont-home"></i>
+          <span class="small fw-semibold">Home</span>
         </NuxtLink>
         <NuxtLink
           :to="$auth.loggedIn ? '/profile' : '/login?redirect=/profile'"
-          class="nav-link "
+          class="nav-link"
         >
-          <i class="icofont-ui-user "></i>
-          <span class="small fw-semibold ">My Account</span>
+          <i class="icofont-ui-user"></i>
+          <span class="small fw-semibold">My Account</span>
         </NuxtLink>
 
         <!-- 
@@ -138,12 +137,12 @@
           <i class="icofont-notification text-muted"></i>
           <span class="small text-muted fw-semibold">Notification</span>
         </NuxtLink> -->
-        <NuxtLink to="/shop" class="nav-link ">
-          <i class="icofont-shopping-cart "></i>
-          <span class="small  fw-semibold">Shop</span>
+        <NuxtLink to="/shop" class="nav-link">
+          <i class="icofont-shopping-cart"></i>
+          <span class="small fw-semibold">Shop</span>
         </NuxtLink>
-        <a class="nav-link " @click="toggleNavbar">
-          <i class="icofont-navigation-menu "></i>
+        <a class="nav-link" @click="toggleNavbar">
+          <i class="icofont-navigation-menu"></i>
           <span class="small fw-semibold">Menu</span>
         </a>
 
@@ -278,7 +277,7 @@
             <span
               class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
             >
-              {{getTotalItem}}
+              {{ getTotalItem }}
               <span class="visually-hidden">unread messages</span>
             </span>
           </NuxtLink>
@@ -290,7 +289,6 @@
       </div>
     </div>
     <!-- <Sidebar /> -->
-
   </header>
 </template>
 
@@ -301,7 +299,7 @@ export default {
       show: false,
     };
   },
-  computed:{
+  computed: {
     getTotalItem() {
       return this.$store.getters["product/items"].length;
     },

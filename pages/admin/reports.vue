@@ -1,14 +1,13 @@
 <template>
   <div>
     <!-- {{ $auth.$state.loggedIn }} -->
-    <!-- <Web/> -->
-    <h4>Dashboard</h4>
+    <h4>Reports</h4>
   </div>
 </template>
 
 <script>
 export default {
-  name: "AdminPage",
+  name: "Reports",
   layout: "admin",
   beforeCreate() {
     if (!this.$auth.$state.loggedIn || this.$auth.user.is_admin === false) {
