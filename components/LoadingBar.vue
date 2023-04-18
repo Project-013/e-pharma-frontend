@@ -45,6 +45,6 @@ export default {
   width: 100%;
   height: 100vh;
   text-align: center;
-  z-index: 99999 !important;
+  z-index: 9999 !important;
 }
 </style>

@@ -1,5 +1,6 @@
 <template>
-  <header class="sticky-top">
+  
+  <header class="sticky-top" style="z-index: 99999">
     <div
       class="navbar border-bottom bg-light d-flex justify-content-start d-none"
     >

@@ -1,18 +1,26 @@
 <template>
-  <section >
+  <section>
     <div class="col-lg-4 col-md-6 col-12 mx-auto py-3">
-        <img class="mx-auto d-block" src="/img/icons/login.jpeg" width="240" height="240" alt="">
+      <img
+        class="mx-auto d-block"
+        src="/img/icons/login.jpeg"
+        width="240"
+        height="240"
+        alt=""
+      />
 
-      <div class="p-3 card border-0 bg-white ">
-
+      <div class="p-3 card border-0 bg-white">
         <div class="sign-info">
-          <h5 class="mb-1 small">Login now to explore more!</h5>
-
+          <h5 class="mb-3 small">Login now to explore more!</h5>
         </div>
 
         <ValidationObserver v-slot="{ handleSubmit }">
           <form class="form" @submit.prevent="handleSubmit(sendOTP)">
             <div class="input-field pb-3">
+              <label for="" style="font-size:12px;" class="form-label small fw-semibold text-muted mb-0"
+                >Type Your Number Without 0</label
+              >
+
               <div class="input-group flex-nowrap">
                 <span
                   class="input-group-text bg-white p-0"
@@ -25,9 +33,7 @@
                     aria-label=".form-select-sm example"
                     v-model="form_data.country_code"
                   >
-       
                     <option value="+880">+880</option>
-
                   </select>
                 </span>
                 <input
@@ -192,7 +198,6 @@ export default {
                 this.$nuxt.$loading.finish();
               }
               this.$nuxt.$loading.finish();
-
             })
             .catch((error) => {
               console.log(error.response);
@@ -218,8 +223,7 @@ export default {
       };
       try {
         const response = await this.$auth.loginWith("local", { data: data });
-        
-        
+
         if (response.status === 200) {
           this.$toast.success("Successfully authenticated");
         } else {
@@ -244,7 +248,6 @@ export default {
 
     this.form_data.count_down > 0 ? this.countDownTimer() : "";
   },
-
 };
 </script>
 

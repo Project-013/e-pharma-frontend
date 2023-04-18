@@ -1,6 +1,6 @@
 <template>
-  <section class="">
-    <div class="col-lg-4 col-md-6 col-12 mx-auto pt-3">
+  <section class="mb-5 pb-5">
+    <div class="col-lg-4 col-md-6 col-12 mx-auto py-3">
       <img
         class="mx-auto d-block"
         src="/img/icons/login.jpeg"
@@ -11,11 +11,11 @@
 
       <div class="p-3 card border-0 bg-white">
         <div class="sign-info">
-          <h5 class="mb-1 small">Register now to explore more!</h5>
+          <h5 class="mb-3 small">Register now to explore more!</h5>
         </div>
         <ValidationObserver v-slot="{ handleSubmit }">
           <form class="form" @submit.prevent="handleSubmit(sendOTP)">
-            <div class="input-field pb-3">
+            <div class="input-field pb-1">
               <div class="input-group flex-nowrap">
                 <span
                   class="input-group-text bg-white text-center"
@@ -40,7 +40,11 @@
               </div>
             </div>
             <div class="input-field pb-1">
+               <label for="" style="font-size:12px;" class="form-label small fw-semibold text-muted mb-0"
+                >Type Your Number Without 0</label
+              >
               <div class="input-group flex-nowrap">
+
                 <span
                   class="input-group-text bg-white p-0"
                   style="width: 73px"
@@ -77,17 +81,17 @@
             </div>
             <div>
               <div
-                class="d-flex align-items-center p-0 my-1 "
+                class="d-flex align-items-center p-0 my-1"
                 v-if="!form_data.otp_status"
               >
                 <input
-                class="p-0 m-0"
+                  class="p-0 m-0"
                   type="checkbox"
                   id="checkbox"
                   v-model="form_data.terms"
                   required
                 />
-                <p for="checkbox" class=" py-0 my-0 ms-1 small">
+                <p for="checkbox" class="py-0 my-0 ms-1 small">
                   Accept the
                   <a href="#" class="text-primary text-decoration-none"
                     >Terms</a
@@ -164,7 +168,7 @@
         </ValidationObserver>
 
         <div class="register-footer text-center pt-2">
-          <NuxtLink to="/app-login" class="small text-decoration-none text-dark"
+          <NuxtLink to="/login" class="small text-decoration-none text-dark"
             >Already have an account?
             <span class="text-primary text-decoration-underline">
               Sign In
@@ -245,6 +249,7 @@ export default {
                 this.countDownTimer();
                 this.$nuxt.$loading.finish();
               }
+              this.$nuxt.$loading.finish();
             })
             .catch((error) => {
               console.log(error);
