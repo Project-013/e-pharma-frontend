@@ -46,28 +46,7 @@
     </div>
     <div class="container">
       <div class="row g-3">
-        <div class="col-lg-2 d-none d-lg-block">
-          <h6 class="mt-3">Categories</h6>
-          <ul class="list-group d-flex">
-            <NuxtLink
-              class="list-group-item small"
-              to="/shop"
-              :class="!$route.query.category ? 'active' : ''"
-              >All</NuxtLink
-            >
-            <template v-for="(cat, index) in getCategorylist">
-              <!-- <li class="list-group-item" ></li> -->
-              <NuxtLink
-                class="list-group-item small"
-                :class="$route.query.category == cat ? 'active' : ''"
-                :to="`/shop?category=${cat}`"
-                :key="index"
-                >{{ cat }}</NuxtLink
-              >
-            </template>
-          </ul>
-        </div>
-        <div class="col-lg-10">
+        <div class="col-lg-12">
           <div class="row" v-if="sortedProductList.length">
             <Product class="" :product="sortedProductList" />
           </div>
@@ -79,7 +58,7 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <div v-if="!isApp" class="container">
       <div v-for="(category, index) of getCategorylist" :key="index">
         <ShopSlider :products="get_product" :category="category" />
       </div>
@@ -96,6 +75,7 @@ export default {
       title: "স্বাস্থ্যসেবক || Shop  ",
     };
   },
+
   data() {
     return {
       product: [],
@@ -104,6 +84,9 @@ export default {
     };
   },
   computed: {
+    isApp() {
+      return window.innerWidth < 767;
+    },
     get_product() {
       return this.$store.getters["product/product"];
     },

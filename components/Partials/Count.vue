@@ -1,9 +1,5 @@
 <template>
   <div class="container">
-    <NuxtLink to="/shop" class="btn btn-primary  w-50 d-block mx-auto my-4  rounded-pill">
-      <i class="icofont-shopping-cart "></i>
-      <span class="small  fw-semibold">Shop Now</span>
-    </NuxtLink>
     <div class="row g-2 g-sm-5 my-2 text-center">
       <div v-for="data in data_list" class="col-3" :key="data.icon">
         <div class="card bg-light shadow-sm border-0 py-3 p-1">

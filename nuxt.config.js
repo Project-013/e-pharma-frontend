@@ -14,7 +14,7 @@ export default {
     },
     meta: [
       { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, user-scalable=no" },
       {
         hid: "description",
         name: "description",
@@ -71,7 +71,7 @@ export default {
     "@nuxtjs/axios",
     "@nuxtjs/toast",
     "@nuxtjs/auth-next",
-    "nuxt-lazy-load",
+    // "nuxt-lazy-load",
   ],
 
   toast: {

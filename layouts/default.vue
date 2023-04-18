@@ -16,14 +16,15 @@
 
 <script>
 export default {
-  computed:{
-    isApp(){
-      return window.innerWidth < 576;
-    }
-
+  computed: {
+    isApp() {
+      return window.innerWidth < 767;
+    },
   },
   mounted() {
-    console.log("Called");
+    this.$store.dispatch("doctors/getDoctors");
+    this.$store.dispatch("product/getProduct");
+    console.log("Called Data!");
   },
 };
 </script>

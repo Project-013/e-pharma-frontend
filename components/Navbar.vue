@@ -315,11 +315,11 @@ export default {
       this.show = false;
     },
   },
-  mounted() {
-    this.$store.dispatch("doctors/getDoctors");
-    this.$store.dispatch("product/getProduct");
-    console.log("Called Navbar!");
-  },
+  // mounted() {
+  //   this.$store.dispatch("doctors/getDoctors");
+  //   this.$store.dispatch("product/getProduct");
+  //   console.log("Called Navbar!");
+  // },
 };
 </script>
 <style scoped>

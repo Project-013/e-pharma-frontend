@@ -196,7 +196,7 @@ export default {
           },
         })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             this.Homediagnostics = res.data;
           }
@@ -224,7 +224,7 @@ export default {
           .then((res) => {
             this.getHomediagnostics();
 
-            console.log(res);
+            // console.log(res);
             if (res.status === 201) {
             }
             this.$nuxt.$loading.finish();

@@ -124,7 +124,7 @@ export default {
           },
         })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             this.orders = res.data;
           }
@@ -152,7 +152,7 @@ export default {
           .then((res) => {
             this.getorders();
 
-            console.log(res);
+            // console.log(res);
             if (res.status === 201) {
             }
             this.$nuxt.$loading.finish();

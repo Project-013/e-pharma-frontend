@@ -69,7 +69,7 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container" v-if="!isApp">
       <div v-for="(type, index) of s_type_list" :key="index">
         <DoctorSlider :doctors="get_doctors" :type="type" />
       </div>
@@ -96,6 +96,9 @@ export default {
     };
   },
   computed: {
+        isApp() {
+      return window.innerWidth < 767;
+    },
     get_doctors() {
       return this.$store.getters["doctors/doctors"];
     },

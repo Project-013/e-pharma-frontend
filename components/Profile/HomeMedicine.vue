@@ -203,7 +203,7 @@ export default {
           },
         })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             this.HomeMedicines = res.data;
           }
@@ -231,7 +231,7 @@ export default {
           .then((res) => {
             this.getHomeMedicines();
 
-            console.log(res);
+            // console.log(res);
             if (res.status === 201) {
             }
             this.$nuxt.$loading.finish();

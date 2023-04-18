@@ -238,7 +238,7 @@ export default {
           .then((res) => {
             this.getAppointments();
 
-            console.log(res);
+            // console.log(res);
             if (res.status === 201) {
             }
             this.$nuxt.$loading.finish();

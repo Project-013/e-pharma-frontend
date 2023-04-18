@@ -8,7 +8,14 @@
       >
         <div class="card h-100 p-2 _card">
           <div class="row g-3 card-body p-0">
-            <div
+            <NuxtLink :to="`/shop/product?productid=${product.id}`">
+              <img
+                :src="$config.apibaseURL + product.image"
+                :alt="product.name"
+                class="w-100"
+              />
+            </NuxtLink>
+            <!-- <div
               class="col-12 pointer"
               data-bs-toggle="modal"
               :data-bs-target="`#exampleModal${product.id}`"
@@ -18,7 +25,7 @@
                 :alt="product.name"
                 class="w-100"
               />
-            </div>
+            </div> -->
             <div class="col-12">
               <h6
                 class="mb-0 fw-bold text-uppercase-none pointer"
@@ -34,7 +41,9 @@
               <h6>
                 <span class="fw-bold">৳ </span>{{ product.offer }}
 
-                <del class="fw-normal text-danger ms-2" v-if="product.offer != product.price"
+                <del
+                  class="fw-normal text-danger ms-2"
+                  v-if="product.offer != product.price"
                   >৳ {{ product.price }}</del
                 >
               </h6>
@@ -65,7 +74,7 @@
             </button>
           </div>
 
-          <!-- Modal -->
+          <!-- Modal
           <div
             class="modal"
             :id="`exampleModal${product.id}`"
@@ -127,7 +136,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
