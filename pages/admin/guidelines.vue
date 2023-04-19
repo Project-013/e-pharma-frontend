@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="card shadow p-4 border-0">
+    <div class="card shadow p-4 border-0 m-3">
       <DataTable
         title="Guidelines"
         :columns="guidelines_columns"

@@ -77,7 +77,7 @@ export default {
 
   toast: {
     position: "top-center",
-    duration: 1500,
+    duration: 2500,
     action: [
       {
         text: "X",

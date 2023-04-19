@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="card shadow p-4 border-0">
+    <div class="card shadow p-4 m-3 border-0">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
           <button
