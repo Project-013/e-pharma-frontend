@@ -1,7 +1,7 @@
 <template>
   <header class="sticky-top" style="z-index: 99999">
     <div>
-      <nav class="navbar navbar-expand-lg bg-light ">
+      <nav class="navbar navbar-expand-sm bg-light border-bottom">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Navbar</a>
           <button
@@ -17,11 +17,14 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-            <div>
-              <NLink class="btn btn-sm btn-outline-secondary" to="/">
-                view website
-              </NLink>
-              <template v-if="$auth.loggedIn">
+            <div class="d-flex justify-content-center align-items-center">
+              <div class="me-3">
+                <NLink class="btn btn-sm btn-outline-secondary" to="/">
+                  View website
+                </NLink>
+              </div>
+
+              <div v-if="$auth.loggedIn">
                 <span class="dropdown text-light">
                   <a
                     class="dropdown-toggle text-dark border rounded p-2 text-decoration-none"
@@ -66,58 +69,78 @@
                     </li>
                   </ul>
                 </span>
-              </template>
+              </div>
             </div>
           </div>
         </div>
       </nav>
     </div>
     <div class="admin_menu card h-100 bg-light p-0 m-0 border-0 shadow">
-      <NLink class=" p-2  text-dark bg-light border-0" to="/admin">
+      <NLink class="text-dark bg-light border-bottom p-3 mb-2" to="/admin">
         <img
           src="~/static/img/logo.png"
           alt="sasthosebok.com"
           class=""
           width="35"
         />
-       <span class="text-muted fw-semibold"> Admin Dashboard</span>
-
+        <span class="text-muted fw-semibold"> Admin Dashboard</span>
       </NLink>
-      <hr class="mt-0 mb-4">
+      <!-- <hr class="mt-0 mb-4" /> -->
       <div class="top card-body d-flex flex-column p-1">
-        <NuxtLink class="text-muted fw-semibold  app-nav-item" to="/admin">
+        <NuxtLink class="text-muted fw-semibold app-nav-item" to="/admin">
           <i class="icofont-dashboard me-2"></i>Dashboard
         </NuxtLink>
-
-        <NuxtLink to="/admin/customers" class="text-muted fw-semibold  app-nav-item">
+        <NuxtLink
+          to="/admin/customers"
+          class="text-muted fw-semibold app-nav-item"
+        >
           <i class="icofont-users me-2"></i>Customers
         </NuxtLink>
-        <NuxtLink class="text-muted fw-semibold  app-nav-item" to="/admin/analytics">
+        <NuxtLink
+          class="text-muted fw-semibold app-nav-item"
+          to="/admin/analytics"
+        >
           <i class="icofont-chart-histogram me-2"></i>Analytics
         </NuxtLink>
-        <NuxtLink class="text-muted fw-semibold  app-nav-item" to="/admin/doctors">
-          <i class="icofont-doctor-alt me-2"></i>Doctors
+        <NuxtLink
+          class="text-muted fw-semibold app-nav-item"
+          to="/admin/messages"
+        >
+          <i class="icofont-ui-messaging me-2"></i>Messages
         </NuxtLink>
-        <NuxtLink class="text-muted fw-semibold  app-nav-item" to="/admin/shop">
-          <i class="icofont-cart me-2"></i>Shop
-        </NuxtLink>
-        <NuxtLink class="text-muted fw-semibold  app-nav-item" to="/admin/reports">
+        <NuxtLink
+          class="text-muted fw-semibold app-nav-item"
+          to="/admin/reports"
+        >
           <i class="icofont-exclamation-tringle me-2"></i>Reports
         </NuxtLink>
-        <NuxtLink class="text-muted fw-semibold  app-nav-item" to="/admin/partners">
+        <NuxtLink
+          class="text-muted fw-semibold app-nav-item"
+          to="/admin/doctors"
+        >
+          <i class="icofont-doctor-alt me-2"></i>Doctors
+        </NuxtLink>
+        <NuxtLink class="text-muted fw-semibold app-nav-item" to="/admin/shop">
+          <i class="icofont-cart me-2"></i>Shop
+        </NuxtLink>
+
+        <NuxtLink
+          class="text-muted fw-semibold app-nav-item"
+          to="/admin/partners"
+        >
           <i class="icofont-ui-user-group me-2"></i>Partners
         </NuxtLink>
-        <NuxtLink class="text-muted fw-semibold  app-nav-item" to="/admin/guidelines">
+        <NuxtLink
+          class="text-muted fw-semibold app-nav-item"
+          to="/admin/guidelines"
+        >
           <i class="icofont-ebook me-2"></i>Guidelines
         </NuxtLink>
-        <NuxtLink class="text-muted fw-semibold  app-nav-item" to="/admin/blog">
+        <NuxtLink class="text-muted fw-semibold app-nav-item" to="/admin/blog">
           <i class="icofont-blogger me-2"></i>Blog
         </NuxtLink>
-        <NuxtLink class="text-muted fw-semibold  app-nav-item" to="/admin/faq">
+        <NuxtLink class="text-muted fw-semibold app-nav-item" to="/admin/faq">
           <i class="icofont-support-faq me-2"></i>FAQs
-        </NuxtLink>
-        <NuxtLink class="text-muted fw-semibold  app-nav-item" to="/admin/messages">
-          <i class="icofont-support-faq me-2"></i>Messages
         </NuxtLink>
       </div>
       <div
@@ -166,8 +189,8 @@ export default {
 };
 </script>
 <style scoped>
-i{
-  font-size: 22px!important;
+i {
+  font-size: 22px !important;
 }
 .admin_menu {
   height: 100vh;
@@ -180,7 +203,7 @@ i{
 .nuxt-link-exact-active {
   /* color: var(--secondary-text) !important; */
   color: #0d6efd !important;
-    padding-left: 10px;
+  padding-left: 10px;
   background: #ededf1;
   border-left: 3px solid #084092;
 }

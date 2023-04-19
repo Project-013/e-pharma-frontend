@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import DoctorSlider from '~/components/Partials/DoctorSlider.vue';
+import DoctorSlider from "~/components/Partials/DoctorSlider.vue";
 export default {
   components: { DoctorSlider },
   head() {
@@ -96,7 +96,7 @@ export default {
     };
   },
   computed: {
-        isApp() {
+    isApp() {
       return window.innerWidth < 767;
     },
     get_doctors() {
