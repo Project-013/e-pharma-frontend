@@ -164,14 +164,14 @@
         id="offcanvasRight"
         aria-labelledby="offcanvasRightLabel"
       >
-        <div class="offcanvas-header">
+        <div class="offcanvas-header my-0 py-0">
           <button
             type="button"
-            class="btn-close ms-auto"
+            class="btn-close ms-auto my-0 pt-2"
             @click="toggleNavbar"
           ></button>
         </div>
-        <div class="offcanvas-body">
+        <div class="offcanvas-body p-2">
           <div class="card h-100 p-0 m-0 border-0">
             <div class="top card-body d-flex flex-column p-1 ps-3">
               <NuxtLink class="text-muted fw-semibold pb-3 app-nav-item" to="/">
@@ -272,6 +272,12 @@
               <span class="visually-hidden">unread messages</span>
             </span>
           </NuxtLink>
+          <NuxtLink
+            to="/admin"
+            v-if="this.$auth.user && this.$auth.user.is_admin"
+          >
+            <i class="icofont-dashboard text-light h1"></i>
+          </NuxtLink>
           <NuxtLink to="/shop/cart" class="mx-3 position-relative">
             <i class="icofont-shopping-cart text-light h1"></i>
             <span
@@ -329,12 +335,17 @@ export default {
   color: #0d6efd !important;
 }
 .app-nav-item {
-  font-size: 12px !important;
-  transition: padding ease-in 0.4s;
+  /* width: 200px; */
+  transition: all ease-in-out 0.3s;
+  margin-bottom: 1px;
+  font-size: 12.5px !important;
+  padding: 7px 0;
 }
 .app-nav-item:hover {
-  padding-left: 10px;
+  padding-left: 25px;
   color: #084092 !important;
+  background: #e2e3f0;
+  border-left: 3px solid #084092;
 }
 
 /* .mobile_nav .nav-link {

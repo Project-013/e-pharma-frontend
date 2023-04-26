@@ -74,7 +74,7 @@
           <h6 class="small text-center mt-2 fw-semibold">Home Physiotherapist</h6>
         </NuxtLink>
       </div>
-      <div class="col-lg-2 col-md-3 col-4 d-none">
+      <div class="col-lg-2 col-md-3 col-4">
         <NuxtLink to="/medicine">
           <img
             src="/img/services/medicines.png"
@@ -104,7 +104,7 @@
           <h6 class="small text-center mt-2 fw-semibold">Home Sample Collection</h6>
         </NuxtLink>
       </div>
-      <div class="col-lg-2 col-md-3 col-4 d-none">
+      <div class="col-lg-2 col-md-3 col-4">
         <NuxtLink to="/ambulance">
           <img
             src="/img/services/ambulance.png"

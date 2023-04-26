@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="card shadow p-4 m-3 border-0">
+    <div class="card shadow p-2 my-3 border-0">
       <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
           <button
@@ -39,7 +39,12 @@
           aria-labelledby="home-tab"
           tabindex="0"
         >
-          <DataTable title="FAQs" :columns="faqs_columns" :rows="faqs_rows" />
+          <DataTable
+            title="FAQs"
+            :columns="faqs_columns"
+            :rows="faqs"
+            class="table-responsive"
+          />
         </div>
         <div
           class="tab-pane fade"
@@ -51,7 +56,8 @@
           <DataTable
             title="BMI FAQs"
             :columns="faqs_columns"
-            :rows="bmifaqs_rows"
+            :rows="bmifaqs"
+            class="table-responsive"
           />
         </div>
       </div>
@@ -77,24 +83,6 @@ export default {
     };
   },
   computed: {
-    faqs_rows() {
-      const data = [];
-      for (let faq of this.faqs) {
-        console.log(faq);
-        const { ques, ans } = faq;
-        data.push({ ques, ans });
-      }
-      return data;
-    },
-    bmifaqs_rows() {
-      const data = [];
-      for (let faq of this.bmifaqs) {
-        console.log(faq);
-        const { ques, ans } = faq;
-        data.push({ ques, ans });
-      }
-      return data;
-    },
   },
   methods: {
     async getFaqs() {
@@ -142,5 +130,4 @@ export default {
 
 <style>
 /* Materialize Table style */
-
 </style>

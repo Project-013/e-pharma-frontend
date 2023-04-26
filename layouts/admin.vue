@@ -1,14 +1,15 @@
 <template>
-  <div class="root ">
-      <AdminNavbar />
-      <Nuxt style="margin-left:210px"/>
+  <div class="root bg-light">
+    <AdminNavbar />
+    <div class="admin_root">
+      <Nuxt />
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  computed: {
-  },
+  computed: {},
   mounted() {
     this.$store.dispatch("doctors/getDoctors");
     this.$store.dispatch("product/getProduct");
@@ -17,8 +18,8 @@ export default {
 };
 </script>
 
-<style >
-@import url(http://fonts.googleapis.com/icon?family=Material+Icons);
+<style>
+/* @import url(http://fonts.googleapis.com/icon?family=Material+Icons); */
 .sorting {
   /* font-size: 16px !important; */
   font-weight: 500 !important;
@@ -31,7 +32,16 @@ table tr td {
 ul.material-pagination {
   list-style-type: none;
 }
-.nuxt_root {
+.root {
   min-height: 100vh !important;
+}
+.admin_root {
+    margin-left: 210px;
+
+}
+@media only screen and (max-width: 768px) {
+  .admin_root {
+    margin-left: 0px;
+  }
 }
 </style>

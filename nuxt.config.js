@@ -14,7 +14,10 @@ export default {
     },
     meta: [
       { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1, user-scalable=no" },
+      {
+        name: "viewport",
+        content: "width=device-width, initial-scale=1, user-scalable=no",
+      },
       {
         hid: "description",
         name: "description",
@@ -30,7 +33,14 @@ export default {
       { name: "author", content: "Sajib Sutradhar" },
       { name: "format-detection", content: "telephone=no" },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/img/logo.png" }],
+    link: [
+      { rel: "icon", type: "image/x-icon", href: "/img/logo.png" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/icon?family=Material+Icons",
+      },
+    ],
+
     script: [
       {
         src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3545205458668722",
@@ -56,7 +66,7 @@ export default {
     //   src: "~/plugins/tawk-messenger.client.js",
     //   mode: "client",
     // },
-    { src: '~/plugins/materialize-table.js', mode: 'client' },
+    { src: "~/plugins/materialize-table.js", mode: "client" },
     { src: "~/plugins/vuex-persist.js", mode: "client" },
   ],
 
@@ -77,7 +87,7 @@ export default {
 
   toast: {
     position: "top-center",
-    duration: 2500,
+    duration: 5000,
     action: [
       {
         text: "X",

@@ -1,14 +1,14 @@
 <template>
   <div class="container">
-    <div class="card shadow p-4 border-0 m-3">
+    <div class="card shadow p-0 border-0 my-3">
       <DataTable
         title="Guidelines"
         :columns="guidelines_columns"
-        :rows="guidelines_rows"
+        :rows="guidelines"
       >
         <th slot="thead-tr">Actions</th>
         <template slot="tbody-tr" slot-scope="props">
-          <td>
+          <td style="width: 190px">
             <a
               :href="props.row.paper"
               target="_blank"
@@ -54,17 +54,7 @@ export default {
       title: "Admin || Guidelines ",
     };
   },
-  computed: {
-    guidelines_rows() {
-      const data = [];
-      for (let guideline of this.guidelines) {
-        console.log(guideline);
-        const { title, paper } = guideline;
-        data.push({ title, paper: this.$config.apibaseURL + paper });
-      }
-      return data;
-    },
-  },
+  computed: {},
   data() {
     return {
       guidelines: [],
