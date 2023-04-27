@@ -1,21 +1,18 @@
 <template>
   <div class="container pb-5 pt-3 mb-5">
-    <!-- {{genericList}} -->
+    <!-- {{drugs}} -->
     <div class="col-md-5 mx-auto">
-      <h6>Drugs by Generic</h6>
-      <ul
-        class="list-group"
-        v-for="(generic, index) in genericList"
-        :key="index"
-      >
+      <h6 class="mb-3">Drugs by Brand</h6>
+
+      <ul class="list-group" v-for="(Brand, index) in BrandList" :key="index">
         <li class="list-group-item my-1">
           <NuxtLink
-            :to="`/dims/drugs?generic=${generic}`"
+            to="/dimd"
             class="link-dark fw-semibold small d-flex justify-content-center align-items-center"
           >
             <div>
-              <img src="/img/services/pills2.png" width="20" class="me-2" />
-              {{ generic }}
+              <img src="/img/services/drugs.png" width="20" class="me-2" />
+              {{ Brand }}
             </div>
             <i class="icofont-arrow-right ms-auto"></i>
           </NuxtLink>
@@ -31,16 +28,16 @@ export default {
     drugs() {
       return this.$store.getters["product/drugs"];
     },
-    genericList() {
-      const generic = [];
+    BrandList() {
+      const brand_arr = [];
       for (const drug of this.drugs) {
-        const generic_name = drug.generic_name;
-        // console.log(drug.generic_name);
-        if (!generic.includes(generic_name)) {
-          generic.push(generic_name);
+        const brand_name = drug.brand_name;
+        // console.log(drug.Brand_name);
+        if (!brand_arr.includes(brand_name)) {
+          brand_arr.push(brand_name);
         }
       }
-      return generic;
+      return brand_arr;
     },
   },
 };

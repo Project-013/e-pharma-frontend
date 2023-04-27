@@ -2,16 +2,16 @@
   <div class="container pb-5 pt-3 mb-5">
     <div class="row g-2 justify-content-center">
       <div class="col-lg-2 col-md-3 col-4">
-        <NuxtLink to="/dims/drugs">
+        <NuxtLink to="/dimd/drugs">
           <img
             src="/img/services/drugs.png"
             class="mx-auto d-block pointer border p-2 rounded service_image"
           />
-          <h6 class="small text-center mt-2 fw-semibold">Drug by Brand</h6>
+          <h6 class="small text-center mt-2 fw-semibold">Search</h6>
         </NuxtLink>
       </div>
       <div class="col-lg-2 col-md-3 col-4">
-        <NuxtLink to="/dims/generic">
+        <NuxtLink to="/dimd/generic">
           <img
             src="/img/services/pills2.png"
             class="mx-auto d-block pointer border p-2 rounded service_image"

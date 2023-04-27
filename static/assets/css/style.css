@@ -29,6 +29,9 @@
 body {
   font-family: var(--primary-font);
   background-color: var(--bg-white);
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 a {

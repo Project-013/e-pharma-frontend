@@ -141,12 +141,12 @@
         </NuxtLink>
       </div>
       <div class="col-lg-2 col-md-3 col-4">
-        <NuxtLink to="/dims">
+        <NuxtLink to="/dimd">
           <img
             src="/img/services/pills.png"
             class="mx-auto d-block pointer border p-2 rounded service_image"
           />
-          <h6 class="small text-center mt-2 fw-semibold">DIMS</h6>
+          <h6 class="small text-center mt-2 fw-semibold">DIMD</h6>
         </NuxtLink>
       </div>
     </div>

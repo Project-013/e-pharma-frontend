@@ -39,7 +39,7 @@
       </div>
       <ul class="list-group" v-for="(drug, index) in sortedDrugs" :key="index">
         <li
-          class="list-group-item my-1"
+          class="list-group-item my-1 shadow-sm bg-light rounded"
           style="cursor:pointer;"
           data-bs-toggle="modal"
           :data-bs-target="`#exampleModal${index}`"
@@ -49,7 +49,7 @@
               class="col-4 d-flex flex-column justify-content-center align-items-center position-relative"
             >
               <span
-                class="fw-semibold medicine_type text-primary border border-primary mb-1"
+                class="fw-bold medicine_type text-primary border border-primary mb-1 bg-white"
                 >{{ drug.medicine_type }}</span
               >
               <img src="/img/services/drugs.png" width="40" class="my-4" />
@@ -147,9 +147,10 @@ export default {
   padding: 2px 6px;
   width: 100%;
   text-align: center;
-  border-radius: 12px 0px;
+  border-radius: 15px 0px;
   position: absolute;
-  top: 0;
+  top: -13px;
+  left: -8px;
   /* background-color: #eceff3; */
 }
 h6{
