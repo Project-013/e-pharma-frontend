@@ -1,5 +1,5 @@
 <template>
-  <header class="sticky-top" style="z-index: 99999">
+  <header class="sticky-top" style="z-index: 999">
     <div
       class="navbar border-bottom bg-light d-flex justify-content-start d-none"
     >
@@ -336,7 +336,10 @@ export default {
 }
 .app-nav-item {
   /* width: 200px; */
-  transition: all ease-in-out 0.3s;
+  -webkit-transition: background-color 2s ease-out;
+  -moz-transition: background-color 2s ease-out;
+  -o-transition: background-color 2s ease-out;
+  transition: background-color 2s ease-out;
   margin-bottom: 1px;
   font-size: 12.5px !important;
   padding: 7px 0;
@@ -344,7 +347,7 @@ export default {
 .app-nav-item:hover {
   padding-left: 25px;
   color: #084092 !important;
-  background: #e2e3f0;
+  background-color: #e2e3f0;
   border-left: 3px solid #084092;
 }
 

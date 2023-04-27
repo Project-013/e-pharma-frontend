@@ -140,6 +140,15 @@
           <h6 class="small text-center mt-2 fw-semibold">Children's home care services</h6>
         </NuxtLink>
       </div>
+      <div class="col-lg-2 col-md-3 col-4">
+        <NuxtLink to="/dims">
+          <img
+            src="/img/services/pills.png"
+            class="mx-auto d-block pointer border p-2 rounded service_image"
+          />
+          <h6 class="small text-center mt-2 fw-semibold">DIMS</h6>
+        </NuxtLink>
+      </div>
     </div>
   </div>
 </template>
@@ -161,7 +170,7 @@ h6 {
 }
 @media only screen and (max-width: 600px) {
   h6 {
-    font-size: 50% !important;
+    font-size: 60% !important;
   }
   .service_image {
     width: 80px;

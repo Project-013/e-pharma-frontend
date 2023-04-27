@@ -13,6 +13,8 @@ export default {
   mounted() {
     this.$store.dispatch("doctors/getDoctors");
     this.$store.dispatch("product/getProduct");
+    this.$store.dispatch("product/getDrugs");
+
     console.log("Called Data!");
   },
 };

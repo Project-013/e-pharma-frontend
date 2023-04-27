@@ -1,9 +1,11 @@
 export const state = () => ({
   country_code: [],
   accept: false,
+
 });
 
 export const getters = {
+
   CountryCode(state) {
     return state.country_code;
   },
@@ -13,6 +15,7 @@ export const getters = {
 };
 
 export const mutations = {
+
   setCountryCodes(state, country_code) {
     state.country_code = country_code;
   },
@@ -43,4 +46,7 @@ export const actions = {
         // context.commit('error', error)
       });
   },
+
+
+
 };

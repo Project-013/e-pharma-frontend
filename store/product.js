@@ -2,6 +2,8 @@ export const state = () => ({
   product: [],
   items: [],
   cost: "",
+  drugs: [],
+
   // total_cost: "",
 });
 
@@ -15,6 +17,9 @@ export const getters = {
   cost(state) {
     return state.cost;
   },
+  drugs(state) {
+    return state.drugs;
+  },
 };
 
 export const mutations = {
@@ -26,6 +31,9 @@ export const mutations = {
   },
   setcost(state, cost) {
     state.cost = cost;
+  },
+  setDrugs(state, drugs) {
+    state.drugs = drugs;
   },
 };
 
@@ -41,6 +49,24 @@ export const actions = {
         // console.log(res.data);
         if (res.status === 200) {
           commit("setProduct", res.data);
+        }
+      })
+      .catch((error) => {
+        // console.log(error.response.data.message || error.message)
+        context.commit("error", error);
+      });
+  },
+  async getDrugs({ commit }) {
+    this.$axios
+      .get(`shop/medicine/`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        if (res.status === 200) {
+          commit("setDrugs", res.data);
         }
       })
       .catch((error) => {
