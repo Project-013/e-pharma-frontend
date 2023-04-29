@@ -16,7 +16,7 @@
               type="search"
               class="form-control border-0 my-0"
               placeholder="Search By Company Name"
-              v-model="brand_name"
+              v-model="company"
             />
           </div>
         </div>
@@ -59,7 +59,7 @@
               <p class="my-0 py-0">{{ drug.weight }}</p>
               <p class="my-0 py-0">{{ drug.generic_name }}</p>
               <p class="my-0 py-0 fw-semibold text-success">
-                {{ drug.brand_name }}
+                {{ drug.company }}
               </p>
             </div>
           </div>
@@ -125,9 +125,9 @@ export default {
               .includes(this.medicine_name.toUpperCase())
           : true;
       });
-      drug_list = drug_list.filter(({ brand_name }) => {
-        return this.brand_name
-          ? brand_name.toUpperCase().includes(this.brand_name.toUpperCase())
+      drug_list = drug_list.filter(({ company }) => {
+        return this.company
+          ? company.toUpperCase().includes(this.company.toUpperCase())
           : true;
       });
       return drug_list;
@@ -136,7 +136,7 @@ export default {
   data() {
     return {
       medicine_name: "",
-      brand_name: "",
+      company: "",
     };
   },
 };
