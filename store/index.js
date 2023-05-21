@@ -1,26 +1,39 @@
 export const state = () => ({
   country_code: [],
   accept: false,
-
+  doctor_info: {
+    name: "Dr. ABCD",
+    qualifications: "MBBS, BCS (Health), MD (Cardiology) \nFCPS (Cardiology)",
+    specialist: "Cardiology Specialist",
+    experience:
+      "Assistant Professor \nSylhet MAG Osmani Medical College & Hospital.",
+    chamber: "ট্রাস্ট মেডিকেল লিঃ, কাজলশাহ ,সিলেট",
+    chamber_time:
+      "প্রতিদিন- বিকাল ৫টা থেকে রাত ৮টা \nশনি থেকে বৃহস্পতিবার (শুক্রবার বন্ধ)",
+  },
 });
 
 export const getters = {
-
   CountryCode(state) {
     return state.country_code;
   },
   isAccept(state) {
     return state.accept;
   },
+  getDoctor(state) {
+    return state.doctor_info;
+  },
 };
 
 export const mutations = {
-
   setCountryCodes(state, country_code) {
     state.country_code = country_code;
   },
   setAccept(state, accept) {
     state.accept = accept;
+  },
+  setDoctor(state, doctor_info) {
+    state.doctor_info = doctor_info;
   },
 };
 
@@ -46,7 +59,4 @@ export const actions = {
         // context.commit('error', error)
       });
   },
-
-
-
 };

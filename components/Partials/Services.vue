@@ -33,7 +33,9 @@
             src="/img/services/003-nurse.png"
             class="mx-auto d-block pointer border p-2 rounded service_image"
           />
-          <h6 class="small text-center mt-2 fw-semibold">Home Nursing / Caregivers</h6>
+          <h6 class="small text-center mt-2 fw-semibold">
+            Home Nursing / Caregivers
+          </h6>
         </NuxtLink>
       </div>
       <div class="col-lg-2 col-md-3 col-4 d-none">
@@ -62,7 +64,9 @@
             src="/img/services/report.png"
             class="mx-auto d-block pointer border p-2 rounded service_image"
           />
-          <h6 class="small text-center mt-2 fw-semibold">International Journal/ Guidelines</h6>
+          <h6 class="small text-center mt-2 fw-semibold">
+            International Journal/ Guidelines
+          </h6>
         </NuxtLink>
       </div>
       <div class="col-lg-2 col-md-3 col-4 d-none">
@@ -71,7 +75,9 @@
             src="/img/services/phy.png"
             class="mx-auto d-block pointer border p-2 rounded service_image"
           />
-          <h6 class="small text-center mt-2 fw-semibold">Home Physiotherapist</h6>
+          <h6 class="small text-center mt-2 fw-semibold">
+            Home Physiotherapist
+          </h6>
         </NuxtLink>
       </div>
       <div class="col-lg-2 col-md-3 col-4">
@@ -101,7 +107,9 @@
             class="mx-auto d-block pointer border p-2 rounded service_image"
           />
           <!-- <h6 class="small text-center mt-2 fw-semibold">Mobile Diagnostic</h6> -->
-          <h6 class="small text-center mt-2 fw-semibold">Home Sample Collection</h6>
+          <h6 class="small text-center mt-2 fw-semibold">
+            Home Sample Collection
+          </h6>
         </NuxtLink>
       </div>
       <div class="col-lg-2 col-md-3 col-4">
@@ -119,7 +127,9 @@
             src="/img/services/oxygen.png"
             class="mx-auto d-block pointer border p-2 rounded service_image"
           />
-          <h6 class="small text-center mt-2 fw-semibold">Emergency Oxygen home delivery</h6>
+          <h6 class="small text-center mt-2 fw-semibold">
+            Emergency Oxygen home delivery
+          </h6>
         </NuxtLink>
       </div>
       <div class="col-lg-2 col-md-3 col-4 d-none">
@@ -137,7 +147,9 @@
             src="/img/services/feeding.png"
             class="mx-auto d-block pointer border p-2 rounded service_image"
           />
-          <h6 class="small text-center mt-2 fw-semibold">Children's home care services</h6>
+          <h6 class="small text-center mt-2 fw-semibold">
+            Children's home care services
+          </h6>
         </NuxtLink>
       </div>
       <div class="col-lg-2 col-md-3 col-4">
@@ -146,7 +158,9 @@
             src="/img/services/pills.png"
             class="mx-auto d-block pointer border p-2 rounded service_image"
           />
-          <h6 class="small text-center mt-2 fw-semibold">DIMD (Drug & Medicine information for Doctor)</h6>
+          <h6 class="small text-center mt-2 fw-semibold">
+            DIHP (Drug information for healthcare professional)
+          </h6>
         </NuxtLink>
       </div>
     </div>

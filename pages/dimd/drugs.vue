@@ -87,7 +87,7 @@
               <div class="modal-body">
                 <div class="card border-0 h-100 p-0">
                   <div class="card-body p- py-3">
-                    <pre class="fw-normal">{{drug.description}}</pre>
+                    <pre class="fw-normal" v-html="drug.description"></pre>
                   </div>
                 </div>
               </div>
@@ -106,7 +106,8 @@
 export default {
   computed: {
     generic() {
-      return this.$route.query.generic;
+
+      return this.$route.query.generic ? this.$route.query.generic.replace(/-plus-/g,'+') : this.$route.query.generic;
     },
     drugs() {
       return this.$store.getters["product/drugs"];

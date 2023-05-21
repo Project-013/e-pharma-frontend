@@ -29,8 +29,8 @@
           <h6 class="small text-center mt-2 fw-semibold">Guidelines</h6>
         </NuxtLink>
       </div>
-      <div class="col-lg-2 col-md-3 col-4 d-none">
-        <NuxtLink to="/prescription">
+      <div class="col-lg-2 col-md-3 col-4 d-md-block d-none">
+        <NuxtLink to="/prescription" class="d-none">
           <img
             src="/img/services/prescription.png"
             class="mx-auto d-block pointer border p-2 rounded service_image"
