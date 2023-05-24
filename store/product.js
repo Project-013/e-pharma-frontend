@@ -53,7 +53,7 @@ export const actions = {
       })
       .catch((error) => {
         // console.log(error.response.data.message || error.message)
-        context.commit("error", error);
+        commit("error", error);
       });
   },
   async getDrugs({ commit }) {
@@ -71,7 +71,7 @@ export const actions = {
       })
       .catch((error) => {
         // console.log(error.response.data.message || error.message)
-        context.commit("error", error);
+        commit("error", error);
       });
   },
 

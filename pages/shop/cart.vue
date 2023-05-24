@@ -185,10 +185,10 @@ export default {
           })
           .catch((error) => {
             this.$toast.error("Error found! Try again");
-            console.log(error.response);
+            // console.log(error.response);
 
             this.$nuxt.$loading.finish();
-            console.log(error.message || error.response.data.message);
+            // console.log(error.message || error.response.data.message);
           });
 
         this.disable_btn = false;

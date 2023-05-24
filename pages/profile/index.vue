@@ -163,14 +163,14 @@ export default {
         .get(`blog/?user=${this.$auth.user.id}`)
         // .get(`blog/`)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           if (res.status === 200) {
             this.blogs = res.data;
           }
         })
         .catch((error) => {
-          console.log(error.response);
-          console.log(error.response.data.message || error.message);
+          // console.log(error.response);
+          // console.log(error.response.data.message || error.message);
           // context.commit('error', error)
         });
     },

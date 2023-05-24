@@ -1,16 +1,18 @@
 <template>
   <div>
-    <AppRegister v-if="!$auth.$state.loggedIn" />
+    <!-- <AppRegister v-if="!$auth.$state.loggedIn" />
     <div v-else>
       <PartialsTopInfo />
       <CommonSection />
-    </div>
+    </div> -->
+    <PartialsTopInfo />
+    <CommonSection />
   </div>
 </template>
 
 <script>
 export default {
-   mounted(){
+  mounted() {
     console.log("Called! app");
   },
   beforeCreate() {

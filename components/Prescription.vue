@@ -301,7 +301,7 @@
                 </ul>
               </div>
               <div class="pb-2">
-                <h6 class="small mb-0 pb-0">investigations</h6>
+                <h6 class="small mb-0 pb-0">Investigations</h6>
 
                 <ul class="ps-4">
                   <template v-for="(data, index) in information.investigations">

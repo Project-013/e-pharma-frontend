@@ -86,8 +86,8 @@ export default {
             this.$nuxt.$loading.finish();
           })
           .catch((error) => {
-            console.log(error.response);
-            console.log(error.response.data.message || error.message);
+            // console.log(error.response);
+            // console.log(error.response.data.message || error.message);
             this.$nuxt.$loading.finish();
             // context.commit('error', error)
           });

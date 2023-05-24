@@ -182,15 +182,15 @@ export default {
 
         try {
           this.$axios
-            .post(`send-otp/`, data, {
+            .post(`sent-otp/`, data, {
               headers: {
                 "Content-Type": "application/json",
               },
             })
             .then((res) => {
-              console.log(res);
+              // console.log(res);
               if (res.status === 201) {
-                console.log(res.data);
+                // console.log(res.data);
                 this.$toast.info("Please enter verification code... ");
                 this.form_data.otp_status = true;
                 this.form_data.count_down = 60;
@@ -200,15 +200,15 @@ export default {
               this.$nuxt.$loading.finish();
             })
             .catch((error) => {
-              console.log(error.response);
+              // console.log(error.response);
               this.$nuxt.$loading.finish();
 
-              console.log(error.message || error.response.data.message);
+              // console.log(error.message || error.response.data.message);
             });
         } catch (e) {
           this.$nuxt.$loading.finish();
 
-          console.log(e.response);
+          // console.log(e.response);
           this.$toast.error("Error Found! Try again...");
         }
         this.disable_btn = false;
@@ -230,7 +230,7 @@ export default {
           this.$toast.error("Login failed! Try again");
         }
       } catch (e) {
-        console.log(e.response);
+        // console.log(e.response);
         this.$toast.error("Login failed! Try again");
       }
       this.disable_btn2 = false;

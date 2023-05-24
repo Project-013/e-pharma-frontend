@@ -67,7 +67,7 @@ export default {
     //   mode: "client",
     // },
     { src: "~/plugins/materialize-table.js", mode: "client" },
-    { src: "~/plugins/vuex-persist.js", mode: "client" },
+    // { src: "~/plugins/vuex-persist.js", mode: "client" },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -141,5 +141,7 @@ export default {
     // type: "v1",
     uniProject: false,
     isApp: false,
+    // apiToken2: "y6&kvg54iu%!tg!aoas9d+$titza-d9w6%*6%f@4v1w5x=l(+9",
+
   },
 };

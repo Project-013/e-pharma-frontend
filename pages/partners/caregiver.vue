@@ -383,7 +383,7 @@ export default {
       reader.readAsDataURL(image);
       reader.onload = (e) => {
         this.previewImage = e.target.result;
-        console.log(this.image_url["name"]);
+        // console.log(this.image_url["name"]);
       };
     },
     async submitForm() {
@@ -412,7 +412,7 @@ export default {
             this.$nuxt.$loading.finish();
           })
           .catch((error) => {
-            console.log(error.response);
+            // console.log(error.response);
             if (error.response && error.response.data) {
               const err_data = error.response.data;
               if (err_data.mobile || err_data.nid) {
@@ -425,7 +425,7 @@ export default {
             }
 
             this.$nuxt.$loading.finish();
-            console.log(error.message || error.response.data.message);
+            // console.log(error.message || error.response.data.message);
           });
 
         this.disable_btn = false;

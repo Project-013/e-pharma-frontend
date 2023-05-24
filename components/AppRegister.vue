@@ -234,9 +234,11 @@ export default {
         };
         try {
           this.$axios
-            .post(`send-otp/`, data, {
+            .post(`sent-otp/`, data, {
               headers: {
                 "Content-Type": "application/json",
+                //  Authorization: "Bearer " + this.$config.apiToken2,
+
               },
             })
             .then((res) => {
