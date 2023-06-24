@@ -2,15 +2,16 @@ export const state = () => ({
   country_code: [],
   accept: false,
   doctor_info: {
-    name: "Dr. ABCD",
-    qualifications: "MBBS, BCS (Health), MD (Cardiology) \nFCPS (Cardiology)",
-    specialist: "Cardiology Specialist",
-    experience:
-      "Assistant Professor \nSylhet MAG Osmani Medical College & Hospital.",
-    chamber: "ট্রাস্ট মেডিকেল লিঃ, কাজলশাহ ,সিলেট",
-    chamber_time:
-      "প্রতিদিন- বিকাল ৫টা থেকে রাত ৮টা \nশনি থেকে বৃহস্পতিবার (শুক্রবার বন্ধ)",
-  },
+      name: "Dr. Miton Chandra Paul",
+      qualifications:
+        "MBBS,FCPS,(Medicine), MCPS(Medicine), BCS(Health)",
+      specialist: "Medicine Specialist",
+      experience:
+        "Medical Officer \nSylhet MAG Osmani Medical College & Hospital.",
+      chamber: "Comfort Medical Services, Kajalshah, Sylhet.",
+      chamber_time:
+        "প্রতিদিন- বিকাল ৩টা থেকে রাত ৮টা \nশনি থেকে বৃহস্পতিবার (শুক্রবার বন্ধ)",
+    },
 });
 
 export const getters = {

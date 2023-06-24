@@ -6,7 +6,7 @@
           <img src="/img/cards/Nurse_resize.jpg" class="d-block w-100" />
         </div>
         <div class="col-md-5 p-3">
-          <h3 class="text-dark mb-3">হোম নার্সিং/কেয়ারগিভার সেবা</h3>
+          <h3 class="text-dark mb-3">হোম নার্সিং</h3>
           <p class="text-justify _service_desc">
             নবজাতক গর্ভবতী মা কিংবা বয়োবৃদ্ধ সবার জন্য একটি ডেডিকেটেড পরিষেবা <strong class="text-primary">{{
               $config.uniProject ? "E-health" : "স্বাস্থ্যসেবক ডটকম"

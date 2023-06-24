@@ -10,9 +10,7 @@
             src="/img/services/001-advice.png"
             class="mx-auto d-block pointer border p-2 rounded service_image"
           />
-          <h6 class="small text-center mt-2 fw-semibold">
-            Doctor Service (Chamber Appointment/ Video call/ Home call)
-          </h6>
+          <h6 class="small text-center mt-2 fw-semibold">Doctors Service</h6>
         </NuxtLink>
       </div>
       <div class="col-lg-2 col-md-3 col-4 d-none">
@@ -28,14 +26,24 @@
         </NuxtLink>
       </div>
       <div class="col-lg-2 col-md-3 col-4">
-        <NuxtLink to="/nurse">
+        <NuxtLink to="/caregivers">
           <img
-            src="/img/services/003-nurse.png"
+            src="/img/services/caregivers1.png"
             class="mx-auto d-block pointer border p-2 rounded service_image"
           />
           <h6 class="small text-center mt-2 fw-semibold">
-            Home Nursing / Caregivers
+            Home Caregiver Service
           </h6>
+        </NuxtLink>
+      </div>
+
+      <div class="col-lg-2 col-md-3 col-4">
+        <NuxtLink to="/dimd">
+          <img
+            src="/img/services/pills.png"
+            class="mx-auto d-block pointer border p-2 rounded service_image"
+          />
+          <h6 class="small text-center mt-2 fw-semibold">DIHP</h6>
         </NuxtLink>
       </div>
       <div class="col-lg-2 col-md-3 col-4 d-none">
@@ -55,6 +63,37 @@
           />
           <h6 class="small text-center mt-2 fw-semibold">
             Video Call (Telemedicine)
+          </h6>
+        </NuxtLink>
+      </div>
+      <div class="col-lg-2 col-md-3 col-4">
+        <NuxtLink to="/nurse">
+          <img
+            src="/img/services/nurse.png"
+            class="mx-auto d-block pointer border p-2 rounded service_image"
+          />
+          <h6 class="small text-center mt-2 fw-semibold">Home Nursing</h6>
+        </NuxtLink>
+      </div>
+            <div class="col-lg-2 col-md-3 col-4">
+        <NuxtLink to="/oxygen">
+          <img
+            src="/img/services/oxygen.png"
+            class="mx-auto d-block pointer border p-2 rounded service_image"
+          />
+          <h6 class="small text-center mt-2 fw-semibold">
+            Emergency Oxygen home delivery
+          </h6>
+        </NuxtLink>
+      </div>
+            <div class="col-lg-2 col-md-3 col-4">
+        <NuxtLink to="/children-care">
+          <img
+            src="/img/services/feeding.png"
+            class="mx-auto d-block pointer border p-2 rounded service_image"
+          />
+          <h6 class="small text-center mt-2 fw-semibold">
+            Baby day care
           </h6>
         </NuxtLink>
       </div>
@@ -91,15 +130,7 @@
           </h6>
         </NuxtLink>
       </div>
-      <div class="col-lg-2 col-md-3 col-4 d-none">
-        <NuxtLink to="/caregivers">
-          <img
-            src="/img/services/caregivers1.png"
-            class="mx-auto d-block pointer border p-2 rounded service_image"
-          />
-          <h6 class="small text-center mt-2 fw-semibold">Caregivers</h6>
-        </NuxtLink>
-      </div>
+
       <div class="col-lg-2 col-md-3 col-4">
         <NuxtLink to="/diagnostic">
           <img
@@ -121,17 +152,7 @@
           <h6 class="small text-center mt-2 fw-semibold">Ambulance</h6>
         </NuxtLink>
       </div>
-      <div class="col-lg-2 col-md-3 col-4">
-        <NuxtLink to="/oxygen">
-          <img
-            src="/img/services/oxygen.png"
-            class="mx-auto d-block pointer border p-2 rounded service_image"
-          />
-          <h6 class="small text-center mt-2 fw-semibold">
-            Emergency Oxygen home delivery
-          </h6>
-        </NuxtLink>
-      </div>
+
       <div class="col-lg-2 col-md-3 col-4 d-none">
         <NuxtLink to="/blood">
           <img
@@ -141,28 +162,7 @@
           <h6 class="small text-center mt-2 fw-semibold">E-Blood Bank</h6>
         </NuxtLink>
       </div>
-      <div class="col-lg-2 col-md-3 col-4">
-        <NuxtLink to="/children-care">
-          <img
-            src="/img/services/feeding.png"
-            class="mx-auto d-block pointer border p-2 rounded service_image"
-          />
-          <h6 class="small text-center mt-2 fw-semibold">
-            Children's home care services
-          </h6>
-        </NuxtLink>
-      </div>
-      <div class="col-lg-2 col-md-3 col-4">
-        <NuxtLink to="/dimd">
-          <img
-            src="/img/services/pills.png"
-            class="mx-auto d-block pointer border p-2 rounded service_image"
-          />
-          <h6 class="small text-center mt-2 fw-semibold">
-            DIHP (Drug information for healthcare professional)
-          </h6>
-        </NuxtLink>
-      </div>
+
     </div>
   </div>
 </template>

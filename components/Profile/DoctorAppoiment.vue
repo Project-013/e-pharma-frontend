@@ -11,6 +11,7 @@
               <th scope="col">Date</th>
               <th scope="col">Doctor</th>
               <th scope="col">Status</th>
+              <th scope="col">Payment Status</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -40,6 +41,29 @@
                   "
                   >{{ appointment.service_status }}
                 </span>
+              </td>
+              <td>
+                <div class="">
+                  <span
+                    class="badge"
+                    :class="
+                      appointment.payment_status == `pending`
+                        ? 'text-bg-warning'
+                        : appointment.payment_status == `unpaid`
+                        ? 'text-bg-danger'
+                        : 'text-bg-success'
+                    "
+                    >{{ appointment.payment_status }}
+                  </span>
+
+
+                  <NuxtLink
+                  v-if="appointment.payment_status == `unpaid`"
+                    class="btn btn-sm  btn-success "
+                    :to="`/doctors/payment?id=${appointment.id}&amount=${appointment.fee}`"
+                    >Make Payment</NuxtLink
+                  >
+                </div>
               </td>
               <td>
                 <div class="d-flex">
@@ -125,7 +149,7 @@
               {{ appointment.details }}
             </p>
           </div>
-          <div class="col-sm-6 d-none">
+          <div class="col-sm-6">
             <p class="text-dark small mb-0 pb-0" v-if="appointment.fee != 0">
               Payment Status:
               <span

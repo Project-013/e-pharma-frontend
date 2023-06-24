@@ -2,8 +2,8 @@
   <div class="mb-5 pb-5">
     <div class="container">
       <div class="row g-4 justify-content-center bg-white py-5">
-        <div class="col-md-6" v-if="$route.query.type == 'payment'">
-          <div class="card shadow h-100 p-0">
+        <div class="col-md-6 d-none" v-if="$route.query.type == 'payment'">
+          <div class="card shadow h-100 p-0 ">
             <img src="/img/pay.jpeg" alt="" class="w-100" />
           </div>
         </div>
@@ -75,7 +75,7 @@
                     ></textarea>
                   </div>
                 </div>
-                <div class="d-none">
+                <div class="" v-if="$route.query.type == 'payment'">
                   <select
                     class="form-select form-select-sm"
                     v-model="appointment.payment_method"

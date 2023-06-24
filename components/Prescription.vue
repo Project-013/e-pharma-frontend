@@ -382,43 +382,61 @@ export default {
   data() {
     return {
       doctor: {
-        name: "Dr. Sajib Sutradhar",
+        name: "Dr. Miton Chandra Paul",
         qualifications:
-          "MBBS, BCS (Health), MD (Cardiology) \nFCPS (Cardiology)",
-        specialist: "Cardiology Specialist",
+          "MBBS,FCPS,(Medicine), MCPS(Medicine), BCS(Health)",
+        specialist: "Medicine Specialist",
         experience:
-          "Assistant Professor \nSylhet MAG Osmani Medical College & Hospital.",
-        chamber: "ট্রাস্ট মেডিকেল লিঃ, কাজলশাহ ,সিলেট",
+          "Medical Officer \nSylhet MAG Osmani Medical College & Hospital.",
+        chamber: "Comfort Medical Services, Kajalshah, Sylhet.",
         chamber_time:
-          "প্রতিদিন- বিকাল ৫টা থেকে রাত ৮টা \nশনি থেকে বৃহস্পতিবার (শুক্রবার বন্ধ)",
+          "প্রতিদিন- বিকাল ৩টা থেকে রাত ৮টা \nশনি থেকে বৃহস্পতিবার (শুক্রবার বন্ধ)",
       },
       patient: {
-        name: "Sajib Sutradhar",
-        age: "24",
+        name: "Pallob Das Roni",
+        age: "19",
         sex: "Male",
-        date: "24/4/2023",
+        date: "3/6/2023",
       },
       information: {
         chief_complaint: ["Fever", "Cold"],
-        history: ["HTN", "Br Astana"],
-        on_examinations: ["Dehydration", "Dehydration", "Pulse- 85 bpm"],
-        diagnosis: ["Virus fever"],
-        investigations: ["CT Scan", "X-Ray"],
-        followup: ["নিয়মিত ব্যায়াম করবেন", "বেশি বেশি পানি পান করবেন"],
-        advices: ["সপ্তাহ পর টেস্ট রিপোর্ট নিয়ে আসবেন"],
+        history: ["N/A"],
+        on_examinations: ["N/A"],
+        diagnosis: ["N/A"],
+        investigations: ["N/A"],
+        followup: ["বেশি বেশি পানি পান করবেন"],
+        advices: ["নিয়মিত ব্যায়াম করবেন"],
       },
       drugs: [
         {
-          name: "Tab. Zmax 500mg",
+          name: "Tab. Mirakof SR 50mg",
           times: "১+০+১",
-          when: "খাবার আগে",
-          duration: "৩দিন",
+          when: "খাবার পর",
+          duration: "৩০দিন",
         },
         {
-          name: "Tab. Paracitamol 500mg",
+          name: "Tab. Ace 500mg",
+          times: "১+১+১",
+          when: "খাবার পর",
+          duration: "৩০দিন",
+        },
+        {
+          name: "Tab. Calbo 500mg",
+          times: "১+০+১",
+          when: "খাবার পর",
+          duration: "৩০দিন",
+        },
+        {
+          name: "Nutrivit-B",
+          times: "১+০+১",
+          when: "খাবার পর",
+          duration: "৩০দিন",
+        },
+        {
+          name: "Tab. Ometid 20mg",
           times: "১+০+১",
           when: "খাবার আগে",
-          duration: "৩দিন",
+          duration: "৩০দিন",
         },
       ],
     };
@@ -478,7 +496,7 @@ export default {
     },
   },
   mounted() {
-    this.doctor = { ...this.doctor_info };
+    // this.doctor = { ...this.doctor_info };
   },
 };
 </script>

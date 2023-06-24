@@ -348,7 +348,13 @@ export default {
           .then((res) => {
             if (res.status === 201) {
               this.$toast.success("Success! we will contact you soon..");
-              this.$router.push("/profile");
+              if (this.form_data.type == "Video Call") {
+                this.$router.push(
+                  `/doctors/payment?amount=${this.form_data.fee}`
+                );
+              } else {
+                this.$router.push("/profile");
+              }
             } else {
               this.$toast.error("Error found! Try again");
             }
