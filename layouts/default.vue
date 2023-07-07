@@ -26,6 +26,9 @@ export default {
     this.$store.dispatch("doctors/getDoctors");
     this.$store.dispatch("product/getProduct");
     this.$store.dispatch("product/getDrugs");
+    this.$store.dispatch("prescription/getPrescriptionData");
+    this.$store.dispatch("prescription/getPrescriptions");
+    this.$store.dispatch("prescription/getDoctors");
     console.log("Called Data!");
   },
 };

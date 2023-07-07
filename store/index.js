@@ -2,16 +2,15 @@ export const state = () => ({
   country_code: [],
   accept: false,
   doctor_info: {
-      name: "Dr. Miton Chandra Paul",
-      qualifications:
-        "MBBS,FCPS,(Medicine), MCPS(Medicine), BCS(Health)",
-      specialist: "Medicine Specialist",
-      experience:
-        "Medical Officer \nSylhet MAG Osmani Medical College & Hospital.",
-      chamber: "Comfort Medical Services, Kajalshah, Sylhet.",
-      chamber_time:
-        "প্রতিদিন- বিকাল ৩টা থেকে রাত ৮টা \nশনি থেকে বৃহস্পতিবার (শুক্রবার বন্ধ)",
-    },
+    name: "Dr. Xyz",
+    qualifications: "MBBS,FCPS,(Medicine)",
+    specialist: "Medicine Specialist",
+    experience:
+      "Medical Officer \nSylhet MAG Osmani Medical College & Hospital.",
+    chamber: "Comfort Medical Services, Kajalshah, Sylhet.",
+    chamber_time:
+      "প্রতিদিন- বিকাল ৩টা থেকে রাত ৮টা \nশনি থেকে বৃহস্পতিবার (শুক্রবার বন্ধ)",
+  },
 });
 
 export const getters = {
@@ -42,14 +41,11 @@ export const actions = {
   async getCountryCodes({ commit }) {
     console.log("Calling....");
     await this.$axios
-      .get(
-        `https://gist.githubusercontent.com/Goles/3196253/raw/9ca4e7e62ea5ad935bb3580dc0a07d9df033b451/CountryCodes.json`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
+      .get(`prescription/data/`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
       .then((res) => {
         if (res.status === 200) {
           commit("setCountryCode", res.data);
