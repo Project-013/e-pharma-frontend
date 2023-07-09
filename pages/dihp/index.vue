@@ -2,7 +2,7 @@
   <div class="container pb-5 pt-3 mb-5">
     <div class="row g-2 justify-content-center">
       <div class="col-lg-2 col-md-3 col-4">
-        <NuxtLink to="/dimd/drugs">
+        <NuxtLink to="/dihp/drugs">
           <img
             src="/img/services/drugs.png"
             class="mx-auto d-block pointer border p-2 rounded service_image"
@@ -11,7 +11,7 @@
         </NuxtLink>
       </div>
       <div class="col-lg-2 col-md-3 col-4">
-        <NuxtLink to="/dimd/generic">
+        <NuxtLink to="/dihp/generic">
           <img
             src="/img/services/pills2.png"
             class="mx-auto d-block pointer border p-2 rounded service_image"
@@ -29,7 +29,7 @@
           <h6 class="small text-center mt-2 fw-semibold">Guidelines</h6>
         </NuxtLink>
       </div>
-      <div class="col-lg-2 col-md-3 col-4 d-md-block ">
+      <div class="col-lg-2 col-md-3 col-4 d-md-block d-none" >
         <NuxtLink to="/prescription" class="">
           <img
             src="/img/services/prescription.png"

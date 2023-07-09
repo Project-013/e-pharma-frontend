@@ -66,9 +66,9 @@
           </div>
         </div>
         <button class="btn btn-sm btn-dark" v-if="$route.query.doctor_id">
-          Update Prescription
+          Update Doctor
         </button>
-        <button class="btn btn-sm btn-dark" v-else>Save Prescription</button>
+        <button class="btn btn-sm btn-dark" v-else>Save Doctor</button>
       </form>
       <div class="col-md-6 card p-3">
         <h6>Preview</h6>
@@ -128,6 +128,11 @@ export default {
           "প্রতিদিন- বিকাল ৩টা থেকে রাত ৮টা \nশনি থেকে বৃহস্পতিবার (শুক্রবার বন্ধ)",
       },
     };
+  },
+    beforeCreate() {
+    if (this.$auth.$state.loggedIn == false) {
+      this.$router.push("/");
+    }
   },
   computed: {
     getUserID() {

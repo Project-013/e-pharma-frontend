@@ -1,5 +1,13 @@
 <template>
   <div class="">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <NuxtLink to="/" class="breadcrumb-item">Home</NuxtLink>
+        <NuxtLink to="/dihp" class="breadcrumb-item">DIHP</NuxtLink>
+        <NuxtLink to="/prescription" class="breadcrumb-item">Prescription</NuxtLink>
+        <li class="breadcrumb-item active" aria-current="page">Create/Update</li>
+      </ol>
+    </nav>
     <div class="" id="printable_content">
       <div class="border rounded __prescription">
         <div class="__doctor_info p-4" style="background-color: #e1f9ff">
@@ -7,31 +15,36 @@
             <label for="floatingInput">Select Doctor</label>
 
             <select
-              class="form-select form-select-sm"
+              class="form-select form-select-sm form-select form-select-sm-sm"
               aria-label="Default select example"
               v-model="doctor_id"
               required
             >
               <template v-for="doctor in doctors">
-                <option :value="doctor.id" :key="doctor.id">{{ JSON.parse(doctor.doctor).name }}--
-                <small class="fw-semibold small" style="font-size: 10px">
-                  {{ JSON.parse(doctor.doctor).qualifications }}</small
-                ></option>
+                <option :value="doctor.id" :key="doctor.id">
+                  {{ JSON.parse(doctor.doctor).name }}--
+                  <small class="fw-semibold small" style="font-size: 10px">
+                    {{ JSON.parse(doctor.doctor).qualifications }}</small
+                  >
+                </option>
               </template>
             </select>
           </div>
 
-          <div>
-            <h6 class="text-success fw-bold">{{ doctor.name }}</h6>
-            <pre style="font-size: 10px" class="text-muted mb-1">{{
-              doctor.qualifications
-            }}</pre>
-            <h6 class="fw-semibold mb-0 py-0" style="font-size: 13px">
-              {{ doctor.specialist }}
-            </h6>
-            <pre style="font-size: 13px" class="fw-normal mb-1">{{
-              doctor.experience
-            }}</pre>
+          <div class="d-flex justify-content-between">
+            <div>
+              <h6 class="text-success fw-bold">{{ doctor.name }}</h6>
+              <pre style="font-size: 10px" class="text-muted mb-1">{{
+                doctor.qualifications
+              }}</pre>
+              <h6 class="fw-semibold mb-0 py-0" style="font-size: 13px">
+                {{ doctor.specialist }}
+              </h6>
+              <pre style="font-size: 13px" class="fw-normal mb-1">{{
+                doctor.experience
+              }}</pre>
+            </div>
+            <img src="/img/pres_logo.png" alt="" width="100" class="me-5" />
           </div>
         </div>
         <div>
@@ -207,7 +220,7 @@
                 <h6 class="small mb-0 pb-0">Advices</h6>
                 <button
                   type="button"
-                  class="btn btn-outline-secondary btn-sm _edit_items ms-auto"
+                  class="btn btn-outline-secondary btn-sm _edit_items mx-auto"
                   data-bs-toggle="modal"
                   data-bs-target="#add_advices"
                 >
@@ -228,7 +241,7 @@
                 <h6 class="small mb-0 pb-0">Followup</h6>
                 <button
                   type="button"
-                  class="btn btn-outline-secondary btn-sm _edit_items ms-auto"
+                  class="btn btn-outline-secondary btn-sm _edit_items mx-auto"
                   data-bs-toggle="modal"
                   data-bs-target="#add_followup"
                 >
@@ -292,7 +305,7 @@
                   <div class="mb-3">
                     <label for="floatingInput">Drug Name</label>
                     <input
-                      class="form-control"
+                      class="form-control form-control-sm"
                       placeholder="Enter Drug Name"
                       v-model="drug.name"
                       list="drug_name_list"
@@ -314,7 +327,7 @@
                     <label for="floatingInput">Times</label>
 
                     <select
-                      class="form-select"
+                      class="form-select form-select-sm"
                       aria-label="Default select example"
                       v-model="drug.times"
                       required
@@ -330,7 +343,7 @@
                     <label for="floatingInput">When</label>
 
                     <select
-                      class="form-select"
+                      class="form-select form-select-sm"
                       aria-label="Default select example"
                       v-model="drug.when"
                       required
@@ -345,7 +358,7 @@
                   <div class="mb-3">
                     <label for="floatingInput">Duration (Days)</label>
                     <input
-                      class="form-control"
+                      class="form-control form-control-sm"
                       placeholder="Enter duration "
                       v-model="drug.duration"
                       type="number"
@@ -402,7 +415,7 @@
                   <div class="mb-3">
                     <label for="floatingInput">Patient Name</label>
                     <input
-                      class="form-control"
+                      class="form-control form-control-sm"
                       placeholder="Enter Patient Name"
                       v-model="patient.name"
                     />
@@ -410,7 +423,7 @@
                   <div class="mb-3">
                     <label for="floatingInput">Age</label>
                     <input
-                      class="form-control"
+                      class="form-control form-control-sm"
                       placeholder="Enter Patient Age"
                       v-model="patient.age"
                     />
@@ -462,7 +475,7 @@
                   <div class="mb-3">
                     <label for="floatingInput">Date</label>
                     <input
-                      class="form-control"
+                      class="form-control form-control-sm"
                       type="date"
                       placeholder="Enter Patient Name"
                       v-model="patient.date"
@@ -863,7 +876,7 @@ export default {
   data() {
     return {
       // doctor_info: this.getDoctorInfo,
-      doctor_id:"",
+      doctor_id: "",
       doctor: {
         name: "",
         qualifications: "",
@@ -936,8 +949,6 @@ export default {
     },
   },
   methods: {
-
-
     addMedicine() {
       this.drugs.push(this.drug);
       this.drug = {
@@ -1023,8 +1034,7 @@ export default {
             } else {
               this.$toast.error("Error found! Try again");
             }
-              this.$store.dispatch("prescription/getPrescriptions");
-
+            this.$store.dispatch("prescription/getPrescriptions");
 
             this.$nuxt.$loading.finish();
           })
@@ -1116,16 +1126,12 @@ export default {
       return;
     },
   },
-  watch:{
-    "doctor_id"(newValue) {
+  watch: {
+    doctor_id(newValue) {
       console.log(newValue);
-      const doctor = this.doctors.find(
-        (doc) => doc.id == newValue
-      );
-      this.doctor = JSON.parse(doctor.doctor)
-      
+      const doctor = this.doctors.find((doc) => doc.id == newValue);
+      this.doctor = JSON.parse(doctor.doctor);
     },
-
   },
   mounted() {
     // this.$store.dispatch("prescription/getPrescriptions");
@@ -1140,5 +1146,14 @@ export default {
 <style>
 .__main_body li {
   font-weight: 400;
+}
+.__prescription {
+  min-width: 700px;
+}
+#printable_content {
+  overflow: scroll;
+}
+._edit_items {
+  font-size: 10px !important;
 }
 </style>

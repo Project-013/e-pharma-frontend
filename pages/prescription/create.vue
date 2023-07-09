@@ -15,6 +15,11 @@ export default {
       },
     };
   },
+    beforeCreate() {
+    if (this.$auth.$state.loggedIn == false) {
+      this.$router.push("/");
+    }
+  },
 };
 </script>
 

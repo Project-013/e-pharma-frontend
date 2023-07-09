@@ -38,7 +38,7 @@
       </div>
 
       <div class="col-lg-2 col-md-3 col-4">
-        <NuxtLink to="/dimd">
+        <NuxtLink to="/dihp">
           <img
             src="/img/services/pills.png"
             class="mx-auto d-block pointer border p-2 rounded service_image"

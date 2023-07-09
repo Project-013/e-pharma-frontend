@@ -10,7 +10,7 @@
       >
         <li class="list-group-item my-1">
           <NuxtLink
-            :to="`/dimd/drugs?generic=${generic.replace(/\+/g,'-plus-')}`"
+            :to="`/dihp/drugs?generic=${generic.replace(/\+/g,'-plus-')}`"
             class="link-dark fw-semibold small d-flex justify-content-center align-items-center"
           >
             <div>

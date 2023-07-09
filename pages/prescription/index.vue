@@ -1,6 +1,6 @@
 <template>
   <div class="container pb-5 pt-3 mb-5">
-    <div class="row shadow">
+    <div class="row shadow p-3 rounded" v-if="$auth.loggedIn">
       <div class="col-md-7 mx-auto">
         <div class="d-flex justify-content-between my-3">
           <h6>Prescriptions</h6>
@@ -13,8 +13,7 @@
         <hr />
         <ul class="list-group">
           <template v-for="prescription in prescriptions">
-            <NuxtLink
-              :to="`/prescription/create?pres_id=${prescription.id}`"
+            <li
               class="list-group-item shadow py-2 d-flex justify-content-between fw-bold"
               :key="prescription.id"
             >
@@ -25,10 +24,27 @@
                   JSON.parse(prescription.prescription).patient.date
                 }}</small>
               </span>
-              <span><i class="icofont-edit"></i></span>
-
-
-            </NuxtLink>
+              <div>
+                <NuxtLink
+                  :to="`/prescription/create?pres_id=${prescription.id}`"
+                  class="btn btn-sm btn-dark"
+                >
+                  <span><i class="icofont-eye"></i></span>
+                </NuxtLink>
+                <NuxtLink
+                  :to="`/prescription/create?pres_id=${prescription.id}`"
+                  class="btn btn-sm btn-success"
+                >
+                  <span><i class="icofont-edit"></i></span>
+                </NuxtLink>
+                <button
+                  class="btn btn-sm btn-danger"
+                  @click="onDeletePrescriptions(`${prescription.id}`)"
+                >
+                  <i class="icofont-trash"></i>
+                </button>
+              </div>
+            </li>
           </template>
         </ul>
         <div
@@ -52,8 +68,7 @@
         <hr />
         <ul class="list-group">
           <template v-for="doctor in doctors">
-            <NuxtLink
-              :to="`/prescription/doctor?doctor_id=${doctor.id}`"
+            <l
               class="list-group-item shadow py-2 d-flex justify-content-between fw-bold"
               :key="doctor.id"
             >
@@ -63,19 +78,51 @@
                   {{ JSON.parse(doctor.doctor).qualifications }}</small
                 >
               </span>
-
-              <span><i class="icofont-edit"></i></span>
-            </NuxtLink>
+              <div>
+                <NuxtLink
+                  :to="`/prescription/doctor?doctor_id=${doctor.id}`"
+                  class="btn btn-sm btn-dark"
+                >
+                  <span><i class="icofont-eye"></i></span>
+                </NuxtLink>
+                <NuxtLink
+                  :to="`/prescription/doctor?doctor_id=${doctor.id}`"
+                  class="btn btn-sm btn-success"
+                >
+                  <span><i class="icofont-edit"></i></span>
+                </NuxtLink>
+                <button
+                  class="btn btn-sm btn-danger"
+                  @click="onDeleteDoctor(`${doctor.id}`)"
+                >
+                  <i class="icofont-trash"></i>
+                </button>
+              </div>
+            </l>
           </template>
         </ul>
-        <div
-          class="alert alert-warning"
-          v-if="!doctors.length"
-          role="alert"
-        >
+        <div class="alert alert-warning" v-if="!doctors.length" role="alert">
           Nothing Found!
         </div>
       </div>
+    </div>
+    <div class="alert alert-warning" v-else role="alert">
+      <p class="text-center my-3">
+        Please
+        <NuxtLink
+          :to="`/login?redirect=` + $route.fullPath"
+          class="text-decoration-none"
+        >
+          Login
+        </NuxtLink>
+        or
+        <NuxtLink
+          :to="`/register?redirect=` + $route.fullPath"
+          class="text-decoration-none"
+        >
+          Register
+        </NuxtLink>
+      </p>
     </div>
   </div>
 </template>
@@ -105,7 +152,68 @@ export default {
       return [...this.$store.getters["prescription/getDoctor"]];
     },
   },
-  methods: {},
+  methods: {
+    async onDeleteDoctor(id) {
+      const confirm = window.confirm("Are You Sure ?");
+      if (confirm == false) {
+        return;
+      }
+      this.$nextTick(() => {
+        this.$nuxt.$loading.start();
+        this.$axios
+          .delete(`prescription/doctor/` + id, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          .then((res) => {
+            this.$store.dispatch("prescription/getDoctors");
+            console.log(res);
+            // console.log(res);
+            if (res.status === 201) {
+            }
+            this.$nuxt.$loading.finish();
+          })
+          .catch((error) => {
+            console.log(error);
+            this.$nuxt.$loading.finish();
+            console.log(error.message || error.response.data.message);
+          });
+      });
+
+      return;
+    },
+    async onDeletePrescriptions(id) {
+      const confirm = window.confirm("Are You Sure ?");
+      if (confirm == false) {
+        return;
+      }
+      this.$nextTick(() => {
+        this.$nuxt.$loading.start();
+        this.$axios
+          .delete(`prescription/pres/` + id, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+          .then((res) => {
+            this.$store.dispatch("prescription/getPrescriptions");
+            console.log(res);
+            // console.log(res);
+            if (res.status === 201) {
+            }
+            this.$nuxt.$loading.finish();
+          })
+          .catch((error) => {
+            console.log(error);
+            this.$nuxt.$loading.finish();
+            console.log(error.message || error.response.data.message);
+          });
+      });
+
+      return;
+    },
+  },
   mounted() {},
 };
 </script>
