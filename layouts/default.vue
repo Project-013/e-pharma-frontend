@@ -1,8 +1,8 @@
 <template>
   <div class="root">
     <div v-if="isApp">
-      <Navbar />
-      <!-- <Navbar v-if="$auth.$state.loggedIn" /> -->
+      <!-- <Navbar /> -->
+      <Navbar v-if="$auth.$state.loggedIn" />
       <Nuxt />
     </div>
     <div v-else>

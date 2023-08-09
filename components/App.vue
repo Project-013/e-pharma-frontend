@@ -1,12 +1,12 @@
 <template>
   <div>
-    <!-- <AppRegister v-if="!$auth.$state.loggedIn" />
+    <AppRegister v-if="!$auth.$state.loggedIn" />
     <div v-else>
       <PartialsTopInfo />
       <CommonSection />
-    </div> -->
-    <PartialsTopInfo />
-    <CommonSection />
+    </div>
+    <!-- <PartialsTopInfo />
+    <CommonSection /> -->
   </div>
 </template>
 
