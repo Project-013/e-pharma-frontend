@@ -25,16 +25,27 @@
         >
           <div>
             <h6 class="mb-0 pb-0">{{ pharma.pharmacy_name }}</h6>
-            <small class="fw-semibold text-success my-0 py-0">{{
-              pharma.city
-            }} City</small>
-            <a :href="'tel:'+pharma.mobile" class="d-block fw-semibold small my-1"
-              ><i class="icofont-ui-call "></i>
-               {{ pharma.mobile }}
-            </a>
+            <small class="fw-semibold text-success my-0 py-0"
+              >{{ pharma.city }} City</small
+            >
+
+            <div class="my-3" v-if="pharma.short_description != 'N/A'">
+              <pre style="font-size: 12px">{{ pharma.short_description }}</pre>
+            </div>
           </div>
-          <div class="my-3">
-            <pre style="font-size: 12px">{{ pharma.short_description }}</pre>
+
+          <div
+            style="width: 80px; height: 80px"
+            class="d-flex justify-content-center align-items-center"
+          >
+            <a
+              :href="'tel:' + pharma.mobile"
+              target="_blank"
+              class="card bg-light shadow-sm small border-0 p-2"
+            >
+              <i class="fs-1 icofont-ui-call text-success mb-2"></i>
+              <h6 class="py-0 my-1 fw-semibold small">Call Now</h6>
+            </a>
           </div>
 
           <!-- {{pharma}} -->

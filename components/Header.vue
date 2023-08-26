@@ -53,7 +53,7 @@
             <ul class="list-group list-group-horizontal">
               <li class="list-group-item border-0 text-dark px-2">
                 <a
-                  href="https://www.facebook.com/sasthosebok"
+                  href="#"
                   target="_blank"
                   class="social-icon text-decoration-none"
                 >

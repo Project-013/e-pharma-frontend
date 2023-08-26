@@ -46,7 +46,7 @@
                 class="social-network d-flex align-items-center p-0 d-none d-md-flex"
               >
                 <li>
-                  <a href="https://www.facebook.com/sasthosebok" target="_blank"
+                  <a href="#" target="_blank"
                     ><i class="icofont-facebook"></i
                   ></a>
                 </li>
