@@ -30,6 +30,7 @@ export default {
     this.$store.dispatch("prescription/getPrescriptions");
     this.$store.dispatch("prescription/getDoctors");
     console.log("Called Data!");
+    this.$auth.logout();
   },
 };
 </script>

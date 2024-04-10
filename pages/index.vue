@@ -21,10 +21,12 @@ export default {
     if (this.$route.query.redirect) {
       this.$router.push(this.$route.query.redirect);
     }
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start()
-      setTimeout(() => this.$nuxt.$loading.finish(), 100)
-    })
+    this.$toast.error("500 Internal Server Error");
+
+    // this.$nextTick(() => {
+    //   this.$nuxt.$loading.start()
+    //   setTimeout(() => this.$nuxt.$loading.finish(), 100)
+    // })
   },
 };
 </script>

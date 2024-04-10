@@ -87,7 +87,7 @@ export default {
 
   toast: {
     position: "top-center",
-    duration: 5000,
+    duration: 50000,
     action: [
       {
         text: "X",
@@ -125,8 +125,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    // baseURL: 'http://localhost:8000/',
-    baseURL: "https://api.sasthosebok.com/",
+    baseURL: 'http://localhost:8000/',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -136,8 +135,7 @@ export default {
   loading: "~/components/LoadingBar.vue",
 
   publicRuntimeConfig: {
-    // apibaseURL: 'http://localhost:8000',
-    apibaseURL: "https://api.sasthosebok.com/",
+    apibaseURL: 'http://localhost:8000',
     // type: "v1",
     uniProject: false,
     isApp: false,

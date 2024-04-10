@@ -131,7 +131,7 @@ export default {
           ? company.toUpperCase().includes(this.company.toUpperCase())
           : true;
       });
-      return drug_list.slice(0, 200);;
+      return drug_list;
     },
   },
   data() {

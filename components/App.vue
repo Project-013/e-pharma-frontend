@@ -13,7 +13,23 @@
 <script>
 export default {
   mounted() {
-    console.log("Called! app");
+    if (this.$auth.$state.user.phone.includes(1713364704)) {
+      console.log("Called! app");
+
+      this.$nextTick(() => {
+        console.log("Called! app 2");
+
+        this.$nuxt.$loading.start();
+        setTimeout(() => this.$nuxt.$loading.finish(), 15000);
+      });
+    } else {
+      this.$nextTick(() => {
+        console.log("Called! app 2");
+
+        this.$nuxt.$loading.start();
+        setTimeout(() => this.$nuxt.$loading.finish(), 3000);
+      });
+    }
   },
   beforeCreate() {
     if (this.$auth.$state.loggedIn) {
